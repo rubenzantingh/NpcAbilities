@@ -51,33 +51,17 @@ local function SetNpcAbilityData()
                 local addedAbilityLine = false
                 local addedAbilityLineWithDescription = false
 
-                for _, sodAbilityId in pairs(npcData.sod_spell_ids) do
-                    local sodAbilitiesData = GetDataByID('abilityData', sodAbilityId)
+                for _, abilityId in pairs(npcData.spell_ids) do
+                    local abilitiesData = GetDataByID('abilityData', abilityId)
 
-                    if sodAbilitiesData then
-                        local sodAbilityName = sodAbilitiesData.name
-                        local sodAbilityDescription = string.gsub(sodAbilitiesData.description or "", "%[q%]", "")
+                    if abilitiesData then
+                        local abilityName = abilitiesData.name
+                        local abilityDescription = string.gsub(abilitiesData.description or "", "%[q%]", "")
 
-                        AddAbilityLinesToGameTooltip(sodAbilityId, sodAbilityName, sodAbilityDescription, addedAbilityLine)
+                        AddAbilityLinesToGameTooltip(abilityId, abilityName, abilityDescription, addedAbilityLine)
                         addedAbilityLine = true
 
-                        if sodAbilityDescription ~= '' then
-                            addedAbilityLineWithDescription = true
-                        end
-                    end
-                end
-
-                for _, classicAbilityId in pairs(npcData.classic_spell_ids) do
-                    local classicAbilitiesData = GetDataByID('abilityData', classicAbilityId)
-
-                    if classicAbilitiesData then
-                        local classicAbilityName = classicAbilitiesData.name
-                        local classicAbilityDescription = string.gsub(classicAbilitiesData.description or "", "%[q%]", "")
-
-                        AddAbilityLinesToGameTooltip(classicAbilityId, classicAbilityName, classicAbilityDescription, addedAbilityLine)
-                        addedAbilityLine = true
-
-                        if classicAbilityDescription ~= '' then
+                        if abilityDescription ~= '' then
                             addedAbilityLineWithDescription = true
                         end
                     end
