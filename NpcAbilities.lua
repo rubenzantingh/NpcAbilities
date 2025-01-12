@@ -4,19 +4,13 @@ local npcAbilitiesFrame = CreateFrame("Frame")
 local hotkeyButtonPressed = false
 
 local function GetDataByID(dataType, dataId)
-    local data = addonTable[dataType]
-    if not data then return nil end
-
     local convertedId = tonumber(dataId)
     if not convertedId then return nil end
 
     if dataType == "npcData" then
-        return data[convertedId]
-    else
-        local languageCode = NpcAbilitiesOptions["SELECTED_LANGUAGE"]
-        if data[languageCode] then
-            return data[languageCode][convertedId]
-        end
+        return NpcAbilitiesNpcData[convertedId]
+    elseif dataType == "abilityData" then
+        return NpcAbilitiesAbilityData[NpcAbilitiesOptions.SELECTED_LANGUAGE][convertedId]
     end
 
     return nil
@@ -27,7 +21,7 @@ local function AddAbilityLinesToGameTooltip(id, name, description, addedAbilityL
         GameTooltip:AddLine(" ")
     end
 
-    local texture = GetSpellTexture(id);
+    local texture = C_Spell.GetSpellTexture(id);
     local icon = "|T" .. texture .. ":12:12:0:0:64:64:4:60:4:60|t"
 
     GameTooltip:AddLine(icon .. " " .. name)
@@ -98,4 +92,4 @@ npcAbilitiesFrame:SetScript("OnKeyDown", function(self, key) SetHotkeyButtonPres
 npcAbilitiesFrame:SetPropagateKeyboardInput(true)
 npcAbilitiesFrame:RegisterEvent("MODIFIER_STATE_CHANGED")
 
-GameTooltip:HookScript("OnTooltipSetUnit", SetNpcAbilityData)
+TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Unit, SetNpcAbilityData)

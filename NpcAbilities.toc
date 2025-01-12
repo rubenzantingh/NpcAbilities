@@ -1,13 +1,17 @@
-## Interface: 40401
+## Interface: 110007
 ## Title: NpcAbilities
 ## Notes: Add abilities to the NPC GameTooltip
 ## Author: Ruben Zantingh
 ## Version: 0.1.0
 ## SavedVariables: NpcAbilitiesOptions
 
-Database/npcs.lua
+Database/Npcs/npcs.lua
+Database/Npcs/npcsOne.lua
+Database/Npcs/npcsTwo.lua
+Database/Npcs/npcsThree.lua
+Database/Npcs/npcsFour.lua
 
-Database/abilities.lua
+Database/Abilities/abilities.lua
 Database/Abilities/enUS.lua
 Database/Abilities/esES.lua
 Database/Abilities/deDE.lua
