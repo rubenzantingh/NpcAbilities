@@ -920,7 +920,6 @@ addonTable.abilityData['en'] = {
 [15549] = {name = "Chained Bolt", description = "[q]Strikes an enemy with a lightning bolt that arcs to another nearby enemy. The spell affects up to 3 targets, causing Nature damage to each."},
 [15550] = {name = "Trample", description = "[q]Inflicts Physical damage to nearby enemies."},
 [15570] = {name = "Immolate", description = "[q]Burns an enemy, then inflicts additional Fire damage every 3 sec. for 21 sec."},
-[15571] = {name = "Dazed", description = nil},
 [15572] = {name = "Sunder Armor", description = "[q]Hacks at an enemy's armor, reducing it by 0 per Sunder Armor. Can be applied up to 5 times. Lasts 30 sec."},
 [15575] = {name = "Flame Cannon", description = "[q]Inflicts Fire damage to an enemy."},
 [15577] = {name = "Whirlwind", description = nil},

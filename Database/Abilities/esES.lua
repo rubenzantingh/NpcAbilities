@@ -920,7 +920,6 @@ addonTable.abilityData['es'] = {
 [15549] = {name = "Descarga en cadena", description = "[q]Golpea al enemigo con una descarga de relámpagos que se extiende a otro enemigo cercano. Afecta a un máximo de 3 objetivos causando daño de Naturaleza a cada uno."},
 [15550] = {name = "Atropello", description = "[q]Inflige daño físico a los enemigos cercanos."},
 [15570] = {name = "Inmolar", description = "[q]Quema a un enemigo e inflige daño de Fuego extra cada 3 s durante 21 sec."},
-[15571] = {name = "Atontado", description = nil},
 [15572] = {name = "Hender armadura", description = "[q]Corta la armadura de enemigos cercanos y la reduce en 0 p. por cada uso de Hender armadura. Se puede aplicar hasta 5 veces. Dura 30 sec."},
 [15575] = {name = "Cañón de llamas", description = "[q]Inflige daño de Fuego a un enemigo."},
 [15577] = {name = "Huracán", description = nil},

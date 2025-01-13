@@ -920,7 +920,6 @@ addonTable.abilityData['de'] = {
 [15549] = {name = "Kettenblitzschlag", description = "[q]Schlägt einen Feind mit einem Blitzschlag, der auf einen in der Nähe befindlichen Feind überspringt. Der Zauber wirkt sich auf bis zu 3 Ziele aus und verursacht bei jedem Naturschaden."},
 [15550] = {name = "Trampeln", description = "[q]Verursacht körperlichen Schaden bei in der Nähe befindlichen Feinden."},
 [15570] = {name = "Feuerbrand", description = "[q]Verbrennt einen Feind und fügt ihm dann 21 sec lang alle 3 Sek. zusätzlichen Feuerschaden zu."},
-[15571] = {name = "Benommen", description = nil},
 [15572] = {name = "Rüstung zerreißen", description = "[q]Hackt nach der Rüstung des Feindes und verringert sie um 0 Punkt(e) pro Einsatz von 'Rüstung zerreißen'. Kann bis zu 5-mal angewendet werden. Hält 30 sec lang an."},
 [15575] = {name = "Flammenkanone", description = "[q]Verursacht bei einem Feind Feuerschaden."},
 [15577] = {name = "Wirbelwind", description = nil},

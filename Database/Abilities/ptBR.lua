@@ -920,7 +920,6 @@ addonTable.abilityData['pt'] = {
 [15549] = {name = "Raio Encadeado", description = "[q]Atinge um inimigo com um raio que se propaga até outro inimigo próximo. O feitiço afeta até 3 alvos, causando dano de Natureza a cada um deles."},
 [15550] = {name = "Atropelo", description = "[q]Causa dano Físico a inimigos próximos."},
 [15570] = {name = "Imolação", description = "[q]Queima um inimigo e, então, causa mais dano de Fogo a cada 3 s por 21 sec."},
-[15571] = {name = "Estonteado", description = nil},
 [15572] = {name = "Fender Armadura", description = "[q]Corta a armadura de um inimigo, enfraquecendo-a em 0 a cada aplicação de Fender Armadura. Acumula até 5 vezes. Dura 30 sec."},
 [15575] = {name = "Canhão de Chamas", description = "[q]Causa dano de Fogo a um inimigo."},
 [15577] = {name = "Redemoinho", description = nil},

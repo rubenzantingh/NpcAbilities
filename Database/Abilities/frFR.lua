@@ -920,7 +920,6 @@ addonTable.abilityData['fr'] = {
 [15549] = {name = "Eclairs en série", description = "[q]Un éclair frappe un ennemi et rebondit sur un autre qui se trouve à proximité. Le sort affecte jusqu'à 3 cibles et inflige des dégâts de Nature à chacun."},
 [15550] = {name = "Piétiner", description = "[q]Inflige des dégâts physiques aux ennemis proches."},
 [15570] = {name = "Immolation", description = "[q]Brûle un ennemi et lui inflige des points de dégâts de Feu supplémentaires toutes les 3 sec. pendant 21 sec."},
-[15571] = {name = "Hébétement", description = nil},
 [15572] = {name = "Fracasser armure", description = "[q]Entaille l'armure d'un ennemi et réduit son score de 0 par attaque Fracasser armure. Applicable jusqu'à 5 fois. Dure 30 sec."},
 [15575] = {name = "Canon à flammes", description = "[q]Inflige des dégâts de Feu à un ennemi."},
 [15577] = {name = "Tourbillon", description = nil},

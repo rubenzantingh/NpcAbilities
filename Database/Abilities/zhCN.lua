@@ -920,7 +920,6 @@ addonTable.abilityData['cn'] = {
 [15549] = {name = "闪电链", description = "[q]向敌人射出一支闪电箭，这支闪电箭会在击中目标后继续攻击它周围最近的敌人，对每个目标都造成自然伤害，最多可攻击3个目标。"},
 [15550] = {name = "践踏", description = "[q]对附近的敌人造成物理伤害。"},
 [15570] = {name = "献祭", description = "[q]灼烧敌人，并对其每3秒造成一次额外火焰伤害，持续21 sec。"},
-[15571] = {name = "眩晕", description = nil},
 [15572] = {name = "破甲攻击", description = "[q]击破目标的护甲，每次破甲攻击都会使其护甲值降低0点，最多可累加5次，持续30 sec。"},
 [15575] = {name = "烈焰火炮", description = "[q]对敌人造成火焰伤害。"},
 [15577] = {name = "旋风斩效果", description = nil},
