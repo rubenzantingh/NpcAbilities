@@ -5339,7 +5339,6 @@ addonTable.abilityData['es'] = {
 [50403] = {name = "Lanzamiento de hueso", description = "[q]Lanza un hueso a un enemigo, lo que inflige 525 to 675 p. de daño."},
 [50405] = {name = "Trueno forjado", description = "[q]Inflige 2625 to 3375 p. de daño de Naturaleza a un enemigo."},
 [50410] = {name = "Golpe de colmillo", description = "[q]Inflige daño normal más 150 p. a un enemigo, y lo derriba."},
-[50411] = {name = "Atontado", description = nil},
 [50413] = {name = "Carga de magnatauro", description = "[q]Aumenta la velocidad de movimiento del taumaturgo un 60% durante 10 sec y provoca que inflija 350 p. de daño extra en sus 3 primeros ataques."},
 [50414] = {name = "Maldición de sangre", description = "[q]Aumenta 500 p. el daño físico infligido a enemigos cercanos durante 8 sec."},
 [50416] = {name = "Arma Mordedura de Escarcha", description = "[q]Encanta tu arma con Mordedura de Escarcha, inflige 95 to 105 p. de daño de Escarcha y reduciendo la velocidad de movimiento del objetivo un 30% durante 3 sec cada vez que infliges daño cuerpo a cuerpo. Dura 8 sec."},

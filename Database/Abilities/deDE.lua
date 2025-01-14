@@ -5339,7 +5339,6 @@ addonTable.abilityData['de'] = {
 [50403] = {name = "Knochen werfen", description = "[q]Wirft einen Knochen auf einen Gegner und verursacht 525 to 675 Schaden."},
 [50405] = {name = "Geschmiedeter Donner", description = "[q]Verursacht 2625 to 3375 Naturschaden bei einem Gegner."},
 [50410] = {name = "Hauerstoß", description = "[q]Fügt einem Gegner 150 normalen Schaden zu und stößt ihn zurück."},
-[50411] = {name = "Benommen", description = nil},
 [50413] = {name = "Magnataurenansturm", description = "[q]Erhöht das Bewegungstempo des Zaubernden 10 sec lang um 60%, und lässt ihn bei seinen ersten drei Angriffen zusätzlich 350 Schaden zufügen."},
 [50414] = {name = "Blutfluch", description = "[q]Erhöht den erlittenen körperlichen Schaden von in der Nähe befindlichen Feinden 8 sec lang um 500."},
 [50416] = {name = "Frostbeißerwaffe", description = "[q]Verzaubert Eure Waffe mit 'Frostbeißer', der 95 to 105 Frostschaden verursacht und das Bewegungstempo des Ziels 3 sec lang um 30% verringert, wenn Ihr Nahkampfschaden verursacht. Hält 8 sec lang an."},

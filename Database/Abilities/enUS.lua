@@ -5339,7 +5339,6 @@ addonTable.abilityData['en'] = {
 [50403] = {name = "Bone Toss", description = "[q]Throws a bone at an enemy, inflicting 525 to 675 damage."},
 [50405] = {name = "Forged Thunder", description = "[q]Inflicts 2625 to 3375 Nature damage on an enemy."},
 [50410] = {name = "Tusk Strike", description = "[q]Inflicts normal damage plus 150 to an enemy, knocking it back."},
-[50411] = {name = "Dazed", description = nil},
 [50413] = {name = "Magnataur Charge", description = "[q]Increases the caster's movement speed by 60% for 10 sec. and causes it to inflict an additional 350 damage on its first three attacks."},
 [50414] = {name = "Curse of Blood", description = "[q]Increases the Physical damage taken by nearby enemies by 500 for 8 sec."},
 [50416] = {name = "Frostbite Weapon", description = "[q]Enchants your weapon with Frostbite, causing 95 to 105 Frost damage and slowing your target's movement speed by 30% for 3 sec whenever you deal melee damage. Lasts 8 sec."},

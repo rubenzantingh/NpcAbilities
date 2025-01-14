@@ -5339,7 +5339,6 @@ addonTable.abilityData['fr'] = {
 [50403] = {name = "Lancer d'os", description = "[q]Lance un os sur un ennemi et lui inflige 525 to 675 points de dégâts."},
 [50405] = {name = "Tonnerre forgée", description = "[q]Inflige 2625 to 3375 points de dégâts de Nature à un ennemi."},
 [50410] = {name = "Coup de défense", description = "[q]Inflige les dégâts normaux plus 150 à un ennemi et le fait tomber à la renverse."},
-[50411] = {name = "Hébété", description = nil},
 [50413] = {name = "Charge de magnataure", description = "[q]Augmente la vitesse de déplacement du lanceur de sorts de 60% pendant 10 sec et il inflige 350 points de dégâts supplémentaires sur ses trois premières attaques."},
 [50414] = {name = "Malédiction du sang", description = "[q]Augmente les dégâts physiques subis par les ennemis qui se trouvent à proximité de 500 pendant 8 sec."},
 [50416] = {name = "Arme Morsure de givre", description = "[q]Enchante votre arme avec Morsure de givre, ce qui inflige 95 to 105 points de dégâts de Givre à la cible et réduit sa vitesse de déplacement de 30% pendant 3 sec chaque fois que vous infligez des dégâts en mêlée. Dure 8 sec."},

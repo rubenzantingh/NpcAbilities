@@ -5338,7 +5338,6 @@ addonTable.abilityData['pt'] = {
 [50403] = {name = "Lançar Osso", description = "[q]Atira um osso em um inimigo, causando 525 to 675 de dano Físico."},
 [50405] = {name = "Trovão Forjado", description = "[q]Causa 2625 to 3375 de dano de Natureza a um inimigo."},
 [50410] = {name = "Golpe com Presa", description = "[q]Causa dano normal mais 150 a um inimigo, repelindo-o."},
-[50411] = {name = "Estonteado", description = "[q]Tonteado."},
 [50413] = {name = "Carga do Magnatauro", description = "[q]Aumenta em 60% a velocidade de movimento do lançador por 10 sec e o faz causar mais 350 de dano nos três primeiros ataques dele."},
 [50414] = {name = "Maldição de Sangue", description = "[q]Aumenta em 500 o dano Físico recebido de inimigos próximos por 8 sec."},
 [50416] = {name = "Arma Mandíbulas de Gelo", description = "[q]Encanta sua arma com Queimadura de Frio, causando 95 to 105 de dano de Gelo e reduzindo em 30% a velocidade de movimento do seu alvo por 3 sec, sempre que você causar dano corpo a corpo. Dura 8 sec."},
