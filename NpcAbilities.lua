@@ -2,6 +2,7 @@ local addonName, addonTable = ...
 
 local npcAbilitiesFrame = CreateFrame("Frame")
 local hotkeyButtonPressed = false
+local seasonId = C_Seasons.GetActiveSeason()
 
 local function GetDataByID(dataType, dataId)
     local data = addonTable[dataType]
@@ -51,18 +52,20 @@ local function SetNpcAbilityData()
                 local addedAbilityLine = false
                 local addedAbilityLineWithDescription = false
 
-                for _, sodAbilityId in pairs(npcData.sod_spell_ids) do
-                    local sodAbilitiesData = GetDataByID('abilityData', sodAbilityId)
+                if seasonId == 2 then
+                    for _, sodAbilityId in pairs(npcData.sod_spell_ids) do
+                        local sodAbilitiesData = GetDataByID('abilityData', sodAbilityId)
 
-                    if sodAbilitiesData then
-                        local sodAbilityName = sodAbilitiesData.name
-                        local sodAbilityDescription = string.gsub(sodAbilitiesData.description or "", "%[q%]", "")
+                        if sodAbilitiesData then
+                            local sodAbilityName = sodAbilitiesData.name
+                            local sodAbilityDescription = string.gsub(sodAbilitiesData.description or "", "%[q%]", "")
 
-                        AddAbilityLinesToGameTooltip(sodAbilityId, sodAbilityName, sodAbilityDescription, addedAbilityLine)
-                        addedAbilityLine = true
+                            AddAbilityLinesToGameTooltip(sodAbilityId, sodAbilityName, sodAbilityDescription, addedAbilityLine)
+                            addedAbilityLine = true
 
-                        if sodAbilityDescription ~= '' then
-                            addedAbilityLineWithDescription = true
+                            if sodAbilityDescription ~= '' then
+                                addedAbilityLineWithDescription = true
+                            end
                         end
                     end
                 end
