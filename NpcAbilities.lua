@@ -45,56 +45,71 @@ local function SetNpcAbilityData()
     if unitGUID then
         local unitType, _, _, _, _, npcId = strsplit("-", unitGUID)
 
-        if unitType == "Creature" then
-            local npcData = GetDataByID('npcData', npcId)
+        if unitType ~= "Creature" then
+            return
+        end
 
-            if npcData then
-                local addedAbilityLine = false
-                local addedAbilityLineWithDescription = false
+        local npcData = GetDataByID('npcData', npcId)
 
-                if seasonId == 2 then
-                    for _, sodAbilityId in pairs(npcData.sod_spell_ids) do
-                        local sodAbilitiesData = GetDataByID('abilityData', sodAbilityId)
+        if npcData == nil then
+           return
+        end
 
-                        if sodAbilitiesData then
-                            local sodAbilityName = sodAbilitiesData.name
-                            local sodAbilityDescription = string.gsub(sodAbilitiesData.description or "", "%[q%]", "")
+        local addedAbilityLine = false
+        local addedAbilityLineWithDescription = false
+        local addedAbilityNames = {}
 
-                            AddAbilityLinesToGameTooltip(sodAbilityId, sodAbilityName, sodAbilityDescription, addedAbilityLine)
-                            addedAbilityLine = true
+        if seasonId == 2 then
+            for _, sodAbilityId in pairs(npcData.sod_spell_ids) do
+                local sodAbilitiesData = GetDataByID('abilityData', sodAbilityId)
 
-                            if sodAbilityDescription ~= '' then
-                                addedAbilityLineWithDescription = true
-                            end
-                        end
-                    end
+                if sodAbilitiesData == nil then
+                    return
                 end
 
-                for _, classicAbilityId in pairs(npcData.classic_spell_ids) do
-                    local classicAbilitiesData = GetDataByID('abilityData', classicAbilityId)
+                local sodAbilityName = sodAbilitiesData.name
+                local sodAbilityDescription = string.gsub(sodAbilitiesData.description or "", "%[q%]", "")
+                addedAbilityNames[sodAbilityName] = sodAbilityName
 
-                    if classicAbilitiesData then
-                        local classicAbilityName = classicAbilitiesData.name
-                        local classicAbilityDescription = string.gsub(classicAbilitiesData.description or "", "%[q%]", "")
+                AddAbilityLinesToGameTooltip(sodAbilityId, sodAbilityName, sodAbilityDescription, addedAbilityLine)
+                addedAbilityLine = true
 
-                        AddAbilityLinesToGameTooltip(classicAbilityId, classicAbilityName, classicAbilityDescription, addedAbilityLine)
-                        addedAbilityLine = true
-
-                        if classicAbilityDescription ~= '' then
-                            addedAbilityLineWithDescription = true
-                        end
-                    end
-                end
-
-                if addedAbilityLineWithDescription and not hotkeyButtonPressed and NpcAbilitiesOptions["SELECTED_HOTKEY"] then
-                    local hotkey = NpcAbilitiesOptions["SELECTED_HOTKEY"]
-                    GameTooltip:AddLine("(Press " .. hotkey .. " for details)", 0.8, 0.8, 0.8)
-                end
-
-                if addedAbilityLineWithDescription and not hotkeyButtonPressed and not NpcAbilitiesOptions["SELECTED_HOTKEY"] then
-                    GameTooltip:AddLine("(Hotkey not bound)", 0.8, 0.8, 0.8)
+                if sodAbilityDescription ~= '' then
+                    addedAbilityLineWithDescription = true
                 end
             end
+        end
+
+        for _, classicAbilityId in pairs(npcData.classic_spell_ids) do
+            local classicAbilitiesData = GetDataByID('abilityData', classicAbilityId)
+
+            if classicAbilitiesData == nil then
+                return
+            end
+
+            local classicAbilityName = classicAbilitiesData.name
+
+            if addedAbilityNames[classicAbilityName] then
+                return
+            end
+
+            local classicAbilityDescription = string.gsub(classicAbilitiesData.description or "", "%[q%]", "")
+
+            AddAbilityLinesToGameTooltip(classicAbilityId, classicAbilityName, classicAbilityDescription, addedAbilityLine)
+            addedAbilityLine = true
+
+            if classicAbilityDescription ~= '' then
+                addedAbilityLineWithDescription = true
+            end
+        end
+
+        if addedAbilityLineWithDescription and not hotkeyButtonPressed and NpcAbilitiesOptions["SELECTED_HOTKEY"] then
+            local hotkey = NpcAbilitiesOptions["SELECTED_HOTKEY"]
+            GameTooltip:AddLine("(Press " .. hotkey .. " for details)", 0.8, 0.8, 0.8)
+        end
+
+        if addedAbilityLineWithDescription and not hotkeyButtonPressed and not NpcAbilitiesOptions["SELECTED_HOTKEY"] then
+            GameTooltip:AddLine("(Hotkey not bound)", 0.8, 0.8, 0.8)
         end
     end
 end
