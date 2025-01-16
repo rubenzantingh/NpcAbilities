@@ -33,42 +33,48 @@ end
 
 local function SetNpcAbilityData()
     local _, unitId = GameTooltip:GetUnit()
+    if not unitId then
+        return
+    end
+
     local unitGUID = UnitGUID(unitId)
 
-    if unitGUID then
-        local unitType, _, _, _, _, npcId = strsplit("-", unitGUID)
+    if not unitGUID then
+        return
+    end
 
-        if unitType == "Creature" then
-            local npcData = GetDataByID('npcData', npcId)
+    local unitType, _, _, _, _, npcId = strsplit("-", unitGUID)
 
-            if npcData then
-                local addedAbilityLine = false
-                local addedAbilityLineWithDescription = false
+    if unitType == "Creature" then
+        local npcData = GetDataByID('npcData', npcId)
 
-                for _, abilityId in pairs(npcData.spell_ids) do
-                    local abilitiesData = GetDataByID('abilityData', abilityId)
+        if npcData then
+            local addedAbilityLine = false
+            local addedAbilityLineWithDescription = false
 
-                    if abilitiesData then
-                        local abilityName = abilitiesData.name
-                        local abilityDescription = string.gsub(abilitiesData.description or "", "%[q%]", "")
+            for _, abilityId in pairs(npcData.spell_ids) do
+                local abilitiesData = GetDataByID('abilityData', abilityId)
 
-                        AddAbilityLinesToGameTooltip(abilityId, abilityName, abilityDescription, addedAbilityLine)
-                        addedAbilityLine = true
+                if abilitiesData then
+                    local abilityName = abilitiesData.name
+                    local abilityDescription = string.gsub(abilitiesData.description or "", "%[q%]", "")
 
-                        if abilityDescription ~= '' then
-                            addedAbilityLineWithDescription = true
-                        end
+                    AddAbilityLinesToGameTooltip(abilityId, abilityName, abilityDescription, addedAbilityLine)
+                    addedAbilityLine = true
+
+                    if abilityDescription ~= '' then
+                        addedAbilityLineWithDescription = true
                     end
                 end
+            end
 
-                if addedAbilityLineWithDescription and not hotkeyButtonPressed and NpcAbilitiesOptions["SELECTED_HOTKEY"] then
-                    local hotkey = NpcAbilitiesOptions["SELECTED_HOTKEY"]
-                    GameTooltip:AddLine("(Press " .. hotkey .. " for details)", 0.8, 0.8, 0.8)
-                end
+            if addedAbilityLineWithDescription and not hotkeyButtonPressed and NpcAbilitiesOptions["SELECTED_HOTKEY"] then
+                local hotkey = NpcAbilitiesOptions["SELECTED_HOTKEY"]
+                GameTooltip:AddLine("(Press " .. hotkey .. " for details)", 0.8, 0.8, 0.8)
+            end
 
-                if addedAbilityLineWithDescription and not hotkeyButtonPressed and not NpcAbilitiesOptions["SELECTED_HOTKEY"] then
-                    GameTooltip:AddLine("(Hotkey not bound)", 0.8, 0.8, 0.8)
-                end
+            if addedAbilityLineWithDescription and not hotkeyButtonPressed and not NpcAbilitiesOptions["SELECTED_HOTKEY"] then
+                GameTooltip:AddLine("(Hotkey not bound)", 0.8, 0.8, 0.8)
             end
         end
     end
