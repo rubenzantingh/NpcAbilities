@@ -894,7 +894,7 @@ NpcAbilitiesNpcData[68485] = {spell_ids = {82800, 443503}}
 NpcAbilitiesNpcData[68486] = {spell_ids = {9739, 12160, 16561, 33844, 79833}}
 NpcAbilitiesNpcData[68490] = {spell_ids = {82800, 443503}}
 NpcAbilitiesNpcData[68497] = {spell_ids = {135103, 443503}}
-NpcAbilitiesNpcData[68501] = {spell_ids = {79878, 135866}}
+NpcAbilitiesNpcData[68501] = {spell_ids = {79878}}
 NpcAbilitiesNpcData[68503] = {spell_ids = {135591}}
 NpcAbilitiesNpcData[68504] = {spell_ids = {135839}}
 NpcAbilitiesNpcData[68508] = {spell_ids = {79925}}
@@ -10599,7 +10599,7 @@ NpcAbilitiesNpcData[115279] = {spell_ids = {214226}}
 NpcAbilitiesNpcData[115285] = {spell_ids = {187510}}
 NpcAbilitiesNpcData[115287] = {spell_ids = {125801}}
 NpcAbilitiesNpcData[115291] = {spell_ids = {186327, 195585}}
-NpcAbilitiesNpcData[115292] = {spell_ids = {230363, 234046, 234055}}
+NpcAbilitiesNpcData[115292] = {spell_ids = {230363, 234046}}
 NpcAbilitiesNpcData[115294] = {spell_ids = {229393, 229394, 230363}}
 NpcAbilitiesNpcData[115295] = {spell_ids = {229413, 229471, 230363}}
 NpcAbilitiesNpcData[115326] = {spell_ids = {165746}}
