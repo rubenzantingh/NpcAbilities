@@ -1,6 +1,4 @@
-local addonName, addonTable = ...
-
-addonTable.abilityData['ko'] = {
+_G["NpcAbilitiesAbilityData"]['ko'] = {
 [45] = {name = "전투 발구르기", description = "[q]주위 적을 멀리 밀쳐냅니다."},
 [96] = {name = "분할", description = "[q]다음 근접 공격의 피해가 100만큼 증가하고 대상을 출혈하게 만듭니다."},
 [113] = {name = "얼음 결계", description = "[q]6 sec 동안 적의 주위를 얼음 사슬로 둘러 제자리에 가둬둡니다."},

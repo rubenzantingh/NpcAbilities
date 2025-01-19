@@ -1,6 +1,4 @@
-local addonName, addonTable = ...
-
-addonTable.npcData = {
+_G["NpcAbilitiesNpcData"] = {
 [30] = {spell_ids = {1742, 4167, 17253, 61684}},
 [40] = {spell_ids = {6016}},
 [43] = {spell_ids = {4167, 11918}},

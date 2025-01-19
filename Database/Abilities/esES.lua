@@ -1,6 +1,4 @@
-local addonName, addonTable = ...
-
-addonTable.abilityData['es'] = {
+_G["NpcAbilitiesAbilityData"]['es'] = {
 [45] = {name = "Pisotón de guerra", description = "[q]Derriba a los enemigos cercanos."},
 [96] = {name = "Desmembramiento", description = "[q]Aumenta 100 p. el daño infligido en tu próximo golpe cuerpo a cuerpo y hace sangrar al objetivo."},
 [113] = {name = "Cadenas de hielo", description = "[q]Forma cadenas glaciales alrededor del enemigo que bloquean el objetivo durante 6 sec."},

@@ -1,6 +1,4 @@
-local addonName, addonTable = ...
-
-addonTable.abilityData['fr'] = {
+_G["NpcAbilitiesAbilityData"]['fr'] = {
 [45] = {name = "Choc martial", description = "[q]Fait tomber à la renverse les ennemis proches."},
 [96] = {name = "Démembrer", description = "[q]Augmente les dégâts infligés par votre prochaine attaque de mêlée de 100 et fait saigner la cible."},
 [113] = {name = "Entraves de glace", description = "[q]L'ennemi est entouré de chaînes de glace qui l'empêchent de bouger pendant 6 sec."},

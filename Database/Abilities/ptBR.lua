@@ -1,6 +1,4 @@
-local addonName, addonTable = ...
-
-addonTable.abilityData['pt'] = {
+_G["NpcAbilitiesAbilityData"]['pt'] = {
 [45] = {name = "Pisada de Guerra", description = "[q]Repele inimigos próximos."},
 [96] = {name = "Desmembrar", description = "[q]Aumenta em 100 o dano de seu próximo ataque de arma corpo a corpo e provoca um sangramento no alvo."},
 [113] = {name = "Correntes de Gelo", description = "[q]Forma correntes de gelo em volta do inimigo, travando o alvo no local por 6 sec."},

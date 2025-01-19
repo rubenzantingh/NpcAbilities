@@ -1,16 +1,15 @@
-local addonName, addonTable = ...
 
 local npcAbilitiesFrame = CreateFrame("Frame")
 local hotkeyButtonPressed = false
 
 local function GetDataByID(dataType, dataId)
-    local data = addonTable[dataType]
+    data = _G[dataType]
     if not data then return nil end
 
     local convertedId = tonumber(dataId)
     if not convertedId then return nil end
 
-    if dataType == "npcData" then
+    if dataType == "NpcAbilitiesNpcData" then
         return data[convertedId]
     else
         local languageCode = NpcAbilitiesOptions["SELECTED_LANGUAGE"]
@@ -53,14 +52,14 @@ local function SetNpcAbilityData()
     local unitType, _, _, _, _, npcId = strsplit("-", unitGUID)
 
     if unitType == "Creature" then
-        local npcData = GetDataByID('npcData', npcId)
+        local npcData = GetDataByID('NpcAbilitiesNpcData', npcId)
 
         if npcData then
             local addedAbilityLine = false
             local addedAbilityLineWithDescription = false
 
             for _, abilityId in pairs(npcData.spell_ids) do
-                local abilitiesData = GetDataByID('abilityData', abilityId)
+                local abilitiesData = GetDataByID('NpcAbilitiesAbilityData', abilityId)
 
                 if abilitiesData then
                     local abilityName = abilitiesData.name

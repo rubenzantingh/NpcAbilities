@@ -1,6 +1,4 @@
-local addonName, addonTable = ...
-
-addonTable.abilityData['cn'] = {
+_G["NpcAbilitiesAbilityData"]['cn'] = {
 [45] = {name = "战争践踏", description = "[q]击退附近的敌人。"},
 [96] = {name = "肢解", description = "[q]使你的下一次近战攻击的伤害提高100点，并使目标流血。"},
 [113] = {name = "寒冰锁链", description = "[q]在敌人周围形成冰封的链条，将目标锁定在原地，持续6 sec。"},
