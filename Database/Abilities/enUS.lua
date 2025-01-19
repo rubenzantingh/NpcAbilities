@@ -1,6 +1,4 @@
-local addonName, addonTable = ...
-
-addonTable.abilityData['en'] = {
+_G["NpcAbilitiesAbilityData"]['en'] = {
 [7] = {name = "Suicide", description = nil},
 [45] = {name = "War Stomp", description = "[q]Knocks nearby enemies back."},
 [53] = {name = "Backstab", description = "[q]Backstab the target, causing 150% weapon damage plus 15 to the target. Must be behind the target. Requires a dagger in the main hand. Awards 1 combo point."},

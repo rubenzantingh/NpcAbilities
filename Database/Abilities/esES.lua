@@ -1,6 +1,4 @@
-local addonName, addonTable = ...
-
-addonTable.abilityData['es'] = {
+_G["NpcAbilitiesAbilityData"]['es'] = {
 [7] = {name = "Suicidio", description = nil},
 [45] = {name = "Pisotón de guerra", description = "[q]Devuelve el golpe a los enemigos cercanos."},
 [53] = {name = "Puñalada", description = "[q]Asesta una puñalada al objetivo, causando un 150% de daño de arma más 15 p. de daño al objetivo. Tienes que estar detrás del objetivo. Requiere una daga en la mano principal. Otorga 1 p. de combo."},

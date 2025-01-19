@@ -1,6 +1,4 @@
-local addonName, addonTable = ...
-
-addonTable.abilityData['cn'] = {
+_G["NpcAbilitiesAbilityData"]['cn'] = {
 [7] = {name = "自杀", description = nil},
 [45] = {name = "战争践踏", description = "[q]击退附近的敌人。"},
 [53] = {name = "背刺", description = "[q]背刺目标，对其造成武器伤害的150%再加15点伤害，必须在目标背后发动，潜行者的主手中必须有一把武器。奖励1个连击点数。"},

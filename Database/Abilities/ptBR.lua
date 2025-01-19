@@ -1,6 +1,4 @@
-local addonName, addonTable = ...
-
-addonTable.abilityData['pt'] = {
+_G["NpcAbilitiesAbilityData"]['pt'] = {
 [7] = {name = "Suicídio", description = nil},
 [45] = {name = "Pisada de Guerra", description = "[q]Repele inimigos próximos."},
 [53] = {name = "Punhalada pelas Costas", description = "[q]Apunhala o alvo pelas costas, causando 150% do dano da arma mais 15 ao alvo. É necessário estar atrás do alvo. Requer uma adaga na mão principal. Concede 1 ponto de combo."},

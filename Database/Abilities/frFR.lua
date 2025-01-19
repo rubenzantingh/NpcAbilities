@@ -1,6 +1,4 @@
-local addonName, addonTable = ...
-
-addonTable.abilityData['fr'] = {
+_G["NpcAbilitiesAbilityData"]['fr'] = {
 [7] = {name = "Suicide", description = nil},
 [45] = {name = "Choc martial", description = "[q]Fait tomber à la renverse les ennemis proches."},
 [53] = {name = "Attaque sournoise", description = "[q]Attaque sournoisement la cible et lui inflige 150% des dégâts de l'arme plus 15. Il faut être derrière la cible. Requiert une dague en main droite. Vous gagnez 1 point de combo."},

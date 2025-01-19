@@ -1,17 +1,15 @@
-local addonName, addonTable = ...
-
 local npcAbilitiesFrame = CreateFrame("Frame")
 local hotkeyButtonPressed = false
 local seasonId = C_Seasons.GetActiveSeason()
 
 local function GetDataByID(dataType, dataId)
-    local data = addonTable[dataType]
+    data = _G[dataType]
     if not data then return nil end
 
     local convertedId = tonumber(dataId)
     if not convertedId then return nil end
 
-    if dataType == "npcData" then
+    if dataType == "NpcAbilitiesNpcData" then
         return data[convertedId]
     else
         local languageCode = NpcAbilitiesOptions["SELECTED_LANGUAGE"]
@@ -57,7 +55,7 @@ local function SetNpcAbilityData()
         return
     end
 
-    local npcData = GetDataByID('npcData', npcId)
+    local npcData = GetDataByID('NpcAbilitiesNpcData', npcId)
 
     if npcData == nil then
        return
@@ -69,7 +67,7 @@ local function SetNpcAbilityData()
 
     if seasonId == 2 then
         for _, sodAbilityId in pairs(npcData.sod_spell_ids) do
-            local sodAbilitiesData = GetDataByID('abilityData', sodAbilityId)
+            local sodAbilitiesData = GetDataByID('NpcAbilitiesAbilityData', sodAbilityId)
 
             if sodAbilitiesData == nil then
                 return
@@ -89,7 +87,7 @@ local function SetNpcAbilityData()
     end
 
     for _, classicAbilityId in pairs(npcData.classic_spell_ids) do
-        local classicAbilitiesData = GetDataByID('abilityData', classicAbilityId)
+        local classicAbilitiesData = GetDataByID('NpcAbilitiesAbilityData', classicAbilityId)
 
         if classicAbilitiesData == nil then
             return

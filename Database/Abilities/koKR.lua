@@ -1,6 +1,4 @@
-local addonName, addonTable = ...
-
-addonTable.abilityData['ko'] = {
+_G["NpcAbilitiesAbilityData"]['ko'] = {
 [7] = {name = "자살", description = nil},
 [45] = {name = "전투 발구르기", description = "[q]주위 적을 멀리 밀쳐냅니다."},
 [53] = {name = "기습", description = "[q]적을 기습하여 무기 공격력의 150%와 추가로 15의 피해를 입힙니다. 주무기로 단검을 착용해야 하며 적의 배후에서 공격해야 합니다. 1의 연계 포인트가 주어집니다."},

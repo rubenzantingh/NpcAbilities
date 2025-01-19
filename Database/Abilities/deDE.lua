@@ -1,6 +1,4 @@
-local addonName, addonTable = ...
-
-addonTable.abilityData['de'] = {
+_G["NpcAbilitiesAbilityData"]['de'] = {
 [7] = {name = "Selbstmord", description = nil},
 [45] = {name = "Kriegsdonner", description = "[q]Stößt in der Nähe befindliche Feinde zurück."},
 [53] = {name = "Meucheln", description = "[q]Das Ziel meucheln und ihm 150% Waffenschaden plus 15 zufügen. Muss hinter dem Ziel sein. In der Waffenhand muss sich ein Dolch befinden. Gewährt 1 Combopunkt."},
