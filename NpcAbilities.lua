@@ -8,9 +8,9 @@ local function GetDataByID(dataType, dataId)
     if not convertedId then return nil end
 
     if dataType == "npcData" then
-        return NpcAbilitiesNpcData[convertedId]
+        return _G["NpcAbilitiesNpcData"][convertedId]
     elseif dataType == "abilityData" then
-        return NpcAbilitiesAbilityData[NpcAbilitiesOptions.SELECTED_LANGUAGE][convertedId]
+        return _G["NpcAbilitiesAbilityData"][NpcAbilitiesOptions.SELECTED_LANGUAGE][convertedId]
     end
 
     return nil

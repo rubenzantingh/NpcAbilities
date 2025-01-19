@@ -1,1 +1,1 @@
-NpcAbilitiesAbilityData = {}
+_G["NpcAbilitiesAbilityData"] = {}
