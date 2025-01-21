@@ -63,7 +63,7 @@ local function SetNpcAbilityData()
 
                 if abilitiesData then
                     local abilityName = abilitiesData.name
-                    local abilityDescription = string.gsub(abilitiesData.description or "", "%[q%]", "")
+                    local abilityDescription = abilitiesData.description or ""
 
                     AddAbilityLinesToGameTooltip(abilityId, abilityName, abilityDescription, addedAbilityLine)
                     addedAbilityLine = true
