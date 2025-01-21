@@ -74,7 +74,7 @@ local function SetNpcAbilityData()
             end
 
             local sodAbilityName = sodAbilitiesData.name
-            local sodAbilityDescription = string.gsub(sodAbilitiesData.description or "", "%[q%]", "")
+            local sodAbilityDescription = sodAbilitiesData.description or ""
             addedAbilityNames[sodAbilityName] = sodAbilityName
 
             AddAbilityLinesToGameTooltip(sodAbilityId, sodAbilityName, sodAbilityDescription, addedAbilityLine)
@@ -99,7 +99,7 @@ local function SetNpcAbilityData()
             return
         end
 
-        local classicAbilityDescription = string.gsub(classicAbilitiesData.description or "", "%[q%]", "")
+        local classicAbilityDescription = classicAbilitiesData.description or ""
 
         AddAbilityLinesToGameTooltip(classicAbilityId, classicAbilityName, classicAbilityDescription, addedAbilityLine)
         addedAbilityLine = true
