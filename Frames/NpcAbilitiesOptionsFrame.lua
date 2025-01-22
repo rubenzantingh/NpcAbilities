@@ -10,7 +10,8 @@ local defaultOptions = {
         {value = 'ko', text = 'Korean'},
         {value = 'cn', text = 'Chinese'},
     },
-    SELECTED_HOTKEY = nil
+    SELECTED_HOTKEY = nil,
+    DISPLAY_ABILITY_MECHANIC = true
 }
 
 local addonName = ...
@@ -57,6 +58,16 @@ local function CreateOptionDropdown(parent, relativeFrame, offsetX, offsetY, lab
     UIDropDownMenu_SetText(dropdown, selectedOptionLabel)
     UIDropDownMenu_SetAnchor(dropdown, 0, 0, "TOPLEFT", dropdown)
     return dropdown
+end
+
+local function CreateCheckBox(parent, text, optionKey, onClick)
+    local checkbox = CreateFrame("CheckButton", nil, parent, "InterfaceOptionsCheckButtonTemplate")
+    checkbox.Text:SetText(text)
+    checkbox.Text:SetFont("Fonts\\FRIZQT__.TTF", 12, "OUTLINE")
+    checkbox.Text:SetPoint("LEFT", 30, 0)
+    checkbox:SetScript("OnClick", onClick)
+    checkbox:SetChecked(NpcAbilitiesOptions[optionKey])
+    return checkbox
 end
 
 local function InitializeOptions()
@@ -118,9 +129,16 @@ local function InitializeOptions()
         "SELECTED_LANGUAGE"
     )
 
+    -- General options: Mechanic
+    local displayAbilitiesMechanicCheckbox = CreateCheckBox(optionsContainer, "Display ability mechanic", "DISPLAY_ABILITY_MECHANIC", function(self)
+        local checked = self:GetChecked()
+        NpcAbilitiesOptions["DISPLAY_ABILITY_MECHANIC"] = checked
+    end)
+    displayAbilitiesMechanicCheckbox:SetPoint("TOPLEFT", languageDropdown, fieldOffsetX - 10, subTitleOffsetY + fieldOffsetY)
+
     -- General options: Hotkey
     local hotkeyDescription = optionsPanel:CreateFontString(nil, "ARTWORK", "GameFontnormalSmall")
-    hotkeyDescription:SetPoint("TOPLEFT", languageDropdown, "BOTTOMLEFT", 16, fieldOffsetY)
+    hotkeyDescription:SetPoint("TOPLEFT", displayAbilitiesMechanicCheckbox, "BOTTOMLEFT", 0, fieldOffsetY)
     hotkeyDescription:SetText("Register Hotkey (right-click to unbind):")
 
     local registerHotkeyButton = CreateFrame("Button", "NpcAbilitiesRegisterHotkeyButton", optionsPanel, "UIPanelButtonTemplate")
