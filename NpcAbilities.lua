@@ -21,15 +21,20 @@ local function GetDataByID(dataType, dataId)
     return nil
 end
 
-local function AddAbilityLinesToGameTooltip(id, name, description, addedAbilityLine)
+local function AddAbilityLinesToGameTooltip(id, name, description, mechanic, addedAbilityLine)
     if not addedAbilityLine then
         GameTooltip:AddLine(" ")
     end
 
     local texture = GetSpellTexture(id);
     local icon = "|T" .. texture .. ":12:12:0:0:64:64:4:60:4:60|t"
+    local mechanicText = ""
 
-    GameTooltip:AddLine(icon .. " " .. name)
+    if mechanic ~= "" and NpcAbilitiesOptions["DISPLAY_ABILITY_MECHANIC"] then
+        mechanicText = " - " .. mechanic
+    end
+
+    GameTooltip:AddLine(icon .. " " .. name .. mechanicText)
 
     if hotkeyButtonPressed then
         GameTooltip:AddLine(description, 1, 1, 1, true)
@@ -64,8 +69,9 @@ local function SetNpcAbilityData()
                 if abilitiesData then
                     local abilityName = abilitiesData.name
                     local abilityDescription = abilitiesData.description or ""
+                    local abilityMechanic = abilitiesData.mechanic or ""
 
-                    AddAbilityLinesToGameTooltip(abilityId, abilityName, abilityDescription, addedAbilityLine)
+                    AddAbilityLinesToGameTooltip(abilityId, abilityName, abilityDescription, abilityMechanic, addedAbilityLine)
                     addedAbilityLine = true
 
                     if abilityDescription ~= '' then
