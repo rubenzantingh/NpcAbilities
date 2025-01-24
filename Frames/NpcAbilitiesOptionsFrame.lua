@@ -24,7 +24,7 @@ local function CreateOptionDropdown(parent, relativeFrame, offsetX, offsetY, lab
     dropdownLabel:SetText(label)
     dropdownLabel:SetPoint("TOPLEFT", relativeFrame, "TOPLEFT", offsetX, offsetY - 10)
 
-    local dropdown = LibDD:Create_UIDropDownMenu("MyDropDownMenu", parent)
+    local dropdown = LibDD:Create_UIDropDownMenu(nil, parent)
     dropdown:SetPoint("TOPLEFT", dropdownLabel, "BOTTOMLEFT", -20, -4)
 
     local selectedOptionLabel = defaultValueLabel
