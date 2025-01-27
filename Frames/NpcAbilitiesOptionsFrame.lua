@@ -11,6 +11,11 @@ local defaultOptions = {
         {value = 'cn', text = 'Chinese'},
     },
     SELECTED_HOTKEY = nil,
+    SELECTED_HOTKEY_MODE = 'toggle',
+    AVAILABLE_HOTKEY_MODES = {
+        {value = 'toggle', text = 'Toggle'},
+        {value = 'hold', text = 'Hold'},
+    },
     DISPLAY_ABILITY_MECHANIC = true
 }
 
@@ -78,7 +83,7 @@ local function InitializeOptions()
     local titleOffsetY = -22
     local subTitleOffsetY = -30
     local fieldOffsetX = 25
-    local fieldOffsetY = -10
+    local fieldOffsetY = -15
 
     -- Options panel title
     local panelTitle = optionsPanel:CreateFontString(nil, "ARTWORK", "GameFontHighlightLarge")
@@ -137,8 +142,19 @@ local function InitializeOptions()
     displayAbilitiesMechanicCheckbox:SetPoint("TOPLEFT", languageDropdown, fieldOffsetX - 10, subTitleOffsetY + fieldOffsetY)
 
     -- General options: Hotkey
+    local hotkeyModeDropdown = CreateOptionDropdown(
+        optionsContainer,
+        displayAbilitiesMechanicCheckbox,
+        5,
+        subTitleOffsetY,
+        "Select hotkey mode (on hold, some keys may not work as expected):",
+        "Toggle",
+        "AVAILABLE_HOTKEY_MODES",
+        "SELECTED_HOTKEY_MODE"
+    )
+
     local hotkeyDescription = optionsPanel:CreateFontString(nil, "ARTWORK", "GameFontnormalSmall")
-    hotkeyDescription:SetPoint("TOPLEFT", displayAbilitiesMechanicCheckbox, "BOTTOMLEFT", 0, fieldOffsetY)
+    hotkeyDescription:SetPoint("TOPLEFT", hotkeyModeDropdown, "BOTTOMLEFT", fieldOffsetX - 10, fieldOffsetY)
     hotkeyDescription:SetText("Register Hotkey (right-click to unbind):")
 
     local registerHotkeyButton = CreateFrame("Button", "NpcAbilitiesRegisterHotkeyButton", optionsPanel, "UIPanelButtonTemplate")
