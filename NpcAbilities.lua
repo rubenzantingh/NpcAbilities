@@ -1,6 +1,7 @@
 local npcAbilitiesFrame = CreateFrame("Frame")
 local hotkeyButtonPressed = false
 local seasonId = C_Seasons.GetActiveSeason()
+local checkForHotkeyReleased = false
 
 local function GetDataByID(dataType, dataId)
     data = _G[dataType]
@@ -126,9 +127,32 @@ local function SetNpcAbilityData()
     end
 end
 
+local function CheckHotkeyState()
+    local hotkey = NpcAbilitiesOptions["SELECTED_HOTKEY"]
+
+    if not IsKeyDown(hotkey) then
+        checkForHotkeyReleased = false
+        hotkeyButtonPressed = false
+        GameTooltip:SetUnit("mouseover");
+        npcAbilitiesFrame:SetScript("OnUpdate", nil)
+    end
+end
+
+local function StartCheckingHotkey()
+    checkForHotkeyReleased = true
+
+    npcAbilitiesFrame:SetScript("OnUpdate", function(self, elapsed)
+        CheckHotkeyState()
+    end)
+end
+
 local function SetHotkeyButtonPressed(self, key, eventType)
    if NpcAbilitiesOptions["SELECTED_HOTKEY"] then
        if eventType == "OnKeyDown" and key == NpcAbilitiesOptions["SELECTED_HOTKEY"] then
+            if NpcAbilitiesOptions["SELECTED_HOTKEY_MODE"] == "hold" then
+                StartCheckingHotkey()
+            end
+
             if hotkeyButtonPressed then
                hotkeyButtonPressed = false
             else
