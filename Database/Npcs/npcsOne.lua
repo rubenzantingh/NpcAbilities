@@ -1,16 +1,14 @@
-_G['NpcAbilitiesNpcData'][3] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][30] = {spell_ids = {11918}}
 _G['NpcAbilitiesNpcData'][40] = {spell_ids = {6016}}
 _G['NpcAbilitiesNpcData'][43] = {spell_ids = {11918}}
 _G['NpcAbilitiesNpcData'][46] = {spell_ids = {3368}}
 _G['NpcAbilitiesNpcData'][48] = {spell_ids = {85240}}
-_G['NpcAbilitiesNpcData'][54] = {spell_ids = {58511, 225832, 288865}}
+_G['NpcAbilitiesNpcData'][54] = {spell_ids = {58511, 225832}}
 _G['NpcAbilitiesNpcData'][60] = {spell_ids = {6016, 12024}}
 _G['NpcAbilitiesNpcData'][61] = {spell_ids = {7159}}
 _G['NpcAbilitiesNpcData'][62] = {spell_ids = {20793}}
-_G['NpcAbilitiesNpcData'][66] = {spell_ids = {58511, 58514, 58519, 225832, 236321, 288865}}
+_G['NpcAbilitiesNpcData'][66] = {spell_ids = {58511, 58514, 58519, 225832, 236321}}
 _G['NpcAbilitiesNpcData'][68] = {spell_ids = {58514, 58519}}
-_G['NpcAbilitiesNpcData'][74] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][79] = {spell_ids = {9128}}
 _G['NpcAbilitiesNpcData'][89] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][94] = {spell_ids = {37685}}
@@ -26,7 +24,7 @@ _G['NpcAbilitiesNpcData'][123] = {spell_ids = {80475}}
 _G['NpcAbilitiesNpcData'][124] = {spell_ids = {77558}}
 _G['NpcAbilitiesNpcData'][126] = {spell_ids = {7357}}
 _G['NpcAbilitiesNpcData'][127] = {spell_ids = {32011, 78542}}
-_G['NpcAbilitiesNpcData'][151] = {spell_ids = {58511, 58514, 58519, 225832, 236321, 288865}}
+_G['NpcAbilitiesNpcData'][151] = {spell_ids = {58511, 58514, 58519, 225832, 236321}}
 _G['NpcAbilitiesNpcData'][154] = {spell_ids = {13443}}
 _G['NpcAbilitiesNpcData'][157] = {spell_ids = {32019}}
 _G['NpcAbilitiesNpcData'][171] = {spell_ids = {7357}}
@@ -38,17 +36,15 @@ _G['NpcAbilitiesNpcData'][210] = {spell_ids = {82625}}
 _G['NpcAbilitiesNpcData'][212] = {spell_ids = {35856, 78827}}
 _G['NpcAbilitiesNpcData'][217] = {spell_ids = {85246}}
 _G['NpcAbilitiesNpcData'][218] = {spell_ids = {6595}}
-_G['NpcAbilitiesNpcData'][240] = {spell_ids = {58511, 58514, 58519, 225832, 236321, 288865}}
-_G['NpcAbilitiesNpcData'][241] = {spell_ids = {58511, 58514, 58519, 225832, 236321, 288865}}
-_G['NpcAbilitiesNpcData'][253] = {spell_ids = {58511, 58514, 58519, 225832, 236321, 288865}}
-_G['NpcAbilitiesNpcData'][264] = {spell_ids = {288865}}
+_G['NpcAbilitiesNpcData'][240] = {spell_ids = {58511, 58514, 58519, 225832, 236321}}
+_G['NpcAbilitiesNpcData'][241] = {spell_ids = {58511, 58514, 58519, 225832, 236321}}
+_G['NpcAbilitiesNpcData'][253] = {spell_ids = {58511, 58514, 58519, 225832, 236321}}
 _G['NpcAbilitiesNpcData'][277] = {spell_ids = {58519}}
 _G['NpcAbilitiesNpcData'][279] = {spell_ids = {58519, 225832, 236321}}
-_G['NpcAbilitiesNpcData'][295] = {spell_ids = {225832, 236321, 288865}}
-_G['NpcAbilitiesNpcData'][299] = {spell_ids = {288865}}
+_G['NpcAbilitiesNpcData'][295] = {spell_ids = {225832, 236321}}
 _G['NpcAbilitiesNpcData'][300] = {spell_ids = {8716}}
 _G['NpcAbilitiesNpcData'][315] = {spell_ids = {3105}}
-_G['NpcAbilitiesNpcData'][328] = {spell_ids = {225832, 236321, 288865}}
+_G['NpcAbilitiesNpcData'][328] = {spell_ids = {225832, 236321}}
 _G['NpcAbilitiesNpcData'][330] = {spell_ids = {6268}}
 _G['NpcAbilitiesNpcData'][331] = {spell_ids = {58511, 58514, 58519, 225832, 236321}}
 _G['NpcAbilitiesNpcData'][334] = {spell_ids = {79901, 79902, 79903}}
@@ -56,7 +52,7 @@ _G['NpcAbilitiesNpcData'][338] = {spell_ids = {236321}}
 _G['NpcAbilitiesNpcData'][340] = {spell_ids = {58514}}
 _G['NpcAbilitiesNpcData'][345] = {spell_ids = {5568, 6268}}
 _G['NpcAbilitiesNpcData'][352] = {spell_ids = {225832}}
-_G['NpcAbilitiesNpcData'][377] = {spell_ids = {225832, 236321, 288865}}
+_G['NpcAbilitiesNpcData'][377] = {spell_ids = {225832, 236321}}
 _G['NpcAbilitiesNpcData'][391] = {spell_ids = {8599, 78542, 80555}}
 _G['NpcAbilitiesNpcData'][397] = {spell_ids = {3611, 13787, 20811, 344731}}
 _G['NpcAbilitiesNpcData'][416] = {spell_ids = {89792, 89808}}
@@ -92,8 +88,6 @@ _G['NpcAbilitiesNpcData'][476] = {spell_ids = {20793}}
 _G['NpcAbilitiesNpcData'][478] = {spell_ids = {3391}}
 _G['NpcAbilitiesNpcData'][483] = {spell_ids = {58519}}
 _G['NpcAbilitiesNpcData'][486] = {spell_ids = {79887, 79893, 79894}}
-_G['NpcAbilitiesNpcData'][494] = {spell_ids = {288865}}
-_G['NpcAbilitiesNpcData'][495] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][500] = {spell_ids = {6660, 78509}}
 _G['NpcAbilitiesNpcData'][501] = {spell_ids = {80471, 80472, 80473}}
 _G['NpcAbilitiesNpcData'][503] = {spell_ids = {3537}}
@@ -101,7 +95,7 @@ _G['NpcAbilitiesNpcData'][506] = {spell_ids = {3136, 79853}}
 _G['NpcAbilitiesNpcData'][507] = {spell_ids = {6595, 7137, 84308}}
 _G['NpcAbilitiesNpcData'][511] = {spell_ids = {83586, 85236}}
 _G['NpcAbilitiesNpcData'][513] = {spell_ids = {11971}}
-_G['NpcAbilitiesNpcData'][514] = {spell_ids = {58511, 58514, 58519, 225832, 236321, 288865}}
+_G['NpcAbilitiesNpcData'][514] = {spell_ids = {58511, 58514, 58519, 225832, 236321}}
 _G['NpcAbilitiesNpcData'][515] = {spell_ids = {80522}}
 _G['NpcAbilitiesNpcData'][517] = {spell_ids = {9734, 11835}}
 _G['NpcAbilitiesNpcData'][519] = {spell_ids = {34828, 79831}}
@@ -109,7 +103,7 @@ _G['NpcAbilitiesNpcData'][520] = {spell_ids = {6016, 9080, 11976}}
 _G['NpcAbilitiesNpcData'][521] = {spell_ids = {3150, 75002}}
 _G['NpcAbilitiesNpcData'][522] = {spell_ids = {3547, 79961}}
 _G['NpcAbilitiesNpcData'][524] = {spell_ids = {6268}}
-_G['NpcAbilitiesNpcData'][531] = {spell_ids = {3416, 288865}}
+_G['NpcAbilitiesNpcData'][531] = {spell_ids = {3416}}
 _G['NpcAbilitiesNpcData'][533] = {spell_ids = {77721, 85072}}
 _G['NpcAbilitiesNpcData'][534] = {spell_ids = {3427, 3604, 8715}}
 _G['NpcAbilitiesNpcData'][544] = {spell_ids = {7992}}
@@ -119,7 +113,6 @@ _G['NpcAbilitiesNpcData'][568] = {spell_ids = {11971}}
 _G['NpcAbilitiesNpcData'][572] = {spell_ids = {744, 4974}}
 _G['NpcAbilitiesNpcData'][573] = {spell_ids = {7342, 80572}}
 _G['NpcAbilitiesNpcData'][574] = {spell_ids = {12023, 13884, 82715, 85246, 87080}}
-_G['NpcAbilitiesNpcData'][576] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][579] = {spell_ids = {744, 22766}}
 _G['NpcAbilitiesNpcData'][580] = {spell_ids = {80512}}
 _G['NpcAbilitiesNpcData'][584] = {spell_ids = {6253}}
@@ -136,7 +129,7 @@ _G['NpcAbilitiesNpcData'][603] = {spell_ids = {15580}}
 _G['NpcAbilitiesNpcData'][604] = {spell_ids = {3436, 85236}}
 _G['NpcAbilitiesNpcData'][615] = {spell_ids = {11971}}
 _G['NpcAbilitiesNpcData'][616] = {spell_ids = {744, 3609}}
-_G['NpcAbilitiesNpcData'][620] = {spell_ids = {13563, 225832, 255228, 288865, 317218}}
+_G['NpcAbilitiesNpcData'][620] = {spell_ids = {13563, 225832, 255228, 317218}}
 _G['NpcAbilitiesNpcData'][622] = {spell_ids = {3605, 6660, 454782}}
 _G['NpcAbilitiesNpcData'][623] = {spell_ids = {11976}}
 _G['NpcAbilitiesNpcData'][624] = {spell_ids = {5137}}
@@ -155,7 +148,6 @@ _G['NpcAbilitiesNpcData'][646] = {spell_ids = {3391, 6264, 6432, 6435, 450550, 4
 _G['NpcAbilitiesNpcData'][647] = {spell_ids = {5208, 40505, 450550, 454782}}
 _G['NpcAbilitiesNpcData'][657] = {spell_ids = {5172, 15496, 454782}}
 _G['NpcAbilitiesNpcData'][660] = {spell_ids = {5605, 8599}}
-_G['NpcAbilitiesNpcData'][663] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][667] = {spell_ids = {3148, 11972}}
 _G['NpcAbilitiesNpcData'][669] = {spell_ids = {3148, 3621}}
 _G['NpcAbilitiesNpcData'][670] = {spell_ids = {5605}}
@@ -190,9 +182,8 @@ _G['NpcAbilitiesNpcData'][709] = {spell_ids = {8147, 24004}}
 _G['NpcAbilitiesNpcData'][710] = {spell_ids = {9053, 11829, 24004}}
 _G['NpcAbilitiesNpcData'][711] = {spell_ids = {3256, 9613}}
 _G['NpcAbilitiesNpcData'][712] = {spell_ids = {80182}}
-_G['NpcAbilitiesNpcData'][721] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][723] = {spell_ids = {15496}}
-_G['NpcAbilitiesNpcData'][727] = {spell_ids = {40505, 288865}}
+_G['NpcAbilitiesNpcData'][727] = {spell_ids = {40505}}
 _G['NpcAbilitiesNpcData'][728] = {spell_ids = {3147, 6016}}
 _G['NpcAbilitiesNpcData'][729] = {spell_ids = {75008}}
 _G['NpcAbilitiesNpcData'][730] = {spell_ids = {3604, 6268, 83366}}
@@ -223,7 +214,6 @@ _G['NpcAbilitiesNpcData'][877] = {spell_ids = {744, 13443}}
 _G['NpcAbilitiesNpcData'][879] = {spell_ids = {10277}}
 _G['NpcAbilitiesNpcData'][881] = {spell_ids = {20793}}
 _G['NpcAbilitiesNpcData'][889] = {spell_ids = {80182}}
-_G['NpcAbilitiesNpcData'][890] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][898] = {spell_ids = {75002, 84308}}
 _G['NpcAbilitiesNpcData'][906] = {spell_ids = {225832, 236321}}
 _G['NpcAbilitiesNpcData'][917] = {spell_ids = {225832, 236321}}
@@ -330,19 +320,19 @@ _G['NpcAbilitiesNpcData'][1398] = {spell_ids = {8599, 80983, 82625}}
 _G['NpcAbilitiesNpcData'][1399] = {spell_ids = {13281, 39591, 79927, 84857}}
 _G['NpcAbilitiesNpcData'][1402] = {spell_ids = {225832, 236321}}
 _G['NpcAbilitiesNpcData'][1410] = {spell_ids = {16583, 33390}}
-_G['NpcAbilitiesNpcData'][1412] = {spell_ids = {288865, 317218}}
+_G['NpcAbilitiesNpcData'][1412] = {spell_ids = {317218}}
 _G['NpcAbilitiesNpcData'][1413] = {spell_ids = {58511, 58514, 58519}}
 _G['NpcAbilitiesNpcData'][1414] = {spell_ids = {58511, 58514, 58519, 225832, 236321}}
 _G['NpcAbilitiesNpcData'][1415] = {spell_ids = {58511, 58514, 58519, 225832}}
-_G['NpcAbilitiesNpcData'][1420] = {spell_ids = {288865, 317218}}
-_G['NpcAbilitiesNpcData'][1423] = {spell_ids = {225832, 236321, 288865}}
+_G['NpcAbilitiesNpcData'][1420] = {spell_ids = {317218}}
+_G['NpcAbilitiesNpcData'][1423] = {spell_ids = {225832, 236321}}
 _G['NpcAbilitiesNpcData'][1424] = {spell_ids = {6016, 80382}}
 _G['NpcAbilitiesNpcData'][1425] = {spell_ids = {81252}}
 _G['NpcAbilitiesNpcData'][1427] = {spell_ids = {225832}}
 _G['NpcAbilitiesNpcData'][1428] = {spell_ids = {58514}}
 _G['NpcAbilitiesNpcData'][1429] = {spell_ids = {58519}}
-_G['NpcAbilitiesNpcData'][1430] = {spell_ids = {58511, 58519, 225832, 236321, 288865}}
-_G['NpcAbilitiesNpcData'][1432] = {spell_ids = {58511, 58514, 58519, 225832, 236321, 288865}}
+_G['NpcAbilitiesNpcData'][1430] = {spell_ids = {58511, 58519, 225832, 236321}}
+_G['NpcAbilitiesNpcData'][1432] = {spell_ids = {58511, 58514, 58519, 225832, 236321}}
 _G['NpcAbilitiesNpcData'][1433] = {spell_ids = {58511, 58514, 58519}}
 _G['NpcAbilitiesNpcData'][1444] = {spell_ids = {58511, 58514, 58519, 225832}}
 _G['NpcAbilitiesNpcData'][1472] = {spell_ids = {58511, 58514, 58519}}
@@ -457,7 +447,7 @@ _G['NpcAbilitiesNpcData'][1934] = {spell_ids = {80382}}
 _G['NpcAbilitiesNpcData'][1936] = {spell_ids = {11976}}
 _G['NpcAbilitiesNpcData'][1941] = {spell_ids = {3237}}
 _G['NpcAbilitiesNpcData'][1961] = {spell_ids = {3242, 75002}}
-_G['NpcAbilitiesNpcData'][1976] = {spell_ids = {58511, 58514, 58519, 225832, 231193, 236321, 288865}}
+_G['NpcAbilitiesNpcData'][1976] = {spell_ids = {58511, 58514, 58519, 225832, 231193, 236321}}
 _G['NpcAbilitiesNpcData'][1986] = {spell_ids = {6751}}
 _G['NpcAbilitiesNpcData'][1993] = {spell_ids = {2606, 12160}}
 _G['NpcAbilitiesNpcData'][1994] = {spell_ids = {11918}}
@@ -488,7 +478,6 @@ _G['NpcAbilitiesNpcData'][2046] = {spell_ids = {225832, 236321}}
 _G['NpcAbilitiesNpcData'][2071] = {spell_ids = {8594, 66060}}
 _G['NpcAbilitiesNpcData'][2090] = {spell_ids = {6268, 8599, 78508, 78521}}
 _G['NpcAbilitiesNpcData'][2108] = {spell_ids = {79848, 79886, 82641}}
-_G['NpcAbilitiesNpcData'][2110] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][2120] = {spell_ids = {87253}}
 _G['NpcAbilitiesNpcData'][2162] = {spell_ids = {8599}}
 _G['NpcAbilitiesNpcData'][2165] = {spell_ids = {3242, 75002}}
@@ -518,11 +507,10 @@ _G['NpcAbilitiesNpcData'][2283] = {spell_ids = {7645}}
 _G['NpcAbilitiesNpcData'][2287] = {spell_ids = {8269}}
 _G['NpcAbilitiesNpcData'][2318] = {spell_ids = {20816}}
 _G['NpcAbilitiesNpcData'][2319] = {spell_ids = {20815}}
-_G['NpcAbilitiesNpcData'][2329] = {spell_ids = {58511, 225832, 236321, 288865}}
+_G['NpcAbilitiesNpcData'][2329] = {spell_ids = {58511, 225832, 236321}}
 _G['NpcAbilitiesNpcData'][2330] = {spell_ids = {58511, 58514, 58519}}
 _G['NpcAbilitiesNpcData'][2349] = {spell_ids = {3396}}
 _G['NpcAbilitiesNpcData'][2350] = {spell_ids = {3396}}
-_G['NpcAbilitiesNpcData'][2354] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][2358] = {spell_ids = {79858, 87179}}
 _G['NpcAbilitiesNpcData'][2368] = {spell_ids = {7164, 12555}}
 _G['NpcAbilitiesNpcData'][2369] = {spell_ids = {10277}}
@@ -533,17 +521,14 @@ _G['NpcAbilitiesNpcData'][2373] = {spell_ids = {20805}}
 _G['NpcAbilitiesNpcData'][2374] = {spell_ids = {3427}}
 _G['NpcAbilitiesNpcData'][2375] = {spell_ids = {10277}}
 _G['NpcAbilitiesNpcData'][2376] = {spell_ids = {9532}}
-_G['NpcAbilitiesNpcData'][2384] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][2385] = {spell_ids = {89582}}
 _G['NpcAbilitiesNpcData'][2416] = {spell_ids = {9143, 15496}}
 _G['NpcAbilitiesNpcData'][2417] = {spell_ids = {4979, 6742}}
-_G['NpcAbilitiesNpcData'][2442] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][2452] = {spell_ids = {6253, 15971, 16508}}
 _G['NpcAbilitiesNpcData'][2453] = {spell_ids = {2601, 6742, 8814}}
 _G['NpcAbilitiesNpcData'][2455] = {spell_ids = {225832}}
 _G['NpcAbilitiesNpcData'][2456] = {spell_ids = {58511, 58514, 225832}}
 _G['NpcAbilitiesNpcData'][2457] = {spell_ids = {58514, 58519, 225832}}
-_G['NpcAbilitiesNpcData'][2470] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][2475] = {spell_ids = {3510}}
 _G['NpcAbilitiesNpcData'][2476] = {spell_ids = {3427, 54663, 81173}}
 _G['NpcAbilitiesNpcData'][2479] = {spell_ids = {3514}}
@@ -559,7 +544,7 @@ _G['NpcAbilitiesNpcData'][2523] = {spell_ids = {427028, 456666}}
 _G['NpcAbilitiesNpcData'][2530] = {spell_ids = {12548, 57780}}
 _G['NpcAbilitiesNpcData'][2535] = {spell_ids = {83009}}
 _G['NpcAbilitiesNpcData'][2541] = {spell_ids = {3583, 15496}}
-_G['NpcAbilitiesNpcData'][2544] = {spell_ids = {79174, 79175, 288865}}
+_G['NpcAbilitiesNpcData'][2544] = {spell_ids = {79174, 79175}}
 _G['NpcAbilitiesNpcData'][2545] = {spell_ids = {14873, 81349}}
 _G['NpcAbilitiesNpcData'][2546] = {spell_ids = {32064, 83930}}
 _G['NpcAbilitiesNpcData'][2547] = {spell_ids = {7164, 11972}}
@@ -617,7 +602,6 @@ _G['NpcAbilitiesNpcData'][2612] = {spell_ids = {13953}}
 _G['NpcAbilitiesNpcData'][2614] = {spell_ids = {38063}}
 _G['NpcAbilitiesNpcData'][2618] = {spell_ids = {15572}}
 _G['NpcAbilitiesNpcData'][2619] = {spell_ids = {11971}}
-_G['NpcAbilitiesNpcData'][2620] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][2621] = {spell_ids = {12169, 12170}}
 _G['NpcAbilitiesNpcData'][2628] = {spell_ids = {33661}}
 _G['NpcAbilitiesNpcData'][2630] = {spell_ids = {427359}}
@@ -709,7 +693,7 @@ _G['NpcAbilitiesNpcData'][3068] = {spell_ids = {6268, 7272}}
 _G['NpcAbilitiesNpcData'][3084] = {spell_ids = {12024, 40505}}
 _G['NpcAbilitiesNpcData'][3098] = {spell_ids = {79581}}
 _G['NpcAbilitiesNpcData'][3099] = {spell_ids = {6268}}
-_G['NpcAbilitiesNpcData'][3100] = {spell_ids = {3385, 288865}}
+_G['NpcAbilitiesNpcData'][3100] = {spell_ids = {3385}}
 _G['NpcAbilitiesNpcData'][3101] = {spell_ids = {11921}}
 _G['NpcAbilitiesNpcData'][3102] = {spell_ids = {79616}}
 _G['NpcAbilitiesNpcData'][3106] = {spell_ids = {78744}}
@@ -730,7 +714,6 @@ _G['NpcAbilitiesNpcData'][3124] = {spell_ids = {6751}}
 _G['NpcAbilitiesNpcData'][3125] = {spell_ids = {79687}}
 _G['NpcAbilitiesNpcData'][3126] = {spell_ids = {79840}}
 _G['NpcAbilitiesNpcData'][3127] = {spell_ids = {79607}}
-_G['NpcAbilitiesNpcData'][3138] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][3178] = {spell_ids = {63275}}
 _G['NpcAbilitiesNpcData'][3183] = {spell_ids = {35913, 37628}}
 _G['NpcAbilitiesNpcData'][3195] = {spell_ids = {80146, 431146}}
@@ -768,8 +751,7 @@ _G['NpcAbilitiesNpcData'][3283] = {spell_ids = {9128}}
 _G['NpcAbilitiesNpcData'][3284] = {spell_ids = {82617}}
 _G['NpcAbilitiesNpcData'][3286] = {spell_ids = {6531}}
 _G['NpcAbilitiesNpcData'][3295] = {spell_ids = {7279}}
-_G['NpcAbilitiesNpcData'][3296] = {spell_ids = {8599, 40505, 58511, 58514, 58519, 225832, 231163, 236321, 288865, 454782}}
-_G['NpcAbilitiesNpcData'][3300] = {spell_ids = {288865}}
+_G['NpcAbilitiesNpcData'][3296] = {spell_ids = {8599, 40505, 58511, 58514, 58519, 225832, 231163, 236321, 454782}}
 _G['NpcAbilitiesNpcData'][3312] = {spell_ids = {58511, 58514, 58519, 236321}}
 _G['NpcAbilitiesNpcData'][3313] = {spell_ids = {58511, 58514}}
 _G['NpcAbilitiesNpcData'][3314] = {spell_ids = {58511, 58514, 58519, 236321}}
@@ -779,7 +761,7 @@ _G['NpcAbilitiesNpcData'][3319] = {spell_ids = {58511, 58519, 236321}}
 _G['NpcAbilitiesNpcData'][3322] = {spell_ids = {58511, 58514, 58519}}
 _G['NpcAbilitiesNpcData'][3323] = {spell_ids = {58511, 58514, 58519}}
 _G['NpcAbilitiesNpcData'][3338] = {spell_ids = {5320}}
-_G['NpcAbilitiesNpcData'][3342] = {spell_ids = {58511, 58514, 58519, 225832, 236321, 288865}}
+_G['NpcAbilitiesNpcData'][3342] = {spell_ids = {58511, 58514, 58519, 225832, 236321}}
 _G['NpcAbilitiesNpcData'][3343] = {spell_ids = {236321, 454782}}
 _G['NpcAbilitiesNpcData'][3347] = {spell_ids = {41565}}
 _G['NpcAbilitiesNpcData'][3352] = {spell_ids = {236321}}
@@ -787,7 +769,7 @@ _G['NpcAbilitiesNpcData'][3353] = {spell_ids = {79881}}
 _G['NpcAbilitiesNpcData'][3363] = {spell_ids = {58511}}
 _G['NpcAbilitiesNpcData'][3367] = {spell_ids = {58511, 58514, 58519, 236321}}
 _G['NpcAbilitiesNpcData'][3369] = {spell_ids = {58514, 58519}}
-_G['NpcAbilitiesNpcData'][3370] = {spell_ids = {58511, 58514, 58519, 288865}}
+_G['NpcAbilitiesNpcData'][3370] = {spell_ids = {58511, 58514, 58519}}
 _G['NpcAbilitiesNpcData'][3374] = {spell_ids = {11971}}
 _G['NpcAbilitiesNpcData'][3375] = {spell_ids = {6257, 32064}}
 _G['NpcAbilitiesNpcData'][3376] = {spell_ids = {15496, 22120, 81219}}
@@ -816,7 +798,7 @@ _G['NpcAbilitiesNpcData'][3475] = {spell_ids = {66060}}
 _G['NpcAbilitiesNpcData'][3495] = {spell_ids = {66180}}
 _G['NpcAbilitiesNpcData'][3502] = {spell_ids = {12024}}
 _G['NpcAbilitiesNpcData'][3513] = {spell_ids = {58511, 58514, 58519}}
-_G['NpcAbilitiesNpcData'][3518] = {spell_ids = {58511, 58514, 58519, 236321, 288865}}
+_G['NpcAbilitiesNpcData'][3518] = {spell_ids = {58511, 58514, 58519, 236321}}
 _G['NpcAbilitiesNpcData'][3520] = {spell_ids = {58511, 58514, 58519}}
 _G['NpcAbilitiesNpcData'][3527] = {spell_ids = {427359}}
 _G['NpcAbilitiesNpcData'][3535] = {spell_ids = {5567}}
@@ -842,8 +824,7 @@ _G['NpcAbilitiesNpcData'][3671] = {spell_ids = {8040, 8148, 20295, 23381}}
 _G['NpcAbilitiesNpcData'][3672] = {spell_ids = {9532, 23381}}
 _G['NpcAbilitiesNpcData'][3673] = {spell_ids = {8040, 12167, 23381}}
 _G['NpcAbilitiesNpcData'][3674] = {spell_ids = {6254}}
-_G['NpcAbilitiesNpcData'][3678] = {spell_ids = {6270, 8141, 288865}}
-_G['NpcAbilitiesNpcData'][3679] = {spell_ids = {288865}}
+_G['NpcAbilitiesNpcData'][3678] = {spell_ids = {6270, 8141}}
 _G['NpcAbilitiesNpcData'][3691] = {spell_ids = {15495, 22908}}
 _G['NpcAbilitiesNpcData'][3696] = {spell_ids = {6660, 8599, 78841, 78842}}
 _G['NpcAbilitiesNpcData'][3711] = {spell_ids = {11976, 11977}}
@@ -922,7 +903,7 @@ _G['NpcAbilitiesNpcData'][3926] = {spell_ids = {6660, 6813, 78754}}
 _G['NpcAbilitiesNpcData'][3928] = {spell_ids = {6464, 6907}}
 _G['NpcAbilitiesNpcData'][3932] = {spell_ids = {8599, 78842}}
 _G['NpcAbilitiesNpcData'][3935] = {spell_ids = {58511, 225832, 236321}}
-_G['NpcAbilitiesNpcData'][3937] = {spell_ids = {58511, 58514, 58519, 225832, 288865}}
+_G['NpcAbilitiesNpcData'][3937] = {spell_ids = {58511, 58514, 58519, 225832}}
 _G['NpcAbilitiesNpcData'][3940] = {spell_ids = {11640, 13860}}
 _G['NpcAbilitiesNpcData'][3941] = {spell_ids = {7090, 12160, 12161, 15798}}
 _G['NpcAbilitiesNpcData'][3942] = {spell_ids = {6535, 12058}}
@@ -959,8 +940,6 @@ _G['NpcAbilitiesNpcData'][4064] = {spell_ids = {3019, 6660}}
 _G['NpcAbilitiesNpcData'][4065] = {spell_ids = {3019}}
 _G['NpcAbilitiesNpcData'][4066] = {spell_ids = {8211, 15305}}
 _G['NpcAbilitiesNpcData'][4070] = {spell_ids = {6660, 81296}}
-_G['NpcAbilitiesNpcData'][4075] = {spell_ids = {288865}}
-_G['NpcAbilitiesNpcData'][4076] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][4117] = {spell_ids = {57780}}
 _G['NpcAbilitiesNpcData'][4118] = {spell_ids = {3583}}
 _G['NpcAbilitiesNpcData'][4132] = {spell_ids = {8255}}
@@ -1003,12 +982,12 @@ _G['NpcAbilitiesNpcData'][4324] = {spell_ids = {11021}}
 _G['NpcAbilitiesNpcData'][4328] = {spell_ids = {11971}}
 _G['NpcAbilitiesNpcData'][4329] = {spell_ids = {18968}}
 _G['NpcAbilitiesNpcData'][4331] = {spell_ids = {11969, 18968}}
-_G['NpcAbilitiesNpcData'][4334] = {spell_ids = {9053, 18968, 31598, 288865}}
+_G['NpcAbilitiesNpcData'][4334] = {spell_ids = {9053, 18968, 31598}}
 _G['NpcAbilitiesNpcData'][4339] = {spell_ids = {87387}}
 _G['NpcAbilitiesNpcData'][4341] = {spell_ids = {3604}}
 _G['NpcAbilitiesNpcData'][4343] = {spell_ids = {87471}}
 _G['NpcAbilitiesNpcData'][4344] = {spell_ids = {90171}}
-_G['NpcAbilitiesNpcData'][4345] = {spell_ids = {6016, 288865}}
+_G['NpcAbilitiesNpcData'][4345] = {spell_ids = {6016}}
 _G['NpcAbilitiesNpcData'][4346] = {spell_ids = {43132}}
 _G['NpcAbilitiesNpcData'][4347] = {spell_ids = {744, 5708}}
 _G['NpcAbilitiesNpcData'][4348] = {spell_ids = {744, 3391}}
@@ -1091,10 +1070,9 @@ _G['NpcAbilitiesNpcData'][4677] = {spell_ids = {8599, 22859, 77645}}
 _G['NpcAbilitiesNpcData'][4679] = {spell_ids = {78026}}
 _G['NpcAbilitiesNpcData'][4681] = {spell_ids = {3429}}
 _G['NpcAbilitiesNpcData'][4692] = {spell_ids = {77522}}
-_G['NpcAbilitiesNpcData'][4695] = {spell_ids = {3427, 288865}}
+_G['NpcAbilitiesNpcData'][4695] = {spell_ids = {3427}}
 _G['NpcAbilitiesNpcData'][4696] = {spell_ids = {77517}}
 _G['NpcAbilitiesNpcData'][4699] = {spell_ids = {5416}}
-_G['NpcAbilitiesNpcData'][4701] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][4711] = {spell_ids = {7947, 77921}}
 _G['NpcAbilitiesNpcData'][4712] = {spell_ids = {32011, 77921}}
 _G['NpcAbilitiesNpcData'][4713] = {spell_ids = {7947, 9080, 11977, 77921}}
@@ -1130,7 +1108,7 @@ _G['NpcAbilitiesNpcData'][4863] = {spell_ids = {3636, 9906}}
 _G['NpcAbilitiesNpcData'][4872] = {spell_ids = {9941}}
 _G['NpcAbilitiesNpcData'][4922] = {spell_ids = {7164, 7165, 11976, 15576}}
 _G['NpcAbilitiesNpcData'][4923] = {spell_ids = {7164, 7165, 11976, 15576}}
-_G['NpcAbilitiesNpcData'][4953] = {spell_ids = {288865, 317218}}
+_G['NpcAbilitiesNpcData'][4953] = {spell_ids = {317218}}
 _G['NpcAbilitiesNpcData'][4959] = {spell_ids = {58511, 58514, 58519}}
 _G['NpcAbilitiesNpcData'][4960] = {spell_ids = {58519}}
 _G['NpcAbilitiesNpcData'][4968] = {spell_ids = {20678, 20680, 20681, 20682}}
@@ -1151,7 +1129,7 @@ _G['NpcAbilitiesNpcData'][5102] = {spell_ids = {225832}}
 _G['NpcAbilitiesNpcData'][5134] = {spell_ids = {236321, 454782}}
 _G['NpcAbilitiesNpcData'][5135] = {spell_ids = {236321, 454782}}
 _G['NpcAbilitiesNpcData'][5139] = {spell_ids = {236321, 454782}}
-_G['NpcAbilitiesNpcData'][5188] = {spell_ids = {58511, 58514, 58519, 288865}}
+_G['NpcAbilitiesNpcData'][5188] = {spell_ids = {58511, 58514, 58519}}
 _G['NpcAbilitiesNpcData'][5193] = {spell_ids = {225832}}
 _G['NpcAbilitiesNpcData'][5199] = {spell_ids = {7162}}
 _G['NpcAbilitiesNpcData'][5200] = {spell_ids = {7162}}
@@ -1202,8 +1180,6 @@ _G['NpcAbilitiesNpcData'][5359] = {spell_ids = {10987, 79810}}
 _G['NpcAbilitiesNpcData'][5362] = {spell_ids = {19514}}
 _G['NpcAbilitiesNpcData'][5366] = {spell_ids = {6728, 9532}}
 _G['NpcAbilitiesNpcData'][5386] = {spell_ids = {236321}}
-_G['NpcAbilitiesNpcData'][5403] = {spell_ids = {288865}}
-_G['NpcAbilitiesNpcData'][5406] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][5409] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][5413] = {spell_ids = {58511, 58514, 58519}}
 _G['NpcAbilitiesNpcData'][5419] = {spell_ids = {5106}}
@@ -1225,14 +1201,12 @@ _G['NpcAbilitiesNpcData'][5459] = {spell_ids = {6016, 81224}}
 _G['NpcAbilitiesNpcData'][5460] = {spell_ids = {3391, 66060, 81224}}
 _G['NpcAbilitiesNpcData'][5461] = {spell_ids = {34828, 78542}}
 _G['NpcAbilitiesNpcData'][5462] = {spell_ids = {32011, 79831}}
-_G['NpcAbilitiesNpcData'][5464] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][5465] = {spell_ids = {8599, 80117}}
 _G['NpcAbilitiesNpcData'][5473] = {spell_ids = {6742, 9053}}
 _G['NpcAbilitiesNpcData'][5474] = {spell_ids = {10966}}
 _G['NpcAbilitiesNpcData'][5475] = {spell_ids = {6909, 9613}}
 _G['NpcAbilitiesNpcData'][5491] = {spell_ids = {14517}}
 _G['NpcAbilitiesNpcData'][5492] = {spell_ids = {13953, 14517}}
-_G['NpcAbilitiesNpcData'][5493] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][5494] = {spell_ids = {80610}}
 _G['NpcAbilitiesNpcData'][5497] = {spell_ids = {58511, 58514, 58519, 225832, 236321}}
 _G['NpcAbilitiesNpcData'][5498] = {spell_ids = {225832, 236321}}
@@ -1255,7 +1229,7 @@ _G['NpcAbilitiesNpcData'][5645] = {spell_ids = {81705}}
 _G['NpcAbilitiesNpcData'][5646] = {spell_ids = {10277, 81173}}
 _G['NpcAbilitiesNpcData'][5647] = {spell_ids = {79886, 82641}}
 _G['NpcAbilitiesNpcData'][5648] = {spell_ids = {15654, 20798}}
-_G['NpcAbilitiesNpcData'][5649] = {spell_ids = {11898, 14516, 288865, 454782}}
+_G['NpcAbilitiesNpcData'][5649] = {spell_ids = {11898, 14516, 454782}}
 _G['NpcAbilitiesNpcData'][5650] = {spell_ids = {8264, 11899, 17843, 454782}}
 _G['NpcAbilitiesNpcData'][5661] = {spell_ids = {7162}}
 _G['NpcAbilitiesNpcData'][5694] = {spell_ids = {58511, 58514, 58519, 236321}}
@@ -1298,19 +1272,18 @@ _G['NpcAbilitiesNpcData'][5838] = {spell_ids = {7992, 10277}}
 _G['NpcAbilitiesNpcData'][5839] = {spell_ids = {8858, 9053}}
 _G['NpcAbilitiesNpcData'][5840] = {spell_ids = {11983}}
 _G['NpcAbilitiesNpcData'][5841] = {spell_ids = {7164, 11971, 15496}}
-_G['NpcAbilitiesNpcData'][5842] = {spell_ids = {37587, 75002, 288865}}
+_G['NpcAbilitiesNpcData'][5842] = {spell_ids = {37587, 75002}}
 _G['NpcAbilitiesNpcData'][5843] = {spell_ids = {11971}}
 _G['NpcAbilitiesNpcData'][5844] = {spell_ids = {6533, 11977}}
 _G['NpcAbilitiesNpcData'][5846] = {spell_ids = {22120, 32064}}
 _G['NpcAbilitiesNpcData'][5847] = {spell_ids = {6660, 6979}}
 _G['NpcAbilitiesNpcData'][5848] = {spell_ids = {3631, 74759}}
 _G['NpcAbilitiesNpcData'][5849] = {spell_ids = {6253, 7978}}
-_G['NpcAbilitiesNpcData'][5850] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][5851] = {spell_ids = {3419, 76622, 78660}}
 _G['NpcAbilitiesNpcData'][5852] = {spell_ids = {10733}}
 _G['NpcAbilitiesNpcData'][5853] = {spell_ids = {84165}}
 _G['NpcAbilitiesNpcData'][5854] = {spell_ids = {5568, 12612}}
-_G['NpcAbilitiesNpcData'][5855] = {spell_ids = {11970, 288865}}
+_G['NpcAbilitiesNpcData'][5855] = {spell_ids = {11970}}
 _G['NpcAbilitiesNpcData'][5856] = {spell_ids = {744, 745}}
 _G['NpcAbilitiesNpcData'][5858] = {spell_ids = {11962, 11985}}
 _G['NpcAbilitiesNpcData'][5859] = {spell_ids = {7165, 9080, 40505}}
@@ -1329,7 +1302,7 @@ _G['NpcAbilitiesNpcData'][5932] = {spell_ids = {16508}}
 _G['NpcAbilitiesNpcData'][5933] = {spell_ids = {81574}}
 _G['NpcAbilitiesNpcData'][5937] = {spell_ids = {8257}}
 _G['NpcAbilitiesNpcData'][5944] = {spell_ids = {70481}}
-_G['NpcAbilitiesNpcData'][5951] = {spell_ids = {288865, 317218}}
+_G['NpcAbilitiesNpcData'][5951] = {spell_ids = {317218}}
 _G['NpcAbilitiesNpcData'][5952] = {spell_ids = {8599}}
 _G['NpcAbilitiesNpcData'][5974] = {spell_ids = {8599, 11960, 84333}}
 _G['NpcAbilitiesNpcData'][5975] = {spell_ids = {79850, 79858, 79859, 84333}}
@@ -1362,7 +1335,7 @@ _G['NpcAbilitiesNpcData'][6123] = {spell_ids = {3583, 14873}}
 _G['NpcAbilitiesNpcData'][6124] = {spell_ids = {58461}}
 _G['NpcAbilitiesNpcData'][6171] = {spell_ids = {58514}}
 _G['NpcAbilitiesNpcData'][6173] = {spell_ids = {58511, 58514}}
-_G['NpcAbilitiesNpcData'][6174] = {spell_ids = {58511, 58514, 58519, 225832, 236321, 288865}}
+_G['NpcAbilitiesNpcData'][6174] = {spell_ids = {58511, 58514, 58519, 225832, 236321}}
 _G['NpcAbilitiesNpcData'][6190] = {spell_ids = {63227, 69592}}
 _G['NpcAbilitiesNpcData'][6193] = {spell_ids = {9672, 80967}}
 _G['NpcAbilitiesNpcData'][6194] = {spell_ids = {34783}}
@@ -1390,7 +1363,7 @@ _G['NpcAbilitiesNpcData'][6230] = {spell_ids = {6533, 10730}}
 _G['NpcAbilitiesNpcData'][6232] = {spell_ids = {10831, 10832}}
 _G['NpcAbilitiesNpcData'][6234] = {spell_ids = {11820}}
 _G['NpcAbilitiesNpcData'][6235] = {spell_ids = {11082, 11084, 11085}}
-_G['NpcAbilitiesNpcData'][6271] = {spell_ids = {288865, 317218}}
+_G['NpcAbilitiesNpcData'][6271] = {spell_ids = {317218}}
 _G['NpcAbilitiesNpcData'][6328] = {spell_ids = {344692}}
 _G['NpcAbilitiesNpcData'][6329] = {spell_ids = {8269, 9775, 9798, 92266}}
 _G['NpcAbilitiesNpcData'][6352] = {spell_ids = {80604}}
@@ -1445,18 +1418,17 @@ _G['NpcAbilitiesNpcData'][6649] = {spell_ids = {20299}}
 _G['NpcAbilitiesNpcData'][6650] = {spell_ids = {12057, 15284, 18812}}
 _G['NpcAbilitiesNpcData'][6651] = {spell_ids = {12747, 13584}}
 _G['NpcAbilitiesNpcData'][6727] = {spell_ids = {287454}}
-_G['NpcAbilitiesNpcData'][6740] = {spell_ids = {225832, 288865}}
-_G['NpcAbilitiesNpcData'][6749] = {spell_ids = {58511, 58514, 58519, 125801, 225832, 236321, 288865}}
-_G['NpcAbilitiesNpcData'][6778] = {spell_ids = {58511, 58514, 58519, 225832, 236321, 288865}}
+_G['NpcAbilitiesNpcData'][6740] = {spell_ids = {225832}}
+_G['NpcAbilitiesNpcData'][6749] = {spell_ids = {58511, 58514, 58519, 125801, 225832, 236321}}
+_G['NpcAbilitiesNpcData'][6778] = {spell_ids = {58511, 58514, 58519, 225832, 236321}}
 _G['NpcAbilitiesNpcData'][6782] = {spell_ids = {70048}}
-_G['NpcAbilitiesNpcData'][6827] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][6866] = {spell_ids = {60842, 66060}}
 _G['NpcAbilitiesNpcData'][6906] = {spell_ids = {14516}}
 _G['NpcAbilitiesNpcData'][6907] = {spell_ids = {6268}}
 _G['NpcAbilitiesNpcData'][6908] = {spell_ids = {8242}}
 _G['NpcAbilitiesNpcData'][6910] = {spell_ids = {15801, 16006}}
 _G['NpcAbilitiesNpcData'][6927] = {spell_ids = {8646}}
-_G['NpcAbilitiesNpcData'][6929] = {spell_ids = {58511, 58514, 58519, 225832, 236321, 288865}}
+_G['NpcAbilitiesNpcData'][6929] = {spell_ids = {58511, 58514, 58519, 225832, 236321}}
 _G['NpcAbilitiesNpcData'][7011] = {spell_ids = {12057}}
 _G['NpcAbilitiesNpcData'][7012] = {spell_ids = {2602, 10452}}
 _G['NpcAbilitiesNpcData'][7013] = {spell_ids = {3583}}
@@ -1585,7 +1557,7 @@ _G['NpcAbilitiesNpcData'][7725] = {spell_ids = {78894, 79877}}
 _G['NpcAbilitiesNpcData'][7726] = {spell_ids = {9739, 12161, 15727, 74504}}
 _G['NpcAbilitiesNpcData'][7727] = {spell_ids = {15786, 79884, 79914}}
 _G['NpcAbilitiesNpcData'][7730] = {spell_ids = {40505}}
-_G['NpcAbilitiesNpcData'][7733] = {spell_ids = {225832, 288865}}
+_G['NpcAbilitiesNpcData'][7733] = {spell_ids = {225832}}
 _G['NpcAbilitiesNpcData'][7738] = {spell_ids = {10869}}
 _G['NpcAbilitiesNpcData'][7776] = {spell_ids = {75642}}
 _G['NpcAbilitiesNpcData'][7786] = {spell_ids = {454782}}
@@ -1625,7 +1597,6 @@ _G['NpcAbilitiesNpcData'][8147] = {spell_ids = {40505}}
 _G['NpcAbilitiesNpcData'][8151] = {spell_ids = {12169, 12170}}
 _G['NpcAbilitiesNpcData'][8154] = {spell_ids = {40505}}
 _G['NpcAbilitiesNpcData'][8156] = {spell_ids = {11020, 454782}}
-_G['NpcAbilitiesNpcData'][8198] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][8199] = {spell_ids = {18670, 78827, 80983}}
 _G['NpcAbilitiesNpcData'][8200] = {spell_ids = {7272, 10132, 79884}}
 _G['NpcAbilitiesNpcData'][8201] = {spell_ids = {8599, 16856}}
@@ -1863,7 +1834,7 @@ _G['NpcAbilitiesNpcData'][9452] = {spell_ids = {11975, 25055}}
 _G['NpcAbilitiesNpcData'][9454] = {spell_ids = {13443}}
 _G['NpcAbilitiesNpcData'][9456] = {spell_ids = {11976, 13965, 32064}}
 _G['NpcAbilitiesNpcData'][9458] = {spell_ids = {10277}}
-_G['NpcAbilitiesNpcData'][9460] = {spell_ids = {12024, 225832, 288865}}
+_G['NpcAbilitiesNpcData'][9460] = {spell_ids = {12024, 225832}}
 _G['NpcAbilitiesNpcData'][9462] = {spell_ids = {5915, 15117}}
 _G['NpcAbilitiesNpcData'][9476] = {spell_ids = {11971, 15504}}
 _G['NpcAbilitiesNpcData'][9496] = {spell_ids = {14206}}
@@ -1895,8 +1866,6 @@ _G['NpcAbilitiesNpcData'][9691] = {spell_ids = {744}}
 _G['NpcAbilitiesNpcData'][9692] = {spell_ids = {15496, 15572}}
 _G['NpcAbilitiesNpcData'][9693] = {spell_ids = {13901, 15743, 15744}}
 _G['NpcAbilitiesNpcData'][9697] = {spell_ids = {3149, 13443}}
-_G['NpcAbilitiesNpcData'][9699] = {spell_ids = {288865}}
-_G['NpcAbilitiesNpcData'][9700] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][9716] = {spell_ids = {8269, 10966}}
 _G['NpcAbilitiesNpcData'][9717] = {spell_ids = {15532, 15734}}
 _G['NpcAbilitiesNpcData'][9718] = {spell_ids = {8269, 11972, 87081}}
@@ -1917,7 +1886,7 @@ _G['NpcAbilitiesNpcData'][9980] = {spell_ids = {125801}}
 _G['NpcAbilitiesNpcData'][9981] = {spell_ids = {125801}}
 _G['NpcAbilitiesNpcData'][9982] = {spell_ids = {125801}}
 _G['NpcAbilitiesNpcData'][9984] = {spell_ids = {125801}}
-_G['NpcAbilitiesNpcData'][9985] = {spell_ids = {125801, 225832, 288865}}
+_G['NpcAbilitiesNpcData'][9985] = {spell_ids = {125801, 225832}}
 _G['NpcAbilitiesNpcData'][9986] = {spell_ids = {125801}}
 _G['NpcAbilitiesNpcData'][9987] = {spell_ids = {125801}}
 _G['NpcAbilitiesNpcData'][9988] = {spell_ids = {125801}}
@@ -1937,7 +1906,7 @@ _G['NpcAbilitiesNpcData'][10056] = {spell_ids = {125801}}
 _G['NpcAbilitiesNpcData'][10058] = {spell_ids = {125801}}
 _G['NpcAbilitiesNpcData'][10059] = {spell_ids = {125801}}
 _G['NpcAbilitiesNpcData'][10060] = {spell_ids = {125801}}
-_G['NpcAbilitiesNpcData'][10062] = {spell_ids = {125801, 288865}}
+_G['NpcAbilitiesNpcData'][10062] = {spell_ids = {125801}}
 _G['NpcAbilitiesNpcData'][10063] = {spell_ids = {125801}}
 _G['NpcAbilitiesNpcData'][10076] = {spell_ids = {8362, 15537, 15586, 15654}}
 _G['NpcAbilitiesNpcData'][10077] = {spell_ids = {3604}}
@@ -1980,7 +1949,7 @@ _G['NpcAbilitiesNpcData'][10387] = {spell_ids = {15089, 16331}}
 _G['NpcAbilitiesNpcData'][10388] = {spell_ids = {12531}}
 _G['NpcAbilitiesNpcData'][10389] = {spell_ids = {7074}}
 _G['NpcAbilitiesNpcData'][10390] = {spell_ids = {13787}}
-_G['NpcAbilitiesNpcData'][10391] = {spell_ids = {9080, 11971, 11976, 12555, 15496, 288865, 454782}}
+_G['NpcAbilitiesNpcData'][10391] = {spell_ids = {9080, 11971, 11976, 12555, 15496, 454782}}
 _G['NpcAbilitiesNpcData'][10393] = {spell_ids = {8364, 9672, 13901, 15499, 454782}}
 _G['NpcAbilitiesNpcData'][10394] = {spell_ids = {15496, 17439, 454782}}
 _G['NpcAbilitiesNpcData'][10398] = {spell_ids = {9613, 11443, 16429, 454782}}
@@ -2118,7 +2087,6 @@ _G['NpcAbilitiesNpcData'][11017] = {spell_ids = {68333, 68334}}
 _G['NpcAbilitiesNpcData'][11026] = {spell_ids = {225832}}
 _G['NpcAbilitiesNpcData'][11030] = {spell_ids = {454782}}
 _G['NpcAbilitiesNpcData'][11032] = {spell_ids = {12734, 16172, 17228, 454782}}
-_G['NpcAbilitiesNpcData'][11040] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][11043] = {spell_ids = {3391, 76583, 454782}}
 _G['NpcAbilitiesNpcData'][11054] = {spell_ids = {6660, 454782}}
 _G['NpcAbilitiesNpcData'][11058] = {spell_ids = {7964, 17294, 454782}}
@@ -2159,7 +2127,7 @@ _G['NpcAbilitiesNpcData'][11453] = {spell_ids = {22371}}
 _G['NpcAbilitiesNpcData'][11454] = {spell_ids = {7896, 11428, 18649, 454782}}
 _G['NpcAbilitiesNpcData'][11455] = {spell_ids = {15654}}
 _G['NpcAbilitiesNpcData'][11456] = {spell_ids = {7992, 15582, 22766, 454782}}
-_G['NpcAbilitiesNpcData'][11457] = {spell_ids = {15228, 31598, 288865, 454782}}
+_G['NpcAbilitiesNpcData'][11457] = {spell_ids = {15228, 31598, 454782}}
 _G['NpcAbilitiesNpcData'][11458] = {spell_ids = {78530, 454782}}
 _G['NpcAbilitiesNpcData'][11459] = {spell_ids = {5568, 18670, 384648, 454782}}
 _G['NpcAbilitiesNpcData'][11460] = {spell_ids = {454782}}
@@ -2294,7 +2262,7 @@ _G['NpcAbilitiesNpcData'][11913] = {spell_ids = {12160, 20802}}
 _G['NpcAbilitiesNpcData'][11917] = {spell_ids = {20793, 81309}}
 _G['NpcAbilitiesNpcData'][11918] = {spell_ids = {81361}}
 _G['NpcAbilitiesNpcData'][11937] = {spell_ids = {77522}}
-_G['NpcAbilitiesNpcData'][11946] = {spell_ids = {8269, 13736, 19128, 236321, 288865, 454782}}
+_G['NpcAbilitiesNpcData'][11946] = {spell_ids = {8269, 13736, 19128, 236321, 454782}}
 _G['NpcAbilitiesNpcData'][11947] = {spell_ids = {13736, 15284, 16856, 454782}}
 _G['NpcAbilitiesNpcData'][11948] = {spell_ids = {33967}}
 _G['NpcAbilitiesNpcData'][11949] = {spell_ids = {38384, 45067, 46608, 46987, 46988, 236321, 454782}}
@@ -2307,11 +2275,11 @@ _G['NpcAbilitiesNpcData'][12017] = {spell_ids = {15284, 18670, 24573}}
 _G['NpcAbilitiesNpcData'][12018] = {spell_ids = {19774, 20534, 20619, 20620, 21075}}
 _G['NpcAbilitiesNpcData'][12037] = {spell_ids = {84867}}
 _G['NpcAbilitiesNpcData'][12047] = {spell_ids = {15495, 225832, 236321, 344663, 454782}}
-_G['NpcAbilitiesNpcData'][12048] = {spell_ids = {11976, 15284, 76583, 225832, 236321, 288865, 454782}}
-_G['NpcAbilitiesNpcData'][12050] = {spell_ids = {12169, 236321, 288865, 454782}}
+_G['NpcAbilitiesNpcData'][12048] = {spell_ids = {11976, 15284, 76583, 225832, 236321, 454782}}
+_G['NpcAbilitiesNpcData'][12050] = {spell_ids = {12169, 236321, 454782}}
 _G['NpcAbilitiesNpcData'][12051] = {spell_ids = {11977, 236321, 454782}}
 _G['NpcAbilitiesNpcData'][12052] = {spell_ids = {8599, 11976, 236321, 454782}}
-_G['NpcAbilitiesNpcData'][12053] = {spell_ids = {12169, 236321, 288865, 454782}}
+_G['NpcAbilitiesNpcData'][12053] = {spell_ids = {12169, 236321, 454782}}
 _G['NpcAbilitiesNpcData'][12056] = {spell_ids = {19659, 19695, 20475, 20477, 20478}}
 _G['NpcAbilitiesNpcData'][12057] = {spell_ids = {19492, 19496, 19516, 20477}}
 _G['NpcAbilitiesNpcData'][12076] = {spell_ids = {19641}}
@@ -2329,7 +2297,7 @@ _G['NpcAbilitiesNpcData'][12129] = {spell_ids = {12097, 15284, 18958, 20203}}
 _G['NpcAbilitiesNpcData'][12136] = {spell_ids = {58519}}
 _G['NpcAbilitiesNpcData'][12141] = {spell_ids = {18977}}
 _G['NpcAbilitiesNpcData'][12157] = {spell_ids = {15802, 17439, 22566, 454782}}
-_G['NpcAbilitiesNpcData'][12159] = {spell_ids = {19129, 20276, 288865, 454782}}
+_G['NpcAbilitiesNpcData'][12159] = {spell_ids = {19129, 20276, 454782}}
 _G['NpcAbilitiesNpcData'][12178] = {spell_ids = {21327, 23380, 23381}}
 _G['NpcAbilitiesNpcData'][12179] = {spell_ids = {21327}}
 _G['NpcAbilitiesNpcData'][12201] = {spell_ids = {3391, 21832, 21869, 21909, 22592}}
@@ -2415,9 +2383,9 @@ _G['NpcAbilitiesNpcData'][13097] = {spell_ids = {15498, 15586, 15654, 454782}}
 _G['NpcAbilitiesNpcData'][13098] = {spell_ids = {15498, 15586, 15654}}
 _G['NpcAbilitiesNpcData'][13099] = {spell_ids = {9053, 13340, 15244}}
 _G['NpcAbilitiesNpcData'][13137] = {spell_ids = {16856, 236321, 454782}}
-_G['NpcAbilitiesNpcData'][13138] = {spell_ids = {16856, 236321, 288865, 454782}}
-_G['NpcAbilitiesNpcData'][13139] = {spell_ids = {15284, 236321, 288865, 454782}}
-_G['NpcAbilitiesNpcData'][13140] = {spell_ids = {15284, 236321, 288865, 454782}}
+_G['NpcAbilitiesNpcData'][13138] = {spell_ids = {16856, 236321, 454782}}
+_G['NpcAbilitiesNpcData'][13139] = {spell_ids = {15284, 236321, 454782}}
+_G['NpcAbilitiesNpcData'][13140] = {spell_ids = {15284, 236321, 454782}}
 _G['NpcAbilitiesNpcData'][13141] = {spell_ids = {11876, 13446}}
 _G['NpcAbilitiesNpcData'][13142] = {spell_ids = {21331}}
 _G['NpcAbilitiesNpcData'][13143] = {spell_ids = {16856, 236321, 454782}}
@@ -2437,7 +2405,7 @@ _G['NpcAbilitiesNpcData'][13176] = {spell_ids = {236321, 454782}}
 _G['NpcAbilitiesNpcData'][13178] = {spell_ids = {15285, 21188, 22088}}
 _G['NpcAbilitiesNpcData'][13179] = {spell_ids = {15572, 15580, 236321, 454782}}
 _G['NpcAbilitiesNpcData'][13180] = {spell_ids = {15572, 15580, 454782}}
-_G['NpcAbilitiesNpcData'][13181] = {spell_ids = {15572, 15580, 236321, 288865, 454782}}
+_G['NpcAbilitiesNpcData'][13181] = {spell_ids = {15572, 15580, 236321, 454782}}
 _G['NpcAbilitiesNpcData'][13196] = {spell_ids = {15285, 15979, 17228, 21749, 22356, 22519, 454782}}
 _G['NpcAbilitiesNpcData'][13197] = {spell_ids = {13901, 22271, 454782}}
 _G['NpcAbilitiesNpcData'][13216] = {spell_ids = {236321, 454782}}
@@ -2445,7 +2413,7 @@ _G['NpcAbilitiesNpcData'][13218] = {spell_ids = {454782}}
 _G['NpcAbilitiesNpcData'][13236] = {spell_ids = {15234, 15616, 15786, 15982, 16006, 236321, 454782}}
 _G['NpcAbilitiesNpcData'][13256] = {spell_ids = {14907, 15878, 16869, 19133, 21307, 21367, 21369, 454782}}
 _G['NpcAbilitiesNpcData'][13257] = {spell_ids = {236321, 454782}}
-_G['NpcAbilitiesNpcData'][13276] = {spell_ids = {13340, 288865, 454782}}
+_G['NpcAbilitiesNpcData'][13276] = {spell_ids = {13340, 454782}}
 _G['NpcAbilitiesNpcData'][13280] = {spell_ids = {22420}}
 _G['NpcAbilitiesNpcData'][13282] = {spell_ids = {10966, 21687, 21707}}
 _G['NpcAbilitiesNpcData'][13283] = {spell_ids = {236321}}
@@ -2458,13 +2426,12 @@ _G['NpcAbilitiesNpcData'][13299] = {spell_ids = {16856, 236321, 454782}}
 _G['NpcAbilitiesNpcData'][13300] = {spell_ids = {16856, 454782}}
 _G['NpcAbilitiesNpcData'][13316] = {spell_ids = {15572}}
 _G['NpcAbilitiesNpcData'][13317] = {spell_ids = {15572, 454782}}
-_G['NpcAbilitiesNpcData'][13318] = {spell_ids = {15284, 236321, 288865, 454782}}
-_G['NpcAbilitiesNpcData'][13319] = {spell_ids = {15284, 236321, 288865, 454782}}
+_G['NpcAbilitiesNpcData'][13318] = {spell_ids = {15284, 236321, 454782}}
+_G['NpcAbilitiesNpcData'][13319] = {spell_ids = {15284, 236321, 454782}}
 _G['NpcAbilitiesNpcData'][13320] = {spell_ids = {15284, 236321, 454782}}
-_G['NpcAbilitiesNpcData'][13321] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][13323] = {spell_ids = {8281}}
 _G['NpcAbilitiesNpcData'][13324] = {spell_ids = {11976, 22120, 236321, 454782}}
-_G['NpcAbilitiesNpcData'][13325] = {spell_ids = {15495, 236321, 288865, 454782}}
+_G['NpcAbilitiesNpcData'][13325] = {spell_ids = {15495, 236321, 454782}}
 _G['NpcAbilitiesNpcData'][13326] = {spell_ids = {12169, 236321, 454782}}
 _G['NpcAbilitiesNpcData'][13327] = {spell_ids = {11976, 15284, 76583, 236321, 454782}}
 _G['NpcAbilitiesNpcData'][13328] = {spell_ids = {12169, 236321, 454782}}
@@ -2480,15 +2447,15 @@ _G['NpcAbilitiesNpcData'][13337] = {spell_ids = {8599, 11976, 454782}}
 _G['NpcAbilitiesNpcData'][13356] = {spell_ids = {236321, 454782}}
 _G['NpcAbilitiesNpcData'][13357] = {spell_ids = {236321}}
 _G['NpcAbilitiesNpcData'][13358] = {spell_ids = {236321, 454782}}
-_G['NpcAbilitiesNpcData'][13359] = {spell_ids = {236321, 288865, 454782}}
+_G['NpcAbilitiesNpcData'][13359] = {spell_ids = {236321, 454782}}
 _G['NpcAbilitiesNpcData'][13396] = {spell_ids = {15572}}
 _G['NpcAbilitiesNpcData'][13397] = {spell_ids = {15572, 454782}}
 _G['NpcAbilitiesNpcData'][13416] = {spell_ids = {21559, 312434}}
 _G['NpcAbilitiesNpcData'][13419] = {spell_ids = {20654, 21667, 21670, 236321, 454782}}
 _G['NpcAbilitiesNpcData'][13420] = {spell_ids = {58514}}
 _G['NpcAbilitiesNpcData'][13421] = {spell_ids = {12169, 236321, 454782}}
-_G['NpcAbilitiesNpcData'][13422] = {spell_ids = {12169, 236321, 288865, 454782}}
-_G['NpcAbilitiesNpcData'][13424] = {spell_ids = {11976, 22120, 236321, 288865, 454782}}
+_G['NpcAbilitiesNpcData'][13422] = {spell_ids = {12169, 236321, 454782}}
+_G['NpcAbilitiesNpcData'][13424] = {spell_ids = {11976, 22120, 236321, 454782}}
 _G['NpcAbilitiesNpcData'][13425] = {spell_ids = {11977, 236321, 454782}}
 _G['NpcAbilitiesNpcData'][13426] = {spell_ids = {15495, 236321, 454782}}
 _G['NpcAbilitiesNpcData'][13427] = {spell_ids = {11976, 15284, 76583, 454782}}
@@ -2501,7 +2468,7 @@ _G['NpcAbilitiesNpcData'][13440] = {spell_ids = {15284, 16856}}
 _G['NpcAbilitiesNpcData'][13441] = {spell_ids = {15284, 16856}}
 _G['NpcAbilitiesNpcData'][13442] = {spell_ids = {15981, 22127, 22206, 236321, 454782}}
 _G['NpcAbilitiesNpcData'][13443] = {spell_ids = {22127, 22351, 236321, 454782}}
-_G['NpcAbilitiesNpcData'][13447] = {spell_ids = {12169, 236321, 288865, 454782}}
+_G['NpcAbilitiesNpcData'][13447] = {spell_ids = {12169, 236321, 454782}}
 _G['NpcAbilitiesNpcData'][13448] = {spell_ids = {11977, 236321, 454782}}
 _G['NpcAbilitiesNpcData'][13449] = {spell_ids = {8599, 14516, 454782}}
 _G['NpcAbilitiesNpcData'][13524] = {spell_ids = {9143, 15582, 15667}}
@@ -2538,7 +2505,7 @@ _G['NpcAbilitiesNpcData'][13555] = {spell_ids = {15498, 15586, 15654}}
 _G['NpcAbilitiesNpcData'][13556] = {spell_ids = {15498, 15586, 15654}}
 _G['NpcAbilitiesNpcData'][13557] = {spell_ids = {15498, 15586, 15654}}
 _G['NpcAbilitiesNpcData'][13576] = {spell_ids = {15284, 16856}}
-_G['NpcAbilitiesNpcData'][13577] = {spell_ids = {15284, 16856, 288865, 454782}}
+_G['NpcAbilitiesNpcData'][13577] = {spell_ids = {15284, 16856, 454782}}
 _G['NpcAbilitiesNpcData'][13596] = {spell_ids = {7938, 15976}}
 _G['NpcAbilitiesNpcData'][13597] = {spell_ids = {236321, 454782}}
 _G['NpcAbilitiesNpcData'][13598] = {spell_ids = {454782}}
@@ -2546,7 +2513,7 @@ _G['NpcAbilitiesNpcData'][13601] = {spell_ids = {9143, 21833, 29419}}
 _G['NpcAbilitiesNpcData'][13617] = {spell_ids = {236321, 454782}}
 _G['NpcAbilitiesNpcData'][13676] = {spell_ids = {13443, 22120}}
 _G['NpcAbilitiesNpcData'][13718] = {spell_ids = {15501, 15848, 16098}}
-_G['NpcAbilitiesNpcData'][13797] = {spell_ids = {11976, 22120, 236321, 288865, 454782}}
+_G['NpcAbilitiesNpcData'][13797] = {spell_ids = {11976, 22120, 236321, 454782}}
 _G['NpcAbilitiesNpcData'][13798] = {spell_ids = {15284, 16856, 236321, 454782}}
 _G['NpcAbilitiesNpcData'][13839] = {spell_ids = {9080, 11972, 14516}}
 _G['NpcAbilitiesNpcData'][13956] = {spell_ids = {15234, 15981, 22373, 454782}}
@@ -2587,10 +2554,10 @@ _G['NpcAbilitiesNpcData'][14269] = {spell_ids = {32011, 39207}}
 _G['NpcAbilitiesNpcData'][14271] = {spell_ids = {8599}}
 _G['NpcAbilitiesNpcData'][14272] = {spell_ids = {8873}}
 _G['NpcAbilitiesNpcData'][14277] = {spell_ids = {79850, 79858, 79859, 79860}}
-_G['NpcAbilitiesNpcData'][14282] = {spell_ids = {3391, 288865, 454782}}
-_G['NpcAbilitiesNpcData'][14283] = {spell_ids = {3391, 225832, 236321, 288865, 454782}}
-_G['NpcAbilitiesNpcData'][14284] = {spell_ids = {3248, 12782, 16509, 22120, 22591, 236321, 288865}}
-_G['NpcAbilitiesNpcData'][14285] = {spell_ids = {3248, 12782, 16509, 22120, 22591, 236321, 288865}}
+_G['NpcAbilitiesNpcData'][14282] = {spell_ids = {3391, 454782}}
+_G['NpcAbilitiesNpcData'][14283] = {spell_ids = {3391, 225832, 236321, 454782}}
+_G['NpcAbilitiesNpcData'][14284] = {spell_ids = {3248, 12782, 16509, 22120, 22591, 236321}}
+_G['NpcAbilitiesNpcData'][14285] = {spell_ids = {3248, 12782, 16509, 22120, 22591, 236321}}
 _G['NpcAbilitiesNpcData'][14302] = {spell_ids = {22560}}
 _G['NpcAbilitiesNpcData'][14303] = {spell_ids = {22696}}
 _G['NpcAbilitiesNpcData'][14306] = {spell_ids = {3252, 6595}}
@@ -2624,16 +2591,16 @@ _G['NpcAbilitiesNpcData'][14366] = {spell_ids = {447406}}
 _G['NpcAbilitiesNpcData'][14367] = {spell_ids = {14030, 15572}}
 _G['NpcAbilitiesNpcData'][14369] = {spell_ids = {454782}}
 _G['NpcAbilitiesNpcData'][14370] = {spell_ids = {454782}}
-_G['NpcAbilitiesNpcData'][14375] = {spell_ids = {58511, 58514, 58519, 225832, 236321, 288865}}
-_G['NpcAbilitiesNpcData'][14376] = {spell_ids = {58511, 58514, 58519, 225832, 236321, 288865}}
-_G['NpcAbilitiesNpcData'][14377] = {spell_ids = {58511, 58514, 58519, 225832, 236321, 288865, 454782}}
+_G['NpcAbilitiesNpcData'][14375] = {spell_ids = {58511, 58514, 58519, 225832, 236321}}
+_G['NpcAbilitiesNpcData'][14376] = {spell_ids = {58511, 58514, 58519, 225832, 236321}}
+_G['NpcAbilitiesNpcData'][14377] = {spell_ids = {58511, 58514, 58519, 225832, 236321, 454782}}
 _G['NpcAbilitiesNpcData'][14378] = {spell_ids = {14030}}
 _G['NpcAbilitiesNpcData'][14379] = {spell_ids = {14030, 15572}}
 _G['NpcAbilitiesNpcData'][14386] = {spell_ids = {22876}}
 _G['NpcAbilitiesNpcData'][14388] = {spell_ids = {8873}}
 _G['NpcAbilitiesNpcData'][14389] = {spell_ids = {22878}}
 _G['NpcAbilitiesNpcData'][14390] = {spell_ids = {6660, 6685}}
-_G['NpcAbilitiesNpcData'][14392] = {spell_ids = {15580, 16508, 16509, 58511, 58514, 58519, 225832, 236321, 288865}}
+_G['NpcAbilitiesNpcData'][14392] = {spell_ids = {15580, 16508, 16509, 58511, 58514, 58519, 225832, 236321}}
 _G['NpcAbilitiesNpcData'][14393] = {spell_ids = {9734}}
 _G['NpcAbilitiesNpcData'][14394] = {spell_ids = {15493}}
 _G['NpcAbilitiesNpcData'][14396] = {spell_ids = {22909, 454782}}
@@ -2653,8 +2620,8 @@ _G['NpcAbilitiesNpcData'][14431] = {spell_ids = {3589}}
 _G['NpcAbilitiesNpcData'][14432] = {spell_ids = {11976}}
 _G['NpcAbilitiesNpcData'][14433] = {spell_ids = {3335, 79607}}
 _G['NpcAbilitiesNpcData'][14434] = {spell_ids = {23002}}
-_G['NpcAbilitiesNpcData'][14438] = {spell_ids = {6660, 14030, 15572, 225832, 288865}}
-_G['NpcAbilitiesNpcData'][14439] = {spell_ids = {6660, 14030, 15572, 225832, 288865}}
+_G['NpcAbilitiesNpcData'][14438] = {spell_ids = {6660, 14030, 15572, 225832}}
+_G['NpcAbilitiesNpcData'][14439] = {spell_ids = {6660, 14030, 15572, 225832}}
 _G['NpcAbilitiesNpcData'][14445] = {spell_ids = {12533, 15496}}
 _G['NpcAbilitiesNpcData'][14446] = {spell_ids = {3391, 8599}}
 _G['NpcAbilitiesNpcData'][14447] = {spell_ids = {13579}}
@@ -2680,25 +2647,24 @@ _G['NpcAbilitiesNpcData'][14688] = {spell_ids = {61144, 61145, 61162, 61163}}
 _G['NpcAbilitiesNpcData'][14715] = {spell_ids = {15496}}
 _G['NpcAbilitiesNpcData'][14721] = {spell_ids = {10967}}
 _G['NpcAbilitiesNpcData'][14741] = {spell_ids = {125801}}
-_G['NpcAbilitiesNpcData'][14762] = {spell_ids = {8599, 13736, 40504, 236321, 288865, 454782}}
-_G['NpcAbilitiesNpcData'][14763] = {spell_ids = {8599, 13736, 40504, 236321, 288865, 454782}}
+_G['NpcAbilitiesNpcData'][14762] = {spell_ids = {8599, 13736, 40504, 236321, 454782}}
+_G['NpcAbilitiesNpcData'][14763] = {spell_ids = {8599, 13736, 40504, 236321, 454782}}
 _G['NpcAbilitiesNpcData'][14764] = {spell_ids = {8599, 13736, 40504, 454782}}
 _G['NpcAbilitiesNpcData'][14765] = {spell_ids = {8599, 13736, 40504, 454782}}
 _G['NpcAbilitiesNpcData'][14766] = {spell_ids = {8599, 13736, 40504, 236321, 454782}}
 _G['NpcAbilitiesNpcData'][14767] = {spell_ids = {8599, 13736, 40504, 454782}}
 _G['NpcAbilitiesNpcData'][14768] = {spell_ids = {8599, 13736, 40504, 454782}}
-_G['NpcAbilitiesNpcData'][14769] = {spell_ids = {8599, 13736, 40504, 288865, 454782}}
+_G['NpcAbilitiesNpcData'][14769] = {spell_ids = {8599, 13736, 40504, 454782}}
 _G['NpcAbilitiesNpcData'][14770] = {spell_ids = {8599, 13736, 40504, 236321, 454782}}
 _G['NpcAbilitiesNpcData'][14771] = {spell_ids = {8599, 13736, 40504, 454782}}
-_G['NpcAbilitiesNpcData'][14772] = {spell_ids = {8599, 13736, 40504, 236321, 288865, 454782}}
+_G['NpcAbilitiesNpcData'][14772] = {spell_ids = {8599, 13736, 40504, 236321, 454782}}
 _G['NpcAbilitiesNpcData'][14773] = {spell_ids = {8599, 13736, 40504, 236321, 454782}}
-_G['NpcAbilitiesNpcData'][14774] = {spell_ids = {8599, 13736, 40504, 236321, 288865, 454782}}
+_G['NpcAbilitiesNpcData'][14774] = {spell_ids = {8599, 13736, 40504, 236321, 454782}}
 _G['NpcAbilitiesNpcData'][14775] = {spell_ids = {8599, 13736, 40504, 454782}}
 _G['NpcAbilitiesNpcData'][14776] = {spell_ids = {8599, 13736, 40504, 236321, 454782}}
 _G['NpcAbilitiesNpcData'][14777] = {spell_ids = {8599, 13736, 40504, 236321, 454782}}
 _G['NpcAbilitiesNpcData'][14822] = {spell_ids = {23735, 23736, 23737, 23738, 23766, 23767, 23768, 23769}}
 _G['NpcAbilitiesNpcData'][14861] = {spell_ids = {3609, 12493, 22371}}
-_G['NpcAbilitiesNpcData'][14881] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][14893] = {spell_ids = {40505}}
 _G['NpcAbilitiesNpcData'][14943] = {spell_ids = {15285, 21188, 22088}}
 _G['NpcAbilitiesNpcData'][14944] = {spell_ids = {15285, 21188, 22088}}
@@ -2708,10 +2674,10 @@ _G['NpcAbilitiesNpcData'][14947] = {spell_ids = {15285, 21188, 22088}}
 _G['NpcAbilitiesNpcData'][14948] = {spell_ids = {15285, 21188, 22088}}
 _G['NpcAbilitiesNpcData'][15010] = {spell_ids = {24063}}
 _G['NpcAbilitiesNpcData'][15071] = {spell_ids = {24244}}
-_G['NpcAbilitiesNpcData'][15116] = {spell_ids = {225832, 288865}}
+_G['NpcAbilitiesNpcData'][15116] = {spell_ids = {225832}}
 _G['NpcAbilitiesNpcData'][15131] = {spell_ids = {125801}}
 _G['NpcAbilitiesNpcData'][15193] = {spell_ids = {96164, 96166}}
-_G['NpcAbilitiesNpcData'][15195] = {spell_ids = {19128, 25007, 59395, 96092, 288865}}
+_G['NpcAbilitiesNpcData'][15195] = {spell_ids = {19128, 25007, 59395, 96092}}
 _G['NpcAbilitiesNpcData'][15196] = {spell_ids = {13298, 18670}}
 _G['NpcAbilitiesNpcData'][15200] = {spell_ids = {15654, 22884}}
 _G['NpcAbilitiesNpcData'][15201] = {spell_ids = {15732}}
@@ -2762,7 +2728,7 @@ _G['NpcAbilitiesNpcData'][15341] = {spell_ids = {6713, 8269, 20477, 25599}}
 _G['NpcAbilitiesNpcData'][15343] = {spell_ids = {25174}}
 _G['NpcAbilitiesNpcData'][15344] = {spell_ids = {40504}}
 _G['NpcAbilitiesNpcData'][15348] = {spell_ids = {3391, 25646, 25814, 26446, 26527}}
-_G['NpcAbilitiesNpcData'][15354] = {spell_ids = {225832, 288865}}
+_G['NpcAbilitiesNpcData'][15354] = {spell_ids = {225832}}
 _G['NpcAbilitiesNpcData'][15355] = {spell_ids = {8269, 22997, 25698}}
 _G['NpcAbilitiesNpcData'][15369] = {spell_ids = {3391, 8269, 25725, 25748, 25749, 25852}}
 _G['NpcAbilitiesNpcData'][15370] = {spell_ids = {96, 1557, 20512}}
@@ -2828,7 +2794,7 @@ _G['NpcAbilitiesNpcData'][15655] = {spell_ids = {25818}}
 _G['NpcAbilitiesNpcData'][15656] = {spell_ids = {8599}}
 _G['NpcAbilitiesNpcData'][15657] = {spell_ids = {8599}}
 _G['NpcAbilitiesNpcData'][15658] = {spell_ids = {3234, 25818}}
-_G['NpcAbilitiesNpcData'][15659] = {spell_ids = {225832, 236321, 288865}}
+_G['NpcAbilitiesNpcData'][15659] = {spell_ids = {225832, 236321}}
 _G['NpcAbilitiesNpcData'][15667] = {spell_ids = {25896}}
 _G['NpcAbilitiesNpcData'][15668] = {spell_ids = {26661}}
 _G['NpcAbilitiesNpcData'][15669] = {spell_ids = {26661}}
@@ -2957,7 +2923,6 @@ _G['NpcAbilitiesNpcData'][16204] = {spell_ids = {20793}}
 _G['NpcAbilitiesNpcData'][16215] = {spell_ids = {28450, 29848, 29849}}
 _G['NpcAbilitiesNpcData'][16216] = {spell_ids = {3391, 15284}}
 _G['NpcAbilitiesNpcData'][16218] = {spell_ids = {28099}}
-_G['NpcAbilitiesNpcData'][16232] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][16236] = {spell_ids = {26586, 29407}}
 _G['NpcAbilitiesNpcData'][16244] = {spell_ids = {29915, 54701, 54703}}
 _G['NpcAbilitiesNpcData'][16245] = {spell_ids = {13444, 31389, 40504}}
@@ -3263,7 +3228,7 @@ _G['NpcAbilitiesNpcData'][17367] = {spell_ids = {30490}}
 _G['NpcAbilitiesNpcData'][17368] = {spell_ids = {30491}}
 _G['NpcAbilitiesNpcData'][17369] = {spell_ids = {30487}}
 _G['NpcAbilitiesNpcData'][17370] = {spell_ids = {14516, 15655, 454782}}
-_G['NpcAbilitiesNpcData'][17371] = {spell_ids = {12471, 13338, 32863, 33111, 288865, 454782}}
+_G['NpcAbilitiesNpcData'][17371] = {spell_ids = {12471, 13338, 32863, 33111, 454782}}
 _G['NpcAbilitiesNpcData'][17376] = {spell_ids = {30166}}
 _G['NpcAbilitiesNpcData'][17377] = {spell_ids = {17228, 30938, 30940, 33775, 37370, 454782}}
 _G['NpcAbilitiesNpcData'][17379] = {spell_ids = {25035}}
@@ -3298,7 +3263,7 @@ _G['NpcAbilitiesNpcData'][17471] = {spell_ids = {30498}}
 _G['NpcAbilitiesNpcData'][17477] = {spell_ids = {9053, 13340, 454782}}
 _G['NpcAbilitiesNpcData'][17478] = {spell_ids = {12471, 30615}}
 _G['NpcAbilitiesNpcData'][17485] = {spell_ids = {125801}}
-_G['NpcAbilitiesNpcData'][17491] = {spell_ids = {6434, 30832, 30991, 34969, 288865, 454782}}
+_G['NpcAbilitiesNpcData'][17491] = {spell_ids = {6434, 30832, 30991, 34969, 454782}}
 _G['NpcAbilitiesNpcData'][17494] = {spell_ids = {11962, 17227, 20791}}
 _G['NpcAbilitiesNpcData'][17496] = {spell_ids = {32971}}
 _G['NpcAbilitiesNpcData'][17499] = {spell_ids = {8990}}
@@ -3920,7 +3885,6 @@ _G['NpcAbilitiesNpcData'][19635] = {spell_ids = {15576, 35882}}
 _G['NpcAbilitiesNpcData'][19641] = {spell_ids = {35924}}
 _G['NpcAbilitiesNpcData'][19642] = {spell_ids = {7159}}
 _G['NpcAbilitiesNpcData'][19643] = {spell_ids = {35914}}
-_G['NpcAbilitiesNpcData'][19644] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][19647] = {spell_ids = {34388}}
 _G['NpcAbilitiesNpcData'][19657] = {spell_ids = {11831, 19816}}
 _G['NpcAbilitiesNpcData'][19660] = {spell_ids = {34410}}
@@ -4108,7 +4072,6 @@ _G['NpcAbilitiesNpcData'][20324] = {spell_ids = {35236}}
 _G['NpcAbilitiesNpcData'][20326] = {spell_ids = {36486}}
 _G['NpcAbilitiesNpcData'][20329] = {spell_ids = {9613, 37473, 37579}}
 _G['NpcAbilitiesNpcData'][20330] = {spell_ids = {37776}}
-_G['NpcAbilitiesNpcData'][20331] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][20332] = {spell_ids = {36513, 36631}}
 _G['NpcAbilitiesNpcData'][20334] = {spell_ids = {35240, 37596, 37597}}
 _G['NpcAbilitiesNpcData'][20343] = {spell_ids = {35120}}
@@ -4172,7 +4135,6 @@ _G['NpcAbilitiesNpcData'][20685] = {spell_ids = {35491, 35492}}
 _G['NpcAbilitiesNpcData'][20713] = {spell_ids = {11981}}
 _G['NpcAbilitiesNpcData'][20714] = {spell_ids = {744, 22766}}
 _G['NpcAbilitiesNpcData'][20723] = {spell_ids = {8599, 23600}}
-_G['NpcAbilitiesNpcData'][20725] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][20726] = {spell_ids = {11986, 12058, 12550, 35240}}
 _G['NpcAbilitiesNpcData'][20727] = {spell_ids = {15496, 33962}}
 _G['NpcAbilitiesNpcData'][20728] = {spell_ids = {35321}}
@@ -4758,7 +4720,6 @@ _G['NpcAbilitiesNpcData'][23080] = {spell_ids = {40089}}
 _G['NpcAbilitiesNpcData'][23082] = {spell_ids = {40075}}
 _G['NpcAbilitiesNpcData'][23083] = {spell_ids = {8599, 41092}}
 _G['NpcAbilitiesNpcData'][23085] = {spell_ids = {42055}}
-_G['NpcAbilitiesNpcData'][23086] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][23089] = {spell_ids = {6945, 40535, 40536}}
 _G['NpcAbilitiesNpcData'][23093] = {spell_ids = {40134}}
 _G['NpcAbilitiesNpcData'][23100] = {spell_ids = {20829}}
@@ -4844,8 +4805,6 @@ _G['NpcAbilitiesNpcData'][23400] = {spell_ids = {29406, 41370, 41372, 41373, 413
 _G['NpcAbilitiesNpcData'][23401] = {spell_ids = {41248}}
 _G['NpcAbilitiesNpcData'][23402] = {spell_ids = {41379, 41382, 41383, 41384}}
 _G['NpcAbilitiesNpcData'][23403] = {spell_ids = {3609, 39667}}
-_G['NpcAbilitiesNpcData'][23410] = {spell_ids = {288865}}
-_G['NpcAbilitiesNpcData'][23411] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][23414] = {spell_ids = {33961, 40935}}
 _G['NpcAbilitiesNpcData'][23418] = {spell_ids = {41292, 41294, 41303, 41305}}
 _G['NpcAbilitiesNpcData'][23419] = {spell_ids = {41350, 41410, 41426, 41431}}
@@ -4861,7 +4820,6 @@ _G['NpcAbilitiesNpcData'][23467] = {spell_ids = {41519}}
 _G['NpcAbilitiesNpcData'][23469] = {spell_ids = {41542}}
 _G['NpcAbilitiesNpcData'][23498] = {spell_ids = {41914, 454782}}
 _G['NpcAbilitiesNpcData'][23501] = {spell_ids = {17008, 36659}}
-_G['NpcAbilitiesNpcData'][23511] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][23523] = {spell_ids = {42023, 42024}}
 _G['NpcAbilitiesNpcData'][23524] = {spell_ids = {42025, 42027, 42317}}
 _G['NpcAbilitiesNpcData'][23542] = {spell_ids = {31566, 35011}}
@@ -4890,7 +4848,7 @@ _G['NpcAbilitiesNpcData'][23595] = {spell_ids = {15786, 32910}}
 _G['NpcAbilitiesNpcData'][23596] = {spell_ids = {42220, 43240, 43242, 43245}}
 _G['NpcAbilitiesNpcData'][23597] = {spell_ids = {8599, 43246}}
 _G['NpcAbilitiesNpcData'][23627] = {spell_ids = {225832}}
-_G['NpcAbilitiesNpcData'][23635] = {spell_ids = {58511, 58514, 58519, 236321, 288865}}
+_G['NpcAbilitiesNpcData'][23635] = {spell_ids = {58511, 58514, 58519, 236321}}
 _G['NpcAbilitiesNpcData'][23636] = {spell_ids = {12024}}
 _G['NpcAbilitiesNpcData'][23637] = {spell_ids = {11972}}
 _G['NpcAbilitiesNpcData'][23643] = {spell_ids = {49948}}
@@ -4919,13 +4877,12 @@ _G['NpcAbilitiesNpcData'][23676] = {spell_ids = {48376}}
 _G['NpcAbilitiesNpcData'][23678] = {spell_ids = {9739}}
 _G['NpcAbilitiesNpcData'][23680] = {spell_ids = {3391, 9573}}
 _G['NpcAbilitiesNpcData'][23683] = {spell_ids = {225832}}
-_G['NpcAbilitiesNpcData'][23685] = {spell_ids = {225832, 288865}}
+_G['NpcAbilitiesNpcData'][23685] = {spell_ids = {225832}}
 _G['NpcAbilitiesNpcData'][23687] = {spell_ids = {8873}}
 _G['NpcAbilitiesNpcData'][23688] = {spell_ids = {51218}}
 _G['NpcAbilitiesNpcData'][23689] = {spell_ids = {41572, 42362, 51219}}
 _G['NpcAbilitiesNpcData'][23690] = {spell_ids = {42320}}
 _G['NpcAbilitiesNpcData'][23691] = {spell_ids = {32019, 55860}}
-_G['NpcAbilitiesNpcData'][23696] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][23711] = {spell_ids = {48374}}
 _G['NpcAbilitiesNpcData'][23714] = {spell_ids = {9532, 11986}}
 _G['NpcAbilitiesNpcData'][23725] = {spell_ids = {49675, 49676, 49717, 49718}}
@@ -5227,7 +5184,6 @@ _G['NpcAbilitiesNpcData'][25073] = {spell_ids = {3589, 9672, 38033}}
 _G['NpcAbilitiesNpcData'][25080] = {spell_ids = {12024}}
 _G['NpcAbilitiesNpcData'][25081] = {spell_ids = {12024}}
 _G['NpcAbilitiesNpcData'][25087] = {spell_ids = {32915}}
-_G['NpcAbilitiesNpcData'][25142] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][25160] = {spell_ids = {45201}}
 _G['NpcAbilitiesNpcData'][25165] = {spell_ids = {45248, 45256, 45332, 45366}}
 _G['NpcAbilitiesNpcData'][25166] = {spell_ids = {45230, 45235, 45333, 45366, 46771}}
@@ -5442,7 +5398,7 @@ _G['NpcAbilitiesNpcData'][26266] = {spell_ids = {32588, 40504}}
 _G['NpcAbilitiesNpcData'][26268] = {spell_ids = {47007, 52628, 52629}}
 _G['NpcAbilitiesNpcData'][26270] = {spell_ids = {47007}}
 _G['NpcAbilitiesNpcData'][26271] = {spell_ids = {51944}}
-_G['NpcAbilitiesNpcData'][26272] = {spell_ids = {51944, 288865}}
+_G['NpcAbilitiesNpcData'][26272] = {spell_ids = {51944}}
 _G['NpcAbilitiesNpcData'][26276] = {spell_ids = {47425}}
 _G['NpcAbilitiesNpcData'][26277] = {spell_ids = {20716, 60077}}
 _G['NpcAbilitiesNpcData'][26280] = {spell_ids = {51758, 51763, 51764, 51766}}
@@ -6025,7 +5981,7 @@ _G['NpcAbilitiesNpcData'][28340] = {spell_ids = {52633, 52634, 52635, 52636}}
 _G['NpcAbilitiesNpcData'][28341] = {spell_ids = {52657, 52660}}
 _G['NpcAbilitiesNpcData'][28342] = {spell_ids = {21067}}
 _G['NpcAbilitiesNpcData'][28358] = {spell_ids = {32330, 61550}}
-_G['NpcAbilitiesNpcData'][28366] = {spell_ids = {51421, 57723, 57724, 80354, 236321, 264689, 288865, 454782}}
+_G['NpcAbilitiesNpcData'][28366] = {spell_ids = {51421, 57723, 57724, 80354, 236321, 264689, 454782}}
 _G['NpcAbilitiesNpcData'][28368] = {spell_ids = {49205, 51432}}
 _G['NpcAbilitiesNpcData'][28371] = {spell_ids = {51442}}
 _G['NpcAbilitiesNpcData'][28373] = {spell_ids = {54962}}
@@ -6135,7 +6091,7 @@ _G['NpcAbilitiesNpcData'][28825] = {spell_ids = {454782}}
 _G['NpcAbilitiesNpcData'][28826] = {spell_ids = {52905, 53043, 454782}}
 _G['NpcAbilitiesNpcData'][28833] = {spell_ids = {52435, 52576}}
 _G['NpcAbilitiesNpcData'][28835] = {spell_ids = {53068, 53167, 61579, 454782}}
-_G['NpcAbilitiesNpcData'][28836] = {spell_ids = {53048, 53049, 288865, 454782}}
+_G['NpcAbilitiesNpcData'][28836] = {spell_ids = {53048, 53049, 454782}}
 _G['NpcAbilitiesNpcData'][28837] = {spell_ids = {8362, 20989, 53047, 454782}}
 _G['NpcAbilitiesNpcData'][28838] = {spell_ids = {53059, 454782}}
 _G['NpcAbilitiesNpcData'][28840] = {spell_ids = {55030}}
@@ -6185,7 +6141,6 @@ _G['NpcAbilitiesNpcData'][29007] = {spell_ids = {15498, 19725, 34809}}
 _G['NpcAbilitiesNpcData'][29013] = {spell_ids = {52702}}
 _G['NpcAbilitiesNpcData'][29017] = {spell_ids = {52919}}
 _G['NpcAbilitiesNpcData'][29018] = {spell_ids = {34370, 48287, 50502}}
-_G['NpcAbilitiesNpcData'][29019] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][29028] = {spell_ids = {52982, 52989, 52993, 53496}}
 _G['NpcAbilitiesNpcData'][29033] = {spell_ids = {21790}}
 _G['NpcAbilitiesNpcData'][29034] = {spell_ids = {21971}}
@@ -6199,7 +6154,7 @@ _G['NpcAbilitiesNpcData'][29062] = {spell_ids = {12555, 13738, 454782}}
 _G['NpcAbilitiesNpcData'][29063] = {spell_ids = {52087, 53322, 53330, 454782}}
 _G['NpcAbilitiesNpcData'][29064] = {spell_ids = {15232, 53334, 454782}}
 _G['NpcAbilitiesNpcData'][29082] = {spell_ids = {32714}}
-_G['NpcAbilitiesNpcData'][29093] = {spell_ids = {58511, 58514, 58519, 225832, 236321, 288865}}
+_G['NpcAbilitiesNpcData'][29093] = {spell_ids = {58511, 58514, 58519, 225832, 236321}}
 _G['NpcAbilitiesNpcData'][29096] = {spell_ids = {13738, 53394, 454782}}
 _G['NpcAbilitiesNpcData'][29097] = {spell_ids = {53322, 53330, 454782}}
 _G['NpcAbilitiesNpcData'][29098] = {spell_ids = {15232, 53334, 454782}}
@@ -6219,10 +6174,9 @@ _G['NpcAbilitiesNpcData'][29129] = {spell_ids = {24050}}
 _G['NpcAbilitiesNpcData'][29133] = {spell_ids = {51818}}
 _G['NpcAbilitiesNpcData'][29134] = {spell_ids = {53273}}
 _G['NpcAbilitiesNpcData'][29136] = {spell_ids = {53278}}
-_G['NpcAbilitiesNpcData'][29142] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][29143] = {spell_ids = {8646}}
 _G['NpcAbilitiesNpcData'][29146] = {spell_ids = {52071, 54487}}
-_G['NpcAbilitiesNpcData'][29152] = {spell_ids = {225832, 236321, 288865}}
+_G['NpcAbilitiesNpcData'][29152] = {spell_ids = {225832, 236321}}
 _G['NpcAbilitiesNpcData'][29173] = {spell_ids = {49723, 52893, 53635, 53640, 53642, 53658}}
 _G['NpcAbilitiesNpcData'][29174] = {spell_ids = {29427, 53629, 53643}}
 _G['NpcAbilitiesNpcData'][29175] = {spell_ids = {53778}}
@@ -6360,7 +6314,7 @@ _G['NpcAbilitiesNpcData'][29696] = {spell_ids = {55007}}
 _G['NpcAbilitiesNpcData'][29697] = {spell_ids = {50366}}
 _G['NpcAbilitiesNpcData'][29698] = {spell_ids = {54487}}
 _G['NpcAbilitiesNpcData'][29709] = {spell_ids = {55046}}
-_G['NpcAbilitiesNpcData'][29712] = {spell_ids = {58511, 58514, 58519, 225832, 231193, 236321, 288865}}
+_G['NpcAbilitiesNpcData'][29712] = {spell_ids = {58511, 58514, 58519, 225832, 231193, 236321}}
 _G['NpcAbilitiesNpcData'][29713] = {spell_ids = {55093}}
 _G['NpcAbilitiesNpcData'][29717] = {spell_ids = {16592}}
 _G['NpcAbilitiesNpcData'][29719] = {spell_ids = {40504, 50335}}
@@ -6612,8 +6566,8 @@ _G['NpcAbilitiesNpcData'][30725] = {spell_ids = {60870}}
 _G['NpcAbilitiesNpcData'][30730] = {spell_ids = {20792, 225832}}
 _G['NpcAbilitiesNpcData'][30733] = {spell_ids = {512}}
 _G['NpcAbilitiesNpcData'][30737] = {spell_ids = {6533, 23601, 31942}}
-_G['NpcAbilitiesNpcData'][30739] = {spell_ids = {11976, 42648, 236321, 288865, 454782}}
-_G['NpcAbilitiesNpcData'][30740] = {spell_ids = {11976, 42648, 236321, 288865, 454782}}
+_G['NpcAbilitiesNpcData'][30739] = {spell_ids = {11976, 42648, 236321, 454782}}
+_G['NpcAbilitiesNpcData'][30740] = {spell_ids = {11976, 42648, 236321, 454782}}
 _G['NpcAbilitiesNpcData'][30746] = {spell_ids = {9672, 11831, 28873}}
 _G['NpcAbilitiesNpcData'][30751] = {spell_ids = {11642, 31516}}
 _G['NpcAbilitiesNpcData'][30755] = {spell_ids = {12024}}
@@ -6812,7 +6766,6 @@ _G['NpcAbilitiesNpcData'][32250] = {spell_ids = {17173, 51797}}
 _G['NpcAbilitiesNpcData'][32254] = {spell_ids = {60288}}
 _G['NpcAbilitiesNpcData'][32255] = {spell_ids = {19643, 60231}}
 _G['NpcAbilitiesNpcData'][32257] = {spell_ids = {11831, 20822, 20828, 60212}}
-_G['NpcAbilitiesNpcData'][32258] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][32259] = {spell_ids = {9613}}
 _G['NpcAbilitiesNpcData'][32260] = {spell_ids = {31976}}
 _G['NpcAbilitiesNpcData'][32262] = {spell_ids = {9613, 11962, 13787}}
@@ -6830,7 +6783,7 @@ _G['NpcAbilitiesNpcData'][32291] = {spell_ids = {60847}}
 _G['NpcAbilitiesNpcData'][32297] = {spell_ids = {15587, 62129}}
 _G['NpcAbilitiesNpcData'][32299] = {spell_ids = {32736}}
 _G['NpcAbilitiesNpcData'][32300] = {spell_ids = {34322, 37978}}
-_G['NpcAbilitiesNpcData'][32307] = {spell_ids = {11976, 288865}}
+_G['NpcAbilitiesNpcData'][32307] = {spell_ids = {11976}}
 _G['NpcAbilitiesNpcData'][32308] = {spell_ids = {11976}}
 _G['NpcAbilitiesNpcData'][32311] = {spell_ids = {59992}}
 _G['NpcAbilitiesNpcData'][32321] = {spell_ids = {6713, 9080, 9128, 19134, 20615, 23600, 32736}}
@@ -6890,7 +6843,7 @@ _G['NpcAbilitiesNpcData'][32572] = {spell_ids = {51758, 51763, 51764, 51766}}
 _G['NpcAbilitiesNpcData'][32587] = {spell_ids = {60742, 60744, 61101}}
 _G['NpcAbilitiesNpcData'][32588] = {spell_ids = {60742, 60744, 61101}}
 _G['NpcAbilitiesNpcData'][32627] = {spell_ids = {54109, 236321, 454782}}
-_G['NpcAbilitiesNpcData'][32629] = {spell_ids = {57609, 236321, 288865, 454782}}
+_G['NpcAbilitiesNpcData'][32629] = {spell_ids = {57609, 236321, 454782}}
 _G['NpcAbilitiesNpcData'][32630] = {spell_ids = {47425, 51857}}
 _G['NpcAbilitiesNpcData'][32638] = {spell_ids = {211064}}
 _G['NpcAbilitiesNpcData'][32639] = {spell_ids = {211064}}
@@ -6903,8 +6856,8 @@ _G['NpcAbilitiesNpcData'][32676] = {spell_ids = {225832}}
 _G['NpcAbilitiesNpcData'][32679] = {spell_ids = {225832}}
 _G['NpcAbilitiesNpcData'][32680] = {spell_ids = {225832}}
 _G['NpcAbilitiesNpcData'][32688] = {spell_ids = {225832}}
-_G['NpcAbilitiesNpcData'][32689] = {spell_ids = {225832, 288865}}
-_G['NpcAbilitiesNpcData'][32690] = {spell_ids = {225832, 288865}}
+_G['NpcAbilitiesNpcData'][32689] = {spell_ids = {225832}}
+_G['NpcAbilitiesNpcData'][32690] = {spell_ids = {225832}}
 _G['NpcAbilitiesNpcData'][32691] = {spell_ids = {225832}}
 _G['NpcAbilitiesNpcData'][32710] = {spell_ids = {61353}}
 _G['NpcAbilitiesNpcData'][32711] = {spell_ids = {61353}}
@@ -6961,8 +6914,8 @@ _G['NpcAbilitiesNpcData'][32926] = {spell_ids = {454782}}
 _G['NpcAbilitiesNpcData'][32927] = {spell_ids = {61920, 61973, 62273, 63489, 454782}}
 _G['NpcAbilitiesNpcData'][32928] = {spell_ids = {32011, 39207}}
 _G['NpcAbilitiesNpcData'][32930] = {spell_ids = {62030, 62055, 63981, 63983, 64003, 64005, 64006}}
-_G['NpcAbilitiesNpcData'][32933] = {spell_ids = {288865, 454782}}
-_G['NpcAbilitiesNpcData'][32934] = {spell_ids = {288865, 454782}}
+_G['NpcAbilitiesNpcData'][32933] = {spell_ids = {454782}}
+_G['NpcAbilitiesNpcData'][32934] = {spell_ids = {454782}}
 _G['NpcAbilitiesNpcData'][32935] = {spell_ids = {75004}}
 _G['NpcAbilitiesNpcData'][32938] = {spell_ids = {61990}}
 _G['NpcAbilitiesNpcData'][32946] = {spell_ids = {61909, 62823, 64528}}
@@ -7043,7 +6996,6 @@ _G['NpcAbilitiesNpcData'][33229] = {spell_ids = {62709}}
 _G['NpcAbilitiesNpcData'][33236] = {spell_ids = {50370, 57780, 62845}}
 _G['NpcAbilitiesNpcData'][33237] = {spell_ids = {62625}}
 _G['NpcAbilitiesNpcData'][33255] = {spell_ids = {62632}}
-_G['NpcAbilitiesNpcData'][33259] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][33262] = {spell_ids = {86249}}
 _G['NpcAbilitiesNpcData'][33264] = {spell_ids = {62395}}
 _G['NpcAbilitiesNpcData'][33271] = {spell_ids = {26662, 62661, 62662, 62692, 63276, 63277, 63364}}
@@ -7051,7 +7003,6 @@ _G['NpcAbilitiesNpcData'][33276] = {spell_ids = {9734, 11642}}
 _G['NpcAbilitiesNpcData'][33277] = {spell_ids = {3427, 74972}}
 _G['NpcAbilitiesNpcData'][33280] = {spell_ids = {449895, 461981}}
 _G['NpcAbilitiesNpcData'][33285] = {spell_ids = {63010, 65147}}
-_G['NpcAbilitiesNpcData'][33287] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][33288] = {spell_ids = {63894, 64163, 64166, 64189, 64465}}
 _G['NpcAbilitiesNpcData'][33293] = {spell_ids = {26662, 62775, 64193, 64234, 65121}}
 _G['NpcAbilitiesNpcData'][33296] = {spell_ids = {64362}}
@@ -7171,7 +7122,6 @@ _G['NpcAbilitiesNpcData'][33777] = {spell_ids = {58506}}
 _G['NpcAbilitiesNpcData'][33782] = {spell_ids = {62575, 62960}}
 _G['NpcAbilitiesNpcData'][33785] = {spell_ids = {63003, 64505, 65147}}
 _G['NpcAbilitiesNpcData'][33806] = {spell_ids = {63723}}
-_G['NpcAbilitiesNpcData'][33816] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][33818] = {spell_ids = {13704, 37978, 64662, 64663}}
 _G['NpcAbilitiesNpcData'][33819] = {spell_ids = {63758, 63912, 63913, 64662, 64663}}
 _G['NpcAbilitiesNpcData'][33820] = {spell_ids = {63774, 63775, 63789, 64662, 64663}}
@@ -7346,7 +7296,7 @@ _G['NpcAbilitiesNpcData'][34607] = {spell_ids = {66129, 66134, 67322, 67721}}
 _G['NpcAbilitiesNpcData'][34615] = {spell_ids = {65753}}
 _G['NpcAbilitiesNpcData'][34628] = {spell_ids = {65808}}
 _G['NpcAbilitiesNpcData'][34630] = {spell_ids = {65795}}
-_G['NpcAbilitiesNpcData'][34632] = {spell_ids = {288865, 443503, 454782}}
+_G['NpcAbilitiesNpcData'][34632] = {spell_ids = {443503, 454782}}
 _G['NpcAbilitiesNpcData'][34634] = {spell_ids = {15578, 16856, 65804}}
 _G['NpcAbilitiesNpcData'][34657] = {spell_ids = {65868, 66081, 66083, 68301, 68340, 68504}}
 _G['NpcAbilitiesNpcData'][34658] = {spell_ids = {65918}}
@@ -7412,9 +7362,9 @@ _G['NpcAbilitiesNpcData'][34917] = {spell_ids = {62975}}
 _G['NpcAbilitiesNpcData'][34918] = {spell_ids = {236321, 454782}}
 _G['NpcAbilitiesNpcData'][34919] = {spell_ids = {454782}}
 _G['NpcAbilitiesNpcData'][34920] = {spell_ids = {56503, 61597, 61598}}
-_G['NpcAbilitiesNpcData'][34922] = {spell_ids = {58460, 66776, 67280, 68506, 236321, 288865, 454782}}
+_G['NpcAbilitiesNpcData'][34922] = {spell_ids = {58460, 66776, 67280, 68506, 236321, 454782}}
 _G['NpcAbilitiesNpcData'][34923] = {spell_ids = {75903}}
-_G['NpcAbilitiesNpcData'][34924] = {spell_ids = {58460, 66776, 67280, 68506, 236321, 288865, 454782}}
+_G['NpcAbilitiesNpcData'][34924] = {spell_ids = {58460, 66776, 67280, 68506, 236321, 454782}}
 _G['NpcAbilitiesNpcData'][34925] = {spell_ids = {66514}}
 _G['NpcAbilitiesNpcData'][34928] = {spell_ids = {66515, 66536, 66537, 66538, 66546, 66547}}
 _G['NpcAbilitiesNpcData'][34929] = {spell_ids = {66518}}
@@ -7674,7 +7624,7 @@ _G['NpcAbilitiesNpcData'][36512] = {spell_ids = {75529}}
 _G['NpcAbilitiesNpcData'][36516] = {spell_ids = {15232, 69128, 69131, 69562, 344663, 454782}}
 _G['NpcAbilitiesNpcData'][36522] = {spell_ids = {69088, 454782}}
 _G['NpcAbilitiesNpcData'][36541] = {spell_ids = {261313}}
-_G['NpcAbilitiesNpcData'][36551] = {spell_ids = {68895, 288865, 454782}}
+_G['NpcAbilitiesNpcData'][36551] = {spell_ids = {68895, 454782}}
 _G['NpcAbilitiesNpcData'][36552] = {spell_ids = {12438}}
 _G['NpcAbilitiesNpcData'][36557] = {spell_ids = {62575, 68282}}
 _G['NpcAbilitiesNpcData'][36558] = {spell_ids = {62575, 68282}}
@@ -7707,7 +7657,7 @@ _G['NpcAbilitiesNpcData'][36648] = {spell_ids = {15284, 22916, 32736, 59705, 846
 _G['NpcAbilitiesNpcData'][36658] = {spell_ids = {69155, 69167, 69172, 69275}}
 _G['NpcAbilitiesNpcData'][36660] = {spell_ids = {6660}}
 _G['NpcAbilitiesNpcData'][36661] = {spell_ids = {69245}}
-_G['NpcAbilitiesNpcData'][36666] = {spell_ids = {69148, 69633, 288865, 454782}}
+_G['NpcAbilitiesNpcData'][36666] = {spell_ids = {69148, 69633, 454782}}
 _G['NpcAbilitiesNpcData'][36671] = {spell_ids = {75388}}
 _G['NpcAbilitiesNpcData'][36672] = {spell_ids = {69146}}
 _G['NpcAbilitiesNpcData'][36676] = {spell_ids = {69151}}
@@ -8214,9 +8164,9 @@ _G['NpcAbilitiesNpcData'][39381] = {spell_ids = {76404, 76409}}
 _G['NpcAbilitiesNpcData'][39382] = {spell_ids = {82104, 82107, 82119, 82133}}
 _G['NpcAbilitiesNpcData'][39384] = {spell_ids = {81068, 81109}}
 _G['NpcAbilitiesNpcData'][39385] = {spell_ids = {6268, 13443}}
-_G['NpcAbilitiesNpcData'][39388] = {spell_ids = {288865, 454782, 456718, 456719}}
+_G['NpcAbilitiesNpcData'][39388] = {spell_ids = {454782, 456718, 456719}}
 _G['NpcAbilitiesNpcData'][39390] = {spell_ids = {76817}}
-_G['NpcAbilitiesNpcData'][39392] = {spell_ids = {75569, 75755, 79467, 288865, 442267, 451391, 451395, 454782, 462704}}
+_G['NpcAbilitiesNpcData'][39392] = {spell_ids = {75569, 75755, 79467, 442267, 451391, 451395, 454782, 462704}}
 _G['NpcAbilitiesNpcData'][39394] = {spell_ids = {32914, 81074, 81082}}
 _G['NpcAbilitiesNpcData'][39395] = {spell_ids = {81072, 81074}}
 _G['NpcAbilitiesNpcData'][39397] = {spell_ids = {86405, 86407}}
@@ -8252,7 +8202,7 @@ _G['NpcAbilitiesNpcData'][39603] = {spell_ids = {80132}}
 _G['NpcAbilitiesNpcData'][39605] = {spell_ids = {84715}}
 _G['NpcAbilitiesNpcData'][39607] = {spell_ids = {82376}}
 _G['NpcAbilitiesNpcData'][39616] = {spell_ids = {76807, 209859, 228318, 240443, 426618}}
-_G['NpcAbilitiesNpcData'][39625] = {spell_ids = {74634, 74670, 74846, 74853, 288865, 447261, 448847, 448877, 448953, 454782}}
+_G['NpcAbilitiesNpcData'][39625] = {spell_ids = {74634, 74670, 74846, 74853, 447261, 448847, 448877, 448953, 454782}}
 _G['NpcAbilitiesNpcData'][39626] = {spell_ids = {76679, 76685}}
 _G['NpcAbilitiesNpcData'][39637] = {spell_ids = {12024}}
 _G['NpcAbilitiesNpcData'][39638] = {spell_ids = {8242, 31553, 79444}}
@@ -8370,11 +8320,11 @@ _G['NpcAbilitiesNpcData'][40136] = {spell_ids = {35913, 37628}}
 _G['NpcAbilitiesNpcData'][40142] = {spell_ids = {74524, 74531, 74792, 74806, 74826, 75063, 75476}}
 _G['NpcAbilitiesNpcData'][40147] = {spell_ids = {74813}}
 _G['NpcAbilitiesNpcData'][40162] = {spell_ids = {86405, 86407}}
-_G['NpcAbilitiesNpcData'][40166] = {spell_ids = {76703, 288865, 451965, 451971, 454782}}
+_G['NpcAbilitiesNpcData'][40166] = {spell_ids = {76703, 451965, 451971, 454782}}
 _G['NpcAbilitiesNpcData'][40167] = {spell_ids = {76151}}
 _G['NpcAbilitiesNpcData'][40168] = {spell_ids = {81249, 81954}}
 _G['NpcAbilitiesNpcData'][40170] = {spell_ids = {74880, 74888}}
-_G['NpcAbilitiesNpcData'][40177] = {spell_ids = {74908, 74976, 74981, 74984, 75000, 75007, 75056, 288865, 447395, 449444, 449474, 449536, 449687, 451996, 454782, 456900, 456902}}
+_G['NpcAbilitiesNpcData'][40177] = {spell_ids = {74908, 74976, 74981, 74984, 75000, 75007, 75056, 447395, 449444, 449474, 449536, 449687, 451996, 454782, 456900, 456902}}
 _G['NpcAbilitiesNpcData'][40185] = {spell_ids = {91997, 91998}}
 _G['NpcAbilitiesNpcData'][40193] = {spell_ids = {6268, 81087}}
 _G['NpcAbilitiesNpcData'][40194] = {spell_ids = {81119}}
@@ -8404,7 +8354,7 @@ _G['NpcAbilitiesNpcData'][40306] = {spell_ids = {76727, 76729}}
 _G['NpcAbilitiesNpcData'][40310] = {spell_ids = {74122, 74542}}
 _G['NpcAbilitiesNpcData'][40311] = {spell_ids = {77357, 77570}}
 _G['NpcAbilitiesNpcData'][40319] = {spell_ids = {75245, 76303, 447966, 448013, 450095, 454782}}
-_G['NpcAbilitiesNpcData'][40320] = {spell_ids = {75321, 75328, 90950, 288865, 448105, 454782, 456751, 456773, 462704}}
+_G['NpcAbilitiesNpcData'][40320] = {spell_ids = {75321, 75328, 90950, 448105, 454782, 456751, 456773, 462704}}
 _G['NpcAbilitiesNpcData'][40336] = {spell_ids = {18543, 80561, 80594}}
 _G['NpcAbilitiesNpcData'][40357] = {spell_ids = {75238}}
 _G['NpcAbilitiesNpcData'][40366] = {spell_ids = {15096}}
@@ -8416,16 +8366,14 @@ _G['NpcAbilitiesNpcData'][40421] = {spell_ids = {15621}}
 _G['NpcAbilitiesNpcData'][40423] = {spell_ids = {13737, 75414, 75416}}
 _G['NpcAbilitiesNpcData'][40427] = {spell_ids = {74143}}
 _G['NpcAbilitiesNpcData'][40432] = {spell_ids = {6533, 15496}}
-_G['NpcAbilitiesNpcData'][40435] = {spell_ids = {225832, 288865}}
+_G['NpcAbilitiesNpcData'][40435] = {spell_ids = {225832}}
 _G['NpcAbilitiesNpcData'][40447] = {spell_ids = {75441}}
 _G['NpcAbilitiesNpcData'][40448] = {spell_ids = {76411, 76415}}
 _G['NpcAbilitiesNpcData'][40449] = {spell_ids = {79444}}
 _G['NpcAbilitiesNpcData'][40450] = {spell_ids = {75453}}
 _G['NpcAbilitiesNpcData'][40463] = {spell_ids = {15496}}
 _G['NpcAbilitiesNpcData'][40464] = {spell_ids = {80600}}
-_G['NpcAbilitiesNpcData'][40484] = {spell_ids = {75664, 75789, 75792, 75861, 288865, 448057, 450077, 450088, 450100, 454782}}
-_G['NpcAbilitiesNpcData'][40485] = {spell_ids = {288865}}
-_G['NpcAbilitiesNpcData'][40486] = {spell_ids = {288865}}
+_G['NpcAbilitiesNpcData'][40484] = {spell_ids = {75664, 75789, 75792, 75861, 448057, 450077, 450088, 450100, 454782}}
 _G['NpcAbilitiesNpcData'][40491] = {spell_ids = {9613}}
 _G['NpcAbilitiesNpcData'][40503] = {spell_ids = {75548}}
 _G['NpcAbilitiesNpcData'][40510] = {spell_ids = {75573}}
@@ -8442,7 +8390,6 @@ _G['NpcAbilitiesNpcData'][40577] = {spell_ids = {76721, 209859, 240443, 426741, 
 _G['NpcAbilitiesNpcData'][40581] = {spell_ids = {79443, 79607, 79840}}
 _G['NpcAbilitiesNpcData'][40584] = {spell_ids = {84507}}
 _G['NpcAbilitiesNpcData'][40586] = {spell_ids = {75683, 427771, 428054, 428263, 428374}}
-_G['NpcAbilitiesNpcData'][40588] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][40593] = {spell_ids = {81753, 81754}}
 _G['NpcAbilitiesNpcData'][40600] = {spell_ids = {75520, 75763}}
 _G['NpcAbilitiesNpcData'][40632] = {spell_ids = {6660, 79721}}
@@ -8460,7 +8407,7 @@ _G['NpcAbilitiesNpcData'][40709] = {spell_ids = {87487}}
 _G['NpcAbilitiesNpcData'][40710] = {spell_ids = {79420}}
 _G['NpcAbilitiesNpcData'][40713] = {spell_ids = {80607}}
 _G['NpcAbilitiesNpcData'][40715] = {spell_ids = {75940, 75958, 75961}}
-_G['NpcAbilitiesNpcData'][40717] = {spell_ids = {6607, 33126, 288865}}
+_G['NpcAbilitiesNpcData'][40717] = {spell_ids = {6607, 33126}}
 _G['NpcAbilitiesNpcData'][40722] = {spell_ids = {37075}}
 _G['NpcAbilitiesNpcData'][40743] = {spell_ids = {75833}}
 _G['NpcAbilitiesNpcData'][40745] = {spell_ids = {75849}}
@@ -8858,8 +8805,6 @@ _G['NpcAbilitiesNpcData'][42290] = {spell_ids = {32919}}
 _G['NpcAbilitiesNpcData'][42291] = {spell_ids = {84152}}
 _G['NpcAbilitiesNpcData'][42296] = {spell_ids = {17277, 77666, 78904, 82635, 84325}}
 _G['NpcAbilitiesNpcData'][42297] = {spell_ids = {78904, 84325}}
-_G['NpcAbilitiesNpcData'][42316] = {spell_ids = {288865}}
-_G['NpcAbilitiesNpcData'][42319] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][42321] = {spell_ids = {78941}}
 _G['NpcAbilitiesNpcData'][42325] = {spell_ids = {78968, 78972, 79213, 79222, 79223, 90677}}
 _G['NpcAbilitiesNpcData'][42333] = {spell_ids = {79002, 79050, 79340, 79345, 79351}}
@@ -8995,7 +8940,7 @@ _G['NpcAbilitiesNpcData'][42966] = {spell_ids = {125801}}
 _G['NpcAbilitiesNpcData'][42971] = {spell_ids = {13444, 454782}}
 _G['NpcAbilitiesNpcData'][42973] = {spell_ids = {454782}}
 _G['NpcAbilitiesNpcData'][42975] = {spell_ids = {8599, 16458, 40505, 454782}}
-_G['NpcAbilitiesNpcData'][42983] = {spell_ids = {225832, 236321, 288865}}
+_G['NpcAbilitiesNpcData'][42983] = {spell_ids = {225832, 236321}}
 _G['NpcAbilitiesNpcData'][43001] = {spell_ids = {79962}}
 _G['NpcAbilitiesNpcData'][43007] = {spell_ids = {7992, 13298, 28991}}
 _G['NpcAbilitiesNpcData'][43014] = {spell_ids = {80344}}
@@ -9193,7 +9138,7 @@ _G['NpcAbilitiesNpcData'][43851] = {spell_ids = {84863}}
 _G['NpcAbilitiesNpcData'][43862] = {spell_ids = {3106}}
 _G['NpcAbilitiesNpcData'][43867] = {spell_ids = {80012, 82109, 84665, 84675, 88813}}
 _G['NpcAbilitiesNpcData'][43873] = {spell_ids = {88282, 88286, 88308, 181089}}
-_G['NpcAbilitiesNpcData'][43875] = {spell_ids = {86911, 86930, 87618, 87622, 96260, 288865}}
+_G['NpcAbilitiesNpcData'][43875] = {spell_ids = {86911, 86930, 87618, 87622, 96260}}
 _G['NpcAbilitiesNpcData'][43877] = {spell_ids = {125801}}
 _G['NpcAbilitiesNpcData'][43878] = {spell_ids = {86292, 86295, 86331, 413151}}
 _G['NpcAbilitiesNpcData'][43891] = {spell_ids = {84534, 84535}}
@@ -9303,7 +9248,6 @@ _G['NpcAbilitiesNpcData'][44371] = {spell_ids = {78154}}
 _G['NpcAbilitiesNpcData'][44372] = {spell_ids = {13728, 79872, 80117, 81147}}
 _G['NpcAbilitiesNpcData'][44378] = {spell_ids = {125801}}
 _G['NpcAbilitiesNpcData'][44382] = {spell_ids = {125801}}
-_G['NpcAbilitiesNpcData'][44383] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][44384] = {spell_ids = {125801}}
 _G['NpcAbilitiesNpcData'][44390] = {spell_ids = {3604}}
 _G['NpcAbilitiesNpcData'][44400] = {spell_ids = {428762}}
@@ -9415,17 +9359,16 @@ _G['NpcAbilitiesNpcData'][44847] = {spell_ids = {15496, 79877}}
 _G['NpcAbilitiesNpcData'][44849] = {spell_ids = {63227, 79881}}
 _G['NpcAbilitiesNpcData'][44853] = {spell_ids = {225832}}
 _G['NpcAbilitiesNpcData'][44855] = {spell_ids = {79849}}
-_G['NpcAbilitiesNpcData'][44865] = {spell_ids = {58511, 58514, 58519, 225832, 236321, 288865}}
-_G['NpcAbilitiesNpcData'][44866] = {spell_ids = {58511, 58514, 58519, 225832, 236321, 288865, 445306}}
-_G['NpcAbilitiesNpcData'][44867] = {spell_ids = {58511, 58514, 58519, 225832, 236321, 288865}}
-_G['NpcAbilitiesNpcData'][44868] = {spell_ids = {58511, 58514, 58519, 225832, 236321, 288865}}
-_G['NpcAbilitiesNpcData'][44871] = {spell_ids = {8599, 40505, 58511, 58514, 58519, 225832, 236321, 288865}}
-_G['NpcAbilitiesNpcData'][44872] = {spell_ids = {8599, 40505, 58511, 58514, 58519, 225832, 236321, 288865}}
-_G['NpcAbilitiesNpcData'][44876] = {spell_ids = {8599, 40505, 58511, 58514, 58519, 225832, 288865}}
-_G['NpcAbilitiesNpcData'][44877] = {spell_ids = {8599, 40505, 58511, 58514, 58519, 225832, 288865}}
-_G['NpcAbilitiesNpcData'][44878] = {spell_ids = {8599, 40505, 58511, 58514, 58519, 225832, 288865}}
+_G['NpcAbilitiesNpcData'][44865] = {spell_ids = {58511, 58514, 58519, 225832, 236321}}
+_G['NpcAbilitiesNpcData'][44866] = {spell_ids = {58511, 58514, 58519, 225832, 236321, 445306}}
+_G['NpcAbilitiesNpcData'][44867] = {spell_ids = {58511, 58514, 58519, 225832, 236321}}
+_G['NpcAbilitiesNpcData'][44868] = {spell_ids = {58511, 58514, 58519, 225832, 236321}}
+_G['NpcAbilitiesNpcData'][44871] = {spell_ids = {8599, 40505, 58511, 58514, 58519, 225832, 236321}}
+_G['NpcAbilitiesNpcData'][44872] = {spell_ids = {8599, 40505, 58511, 58514, 58519, 225832, 236321}}
+_G['NpcAbilitiesNpcData'][44876] = {spell_ids = {8599, 40505, 58511, 58514, 58519, 225832}}
+_G['NpcAbilitiesNpcData'][44877] = {spell_ids = {8599, 40505, 58511, 58514, 58519, 225832}}
+_G['NpcAbilitiesNpcData'][44878] = {spell_ids = {8599, 40505, 58511, 58514, 58519, 225832}}
 _G['NpcAbilitiesNpcData'][44879] = {spell_ids = {11977, 32064, 79877, 79881, 79883}}
-_G['NpcAbilitiesNpcData'][44880] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][44882] = {spell_ids = {34189}}
 _G['NpcAbilitiesNpcData'][44885] = {spell_ids = {57780, 83004}}
 _G['NpcAbilitiesNpcData'][44886] = {spell_ids = {32011}}
@@ -9859,7 +9802,7 @@ _G['NpcAbilitiesNpcData'][46527] = {spell_ids = {6660, 80015, 84836}}
 _G['NpcAbilitiesNpcData'][46569] = {spell_ids = {85236}}
 _G['NpcAbilitiesNpcData'][46570] = {spell_ids = {3427, 85835}}
 _G['NpcAbilitiesNpcData'][46571] = {spell_ids = {43951, 86699}}
-_G['NpcAbilitiesNpcData'][46572] = {spell_ids = {58511, 58514, 58519, 225832, 288865}}
+_G['NpcAbilitiesNpcData'][46572] = {spell_ids = {58511, 58514, 58519, 225832}}
 _G['NpcAbilitiesNpcData'][46573] = {spell_ids = {9734}}
 _G['NpcAbilitiesNpcData'][46574] = {spell_ids = {78542}}
 _G['NpcAbilitiesNpcData'][46575] = {spell_ids = {6268, 84873}}
@@ -10041,12 +9984,12 @@ _G['NpcAbilitiesNpcData'][47231] = {spell_ids = {12739, 91324, 91325}}
 _G['NpcAbilitiesNpcData'][47232] = {spell_ids = {15496, 91348}}
 _G['NpcAbilitiesNpcData'][47238] = {spell_ids = {88080, 411006}}
 _G['NpcAbilitiesNpcData'][47248] = {spell_ids = {79849}}
-_G['NpcAbilitiesNpcData'][47253] = {spell_ids = {22938, 79868, 225832, 236321, 288865}}
+_G['NpcAbilitiesNpcData'][47253] = {spell_ids = {22938, 79868, 225832, 236321}}
 _G['NpcAbilitiesNpcData'][47265] = {spell_ids = {89299}}
 _G['NpcAbilitiesNpcData'][47270] = {spell_ids = {8599, 22120, 32064}}
 _G['NpcAbilitiesNpcData'][47271] = {spell_ids = {22120, 32064}}
-_G['NpcAbilitiesNpcData'][47275] = {spell_ids = {11976, 288865}}
-_G['NpcAbilitiesNpcData'][47276] = {spell_ids = {8858, 9053, 288865}}
+_G['NpcAbilitiesNpcData'][47275] = {spell_ids = {11976}}
+_G['NpcAbilitiesNpcData'][47276] = {spell_ids = {8858, 9053}}
 _G['NpcAbilitiesNpcData'][47281] = {spell_ids = {88154}}
 _G['NpcAbilitiesNpcData'][47287] = {spell_ids = {9080, 32736}}
 _G['NpcAbilitiesNpcData'][47291] = {spell_ids = {32064}}
@@ -10071,7 +10014,7 @@ _G['NpcAbilitiesNpcData'][47375] = {spell_ids = {54633, 88379, 88385, 88393, 884
 _G['NpcAbilitiesNpcData'][47376] = {spell_ids = {54633, 88379, 88385, 88393}}
 _G['NpcAbilitiesNpcData'][47377] = {spell_ids = {54633, 88379, 88385, 88393}}
 _G['NpcAbilitiesNpcData'][47378] = {spell_ids = {54633, 88392, 88399}}
-_G['NpcAbilitiesNpcData'][47384] = {spell_ids = {225832, 288865}}
+_G['NpcAbilitiesNpcData'][47384] = {spell_ids = {225832}}
 _G['NpcAbilitiesNpcData'][47385] = {spell_ids = {87753, 89013}}
 _G['NpcAbilitiesNpcData'][47386] = {spell_ids = {81224}}
 _G['NpcAbilitiesNpcData'][47387] = {spell_ids = {3391, 6268, 81173, 81224}}
@@ -10400,7 +10343,6 @@ _G['NpcAbilitiesNpcData'][48665] = {spell_ids = {9613, 11980}}
 _G['NpcAbilitiesNpcData'][48668] = {spell_ids = {6660, 88844}}
 _G['NpcAbilitiesNpcData'][48670] = {spell_ids = {6660, 15496}}
 _G['NpcAbilitiesNpcData'][48678] = {spell_ids = {85424}}
-_G['NpcAbilitiesNpcData'][48686] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][48725] = {spell_ids = {45, 37488}}
 _G['NpcAbilitiesNpcData'][48731] = {spell_ids = {78146, 78154}}
 _G['NpcAbilitiesNpcData'][48732] = {spell_ids = {78770, 79797, 79884, 79886, 79913, 91017}}
@@ -10516,7 +10458,7 @@ _G['NpcAbilitiesNpcData'][49728] = {spell_ids = {219874}}
 _G['NpcAbilitiesNpcData'][49736] = {spell_ids = {22120}}
 _G['NpcAbilitiesNpcData'][49737] = {spell_ids = {236321}}
 _G['NpcAbilitiesNpcData'][49740] = {spell_ids = {92677, 92681}}
-_G['NpcAbilitiesNpcData'][49743] = {spell_ids = {255228, 288865, 317218}}
+_G['NpcAbilitiesNpcData'][49743] = {spell_ids = {255228, 317218}}
 _G['NpcAbilitiesNpcData'][49748] = {spell_ids = {225832}}
 _G['NpcAbilitiesNpcData'][49750] = {spell_ids = {225832}}
 _G['NpcAbilitiesNpcData'][49755] = {spell_ids = {125801}}
@@ -10537,8 +10479,7 @@ _G['NpcAbilitiesNpcData'][49821] = {spell_ids = {93277, 93278, 93306}}
 _G['NpcAbilitiesNpcData'][49823] = {spell_ids = {92789}}
 _G['NpcAbilitiesNpcData'][49825] = {spell_ids = {93381}}
 _G['NpcAbilitiesNpcData'][49826] = {spell_ids = {93325, 93327, 95440}}
-_G['NpcAbilitiesNpcData'][49837] = {spell_ids = {255228, 288865, 317218}}
-_G['NpcAbilitiesNpcData'][49842] = {spell_ids = {288865}}
+_G['NpcAbilitiesNpcData'][49837] = {spell_ids = {255228, 317218}}
 _G['NpcAbilitiesNpcData'][49850] = {spell_ids = {90928}}
 _G['NpcAbilitiesNpcData'][49854] = {spell_ids = {90938, 90946}}
 _G['NpcAbilitiesNpcData'][49874] = {spell_ids = {80676, 349927}}
@@ -10657,7 +10598,6 @@ _G['NpcAbilitiesNpcData'][50435] = {spell_ids = {225832}}
 _G['NpcAbilitiesNpcData'][50439] = {spell_ids = {93689}}
 _G['NpcAbilitiesNpcData'][50477] = {spell_ids = {32064}}
 _G['NpcAbilitiesNpcData'][50479] = {spell_ids = {422512}}
-_G['NpcAbilitiesNpcData'][50485] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][50488] = {spell_ids = {32736}}
 _G['NpcAbilitiesNpcData'][50499] = {spell_ids = {11538}}
 _G['NpcAbilitiesNpcData'][50504] = {spell_ids = {13864}}
@@ -10770,7 +10710,6 @@ _G['NpcAbilitiesNpcData'][50858] = {spell_ids = {32904}}
 _G['NpcAbilitiesNpcData'][50864] = {spell_ids = {32904}}
 _G['NpcAbilitiesNpcData'][50865] = {spell_ids = {83366}}
 _G['NpcAbilitiesNpcData'][50869] = {spell_ids = {93914, 93930}}
-_G['NpcAbilitiesNpcData'][50870] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][50874] = {spell_ids = {6268, 6607}}
 _G['NpcAbilitiesNpcData'][50875] = {spell_ids = {6268}}
 _G['NpcAbilitiesNpcData'][50876] = {spell_ids = {6268, 13445}}
@@ -10857,12 +10796,12 @@ _G['NpcAbilitiesNpcData'][51089] = {spell_ids = {81198}}
 _G['NpcAbilitiesNpcData'][51143] = {spell_ids = {79976, 79977}}
 _G['NpcAbilitiesNpcData'][51165] = {spell_ids = {15496, 79878}}
 _G['NpcAbilitiesNpcData'][51166] = {spell_ids = {15496, 79878}}
-_G['NpcAbilitiesNpcData'][51195] = {spell_ids = {225832, 288865}}
+_G['NpcAbilitiesNpcData'][51195] = {spell_ids = {225832}}
 _G['NpcAbilitiesNpcData'][51217] = {spell_ids = {86695, 86699}}
 _G['NpcAbilitiesNpcData'][51231] = {spell_ids = {94600}}
 _G['NpcAbilitiesNpcData'][51277] = {spell_ids = {8599}}
-_G['NpcAbilitiesNpcData'][51346] = {spell_ids = {236321, 288865, 454782}}
-_G['NpcAbilitiesNpcData'][51348] = {spell_ids = {6660, 96161, 225832, 236321, 288865}}
+_G['NpcAbilitiesNpcData'][51346] = {spell_ids = {236321, 454782}}
+_G['NpcAbilitiesNpcData'][51348] = {spell_ids = {6660, 96161, 225832, 236321}}
 _G['NpcAbilitiesNpcData'][51352] = {spell_ids = {9053}}
 _G['NpcAbilitiesNpcData'][51354] = {spell_ids = {92249}}
 _G['NpcAbilitiesNpcData'][51384] = {spell_ids = {18396}}
@@ -11379,7 +11318,7 @@ _G['NpcAbilitiesNpcData'][54597] = {spell_ids = {102183}}
 _G['NpcAbilitiesNpcData'][54600] = {spell_ids = {102198}}
 _G['NpcAbilitiesNpcData'][54601] = {spell_ids = {109977}}
 _G['NpcAbilitiesNpcData'][54603] = {spell_ids = {58506}}
-_G['NpcAbilitiesNpcData'][54605] = {spell_ids = {109976, 288865}}
+_G['NpcAbilitiesNpcData'][54605] = {spell_ids = {109976}}
 _G['NpcAbilitiesNpcData'][54606] = {spell_ids = {58506}}
 _G['NpcAbilitiesNpcData'][54607] = {spell_ids = {58506}}
 _G['NpcAbilitiesNpcData'][54611] = {spell_ids = {108937, 108955, 119301}}
@@ -11391,8 +11330,7 @@ _G['NpcAbilitiesNpcData'][54632] = {spell_ids = {102848, 102861}}
 _G['NpcAbilitiesNpcData'][54633] = {spell_ids = {102984, 102992}}
 _G['NpcAbilitiesNpcData'][54634] = {spell_ids = {104088}}
 _G['NpcAbilitiesNpcData'][54638] = {spell_ids = {36295}}
-_G['NpcAbilitiesNpcData'][54642] = {spell_ids = {102227, 102341, 288865}}
-_G['NpcAbilitiesNpcData'][54643] = {spell_ids = {288865}}
+_G['NpcAbilitiesNpcData'][54642] = {spell_ids = {102227, 102341}}
 _G['NpcAbilitiesNpcData'][54645] = {spell_ids = {102233, 102238, 102245}}
 _G['NpcAbilitiesNpcData'][54646] = {spell_ids = {102226}}
 _G['NpcAbilitiesNpcData'][54674] = {spell_ids = {35230}}
@@ -11462,7 +11400,6 @@ _G['NpcAbilitiesNpcData'][55109] = {spell_ids = {103021}}
 _G['NpcAbilitiesNpcData'][55110] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][55111] = {spell_ids = {102989, 102990}}
 _G['NpcAbilitiesNpcData'][55112] = {spell_ids = {103000, 103001, 103002}}
-_G['NpcAbilitiesNpcData'][55136] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][55139] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][55142] = {spell_ids = {86603}}
 _G['NpcAbilitiesNpcData'][55151] = {spell_ids = {443503}}
@@ -11502,7 +11439,7 @@ _G['NpcAbilitiesNpcData'][55461] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][55467] = {spell_ids = {103777}}
 _G['NpcAbilitiesNpcData'][55470] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][55474] = {spell_ids = {103813}}
-_G['NpcAbilitiesNpcData'][55475] = {spell_ids = {288865, 454782}}
+_G['NpcAbilitiesNpcData'][55475] = {spell_ids = {454782}}
 _G['NpcAbilitiesNpcData'][55483] = {spell_ids = {107936, 107938}}
 _G['NpcAbilitiesNpcData'][55489] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][55500] = {spell_ids = {104400, 105915}}
@@ -11539,8 +11476,6 @@ _G['NpcAbilitiesNpcData'][55680] = {spell_ids = {104380}}
 _G['NpcAbilitiesNpcData'][55686] = {spell_ids = {104717, 104718}}
 _G['NpcAbilitiesNpcData'][55688] = {spell_ids = {77806, 104716}}
 _G['NpcAbilitiesNpcData'][55689] = {spell_ids = {23202, 64238, 104448, 105256, 105289, 105409, 105465, 107850, 108934, 109325, 109541}}
-_G['NpcAbilitiesNpcData'][55741] = {spell_ids = {288865}}
-_G['NpcAbilitiesNpcData'][55749] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][55762] = {spell_ids = {104678}}
 _G['NpcAbilitiesNpcData'][55779] = {spell_ids = {102475, 103834, 103905, 103921}}
 _G['NpcAbilitiesNpcData'][55786] = {spell_ids = {125990, 125992, 126006}}
@@ -11563,7 +11498,6 @@ _G['NpcAbilitiesNpcData'][56009] = {spell_ids = {117287, 117456}}
 _G['NpcAbilitiesNpcData'][56034] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][56064] = {spell_ids = {342062}}
 _G['NpcAbilitiesNpcData'][56070] = {spell_ids = {443503}}
-_G['NpcAbilitiesNpcData'][56097] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][56099] = {spell_ids = {105565}}
 _G['NpcAbilitiesNpcData'][56100] = {spell_ids = {106613}}
 _G['NpcAbilitiesNpcData'][56102] = {spell_ids = {105799}}
@@ -11571,9 +11505,6 @@ _G['NpcAbilitiesNpcData'][56103] = {spell_ids = {108537}}
 _G['NpcAbilitiesNpcData'][56104] = {spell_ids = {105314}}
 _G['NpcAbilitiesNpcData'][56106] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][56108] = {spell_ids = {105285, 105316}}
-_G['NpcAbilitiesNpcData'][56129] = {spell_ids = {288865}}
-_G['NpcAbilitiesNpcData'][56130] = {spell_ids = {288865}}
-_G['NpcAbilitiesNpcData'][56131] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][56132] = {spell_ids = {130984}}
 _G['NpcAbilitiesNpcData'][56136] = {spell_ids = {105311, 105312}}
 _G['NpcAbilitiesNpcData'][56160] = {spell_ids = {144506, 144519, 144531}}
@@ -11591,7 +11522,6 @@ _G['NpcAbilitiesNpcData'][56184] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][56185] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][56188] = {spell_ids = {105444}}
 _G['NpcAbilitiesNpcData'][56192] = {spell_ids = {105296, 105301, 105471, 105522}}
-_G['NpcAbilitiesNpcData'][56194] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][56198] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][56199] = {spell_ids = {115632, 443503}}
 _G['NpcAbilitiesNpcData'][56201] = {spell_ids = {443503}}
@@ -11697,7 +11627,7 @@ _G['NpcAbilitiesNpcData'][56703] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][56706] = {spell_ids = {106866, 443503}}
 _G['NpcAbilitiesNpcData'][56712] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][56713] = {spell_ids = {443503}}
-_G['NpcAbilitiesNpcData'][56717] = {spell_ids = {112944, 112992, 288865, 441141, 443503}}
+_G['NpcAbilitiesNpcData'][56717] = {spell_ids = {112944, 112992, 441141, 443503}}
 _G['NpcAbilitiesNpcData'][56718] = {spell_ids = {114291, 441141, 443503}}
 _G['NpcAbilitiesNpcData'][56719] = {spell_ids = {106827}}
 _G['NpcAbilitiesNpcData'][56721] = {spell_ids = {118532, 443503}}
@@ -11746,7 +11676,7 @@ _G['NpcAbilitiesNpcData'][56877] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][56884] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][56890] = {spell_ids = {128829, 441141, 443503}}
 _G['NpcAbilitiesNpcData'][56895] = {spell_ids = {443503}}
-_G['NpcAbilitiesNpcData'][56906] = {spell_ids = {107268, 288865, 443503}}
+_G['NpcAbilitiesNpcData'][56906] = {spell_ids = {107268, 443503}}
 _G['NpcAbilitiesNpcData'][56912] = {spell_ids = {441141, 443503}}
 _G['NpcAbilitiesNpcData'][56914] = {spell_ids = {48619, 48620, 52812}}
 _G['NpcAbilitiesNpcData'][56915] = {spell_ids = {443503}}
@@ -11877,7 +11807,7 @@ _G['NpcAbilitiesNpcData'][58274] = {spell_ids = {80009, 443503}}
 _G['NpcAbilitiesNpcData'][58285] = {spell_ids = {60873, 121289}}
 _G['NpcAbilitiesNpcData'][58312] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][58319] = {spell_ids = {397503}}
-_G['NpcAbilitiesNpcData'][58336] = {spell_ids = {135056, 288865, 454782}}
+_G['NpcAbilitiesNpcData'][58336] = {spell_ids = {135056, 454782}}
 _G['NpcAbilitiesNpcData'][58353] = {spell_ids = {130830}}
 _G['NpcAbilitiesNpcData'][58360] = {spell_ids = {119583, 443503}}
 _G['NpcAbilitiesNpcData'][58363] = {spell_ids = {129922}}
@@ -11934,7 +11864,7 @@ _G['NpcAbilitiesNpcData'][58612] = {spell_ids = {15496, 443503}}
 _G['NpcAbilitiesNpcData'][58614] = {spell_ids = {118907, 443503}}
 _G['NpcAbilitiesNpcData'][58631] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][58632] = {spell_ids = {111216, 111217, 111218, 111221, 443503, 454782}}
-_G['NpcAbilitiesNpcData'][58633] = {spell_ids = {111606, 111610, 111631, 111854, 288865, 443503, 454782}}
+_G['NpcAbilitiesNpcData'][58633] = {spell_ids = {111606, 111610, 111631, 111854, 443503, 454782}}
 _G['NpcAbilitiesNpcData'][58634] = {spell_ids = {118972, 443503}}
 _G['NpcAbilitiesNpcData'][58639] = {spell_ids = {124665}}
 _G['NpcAbilitiesNpcData'][58641] = {spell_ids = {443503}}
@@ -11949,8 +11879,8 @@ _G['NpcAbilitiesNpcData'][58671] = {spell_ids = {126350, 443503}}
 _G['NpcAbilitiesNpcData'][58674] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][58675] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][58676] = {spell_ids = {6713, 443503}}
-_G['NpcAbilitiesNpcData'][58683] = {spell_ids = {84147, 111418, 128231, 288865, 443503}}
-_G['NpcAbilitiesNpcData'][58684] = {spell_ids = {111341, 111351, 288865, 443503}}
+_G['NpcAbilitiesNpcData'][58683] = {spell_ids = {84147, 111418, 128231, 443503}}
+_G['NpcAbilitiesNpcData'][58684] = {spell_ids = {111341, 111351, 443503}}
 _G['NpcAbilitiesNpcData'][58685] = {spell_ids = {17140}}
 _G['NpcAbilitiesNpcData'][58694] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][58696] = {spell_ids = {443503}}
@@ -11966,7 +11896,7 @@ _G['NpcAbilitiesNpcData'][58745] = {spell_ids = {112056}}
 _G['NpcAbilitiesNpcData'][58754] = {spell_ids = {52538, 443503}}
 _G['NpcAbilitiesNpcData'][58755] = {spell_ids = {52538, 118139, 443503}}
 _G['NpcAbilitiesNpcData'][58756] = {spell_ids = {111667}}
-_G['NpcAbilitiesNpcData'][58757] = {spell_ids = {111594, 111599, 111772, 111774, 288865, 443503}}
+_G['NpcAbilitiesNpcData'][58757] = {spell_ids = {111594, 111599, 111772, 111774, 443503}}
 _G['NpcAbilitiesNpcData'][58758] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][58766] = {spell_ids = {129656, 443503}}
 _G['NpcAbilitiesNpcData'][58768] = {spell_ids = {443503}}
@@ -11992,7 +11922,7 @@ _G['NpcAbilitiesNpcData'][58811] = {spell_ids = {114965}}
 _G['NpcAbilitiesNpcData'][58812] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][58814] = {spell_ids = {110113}}
 _G['NpcAbilitiesNpcData'][58817] = {spell_ids = {443503}}
-_G['NpcAbilitiesNpcData'][58822] = {spell_ids = {111801, 111813, 288865, 443503}}
+_G['NpcAbilitiesNpcData'][58822] = {spell_ids = {111801, 111813, 443503}}
 _G['NpcAbilitiesNpcData'][58823] = {spell_ids = {111715, 111722, 111752, 111762, 443503}}
 _G['NpcAbilitiesNpcData'][58826] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][58830] = {spell_ids = {443503}}
@@ -12139,7 +12069,6 @@ _G['NpcAbilitiesNpcData'][59296] = {spell_ids = {113955}}
 _G['NpcAbilitiesNpcData'][59299] = {spell_ids = {127352, 441141, 443503}}
 _G['NpcAbilitiesNpcData'][59302] = {spell_ids = {127352, 441141, 443503}}
 _G['NpcAbilitiesNpcData'][59303] = {spell_ids = {114004, 114242, 114259, 116140, 441141, 443503, 454782}}
-_G['NpcAbilitiesNpcData'][59304] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][59306] = {spell_ids = {129793}}
 _G['NpcAbilitiesNpcData'][59309] = {spell_ids = {441141, 443503}}
 _G['NpcAbilitiesNpcData'][59310] = {spell_ids = {125801}}
@@ -12216,7 +12145,6 @@ _G['NpcAbilitiesNpcData'][59527] = {spell_ids = {114516, 114935}}
 _G['NpcAbilitiesNpcData'][59528] = {spell_ids = {117507, 117516, 443503}}
 _G['NpcAbilitiesNpcData'][59534] = {spell_ids = {119578, 128278, 443503}}
 _G['NpcAbilitiesNpcData'][59538] = {spell_ids = {443503}}
-_G['NpcAbilitiesNpcData'][59539] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][59540] = {spell_ids = {84709, 443503}}
 _G['NpcAbilitiesNpcData'][59542] = {spell_ids = {129793}}
 _G['NpcAbilitiesNpcData'][59543] = {spell_ids = {443503}}
@@ -12309,8 +12237,6 @@ _G['NpcAbilitiesNpcData'][59773] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][59774] = {spell_ids = {115853, 443503}}
 _G['NpcAbilitiesNpcData'][59775] = {spell_ids = {69203}}
 _G['NpcAbilitiesNpcData'][59778] = {spell_ids = {443503}}
-_G['NpcAbilitiesNpcData'][59779] = {spell_ids = {288865}}
-_G['NpcAbilitiesNpcData'][59781] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][59782] = {spell_ids = {115132}}
 _G['NpcAbilitiesNpcData'][59783] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][59784] = {spell_ids = {443503}}
@@ -12318,7 +12244,7 @@ _G['NpcAbilitiesNpcData'][59785] = {spell_ids = {116034, 443503}}
 _G['NpcAbilitiesNpcData'][59786] = {spell_ids = {115385, 441141, 443503}}
 _G['NpcAbilitiesNpcData'][59787] = {spell_ids = {115385, 441141, 443503}}
 _G['NpcAbilitiesNpcData'][59788] = {spell_ids = {443503}}
-_G['NpcAbilitiesNpcData'][59789] = {spell_ids = {115139, 115147, 115289, 115297, 288865, 441141, 443503}}
+_G['NpcAbilitiesNpcData'][59789] = {spell_ids = {115139, 115147, 115289, 115297, 441141, 443503}}
 _G['NpcAbilitiesNpcData'][59790] = {spell_ids = {43441, 120198, 443503}}
 _G['NpcAbilitiesNpcData'][59794] = {spell_ids = {115455, 441141, 443503}}
 _G['NpcAbilitiesNpcData'][59796] = {spell_ids = {443503}}
@@ -12355,7 +12281,7 @@ _G['NpcAbilitiesNpcData'][59859] = {spell_ids = {114536}}
 _G['NpcAbilitiesNpcData'][59873] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][59874] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][59877] = {spell_ids = {131652}}
-_G['NpcAbilitiesNpcData'][59884] = {spell_ids = {115144, 288865, 441141, 443503}}
+_G['NpcAbilitiesNpcData'][59884] = {spell_ids = {115144, 441141, 443503}}
 _G['NpcAbilitiesNpcData'][59887] = {spell_ids = {96340}}
 _G['NpcAbilitiesNpcData'][59888] = {spell_ids = {9080, 443503}}
 _G['NpcAbilitiesNpcData'][59889] = {spell_ids = {443503}}
@@ -12371,7 +12297,6 @@ _G['NpcAbilitiesNpcData'][59933] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][59934] = {spell_ids = {115257}}
 _G['NpcAbilitiesNpcData'][59936] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][59958] = {spell_ids = {119511}}
-_G['NpcAbilitiesNpcData'][59961] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][59967] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][59968] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][59969] = {spell_ids = {443503}}
@@ -12383,7 +12308,7 @@ _G['NpcAbilitiesNpcData'][59979] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][59980] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][59982] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][59984] = {spell_ids = {443503}}
-_G['NpcAbilitiesNpcData'][60009] = {spell_ids = {26662, 116018, 116157, 116363, 116364, 116417, 116711, 116784, 116942, 118530, 118783, 131788, 131790, 131792, 288865, 443503}}
+_G['NpcAbilitiesNpcData'][60009] = {spell_ids = {26662, 116018, 116157, 116363, 116364, 116417, 116711, 116784, 116942, 118530, 118783, 131788, 131790, 131792, 443503}}
 _G['NpcAbilitiesNpcData'][60010] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][60027] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][60030] = {spell_ids = {443503}}
@@ -12403,11 +12328,9 @@ _G['NpcAbilitiesNpcData'][60127] = {spell_ids = {34828, 79890, 443503}}
 _G['NpcAbilitiesNpcData'][60131] = {spell_ids = {38056}}
 _G['NpcAbilitiesNpcData'][60138] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][60139] = {spell_ids = {80610}}
-_G['NpcAbilitiesNpcData'][60140] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][60143] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][60162] = {spell_ids = {441141, 443503}}
 _G['NpcAbilitiesNpcData'][60164] = {spell_ids = {443503}}
-_G['NpcAbilitiesNpcData'][60167] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][60169] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][60170] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][60184] = {spell_ids = {122118, 443503}}
@@ -12436,18 +12359,17 @@ _G['NpcAbilitiesNpcData'][60358] = {spell_ids = {119681, 443503}}
 _G['NpcAbilitiesNpcData'][60373] = {spell_ids = {127157, 443503}}
 _G['NpcAbilitiesNpcData'][60375] = {spell_ids = {116606, 122219, 443503}}
 _G['NpcAbilitiesNpcData'][60381] = {spell_ids = {116595, 443503}}
-_G['NpcAbilitiesNpcData'][60383] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][60384] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][60386] = {spell_ids = {76622}}
 _G['NpcAbilitiesNpcData'][60396] = {spell_ids = {443503}}
-_G['NpcAbilitiesNpcData'][60397] = {spell_ids = {288865, 443503}}
+_G['NpcAbilitiesNpcData'][60397] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][60398] = {spell_ids = {116778, 117485, 443503}}
 _G['NpcAbilitiesNpcData'][60399] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][60400] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][60401] = {spell_ids = {744, 79174, 443503}}
 _G['NpcAbilitiesNpcData'][60402] = {spell_ids = {15228, 116592, 117241, 443503}}
 _G['NpcAbilitiesNpcData'][60408] = {spell_ids = {116671}}
-_G['NpcAbilitiesNpcData'][60410] = {spell_ids = {116994, 117204, 117954, 117960, 118310, 119358, 119360, 127362, 132256, 288865, 443503}}
+_G['NpcAbilitiesNpcData'][60410] = {spell_ids = {116994, 117204, 117954, 117960, 118310, 119358, 119360, 127362, 132256, 443503}}
 _G['NpcAbilitiesNpcData'][60411] = {spell_ids = {128448}}
 _G['NpcAbilitiesNpcData'][60431] = {spell_ids = {43441}}
 _G['NpcAbilitiesNpcData'][60432] = {spell_ids = {69203, 443503}}
@@ -12497,9 +12419,9 @@ _G['NpcAbilitiesNpcData'][60579] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][60580] = {spell_ids = {129111, 443503}}
 _G['NpcAbilitiesNpcData'][60581] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][60582] = {spell_ids = {115015, 115024, 443503}}
-_G['NpcAbilitiesNpcData'][60583] = {spell_ids = {117052, 117519, 117975, 117986, 118186, 288865, 443503}}
-_G['NpcAbilitiesNpcData'][60585] = {spell_ids = {111850, 117052, 117187, 117351, 118077, 118186, 288865, 443503}}
-_G['NpcAbilitiesNpcData'][60586] = {spell_ids = {117052, 117227, 117309, 117351, 118186, 118312, 288865, 443503}}
+_G['NpcAbilitiesNpcData'][60583] = {spell_ids = {117052, 117519, 117975, 117986, 118186, 443503}}
+_G['NpcAbilitiesNpcData'][60585] = {spell_ids = {111850, 117052, 117187, 117351, 118077, 118186, 443503}}
+_G['NpcAbilitiesNpcData'][60586] = {spell_ids = {117052, 117227, 117309, 117351, 118186, 118312, 443503}}
 _G['NpcAbilitiesNpcData'][60601] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][60602] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][60603] = {spell_ids = {443503}}
@@ -12513,11 +12435,10 @@ _G['NpcAbilitiesNpcData'][60685] = {spell_ids = {117407}}
 _G['NpcAbilitiesNpcData'][60689] = {spell_ids = {36208, 46182, 227381}}
 _G['NpcAbilitiesNpcData'][60690] = {spell_ids = {97153, 97154}}
 _G['NpcAbilitiesNpcData'][60692] = {spell_ids = {443503}}
-_G['NpcAbilitiesNpcData'][60693] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][60697] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][60701] = {spell_ids = {117506, 117628, 117685, 117697, 443503}}
 _G['NpcAbilitiesNpcData'][60708] = {spell_ids = {117708, 117737, 117756, 117833, 117837, 443503}}
-_G['NpcAbilitiesNpcData'][60709] = {spell_ids = {117910, 117920, 117948, 117961, 120207, 288865, 443503}}
+_G['NpcAbilitiesNpcData'][60709] = {spell_ids = {117910, 117920, 117948, 117961, 120207, 443503}}
 _G['NpcAbilitiesNpcData'][60710] = {spell_ids = {118047, 118048, 118094, 118162, 118163, 443503}}
 _G['NpcAbilitiesNpcData'][60713] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][60725] = {spell_ids = {443503}}
@@ -12531,7 +12452,6 @@ _G['NpcAbilitiesNpcData'][60752] = {spell_ids = {9532, 15501, 119575}}
 _G['NpcAbilitiesNpcData'][60754] = {spell_ids = {117632, 117671, 117677, 443503}}
 _G['NpcAbilitiesNpcData'][60756] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][60758] = {spell_ids = {443503}}
-_G['NpcAbilitiesNpcData'][60761] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][60763] = {spell_ids = {36208, 46182, 227381}}
 _G['NpcAbilitiesNpcData'][60767] = {spell_ids = {80003, 443503}}
 _G['NpcAbilitiesNpcData'][60768] = {spell_ids = {116550}}
@@ -12621,7 +12541,7 @@ _G['NpcAbilitiesNpcData'][61091] = {spell_ids = {129438, 443503}}
 _G['NpcAbilitiesNpcData'][61092] = {spell_ids = {118458, 124683, 124690, 443503}}
 _G['NpcAbilitiesNpcData'][61097] = {spell_ids = {118463}}
 _G['NpcAbilitiesNpcData'][61121] = {spell_ids = {225832, 443503}}
-_G['NpcAbilitiesNpcData'][61122] = {spell_ids = {225832, 288865, 443503}}
+_G['NpcAbilitiesNpcData'][61122] = {spell_ids = {225832, 443503}}
 _G['NpcAbilitiesNpcData'][61124] = {spell_ids = {115856}}
 _G['NpcAbilitiesNpcData'][61130] = {spell_ids = {121445, 443503}}
 _G['NpcAbilitiesNpcData'][61131] = {spell_ids = {118552}}
@@ -12665,7 +12585,7 @@ _G['NpcAbilitiesNpcData'][61340] = {spell_ids = {118903, 443503}}
 _G['NpcAbilitiesNpcData'][61341] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][61345] = {spell_ids = {119524, 443503}}
 _G['NpcAbilitiesNpcData'][61347] = {spell_ids = {119629, 119630, 443503}}
-_G['NpcAbilitiesNpcData'][61348] = {spell_ids = {288865, 443503}}
+_G['NpcAbilitiesNpcData'][61348] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][61354] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][61355] = {spell_ids = {125288, 443503}}
 _G['NpcAbilitiesNpcData'][61365] = {spell_ids = {443503}}
@@ -12733,10 +12653,10 @@ _G['NpcAbilitiesNpcData'][61610] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][61613] = {spell_ids = {119941, 131655}}
 _G['NpcAbilitiesNpcData'][61618] = {spell_ids = {125375, 443503}}
 _G['NpcAbilitiesNpcData'][61619] = {spell_ids = {125353, 443503}}
-_G['NpcAbilitiesNpcData'][61620] = {spell_ids = {127408, 288865}}
+_G['NpcAbilitiesNpcData'][61620] = {spell_ids = {127408}}
 _G['NpcAbilitiesNpcData'][61623] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][61626] = {spell_ids = {120087}}
-_G['NpcAbilitiesNpcData'][61634] = {spell_ids = {120758, 120759, 120778, 120789, 288865, 441141, 443503}}
+_G['NpcAbilitiesNpcData'][61634] = {spell_ids = {120758, 120759, 120778, 120789, 441141, 443503}}
 _G['NpcAbilitiesNpcData'][61635] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][61641] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][61649] = {spell_ids = {443503}}
@@ -12765,7 +12685,6 @@ _G['NpcAbilitiesNpcData'][61794] = {spell_ids = {120353}}
 _G['NpcAbilitiesNpcData'][61797] = {spell_ids = {120268}}
 _G['NpcAbilitiesNpcData'][61803] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][61811] = {spell_ids = {443503}}
-_G['NpcAbilitiesNpcData'][61812] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][61813] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][61814] = {spell_ids = {120816, 120817, 120911, 127823, 128681, 443503}}
 _G['NpcAbilitiesNpcData'][61817] = {spell_ids = {120402}}
@@ -12784,7 +12703,7 @@ _G['NpcAbilitiesNpcData'][61848] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][61875] = {spell_ids = {125384, 443503}}
 _G['NpcAbilitiesNpcData'][61886] = {spell_ids = {118228, 443503}}
 _G['NpcAbilitiesNpcData'][61910] = {spell_ids = {120938, 443503}}
-_G['NpcAbilitiesNpcData'][61928] = {spell_ids = {121421, 288865, 443503}}
+_G['NpcAbilitiesNpcData'][61928] = {spell_ids = {121421, 443503}}
 _G['NpcAbilitiesNpcData'][61929] = {spell_ids = {121114}}
 _G['NpcAbilitiesNpcData'][61945] = {spell_ids = {123647}}
 _G['NpcAbilitiesNpcData'][61946] = {spell_ids = {120562, 121601, 443503}}
@@ -12795,7 +12714,7 @@ _G['NpcAbilitiesNpcData'][61968] = {spell_ids = {120667}}
 _G['NpcAbilitiesNpcData'][61970] = {spell_ids = {7992, 443503}}
 _G['NpcAbilitiesNpcData'][61971] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][61981] = {spell_ids = {443503}}
-_G['NpcAbilitiesNpcData'][61989] = {spell_ids = {121229, 121245, 121247, 288865, 443503}}
+_G['NpcAbilitiesNpcData'][61989] = {spell_ids = {121229, 121245, 121247, 443503}}
 _G['NpcAbilitiesNpcData'][62000] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][62005] = {spell_ids = {24394}}
 _G['NpcAbilitiesNpcData'][62008] = {spell_ids = {49861, 443503}}
@@ -12822,9 +12741,9 @@ _G['NpcAbilitiesNpcData'][62164] = {spell_ids = {122735, 122754, 122774, 123495}
 _G['NpcAbilitiesNpcData'][62165] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][62192] = {spell_ids = {121010}}
 _G['NpcAbilitiesNpcData'][62194] = {spell_ids = {79862, 79863, 79864, 79866, 225832, 236321}}
-_G['NpcAbilitiesNpcData'][62195] = {spell_ids = {225832, 236321, 288865}}
-_G['NpcAbilitiesNpcData'][62196] = {spell_ids = {79850, 79858, 79859, 79860, 288865}}
-_G['NpcAbilitiesNpcData'][62197] = {spell_ids = {36246, 288865}}
+_G['NpcAbilitiesNpcData'][62195] = {spell_ids = {225832, 236321}}
+_G['NpcAbilitiesNpcData'][62196] = {spell_ids = {79850, 79858, 79859, 79860}}
+_G['NpcAbilitiesNpcData'][62197] = {spell_ids = {36246}}
 _G['NpcAbilitiesNpcData'][62198] = {spell_ids = {11986, 15786, 79925}}
 _G['NpcAbilitiesNpcData'][62203] = {spell_ids = {128398}}
 _G['NpcAbilitiesNpcData'][62205] = {spell_ids = {121443}}
@@ -12868,13 +12787,13 @@ _G['NpcAbilitiesNpcData'][62362] = {spell_ids = {11971}}
 _G['NpcAbilitiesNpcData'][62378] = {spell_ids = {66099}}
 _G['NpcAbilitiesNpcData'][62379] = {spell_ids = {121546}}
 _G['NpcAbilitiesNpcData'][62386] = {spell_ids = {121602, 443503}}
-_G['NpcAbilitiesNpcData'][62397] = {spell_ids = {121896, 122399, 122406, 131813, 288865, 443503}}
+_G['NpcAbilitiesNpcData'][62397] = {spell_ids = {121896, 122399, 122406, 131813, 443503}}
 _G['NpcAbilitiesNpcData'][62402] = {spell_ids = {122409, 443503}}
 _G['NpcAbilitiesNpcData'][62405] = {spell_ids = {121876, 122064, 443503}}
 _G['NpcAbilitiesNpcData'][62408] = {spell_ids = {122149, 122193, 443503}}
 _G['NpcAbilitiesNpcData'][62440] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][62441] = {spell_ids = {11443, 15472, 122976, 123031, 443503}}
-_G['NpcAbilitiesNpcData'][62442] = {spell_ids = {57723, 57724, 80354, 122752, 122768, 122777, 122855, 122858, 124176, 130008, 288865, 443503}}
+_G['NpcAbilitiesNpcData'][62442] = {spell_ids = {57723, 57724, 80354, 122752, 122768, 122777, 122855, 122858, 124176, 130008, 443503}}
 _G['NpcAbilitiesNpcData'][62444] = {spell_ids = {79864, 79866, 127662, 443503}}
 _G['NpcAbilitiesNpcData'][62447] = {spell_ids = {122354}}
 _G['NpcAbilitiesNpcData'][62448] = {spell_ids = {443503}}
@@ -12967,7 +12886,7 @@ _G['NpcAbilitiesNpcData'][62677] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][62679] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][62680] = {spell_ids = {124296, 124800, 443503}}
 _G['NpcAbilitiesNpcData'][62686] = {spell_ids = {124296, 124800, 443503}}
-_G['NpcAbilitiesNpcData'][62691] = {spell_ids = {122348, 122532, 288865, 443503}}
+_G['NpcAbilitiesNpcData'][62691] = {spell_ids = {122348, 122532, 443503}}
 _G['NpcAbilitiesNpcData'][62701] = {spell_ids = {122398, 443503}}
 _G['NpcAbilitiesNpcData'][62705] = {spell_ids = {122397}}
 _G['NpcAbilitiesNpcData'][62711] = {spell_ids = {122402, 122408, 122413, 122415, 122540, 443503}}
@@ -13030,7 +12949,7 @@ _G['NpcAbilitiesNpcData'][62945] = {spell_ids = {129325, 443503}}
 _G['NpcAbilitiesNpcData'][62969] = {spell_ids = {123011, 443503}}
 _G['NpcAbilitiesNpcData'][62976] = {spell_ids = {123021}}
 _G['NpcAbilitiesNpcData'][62977] = {spell_ids = {123036, 443503}}
-_G['NpcAbilitiesNpcData'][62980] = {spell_ids = {47008, 122713, 122740, 122761, 122852, 123791, 123811, 127834, 288865, 443503}}
+_G['NpcAbilitiesNpcData'][62980] = {spell_ids = {47008, 122713, 122740, 122761, 122852, 123791, 123811, 127834, 443503}}
 _G['NpcAbilitiesNpcData'][62982] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][62983] = {spell_ids = {123121, 123181}}
 _G['NpcAbilitiesNpcData'][62995] = {spell_ids = {123505, 443503}}
@@ -13050,7 +12969,7 @@ _G['NpcAbilitiesNpcData'][63036] = {spell_ids = {123502, 443503}}
 _G['NpcAbilitiesNpcData'][63044] = {spell_ids = {744, 443503}}
 _G['NpcAbilitiesNpcData'][63045] = {spell_ids = {126184}}
 _G['NpcAbilitiesNpcData'][63048] = {spell_ids = {123422, 443503}}
-_G['NpcAbilitiesNpcData'][63049] = {spell_ids = {123437, 288865, 443503}}
+_G['NpcAbilitiesNpcData'][63049] = {spell_ids = {123437, 443503}}
 _G['NpcAbilitiesNpcData'][63053] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][63071] = {spell_ids = {9080, 15284, 125478}}
 _G['NpcAbilitiesNpcData'][63086] = {spell_ids = {58511}}
@@ -13209,7 +13128,6 @@ _G['NpcAbilitiesNpcData'][63872] = {spell_ids = {120077, 443503}}
 _G['NpcAbilitiesNpcData'][63875] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][63877] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][63878] = {spell_ids = {443503}}
-_G['NpcAbilitiesNpcData'][63883] = {spell_ids = {288865}}
 _G['NpcAbilitiesNpcData'][63888] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][63895] = {spell_ids = {124797, 443503}}
 _G['NpcAbilitiesNpcData'][63903] = {spell_ids = {443503}}
@@ -13259,8 +13177,8 @@ _G['NpcAbilitiesNpcData'][64037] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][64061] = {spell_ids = {126955, 126958, 126970, 443503}}
 _G['NpcAbilitiesNpcData'][64063] = {spell_ids = {126973, 443503}}
 _G['NpcAbilitiesNpcData'][64068] = {spell_ids = {443503}}
-_G['NpcAbilitiesNpcData'][64071] = {spell_ids = {225832, 288865, 443503}}
-_G['NpcAbilitiesNpcData'][64072] = {spell_ids = {225832, 288865, 443503}}
+_G['NpcAbilitiesNpcData'][64071] = {spell_ids = {225832, 443503}}
+_G['NpcAbilitiesNpcData'][64072] = {spell_ids = {225832, 443503}}
 _G['NpcAbilitiesNpcData'][64073] = {spell_ids = {225832, 443503}}
 _G['NpcAbilitiesNpcData'][64074] = {spell_ids = {225832}}
 _G['NpcAbilitiesNpcData'][64075] = {spell_ids = {225832, 443503}}
@@ -13271,30 +13189,30 @@ _G['NpcAbilitiesNpcData'][64111] = {spell_ids = {225832}}
 _G['NpcAbilitiesNpcData'][64112] = {spell_ids = {225832, 443503}}
 _G['NpcAbilitiesNpcData'][64113] = {spell_ids = {225832, 443503}}
 _G['NpcAbilitiesNpcData'][64114] = {spell_ids = {443503}}
-_G['NpcAbilitiesNpcData'][64115] = {spell_ids = {225832, 288865, 443503}}
-_G['NpcAbilitiesNpcData'][64116] = {spell_ids = {225832, 288865, 443503}}
+_G['NpcAbilitiesNpcData'][64115] = {spell_ids = {225832, 443503}}
+_G['NpcAbilitiesNpcData'][64116] = {spell_ids = {225832, 443503}}
 _G['NpcAbilitiesNpcData'][64117] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][64119] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][64120] = {spell_ids = {428762, 443503}}
 _G['NpcAbilitiesNpcData'][64121] = {spell_ids = {225832}}
-_G['NpcAbilitiesNpcData'][64122] = {spell_ids = {288865, 443503}}
-_G['NpcAbilitiesNpcData'][64123] = {spell_ids = {225832, 288865, 443503}}
-_G['NpcAbilitiesNpcData'][64131] = {spell_ids = {225832, 288865, 443503}}
+_G['NpcAbilitiesNpcData'][64122] = {spell_ids = {443503}}
+_G['NpcAbilitiesNpcData'][64123] = {spell_ids = {225832, 443503}}
+_G['NpcAbilitiesNpcData'][64131] = {spell_ids = {225832, 443503}}
 _G['NpcAbilitiesNpcData'][64132] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][64133] = {spell_ids = {34189, 125146}}
-_G['NpcAbilitiesNpcData'][64134] = {spell_ids = {225832, 288865, 443503}}
-_G['NpcAbilitiesNpcData'][64135] = {spell_ids = {225832, 288865, 443503}}
-_G['NpcAbilitiesNpcData'][64136] = {spell_ids = {225832, 288865, 443503}}
+_G['NpcAbilitiesNpcData'][64134] = {spell_ids = {225832, 443503}}
+_G['NpcAbilitiesNpcData'][64135] = {spell_ids = {225832, 443503}}
+_G['NpcAbilitiesNpcData'][64136] = {spell_ids = {225832, 443503}}
 _G['NpcAbilitiesNpcData'][64137] = {spell_ids = {443503}}
-_G['NpcAbilitiesNpcData'][64138] = {spell_ids = {225832, 288865, 443503}}
-_G['NpcAbilitiesNpcData'][64139] = {spell_ids = {225832, 288865, 443503}}
-_G['NpcAbilitiesNpcData'][64140] = {spell_ids = {225832, 288865, 443503}}
-_G['NpcAbilitiesNpcData'][64141] = {spell_ids = {225832, 288865, 443503}}
+_G['NpcAbilitiesNpcData'][64138] = {spell_ids = {225832, 443503}}
+_G['NpcAbilitiesNpcData'][64139] = {spell_ids = {225832, 443503}}
+_G['NpcAbilitiesNpcData'][64140] = {spell_ids = {225832, 443503}}
+_G['NpcAbilitiesNpcData'][64141] = {spell_ids = {225832, 443503}}
 _G['NpcAbilitiesNpcData'][64143] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][64145] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][64146] = {spell_ids = {443503}}
 _G['NpcAbilitiesNpcData'][64147] = {spell_ids = {443503}}
-_G['NpcAbilitiesNpcData'][64148] = {spell_ids = {225832, 288865, 443503}}
+_G['NpcAbilitiesNpcData'][64148] = {spell_ids = {225832, 443503}}
 _G['NpcAbilitiesNpcData'][64149] = {spell_ids = {225832, 443503}}
 _G['NpcAbilitiesNpcData'][64150] = {spell_ids = {225832, 443503}}
 _G['NpcAbilitiesNpcData'][64152] = {spell_ids = {225832, 443503}}
