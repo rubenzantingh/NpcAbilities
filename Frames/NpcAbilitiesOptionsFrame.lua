@@ -33,7 +33,7 @@ local function CreateOptionDropdown(parent, relativeFrame, offsetX, offsetY, lab
     dropdown:SetPoint("TOPLEFT", dropdownLabel, "BOTTOMLEFT", -20, -4)
 
     local selectedOptionLabel = defaultValueLabel
-    
+
     LibDD:UIDropDownMenu_Initialize(dropdown, function(self, level, menuList)
         local info = LibDD:UIDropDownMenu_CreateInfo()
 
@@ -58,7 +58,7 @@ local function CreateOptionDropdown(parent, relativeFrame, offsetX, offsetY, lab
             LibDD:UIDropDownMenu_AddButton(info)
         end
     end)
-    
+
     LibDD:UIDropDownMenu_SetWidth(dropdown, 150)
     UIDropDownMenu_SetText(dropdown, selectedOptionLabel)
     UIDropDownMenu_SetAnchor(dropdown, 0, 0, "TOPLEFT", dropdown)
@@ -73,6 +73,53 @@ local function CreateCheckBox(parent, text, optionKey, onClick)
     checkbox:SetScript("OnClick", onClick)
     checkbox:SetChecked(NpcAbilitiesOptions[optionKey])
     return checkbox
+end
+
+local function CreateHotkeyButton(parent, label, optionKey)
+    local description = parent:CreateFontString(nil, "ARTWORK", "GameFontnormalSmall")
+    description:SetText(label)
+
+    local button = CreateFrame("Button", nil, parent, "UIPanelButtonTemplate")
+    button:SetWidth(120)
+    button:SetHeight(25)
+
+    local function UpdateHotkeyButton()
+        if NpcAbilitiesOptions[optionKey] then
+            button:SetText(NpcAbilitiesOptions[optionKey])
+        else
+            button:SetText("Not Bound")
+        end
+    end
+
+    UpdateHotkeyButton()
+
+    local waitingForKey = false
+
+    button:SetScript("OnMouseDown", function(self, buttonPressed)
+        if buttonPressed == "LeftButton" then
+            if not waitingForKey then
+                waitingForKey = true
+                button:SetText("Press button..")
+            end
+        elseif buttonPressed == "RightButton" then
+            waitingForKey = false
+            button:SetText("Not Bound")
+            NpcAbilitiesOptions[optionKey] = nil
+        end
+    end)
+
+    local function SetHotkey(self, key)
+        if waitingForKey then
+            NpcAbilitiesOptions[optionKey] = key
+            UpdateHotkeyButton()
+            waitingForKey = false
+        end
+    end
+
+    button:SetScript("OnKeyDown", SetHotkey)
+    button:SetPropagateKeyboardInput(true)
+
+    return description, button
 end
 
 local function InitializeOptions()
@@ -153,46 +200,32 @@ local function InitializeOptions()
         "SELECTED_HOTKEY_MODE"
     )
 
-    local hotkeyDescription = optionsPanel:CreateFontString(nil, "ARTWORK", "GameFontnormalSmall")
-    hotkeyDescription:SetPoint("TOPLEFT", hotkeyModeDropdown, "BOTTOMLEFT", fieldOffsetX - 10, fieldOffsetY)
-    hotkeyDescription:SetText("Register Hotkey (right-click to unbind):")
+    -- General options: Hotkey
+        local hotkeyModeDropdown = CreateOptionDropdown(
+            optionsContainer,
+            displayAbilitiesMechanicCheckbox,
+            5,
+            subTitleOffsetY,
+            "Select hotkey mode (on hold, some keys may not work as expected):",
+            "Toggle",
+            "AVAILABLE_HOTKEY_MODES",
+            "SELECTED_HOTKEY_MODE"
+        )
 
-    local registerHotkeyButton = CreateFrame("Button", "NpcAbilitiesRegisterHotkeyButton", optionsPanel, "UIPanelButtonTemplate")
-    registerHotkeyButton:SetWidth(120)
-    registerHotkeyButton:SetHeight(25)
-    registerHotkeyButton:SetPoint("TOPLEFT", hotkeyDescription, "TOPLEFT", 0, -12)
+        local hotkeyDescription, registerHotkeyButton = CreateHotkeyButton(optionsPanel, "Register toggle abilities description hotkey (Right-click to unbind)", "SELECTED_HOTKEY")
+        hotkeyDescription:SetPoint("TOPLEFT", hotkeyModeDropdown, "BOTTOMLEFT", fieldOffsetX - 10, fieldOffsetY)
+        registerHotkeyButton:SetPoint("TOPLEFT", hotkeyDescription, "TOPLEFT", 0, -12)
 
-    if NpcAbilitiesOptions.SELECTED_HOTKEY then
-        registerHotkeyButton:SetText(NpcAbilitiesOptions.SELECTED_HOTKEY)
-    else
-        registerHotkeyButton:SetText("Not Bound")
-    end
+        -- Hide options
+        local hideOptionsTitle = optionsContainer:CreateFontString("ARTWORK", nil, "GameFontHighlightLarge")
+        hideOptionsTitle:SetPoint("TOPLEFT", registerHotkeyButton, "TOPLEFt", -fieldOffsetX + 5, -registerHotkeyButton:GetHeight() + titleOffsetY)
+        hideOptionsTitle:SetText("Hide abilities")
+        hideOptionsTitle:SetTextColor(1, 1, 1)
 
-    local waitingForKey = false
-
-    registerHotkeyButton:SetScript("OnMouseDown", function(self, button)
-        if button == "LeftButton" then
-            if not waitingForKey then
-                waitingForKey = true
-                registerHotkeyButton:SetText("Press button..")
-            end
-        elseif button == "RightButton" then
-            waitingForKey = false
-            registerHotkeyButton:SetText("Not Bound")
-            NpcAbilitiesOptions.SELECTED_HOTKEY = nil
-        end
-    end)
-
-    local function SetHotkeyButton(self, key)
-        if waitingForKey then
-            NpcAbilitiesOptions.SELECTED_HOTKEY = key
-            registerHotkeyButton:SetText(NpcAbilitiesOptions.SELECTED_HOTKEY)
-            waitingForKey = false
-        end
-    end
-
-    registerHotkeyButton:SetScript("OnKeyDown", SetHotkeyButton)
-    registerHotkeyButton:SetPropagateKeyboardInput(true)
+        -- Hide options: Hotkey
+        local hideAbilitiesHotkeyDescription, registerHideAbilitiesHotkeyButton = CreateHotkeyButton(optionsPanel, "Register hide abilities hotkey (Right-click to unbind)", "HIDE_ABILITIES_SELECTED_HOTKEY")
+        hideAbilitiesHotkeyDescription:SetPoint("TOPLEFT", hideOptionsTitle, "BOTTOMLEFT", fieldOffsetX - 5, fieldOffsetY)
+        registerHideAbilitiesHotkeyButton:SetPoint("TOPLEFT", hideAbilitiesHotkeyDescription, "TOPLEFT", 0, -12)
 
     if InterfaceOptions_AddCategory then
         InterfaceOptions_AddCategory(optionsPanel)

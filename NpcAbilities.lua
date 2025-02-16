@@ -1,5 +1,6 @@
 local npcAbilitiesFrame = CreateFrame("Frame")
 local hotkeyButtonPressed = false
+local hideAbilitiesHotkeyButtonPressed = false
 local seasonId = C_Seasons.GetActiveSeason()
 local checkForHotkeyReleased = false
 
@@ -43,6 +44,10 @@ local function AddAbilityLinesToGameTooltip(id, name, description, mechanic, add
 end
 
 local function SetNpcAbilityData()
+    if hideAbilitiesHotkeyButtonPressed then
+        return
+    end
+
     local _, unitId = GameTooltip:GetUnit()
 
     if not unitId then
@@ -160,6 +165,18 @@ local function SetHotkeyButtonPressed(self, key, eventType)
             end
         
             GameTooltip:SetUnit("mouseover");
+       end
+   end
+
+   if NpcAbilitiesOptions["HIDE_ABILITIES_SELECTED_HOTKEY"] then
+       if eventType == "OnKeyDown" and key == NpcAbilitiesOptions["HIDE_ABILITIES_SELECTED_HOTKEY"] then
+           if hideAbilitiesHotkeyButtonPressed then
+              hideAbilitiesHotkeyButtonPressed = false
+           else
+              hideAbilitiesHotkeyButtonPressed = true
+           end
+
+           GameTooltip:SetUnit("mouseover");
        end
    end
 end
