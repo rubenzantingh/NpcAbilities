@@ -2,6 +2,7 @@ local addonName, addonTable = ...
 
 local npcAbilitiesFrame = CreateFrame("Frame")
 local hotkeyButtonPressed = false
+local hideAbilitiesHotkeyButtonPressed = false
 local checkForHotkeyReleased = false
 
 local function GetDataByID(dataType, dataId)
@@ -11,7 +12,7 @@ local function GetDataByID(dataType, dataId)
     if dataType == "npcData" then
         return _G["NpcAbilitiesNpcData"][convertedId]
     elseif dataType == "abilityData" then
-        return _G["NpcAbilitiesAbilityData"][NpcAbilitiesOptions.SELECTED_LANGUAGE][convertedId]
+        return _G["NpcAbilitiesAbilityData"][NpcAbilitiesOptions["SELECTED_LANGUAGE"]][convertedId]
     end
 
     return nil
@@ -38,6 +39,10 @@ local function AddAbilityLinesToGameTooltip(id, name, description, mechanic, add
 end
 
 local function SetNpcAbilityData()
+    if hideAbilitiesHotkeyButtonPressed then
+        return
+    end
+
     local _, unitId = GameTooltip:GetUnit()
     if not unitId then
         return
@@ -120,6 +125,18 @@ local function SetHotkeyButtonPressed(self, key, eventType)
             end
         
             GameTooltip:SetUnit("mouseover");
+       end
+   end
+
+   if NpcAbilitiesOptions["HIDE_ABILITIES_SELECTED_HOTKEY"] then
+       if eventType == "OnKeyDown" and key == NpcAbilitiesOptions["HIDE_ABILITIES_SELECTED_HOTKEY"] then
+           if hideAbilitiesHotkeyButtonPressed then
+              hideAbilitiesHotkeyButtonPressed = false
+           else
+              hideAbilitiesHotkeyButtonPressed = true
+           end
+
+           GameTooltip:SetUnit("mouseover");
        end
    end
 end
