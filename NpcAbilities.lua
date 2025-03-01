@@ -80,20 +80,18 @@ local function SetNpcAbilityData()
         for _, sodAbilityId in pairs(npcData.sod_spell_ids) do
             local sodAbilitiesData = GetDataByID('NpcAbilitiesAbilityData', sodAbilityId)
 
-            if sodAbilitiesData == nil then
-                return
-            end
+            if sodAbilitiesData ~= nil then
+                local sodAbilityName = sodAbilitiesData.name
+                local sodAbilityDescription = sodAbilitiesData.description or ""
+                local sodAbilityMechanic = sodAbilitiesData.mechanic or ""
+                addedAbilityNames[sodAbilityName] = sodAbilityName
+    
+                AddAbilityLinesToGameTooltip(sodAbilityId, sodAbilityName, sodAbilityDescription, sodAbilityMechanic, addedAbilityLine)
+                addedAbilityLine = true
 
-            local sodAbilityName = sodAbilitiesData.name
-            local sodAbilityDescription = sodAbilitiesData.description or ""
-            local sodAbilityMechanic = sodAbilitiesData.mechanic or ""
-            addedAbilityNames[sodAbilityName] = sodAbilityName
-
-            AddAbilityLinesToGameTooltip(sodAbilityId, sodAbilityName, sodAbilityDescription, sodAbilityMechanic, addedAbilityLine)
-            addedAbilityLine = true
-
-            if sodAbilityDescription ~= '' then
-                addedAbilityLineWithDescription = true
+                if sodAbilityDescription ~= '' then
+                    addedAbilityLineWithDescription = true
+                end
             end
         end
     end
@@ -101,24 +99,20 @@ local function SetNpcAbilityData()
     for _, classicAbilityId in pairs(npcData.classic_spell_ids) do
         local classicAbilitiesData = GetDataByID('NpcAbilitiesAbilityData', classicAbilityId)
 
-        if classicAbilitiesData == nil then
-            return
-        end
+        if classicAbilitiesData ~= nil then
+            local classicAbilityName = classicAbilitiesData.name
+    
+            if addedAbilityNames[classicAbilityName] == nil then
+                local classicAbilityDescription = classicAbilitiesData.description or ""
+                local classicAbilityMechanic = classicAbilitiesData.mechanic or ""
 
-        local classicAbilityName = classicAbilitiesData.name
+                AddAbilityLinesToGameTooltip(classicAbilityId, classicAbilityName, classicAbilityDescription, classicAbilityMechanic, addedAbilityLine)
+                addedAbilityLine = true
 
-        if addedAbilityNames[classicAbilityName] then
-            return
-        end
-
-        local classicAbilityDescription = classicAbilitiesData.description or ""
-        local classicAbilityMechanic = classicAbilitiesData.mechanic or ""
-
-        AddAbilityLinesToGameTooltip(classicAbilityId, classicAbilityName, classicAbilityDescription, classicAbilityMechanic, addedAbilityLine)
-        addedAbilityLine = true
-
-        if classicAbilityDescription ~= '' then
-            addedAbilityLineWithDescription = true
+                if classicAbilityDescription ~= '' then
+                    addedAbilityLineWithDescription = true
+                end
+            end
         end
     end
 
