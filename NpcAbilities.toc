@@ -2,7 +2,7 @@
 ## Title: NpcAbilities
 ## Notes: Add abilities to the NPC GameTooltip
 ## Author: Ruben Zantingh
-## Version: 0.4.1
+## Version: 0.5.0
 ## SavedVariables: NpcAbilitiesOptions
 
 Database/Npcs/npcs.lua
