@@ -17,7 +17,8 @@ local defaultOptions = {
         {value = 'hold', text = 'Hold'},
     },
     DISPLAY_ABILITY_MECHANIC = true,
-    HIDE_ABILITIES_SELECTED_HOTKEY = nil
+    HIDE_ABILITIES_SELECTED_HOTKEY = nil,
+    HIDE_ABILITIES_IN_INSTANCE = false
 }
 
 local addonName = ...
@@ -215,6 +216,13 @@ local function InitializeOptions()
     local hideAbilitiesHotkeyDescription, registerHideAbilitiesHotkeyButton = CreateHotkeyButton(optionsPanel, "Register hide abilities hotkey (Right-click to unbind)", "HIDE_ABILITIES_SELECTED_HOTKEY")
     hideAbilitiesHotkeyDescription:SetPoint("TOPLEFT", hideOptionsTitle, "BOTTOMLEFT", fieldOffsetX - 5, fieldOffsetY)
     registerHideAbilitiesHotkeyButton:SetPoint("TOPLEFT", hideAbilitiesHotkeyDescription, "TOPLEFT", 0, -12)
+
+    -- Hide options: Instances
+    local displayAbilitiesMechanicCheckbox = CreateCheckBox(optionsContainer, "Hide abilities in instances (PVP and PVE)", "HIDE_ABILITIES_IN_INSTANCE", function(self)
+        local checked = self:GetChecked()
+        NpcAbilitiesOptions["HIDE_ABILITIES_IN_INSTANCE"] = checked
+    end)
+    displayAbilitiesMechanicCheckbox:SetPoint("TOPLEFT", registerHideAbilitiesHotkeyButton, 0, subTitleOffsetY + fieldOffsetY)
 
     if InterfaceOptions_AddCategory then
         InterfaceOptions_AddCategory(optionsPanel)
