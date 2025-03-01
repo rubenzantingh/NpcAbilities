@@ -44,7 +44,9 @@ local function AddAbilityLinesToGameTooltip(id, name, description, mechanic, add
 end
 
 local function SetNpcAbilityData()
-    if hideAbilitiesHotkeyButtonPressed then
+    inInstance, _ = IsInInstance()
+
+    if hideAbilitiesHotkeyButtonPressed or (inInstance and NpcAbilitiesOptions["HIDE_ABILITIES_IN_INSTANCE"]) then
         return
     end
 
