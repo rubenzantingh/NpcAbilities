@@ -1,32 +1,13 @@
-local defaultOptions = {
-    SELECTED_LANGUAGE = 'en',
-    AVAILABLE_LANGUAGES = {
-        {value = 'en', text = 'English'},
-        {value = 'es', text = 'Spanish'},
-        {value = 'ru', text = 'Russian'},
-        {value = 'fr', text = 'French'},
-        {value = 'de', text = 'German'},
-        {value = 'pt', text = 'Portuguese'},
-        {value = 'ko', text = 'Korean'},
-        {value = 'cn', text = 'Chinese'},
-    },
-    SELECTED_HOTKEY = nil,
-    SELECTED_HOTKEY_MODE = 'toggle',
-    AVAILABLE_HOTKEY_MODES = {
-        {value = 'toggle', text = 'Toggle'},
-        {value = 'hold', text = 'Hold'},
-    },
-    DISPLAY_ABILITY_MECHANIC = true,
-    HIDE_ABILITIES_SELECTED_HOTKEY = nil,
-    HIDE_ABILITIES_IN_INSTANCE = false
-}
-
 local addonName = ...
 local optionsFrame = CreateFrame("Frame")
 local LibDD = LibStub:GetLibrary("LibUIDropDownMenu-4.0")
+local gameLocale = GetLocale()
+local gameLanguage = gameLocale:sub(1, 2)
+local defaultOptions = nil
+local optionsTranslations = nil
 
 -- General functions
-local function CreateOptionDropdown(parent, relativeFrame, offsetX, offsetY, label, defaultValueLabel, optionKey, selectedKey)
+local function CreateOptionDropdown(parent, relativeFrame, offsetX, offsetY, label, defaultValueLabel, optionKey, selectedKey, translationKey)
     local dropdownLabel = parent:CreateFontString(nil, "ARTWORK", "GameFontNormal")
     dropdownLabel:SetText(label)
     dropdownLabel:SetPoint("TOPLEFT", relativeFrame, "TOPLEFT", offsetX, offsetY - 10)
@@ -45,7 +26,7 @@ local function CreateOptionDropdown(parent, relativeFrame, offsetX, offsetY, lab
         end
 
         for index, value in ipairs(NpcAbilitiesOptions[optionKey]) do
-            info.text = value.text
+            info.text = optionsTranslations[translationKey][value.value]
             info.value = value.value
             info.arg1 = info.value
             info.arg2 = info.text
@@ -54,7 +35,7 @@ local function CreateOptionDropdown(parent, relativeFrame, offsetX, offsetY, lab
             info.minWidth = 150
 
             if info.checked then
-                selectedOptionLabel = value.text
+                selectedOptionLabel = optionsTranslations[translationKey][value.value]
             end
 
             LibDD:UIDropDownMenu_AddButton(info)
@@ -70,7 +51,18 @@ end
 local function CreateCheckBox(parent, text, optionKey, onClick)
     local checkbox = CreateFrame("CheckButton", nil, parent, "InterfaceOptionsCheckButtonTemplate")
     checkbox.Text:SetText(text)
-    checkbox.Text:SetFont("Fonts\\FRIZQT__.TTF", 12, "OUTLINE")
+
+    if gameLanguage == "ru" or gameLanguage == "cn" or gameLanguage == "ko" then
+        checkbox.Text:SetFont("Fonts\\Arial__.TTF", 12, "OUTLINE")
+    elseif gameLanguage == "cn" then
+        checkbox.Text:SetFont("Fonts\\ARKai_T.TTF", 12, "OUTLINE")
+    elseif gameLanguage == "ko" then
+        checkbox.Text:SetFont("Fonts\\2002.TTF", 12, "OUTLINE")
+    else
+        checkbox.Text:SetFont("Fonts\\FRIZQT__.TTF", 12, "OUTLINE")
+    end
+
+
     checkbox.Text:SetPoint("LEFT", 30, 0)
     checkbox:SetScript("OnClick", onClick)
     checkbox:SetChecked(NpcAbilitiesOptions[optionKey])
@@ -89,7 +81,7 @@ local function CreateHotkeyButton(parent, label, optionKey)
         if NpcAbilitiesOptions[optionKey] then
             button:SetText(NpcAbilitiesOptions[optionKey])
         else
-            button:SetText("Not Bound")
+            button:SetText(optionsTranslations["hotkeyButtonNotBoundText"])
         end
     end
 
@@ -101,11 +93,11 @@ local function CreateHotkeyButton(parent, label, optionKey)
         if buttonPressed == "LeftButton" then
             if not waitingForKey then
                 waitingForKey = true
-                button:SetText("Press button..")
+                button:SetText(optionsTranslations["hotkeyButtonInstructionText"])
             end
         elseif buttonPressed == "RightButton" then
             waitingForKey = false
-            button:SetText("Not Bound")
+            button:SetText(optionsTranslations["hotkeyButtonNotBoundText"])
             NpcAbilitiesOptions[optionKey] = nil
         end
     end)
@@ -122,6 +114,33 @@ local function CreateHotkeyButton(parent, label, optionKey)
     button:SetPropagateKeyboardInput(true)
 
     return description, button
+end
+
+local function getDefaultOptions(optionsTranslations)
+    local defaultOptions = {
+        SELECTED_LANGUAGE = 'en',
+        AVAILABLE_LANGUAGES = {
+            {value = 'en', text = optionsTranslations["languages"]["en"]},
+            {value = 'es', text = optionsTranslations["languages"]["es"]},
+            {value = 'ru', text = optionsTranslations["languages"]["ru"]},
+            {value = 'fr', text = optionsTranslations["languages"]["fr"]},
+            {value = 'de', text = optionsTranslations["languages"]["de"]},
+            {value = 'pt', text = optionsTranslations["languages"]["pt"]},
+            {value = 'ko', text = optionsTranslations["languages"]["ko"]},
+            {value = 'cn', text = optionsTranslations["languages"]["cn"]}
+        },
+        SELECTED_HOTKEY = nil,
+        SELECTED_HOTKEY_MODE = 'toggle',
+        AVAILABLE_HOTKEY_MODES = {
+            {value = 'toggle', text = optionsTranslations["hotkeyModes"]["toggle"]},
+            {value = 'hold', text = optionsTranslations["hotkeyModes"]["hold"]},
+        },
+        DISPLAY_ABILITY_MECHANIC = true,
+        HIDE_ABILITIES_SELECTED_HOTKEY = nil,
+        HIDE_ABILITIES_IN_INSTANCE = false
+    }
+
+    return defaultOptions
 end
 
 local function InitializeOptions()
@@ -168,7 +187,7 @@ local function InitializeOptions()
     -- General options
     local generalOptionsTitle = optionsContainer:CreateFontString("ARTWORK", nil, "GameFontHighlightLarge")
     generalOptionsTitle:SetPoint("TOPLEFT", 8, titleOffsetY)
-    generalOptionsTitle:SetText("General options")
+    generalOptionsTitle:SetText(optionsTranslations["generalOptionsTitle"])
     generalOptionsTitle:SetTextColor(1, 1, 1)
 
     -- General options: Language
@@ -177,14 +196,15 @@ local function InitializeOptions()
         generalOptionsTitle,
         fieldOffsetX,
         subTitleOffsetY,
-        "Select language:",
-        "English",
+        optionsTranslations["languageDropdownLabel"],
+        optionsTranslations["languages"]["en"],
         "AVAILABLE_LANGUAGES",
-        "SELECTED_LANGUAGE"
+        "SELECTED_LANGUAGE",
+        "languages"
     )
 
     -- General options: Mechanic
-    local displayAbilitiesMechanicCheckbox = CreateCheckBox(optionsContainer, "Display ability mechanic", "DISPLAY_ABILITY_MECHANIC", function(self)
+    local displayAbilitiesMechanicCheckbox = CreateCheckBox(optionsContainer, optionsTranslations["displayAbilitiesMechanicLabel"], "DISPLAY_ABILITY_MECHANIC", function(self)
         local checked = self:GetChecked()
         NpcAbilitiesOptions["DISPLAY_ABILITY_MECHANIC"] = checked
     end)
@@ -196,45 +216,34 @@ local function InitializeOptions()
         displayAbilitiesMechanicCheckbox,
         5,
         subTitleOffsetY,
-        "Select hotkey mode (on hold, some keys may not work as expected):",
-        "Toggle",
+        optionsTranslations["hotkeyModeLabel"],
+        optionsTranslations["hotkeyModes"]["toggle"],
         "AVAILABLE_HOTKEY_MODES",
-        "SELECTED_HOTKEY_MODE"
+        "SELECTED_HOTKEY_MODE",
+        "hotkeyModes"
     )
 
-    -- General options: Hotkey
-        local hotkeyModeDropdown = CreateOptionDropdown(
-            optionsContainer,
-            displayAbilitiesMechanicCheckbox,
-            5,
-            subTitleOffsetY,
-            "Select hotkey mode (on hold, some keys may not work as expected):",
-            "Toggle",
-            "AVAILABLE_HOTKEY_MODES",
-            "SELECTED_HOTKEY_MODE"
-        )
+    local hotkeyDescription, registerHotkeyButton = CreateHotkeyButton(optionsPanel, optionsTranslations["hotkeyButtonLabel"], "SELECTED_HOTKEY")
+    hotkeyDescription:SetPoint("TOPLEFT", hotkeyModeDropdown, "BOTTOMLEFT", fieldOffsetX - 10, fieldOffsetY)
+    registerHotkeyButton:SetPoint("TOPLEFT", hotkeyDescription, "TOPLEFT", 0, -12)
 
-        local hotkeyDescription, registerHotkeyButton = CreateHotkeyButton(optionsPanel, "Register toggle abilities description hotkey (Right-click to unbind)", "SELECTED_HOTKEY")
-        hotkeyDescription:SetPoint("TOPLEFT", hotkeyModeDropdown, "BOTTOMLEFT", fieldOffsetX - 10, fieldOffsetY)
-        registerHotkeyButton:SetPoint("TOPLEFT", hotkeyDescription, "TOPLEFT", 0, -12)
+    -- Hide options
+    local hideOptionsTitle = optionsContainer:CreateFontString("ARTWORK", nil, "GameFontHighlightLarge")
+    hideOptionsTitle:SetPoint("TOPLEFT", registerHotkeyButton, "TOPLEFt", -fieldOffsetX + 5, -registerHotkeyButton:GetHeight() + titleOffsetY)
+    hideOptionsTitle:SetText(optionsTranslations["hideOptionsTitle"])
+    hideOptionsTitle:SetTextColor(1, 1, 1)
 
-        -- Hide options
-        local hideOptionsTitle = optionsContainer:CreateFontString("ARTWORK", nil, "GameFontHighlightLarge")
-        hideOptionsTitle:SetPoint("TOPLEFT", registerHotkeyButton, "TOPLEFt", -fieldOffsetX + 5, -registerHotkeyButton:GetHeight() + titleOffsetY)
-        hideOptionsTitle:SetText("Hide abilities")
-        hideOptionsTitle:SetTextColor(1, 1, 1)
+    -- Hide options: Hotkey
+    local hideAbilitiesHotkeyDescription, registerHideAbilitiesHotkeyButton = CreateHotkeyButton(optionsPanel, optionsTranslations["hideOptionsHotkeyModeLabel"], "HIDE_ABILITIES_SELECTED_HOTKEY")
+    hideAbilitiesHotkeyDescription:SetPoint("TOPLEFT", hideOptionsTitle, "BOTTOMLEFT", fieldOffsetX - 5, fieldOffsetY)
+    registerHideAbilitiesHotkeyButton:SetPoint("TOPLEFT", hideAbilitiesHotkeyDescription, "TOPLEFT", 0, -12)
 
-        -- Hide options: Hotkey
-        local hideAbilitiesHotkeyDescription, registerHideAbilitiesHotkeyButton = CreateHotkeyButton(optionsPanel, "Register hide abilities hotkey (Right-click to unbind)", "HIDE_ABILITIES_SELECTED_HOTKEY")
-        hideAbilitiesHotkeyDescription:SetPoint("TOPLEFT", hideOptionsTitle, "BOTTOMLEFT", fieldOffsetX - 5, fieldOffsetY)
-        registerHideAbilitiesHotkeyButton:SetPoint("TOPLEFT", hideAbilitiesHotkeyDescription, "TOPLEFT", 0, -12)
-
-        -- Hide options: Instances
-        local displayAbilitiesMechanicCheckbox = CreateCheckBox(optionsContainer, "Hide abilities in instances (PVP and PVE)", "HIDE_ABILITIES_IN_INSTANCE", function(self)
-            local checked = self:GetChecked()
-            NpcAbilitiesOptions["HIDE_ABILITIES_IN_INSTANCE"] = checked
-        end)
-        displayAbilitiesMechanicCheckbox:SetPoint("TOPLEFT", registerHideAbilitiesHotkeyButton, 0, subTitleOffsetY + fieldOffsetY)
+    -- Hide options: Instances
+    local hideAbilitiesInInstanceCheckbox = CreateCheckBox(optionsContainer, optionsTranslations["hideAbilitiesInInstanceLabel"], "HIDE_ABILITIES_IN_INSTANCE", function(self)
+        local checked = self:GetChecked()
+        NpcAbilitiesOptions["HIDE_ABILITIES_IN_INSTANCE"] = checked
+    end)
+    hideAbilitiesInInstanceCheckbox:SetPoint("TOPLEFT", registerHideAbilitiesHotkeyButton, 0, subTitleOffsetY + fieldOffsetY)
 
     if InterfaceOptions_AddCategory then
         InterfaceOptions_AddCategory(optionsPanel)
@@ -246,6 +255,9 @@ end
 
 local function addonLoaded(self, event, addonLoadedName)
     if addonLoadedName == addonName then
+        optionsTranslations = (_G["NpcAbilitiesTranslations"][gameLanguage] or _G["NpcAbilitiesTranslations"]["en"])["options"]
+
+        defaultOptions = getDefaultOptions(optionsTranslations)
         NpcAbilitiesOptions = NpcAbilitiesOptions or defaultOptions
 
         for key, value in pairs(defaultOptions) do
