@@ -52,7 +52,7 @@ local function CreateCheckBox(parent, text, optionKey, onClick)
     local checkbox = CreateFrame("CheckButton", nil, parent, "InterfaceOptionsCheckButtonTemplate")
     checkbox.Text:SetText(text)
 
-    if gameLanguage == "ru" or gameLanguage == "cn" or gameLanguage == "ko" then
+    if gameLanguage == "ru" then
         checkbox.Text:SetFont("Fonts\\Arial__.TTF", 12, "OUTLINE")
     elseif gameLanguage == "cn" then
         checkbox.Text:SetFont("Fonts\\ARKai_T.TTF", 12, "OUTLINE")
