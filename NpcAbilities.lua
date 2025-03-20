@@ -87,13 +87,16 @@ local function SetNpcAbilityData()
                 end
             end
 
+            local selectedLanguage = NpcAbilitiesOptions["SELECTED_LANGUAGE"]
+
             if addedAbilityLineWithDescription and not hotkeyButtonPressed and NpcAbilitiesOptions["SELECTED_HOTKEY"] then
                 local hotkey = NpcAbilitiesOptions["SELECTED_HOTKEY"]
-                GameTooltip:AddLine("(Press " .. hotkey .. " for details)", 0.8, 0.8, 0.8)
+                local hotkeyExplanatoryText = "(" .. _G["NpcAbilitiesTranslations"][selectedLanguage]["game"]["hotkeyExplanatoryTextOne"] .. " " .. hotkey .. " " ..  _G["NpcAbilitiesTranslations"][selectedLanguage]["game"]["hotkeyExplanatoryTextTwo"] .. ")"
+                GameTooltip:AddLine(hotkeyExplanatoryText, 0.8, 0.8, 0.8)
             end
 
             if addedAbilityLineWithDescription and not hotkeyButtonPressed and not NpcAbilitiesOptions["SELECTED_HOTKEY"] then
-                GameTooltip:AddLine("(Hotkey not bound)", 0.8, 0.8, 0.8)
+                GameTooltip:AddLine("(" .. _G["NpcAbilitiesTranslations"][selectedLanguage]["game"]["hotkeyNotBoundText"] .. ")", 0.8, 0.8, 0.8)
             end
         end
     end
