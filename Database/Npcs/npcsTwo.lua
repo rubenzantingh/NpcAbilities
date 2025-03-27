@@ -9726,11 +9726,14 @@ _G['NpcAbilitiesNpcData'][111307] = {spell_ids = {96098, 219616, 225427}}
 _G['NpcAbilitiesNpcData'][111308] = {spell_ids = {176040, 224268}}
 _G['NpcAbilitiesNpcData'][111315] = {spell_ids = {127734, 162759, 164392, 164394}}
 _G['NpcAbilitiesNpcData'][111316] = {spell_ids = {200678, 221719, 221720, 221722, 225832}}
+_G['NpcAbilitiesNpcData'][111319] = {spell_ids = {188667}}
 _G['NpcAbilitiesNpcData'][111326] = {spell_ids = {209587, 212751}}
+_G['NpcAbilitiesNpcData'][111328] = {spell_ids = {186553, 209586, 222484}}
 _G['NpcAbilitiesNpcData'][111329] = {spell_ids = {221749, 221759, 221800}}
 _G['NpcAbilitiesNpcData'][111330] = {spell_ids = {221747}}
 _G['NpcAbilitiesNpcData'][111331] = {spell_ids = {222793}}
 _G['NpcAbilitiesNpcData'][111332] = {spell_ids = {186476, 186480, 186553}}
+_G['NpcAbilitiesNpcData'][111333] = {spell_ids = {222786}}
 _G['NpcAbilitiesNpcData'][111336] = {spell_ids = {222471}}
 _G['NpcAbilitiesNpcData'][111338] = {spell_ids = {167012, 222477}}
 _G['NpcAbilitiesNpcData'][111343] = {spell_ids = {171922, 173085, 173087, 173313, 221747}}
