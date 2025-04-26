@@ -23,25 +23,51 @@ local function GetDataByID(dataType, dataId)
     return nil
 end
 
-local function AddAbilityLinesToGameTooltip(id, name, description, mechanic, addedAbilityLine)
+local function AddAbilityLinesToGameTooltip(id, name, description, mechanic, range, castTime, dispelType, addedAbilityLine)
     if not addedAbilityLine then
         GameTooltip:AddLine(" ")
     end
 
-    local texture = GetSpellTexture(id);
-    local icon = "|T" .. texture .. ":12:12:0:0:64:64:4:60:4:60|t"
-    local mechanicText = ""
+    local options = NpcAbilitiesOptions
+    local selectedLanguage = options["SELECTED_LANGUAGE"]
+    local translations = _G["NpcAbilitiesTranslations"][selectedLanguage]["game"]
 
-    if mechanic ~= "" and NpcAbilitiesOptions["DISPLAY_ABILITY_MECHANIC"] then
-        mechanicText = " - " .. mechanic
+    local texture = GetSpellTexture(id)
+    local icon = "|T" .. texture .. ":12:12:0:0:64:64:4:60:4:60|t"
+    local abilityNameText = icon .. " " .. name
+
+    local function appendTitleInfo(display, value, mode, label)
+        if value ~= "" and options[display] then
+            local text = " - " .. value
+            if options[mode] == "title" then
+                abilityNameText = abilityNameText .. text
+            end
+        end
     end
 
-    GameTooltip:AddLine(icon .. " " .. name .. mechanicText)
+    appendTitleInfo("DISPLAY_ABILITY_MECHANIC", mechanic, "SELECTED_ABILITY_MECHANIC_DISPLAY_MODE", "mechanicText")
+    appendTitleInfo("DISPLAY_ABILITY_RANGE", range, "SELECTED_ABILITY_RANGE_DISPLAY_MODE", "rangeText")
+    appendTitleInfo("DISPLAY_ABILITY_CAST_TIME", castTime, "SELECTED_ABILITY_CAST_TIME_DISPLAY_MODE", "castTimeText")
+    appendTitleInfo("DISPLAY_ABILITY_DISPEL_TYPE", dispelType, "SELECTED_ABILITY_DISPEL_TYPE_DISPLAY_MODE", "dispelTypeText")
+
+    GameTooltip:AddLine(abilityNameText)
 
     if hotkeyButtonPressed then
+        local function addSeparateLine(display, value, mode, labelKey)
+            if value ~= "" and options[display] and options[mode] == "separate" then
+                GameTooltip:AddLine(translations[labelKey] .. ": " .. value, 1, 1, 1, true)
+            end
+        end
+
+        addSeparateLine("DISPLAY_ABILITY_MECHANIC", mechanic, "SELECTED_ABILITY_MECHANIC_DISPLAY_MODE", "mechanicText")
+        addSeparateLine("DISPLAY_ABILITY_RANGE", range, "SELECTED_ABILITY_RANGE_DISPLAY_MODE", "rangeText")
+        addSeparateLine("DISPLAY_ABILITY_CAST_TIME", castTime, "SELECTED_ABILITY_CAST_TIME_DISPLAY_MODE", "castTimeText")
+        addSeparateLine("DISPLAY_ABILITY_DISPEL_TYPE", dispelType, "SELECTED_ABILITY_DISPEL_TYPE_DISPLAY_MODE", "dispelTypeText")
+
         GameTooltip:AddLine(description, 1, 1, 1, true)
     end
 end
+
 
 local function SetNpcAbilityData()
     inInstance, _ = IsInInstance()
@@ -86,9 +112,12 @@ local function SetNpcAbilityData()
                 local sodAbilityName = sodAbilitiesData.name
                 local sodAbilityDescription = sodAbilitiesData.description or ""
                 local sodAbilityMechanic = sodAbilitiesData.mechanic or ""
+                local sodAbilityRange = sodAbilitiesData.range or ""
+                local sodAbilityCastTime = sodAbilitiesData.cast_time or ""
+                local sodAbilityDispelType = sodAbilitiesData.dispel_type or ""
                 addedAbilityNames[sodAbilityName] = sodAbilityName
     
-                AddAbilityLinesToGameTooltip(sodAbilityId, sodAbilityName, sodAbilityDescription, sodAbilityMechanic, addedAbilityLine)
+                AddAbilityLinesToGameTooltip(sodAbilityId, sodAbilityName, sodAbilityDescription, sodAbilityMechanic, sodAbilityRange, sodAbilityCastTime, sodAbilityDispelType, addedAbilityLine)
                 addedAbilityLine = true
 
                 if sodAbilityDescription ~= '' then
@@ -107,8 +136,11 @@ local function SetNpcAbilityData()
             if addedAbilityNames[classicAbilityName] == nil then
                 local classicAbilityDescription = classicAbilitiesData.description or ""
                 local classicAbilityMechanic = classicAbilitiesData.mechanic or ""
+                local classicAbilityRange = classicAbilitiesData.range or ""
+                local classicAbilityCastTime = classicAbilitiesData.cast_tome or ""
+                local classicAbilityDispelType = classicAbilitiesData.dispel_type or ""
 
-                AddAbilityLinesToGameTooltip(classicAbilityId, classicAbilityName, classicAbilityDescription, classicAbilityMechanic, addedAbilityLine)
+                AddAbilityLinesToGameTooltip(classicAbilityId, classicAbilityName, classicAbilityDescription, classicAbilityMechanic, classicAbilityRange, classicAbilityCastTime, classicAbilityDispelType, addedAbilityLine)
                 addedAbilityLine = true
 
                 if classicAbilityDescription ~= '' then
