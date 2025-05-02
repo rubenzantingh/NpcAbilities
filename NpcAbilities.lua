@@ -6,34 +6,65 @@ local hideAbilitiesHotkeyButtonPressed = false
 local checkForHotkeyReleased = false
 
 local function GetDataByID(dataType, dataId)
+    data = _G[dataType]
+    if not data then return nil end
+
     local convertedId = tonumber(dataId)
     if not convertedId then return nil end
 
-    if dataType == "npcData" then
-        return _G["NpcAbilitiesNpcData"][convertedId]
-    elseif dataType == "abilityData" then
-        return _G["NpcAbilitiesAbilityData"][NpcAbilitiesOptions["SELECTED_LANGUAGE"]][convertedId]
+    if dataType == "NpcAbilitiesNpcData" then
+        return data[convertedId]
+    else
+        local languageCode = NpcAbilitiesOptions["SELECTED_LANGUAGE"]
+        if data[languageCode] then
+            return data[languageCode][convertedId]
+        end
     end
 
     return nil
 end
 
-local function AddAbilityLinesToGameTooltip(id, name, description, mechanic, addedAbilityLine)
+local function AddAbilityLinesToGameTooltip(id, name, description, mechanic, range, castTime, dispelType, addedAbilityLine)
     if not addedAbilityLine then
         GameTooltip:AddLine(" ")
     end
 
-    local texture = C_Spell.GetSpellTexture(id);
-    local icon = "|T" .. texture .. ":12:12:0:0:64:64:4:60:4:60|t"
-    local mechanicText = ""
+    local options = NpcAbilitiesOptions
+    local selectedLanguage = options["SELECTED_LANGUAGE"]
+    local translations = _G["NpcAbilitiesTranslations"][selectedLanguage]["game"]
 
-    if mechanic ~= "" and NpcAbilitiesOptions["DISPLAY_ABILITY_MECHANIC"] then
-        mechanicText = " - " .. mechanic
+    local texture = C_Spell.GetSpellTexture(id)
+    local icon = "|T" .. texture .. ":12:12:0:0:64:64:4:60:4:60|t"
+    local abilityNameText = icon .. " " .. name
+
+    local function appendTitleInfo(display, value, mode, label)
+        if value ~= "" and options[display] then
+            local text = " - " .. value
+            if options[mode] == "title" then
+                abilityNameText = abilityNameText .. text
+            end
+        end
     end
 
-    GameTooltip:AddLine(icon .. " " .. name .. mechanicText)
+    appendTitleInfo("DISPLAY_ABILITY_MECHANIC", mechanic, "SELECTED_ABILITY_MECHANIC_DISPLAY_MODE", "mechanicText")
+    appendTitleInfo("DISPLAY_ABILITY_RANGE", range, "SELECTED_ABILITY_RANGE_DISPLAY_MODE", "rangeText")
+    appendTitleInfo("DISPLAY_ABILITY_CAST_TIME", castTime, "SELECTED_ABILITY_CAST_TIME_DISPLAY_MODE", "castTimeText")
+    appendTitleInfo("DISPLAY_ABILITY_DISPEL_TYPE", dispelType, "SELECTED_ABILITY_DISPEL_TYPE_DISPLAY_MODE", "dispelTypeText")
+
+    GameTooltip:AddLine(abilityNameText)
 
     if hotkeyButtonPressed then
+        local function addSeparateLine(display, value, mode, labelKey)
+            if value ~= "" and options[display] and options[mode] == "separate" then
+                GameTooltip:AddLine(translations[labelKey] .. ": " .. value, 1, 1, 1, true)
+            end
+        end
+
+        addSeparateLine("DISPLAY_ABILITY_MECHANIC", mechanic, "SELECTED_ABILITY_MECHANIC_DISPLAY_MODE", "mechanicText")
+        addSeparateLine("DISPLAY_ABILITY_RANGE", range, "SELECTED_ABILITY_RANGE_DISPLAY_MODE", "rangeText")
+        addSeparateLine("DISPLAY_ABILITY_CAST_TIME", castTime, "SELECTED_ABILITY_CAST_TIME_DISPLAY_MODE", "castTimeText")
+        addSeparateLine("DISPLAY_ABILITY_DISPEL_TYPE", dispelType, "SELECTED_ABILITY_DISPEL_TYPE_DISPLAY_MODE", "dispelTypeText")
+
         GameTooltip:AddLine(description, 1, 1, 1, true)
     end
 end
@@ -46,6 +77,7 @@ local function SetNpcAbilityData()
     end
 
     local _, unitId = GameTooltip:GetUnit()
+
     if not unitId then
         return
     end
@@ -59,21 +91,24 @@ local function SetNpcAbilityData()
     local unitType, _, _, _, _, npcId = strsplit("-", unitGUID)
 
     if unitType == "Creature" then
-        local npcData = GetDataByID('npcData', npcId)
+        local npcData = GetDataByID('NpcAbilitiesNpcData', npcId)
 
         if npcData then
             local addedAbilityLine = false
             local addedAbilityLineWithDescription = false
 
             for _, abilityId in pairs(npcData.spell_ids) do
-                local abilitiesData = GetDataByID('abilityData', abilityId)
+                local abilitiesData = GetDataByID('NpcAbilitiesAbilityData', abilityId)
 
                 if abilitiesData then
                     local abilityName = abilitiesData.name
                     local abilityDescription = abilitiesData.description or ""
                     local abilityMechanic = abilitiesData.mechanic or ""
+                    local abilityRange = abilitiesData.range or ""
+                    local abilityCastTime = abilitiesData.cast_time or ""
+                    local abilityDispelType = abilitiesData.dispel_type or ""
 
-                    AddAbilityLinesToGameTooltip(abilityId, abilityName, abilityDescription, abilityMechanic, addedAbilityLine)
+                    AddAbilityLinesToGameTooltip(abilityId, abilityName, abilityDescription, abilityMechanic, abilityRange, abilityCastTime, abilityDispelType, addedAbilityLine)
                     addedAbilityLine = true
 
                     if abilityDescription ~= '' then
@@ -119,9 +154,9 @@ end
 local function SetHotkeyButtonPressed(self, key, eventType)
    if NpcAbilitiesOptions["SELECTED_HOTKEY"] then
        if eventType == "OnKeyDown" and key == NpcAbilitiesOptions["SELECTED_HOTKEY"] then
-            if NpcAbilitiesOptions["SELECTED_HOTKEY_MODE"] == "hold" then
-                StartCheckingHotkey()
-            end
+           if NpcAbilitiesOptions["SELECTED_HOTKEY_MODE"] == "hold" then
+               StartCheckingHotkey()
+           end
 
             if hotkeyButtonPressed then
                hotkeyButtonPressed = false
