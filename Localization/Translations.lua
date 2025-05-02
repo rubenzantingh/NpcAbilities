@@ -19,7 +19,6 @@ local function addonLoaded(self, event, addonLoadedName)
                     ko = "Korean",
                     cn = "Chinese"
                 },
-                displayAbilitiesMechanicLabel = "Display ability mechanic",
                 hotkeyModeLabel = "Select hotkey mode (on hold, some keys may not work as expected):",
                 hotkeyModes = {
                     toggle = "Toggle",
@@ -28,6 +27,19 @@ local function addonLoaded(self, event, addonLoadedName)
                 hotkeyButtonLabel = "Register toggle abilities description hotkey (Right-click to unbind)",
                 hotkeyButtonInstructionText = "Press button..",
                 hotkeyButtonNotBoundText = "Not Bound",
+                abilityFieldsOptionsTitle = "Ability fields display and where",
+                abilityFieldsDisplayModes = {
+                    title = "After ability name",
+                    separate = "As separate line"
+                },
+                displayAbilitiesMechanicLabel = "Display ability mechanic",
+                displayAbilitiesMechanicDisplayModeLabel = "Where to display the ability mechanic",
+                displayAbilitiesRangeLabel = "Display ability range",
+                displayAbilitiesRangeDisplayModeLabel = "Where to display the ability range",
+                displayAbilitiesCastTimeLabel = "Display ability cast time",
+                displayAbilitiesCastTimeDisplayModeLabel = "Where to display the ability cast time",
+                displayAbilitiesDispelTypeLabel = "Display ability dispel type",
+                displayAbilitiesDispelTypeDisplayModeLabel = "Where to display the ability dispel type",
                 hideOptionsTitle = "Hide abilities",
                 hideOptionsHotkeyModeLabel = "Register hide abilities hotkey (Right-click to unbind)",
                 hideAbilitiesInInstanceLabel = "Hide abilities in instances (PVP and PVE)",
@@ -36,6 +48,10 @@ local function addonLoaded(self, event, addonLoadedName)
                  hotkeyExplanatoryTextOne = "Press",
                  hotkeyExplanatoryTextTwo = "for details",
                  hotkeyNotBoundText = "Hotkey not bound",
+                 mechanicText = "Mechanic",
+                 rangeText = "Range",
+                 castTimeText = "Cast time",
+                 dispelTypeText = "Dispel type"
              }
         }
 
@@ -62,6 +78,19 @@ local function addonLoaded(self, event, addonLoadedName)
                 hotkeyButtonLabel = "Registrar tecla rápida para la descripción de habilidades de alternancia (Clic derecho para desvincular)",
                 hotkeyButtonInstructionText = "Pulsa el botón..",
                 hotkeyButtonNotBoundText = "No obligado",
+                abilityFieldsOptionsTitle = "Campos de habilidades y su ubicación",
+                abilityFieldsDisplayModes = {
+                    title = "Después del nombre de la habilidad",
+                    separate = "En una línea separada"
+                },
+                displayAbilitiesMechanicLabel = "Mostrar mecánica de la habilidad",
+                displayAbilitiesMechanicDisplayModeLabel = "Dónde mostrar la mecánica de la habilidad",
+                displayAbilitiesRangeLabel = "Mostrar rango de la habilidad",
+                displayAbilitiesRangeDisplayModeLabel = "Dónde mostrar el rango de la habilidad",
+                displayAbilitiesCastTimeLabel = "Mostrar tiempo de lanzamiento de la habilidad",
+                displayAbilitiesCastTimeDisplayModeLabel = "Dónde mostrar el tiempo de lanzamiento de la habilidad",
+                displayAbilitiesDispelTypeLabel = "Mostrar tipo de disipación de la habilidad",
+                displayAbilitiesDispelTypeDisplayModeLabel = "Dónde mostrar el tipo de disipación de la habilidad",
                 hideOptionsTitle = "Ocultar habilidades",
                 hideOptionsHotkeyModeLabel = "Registrar tecla rápida para ocultar habilidades (Clic derecho para desvincular)",
                 hideAbilitiesInInstanceLabel = "Ocultar habilidades en instancias (PVP y PVE)"
@@ -70,6 +99,10 @@ local function addonLoaded(self, event, addonLoadedName)
                 hotkeyExplanatoryTextOne = "Presione",
                 hotkeyExplanatoryTextTwo = "para más detalles",
                 hotkeyNotBoundText = "Tecla de acceso rápido no vinculado",
+                mechanicText = "Mecánica",
+                rangeText = "Alcance",
+                castTimeText = "Tiempo de lanzamiento",
+                dispelTypeText = "Tipo de disipación",
             }
         }
 
@@ -96,6 +129,19 @@ local function addonLoaded(self, event, addonLoadedName)
                 hotkeyButtonLabel = "Hotkey für Umschaltfähigkeitenbeschreibung registrieren (Rechtsklick zum Aufheben der Bindung)",
                 hotkeyButtonInstructionText = "Taste drücken..",
                 hotkeyButtonNotBoundText = "Nicht gebunden",
+                abilityFieldsOptionsTitle = "Anzeigeoptionen für Fähigkeitsfelder und deren Position",
+                abilityFieldsDisplayModes = {
+                    title = "Nach dem Fähigkeitsnamen",
+                    separate = "In einer separaten Zeile"
+                },
+                displayAbilitiesMechanicLabel = "Fähigkeitsmechanik anzeigen",
+                displayAbilitiesMechanicDisplayModeLabel = "Position der Anzeige der Fähigkeitsmechanik",
+                displayAbilitiesRangeLabel = "Fähigkeitsreichweite anzeigen",
+                displayAbilitiesRangeDisplayModeLabel = "Position der Anzeige der Fähigkeitsreichweite",
+                displayAbilitiesCastTimeLabel = "Zauberzeit der Fähigkeit anzeigen",
+                displayAbilitiesCastTimeDisplayModeLabel = "Position der Anzeige der Zauberzeit",
+                displayAbilitiesDispelTypeLabel = "Art der Bannung anzeigen",
+                displayAbilitiesDispelTypeDisplayModeLabel = "Position der Anzeige der Bannungsart",
                 hideOptionsTitle = "Fähigkeiten ausblenden",
                 hideOptionsHotkeyModeLabel = "Hotkey zum Ausblenden von Fähigkeiten registrieren (Rechtsklick zum Aufheben der Bindung)",
                 hideAbilitiesInInstanceLabel = "Fähigkeiten in Instanzen ausblenden (PVP und PVE)",
@@ -104,6 +150,10 @@ local function addonLoaded(self, event, addonLoadedName)
                 hotkeyExplanatoryTextOne = "Drücken Sie",
                 hotkeyExplanatoryTextTwo = "für Details",
                 hotkeyNotBoundText = "Hotkey nicht gebunden",
+                mechanicText = "Mechanik",
+                rangeText = "Reichweite",
+                castTimeText = "Zauberzeit",
+                dispelTypeText = "Bannart",
             }
         }
 
@@ -130,6 +180,19 @@ local function addonLoaded(self, event, addonLoadedName)
                 hotkeyButtonLabel = "Enregistrer le raccourci pour la description des capacités à bascule (clic droit pour dissocier)",
                 hotkeyButtonInstructionText = "Appuyez sur le bouton..",
                 hotkeyButtonNotBoundText = "Non lié",
+                abilityFieldsOptionsTitle = "Options d'affichage des champs de compétence et leur emplacement",
+                abilityFieldsDisplayModes = {
+                    title = "Après le nom de la compétence",
+                    separate = "Sur une ligne séparée"
+                },
+                displayAbilitiesMechanicLabel = "Afficher la mécanique de la compétence",
+                displayAbilitiesMechanicDisplayModeLabel = "Où afficher la mécanique de la compétence",
+                displayAbilitiesRangeLabel = "Afficher la portée de la compétence",
+                displayAbilitiesRangeDisplayModeLabel = "Où afficher la portée de la compétence",
+                displayAbilitiesCastTimeLabel = "Afficher le temps d'incantation de la compétence",
+                displayAbilitiesCastTimeDisplayModeLabel = "Où afficher le temps d'incantation",
+                displayAbilitiesDispelTypeLabel = "Afficher le type de dissipation de la compétence",
+                displayAbilitiesDispelTypeDisplayModeLabel = "Où afficher le type de dissipation",
                 hideOptionsTitle = "Masquer les capacités",
                 hideOptionsHotkeyModeLabel = "Enregistrer le raccourci pour masquer les capacités (clic droit pour dissocier)",
                 hideAbilitiesInInstanceLabel = "Masquer les capacités en instance (PVP et PVE)"
@@ -138,6 +201,10 @@ local function addonLoaded(self, event, addonLoadedName)
                 hotkeyExplanatoryTextOne = "Appuyez sur",
                 hotkeyExplanatoryTextTwo = "pour plus de détails",
                 hotkeyNotBoundText = "Raccourci clavier non lié",
+                mechanicText = "Mécanique",
+                rangeText = "Portée",
+                castTimeText = "Temps d'incantation",
+                dispelTypeText = "Type de dissipation",
             }
         }
 
@@ -164,6 +231,19 @@ local function addonLoaded(self, event, addonLoadedName)
                 hotkeyButtonLabel = "Registrar atalho para descrição das habilidades de alternância (Clique com o botão direito para desvincular)",
                 hotkeyButtonInstructionText = "Pressione o botão ..",
                 hotkeyButtonNotBoundText = "Não vinculado",
+                abilityFieldsOptionsTitle = "Opções de exibição dos campos de habilidade e seu local",
+                abilityFieldsDisplayModes = {
+                    title = "Após o nome da habilidade",
+                    separate = "Em uma linha separada"
+                },
+                displayAbilitiesMechanicLabel = "Exibir mecânica da habilidade",
+                displayAbilitiesMechanicDisplayModeLabel = "Onde exibir a mecânica da habilidade",
+                displayAbilitiesRangeLabel = "Exibir alcance da habilidade",
+                displayAbilitiesRangeDisplayModeLabel = "Onde exibir o alcance da habilidade",
+                displayAbilitiesCastTimeLabel = "Exibir tempo de conjuração da habilidade",
+                displayAbilitiesCastTimeDisplayModeLabel = "Onde exibir o tempo de conjuração",
+                displayAbilitiesDispelTypeLabel = "Exibir tipo de dissipação da habilidade",
+                displayAbilitiesDispelTypeDisplayModeLabel = "Onde exibir o tipo de dissipação",
                 hideOptionsTitle = "Ocultar habilidades",
                 hideOptionsHotkeyModeLabel = "Registrar atalho para ocultar habilidades (Clique com o botão direito para desvincular)",
                 hideAbilitiesInInstanceLabel = "Ocultar habilidades em instâncias (PVP e PVE)"
@@ -172,6 +252,10 @@ local function addonLoaded(self, event, addonLoadedName)
                 hotkeyExplanatoryTextOne = "Prima",
                 hotkeyExplanatoryTextTwo = "para detalhes",
                 hotkeyNotBoundText = "Tecla de atalho não ligada",
+                mechanicText = "Mecânica",
+                rangeText = "Alcance",
+                castTimeText = "Tempo de lançamento",
+                dispelTypeText = "Tipo de dissipação",
             }
         }
 
@@ -198,6 +282,19 @@ local function addonLoaded(self, event, addonLoadedName)
                 hotkeyButtonLabel = "Назначить горячую клавишу для переключения описания способностей (Правый клик для сброса)",
                 hotkeyButtonInstructionText = "Нажмите кнопку...",
                 hotkeyButtonNotBoundText = "Не связан",
+                abilityFieldsOptionsTitle = "Настройки отображения полей умений и их расположение",
+                abilityFieldsDisplayModes = {
+                    title = "После названия умения",
+                    separate = "На отдельной строке"
+                },
+                displayAbilitiesMechanicLabel = "Показать механику умения",
+                displayAbilitiesMechanicDisplayModeLabel = "Где отображать механику умения",
+                displayAbilitiesRangeLabel = "Показать радиус действия умения",
+                displayAbilitiesRangeDisplayModeLabel = "Где отображать радиус действия умения",
+                displayAbilitiesCastTimeLabel = "Показать время применения умения",
+                displayAbilitiesCastTimeDisplayModeLabel = "Где отображать время применения",
+                displayAbilitiesDispelTypeLabel = "Показать тип рассеивания умения",
+                displayAbilitiesDispelTypeDisplayModeLabel = "Где отображать тип рассеивания",
                 hideOptionsTitle = "Скрытие способностей",
                 hideOptionsHotkeyModeLabel = "Назначить горячую клавишу для скрытия способностей (Правый клик для сброса)",
                 hideAbilitiesInInstanceLabel = "Скрывать способности в подземельях (PVP и PVE)"
@@ -206,6 +303,10 @@ local function addonLoaded(self, event, addonLoadedName)
                 hotkeyExplanatoryTextOne = "Нажмите",
                 hotkeyExplanatoryTextTwo = "чтобы узнать подробности",
                 hotkeyNotBoundText = "Горячая клавиша не привязана",
+                mechanicText = "Механика",
+                rangeText = "Дальность",
+                castTimeText = "Время произнесения",
+                dispelTypeText = "Тип рассеивания",
             }
         }
 
@@ -232,6 +333,19 @@ local function addonLoaded(self, event, addonLoadedName)
                 hotkeyButtonLabel = "전환 능력 설명 단축키 등록 (우클릭으로 해제)",
                 hotkeyButtonInstructionText = "버튼을 누르세요..",
                 hotkeyButtonNotBoundText = "구속되지 않음",
+                abilityFieldsOptionsTitle = "능력치 필드 표시 및 위치 설정",
+                abilityFieldsDisplayModes = {
+                    title = "능력 이름 뒤에 표시",
+                    separate = "별도의 줄에 표시"
+                },
+                displayAbilitiesMechanicLabel = "능력 메커니즘 표시",
+                displayAbilitiesMechanicDisplayModeLabel = "능력 메커니즘 표시 위치",
+                displayAbilitiesRangeLabel = "능력 범위 표시",
+                displayAbilitiesRangeDisplayModeLabel = "능력 범위 표시 위치",
+                displayAbilitiesCastTimeLabel = "능력 시전 시간 표시",
+                displayAbilitiesCastTimeDisplayModeLabel = "능력 시전 시간 표시 위치",
+                displayAbilitiesDispelTypeLabel = "능력 해제 타입 표시",
+                displayAbilitiesDispelTypeDisplayModeLabel = "능력 해제 타입 표시 위치",
                 hideOptionsTitle = "능력 숨기기",
                 hideOptionsHotkeyModeLabel = "능력 숨기기 단축키 등록 (우클릭으로 해제)",
                 hideAbilitiesInInstanceLabel = "인스턴스( PVP 및 PVE)에서 능력 숨기기"
@@ -240,6 +354,10 @@ local function addonLoaded(self, event, addonLoadedName)
                 hotkeyExplanatoryTextOne = "자세한 내용을 보려면",
                 hotkeyExplanatoryTextTwo = "를 누르세요.",
                 hotkeyNotBoundText = "단축키가 바인딩되지 않았습니다.",
+                mechanicText = "메커니즘",
+                rangeText = "범위",
+                castTimeText = "시전 시간",
+                dispelTypeText = "해제 유형",
             }
         }
 
@@ -266,6 +384,19 @@ local function addonLoaded(self, event, addonLoadedName)
                 hotkeyButtonLabel = "注册切换技能描述快捷键（右键单击解绑",
                 hotkeyButtonInstructionText = "按按钮..",
                 hotkeyButtonNotBoundText = "未绑定",
+                abilityFieldsOptionsTitle = "技能字段显示与位置设置",
+                abilityFieldsDisplayModes = {
+                    title = "在技能名称后显示",
+                    separate = "单独一行显示"
+                },
+                displayAbilitiesMechanicLabel = "显示技能机制",
+                displayAbilitiesMechanicDisplayModeLabel = "技能机制显示位置",
+                displayAbilitiesRangeLabel = "显示技能范围",
+                displayAbilitiesRangeDisplayModeLabel = "技能范围显示位置",
+                displayAbilitiesCastTimeLabel = "显示技能施法时间",
+                displayAbilitiesCastTimeDisplayModeLabel = "技能施法时间显示位置",
+                displayAbilitiesDispelTypeLabel = "显示技能驱散类型",
+                displayAbilitiesDispelTypeDisplayModeLabel = "技能驱散类型显示位置",
                 hideOptionsTitle = "隐藏技能",
                 hideOptionsHotkeyModeLabel = "注册隐藏技能快捷键（右键单击解绑）",
                 hideAbilitiesInInstanceLabel = "在副本（PVP 和 PVE）中隐藏技能"
@@ -274,10 +405,15 @@ local function addonLoaded(self, event, addonLoadedName)
                 hotkeyExplanatoryTextOne = "按",
                 hotkeyExplanatoryTextTwo = "了解详细信息",
                 hotkeyNotBoundText = "热键未绑定",
+                mechanicText = "机制",
+                rangeText = "范围",
+                castTimeText = "施法时间",
+                dispelTypeText = "驱散类型",
             }
         }
     end
 end
+
 
 translationsFrame:RegisterEvent("ADDON_LOADED")
 translationsFrame:SetScript("OnEvent", addonLoaded)

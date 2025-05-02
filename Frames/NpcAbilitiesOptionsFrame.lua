@@ -135,7 +135,18 @@ local function getDefaultOptions(optionsTranslations)
             {value = 'toggle', text = optionsTranslations["hotkeyModes"]["toggle"]},
             {value = 'hold', text = optionsTranslations["hotkeyModes"]["hold"]},
         },
+        AVAILABLE_ABILITY_FIELD_DISPLAY_MODES = {
+            {value = 'title', text = optionsTranslations["abilityFieldsDisplayModes"]["title"]},
+            {value = 'separate', text = optionsTranslations["abilityFieldsDisplayModes"]["separate"]}
+        },
         DISPLAY_ABILITY_MECHANIC = true,
+        SELECTED_ABILITY_MECHANIC_DISPLAY_MODE = 'title',
+        DISPLAY_ABILITY_RANGE = false,
+        SELECTED_ABILITY_RANGE_DISPLAY_MODE = 'title',
+        DISPLAY_ABILITY_CAST_TIME = false,
+        SELECTED_ABILITY_CAST_TIME_DISPLAY_MODE = 'title',
+        DISPLAY_ABILITY_DISPEL_TYPE = false,
+        SELECTED_ABILITY_DISPEL_TYPE_DISPLAY_MODE = 'title',
         HIDE_ABILITIES_SELECTED_HOTKEY = nil,
         HIDE_ABILITIES_IN_INSTANCE = false
     }
@@ -203,18 +214,11 @@ local function InitializeOptions()
         "languages"
     )
 
-    -- General options: Mechanic
-    local displayAbilitiesMechanicCheckbox = CreateCheckBox(optionsContainer, optionsTranslations["displayAbilitiesMechanicLabel"], "DISPLAY_ABILITY_MECHANIC", function(self)
-        local checked = self:GetChecked()
-        NpcAbilitiesOptions["DISPLAY_ABILITY_MECHANIC"] = checked
-    end)
-    displayAbilitiesMechanicCheckbox:SetPoint("TOPLEFT", languageDropdown, fieldOffsetX - 10, subTitleOffsetY + fieldOffsetY)
-
     -- General options: Hotkey
     local hotkeyModeDropdown = CreateOptionDropdown(
         optionsContainer,
-        displayAbilitiesMechanicCheckbox,
-        5,
+        languageDropdown,
+        fieldOffsetX - 5,
         subTitleOffsetY,
         optionsTranslations["hotkeyModeLabel"],
         optionsTranslations["hotkeyModes"]["toggle"],
@@ -223,18 +227,100 @@ local function InitializeOptions()
         "hotkeyModes"
     )
 
-    local hotkeyDescription, registerHotkeyButton = CreateHotkeyButton(optionsPanel, optionsTranslations["hotkeyButtonLabel"], "SELECTED_HOTKEY")
+    local hotkeyDescription, registerHotkeyButton = CreateHotkeyButton(optionsContainer, optionsTranslations["hotkeyButtonLabel"], "SELECTED_HOTKEY")
     hotkeyDescription:SetPoint("TOPLEFT", hotkeyModeDropdown, "BOTTOMLEFT", fieldOffsetX - 10, fieldOffsetY)
     registerHotkeyButton:SetPoint("TOPLEFT", hotkeyDescription, "TOPLEFT", 0, -12)
 
+    -- Ability fields options
+    local abilityFieldsOptionsTitle = optionsContainer:CreateFontString("ARTWORK", nil, "GameFontHighlightLarge")
+    abilityFieldsOptionsTitle:SetPoint("TOPLEFT", registerHotkeyButton, "TOPLEFT", -fieldOffsetX + 5, -registerHotkeyButton:GetHeight() + titleOffsetY)
+    abilityFieldsOptionsTitle:SetText(optionsTranslations["abilityFieldsOptionsTitle"])
+    abilityFieldsOptionsTitle:SetTextColor(1, 1, 1)
+
+    -- Ability fields options: Mechanic
+    local displayAbilitiesMechanicCheckbox = CreateCheckBox(optionsContainer, optionsTranslations["displayAbilitiesMechanicLabel"], "DISPLAY_ABILITY_MECHANIC", function(self)
+        local checked = self:GetChecked()
+        NpcAbilitiesOptions["DISPLAY_ABILITY_MECHANIC"] = checked
+    end)
+    displayAbilitiesMechanicCheckbox:SetPoint("TOPLEFT", abilityFieldsOptionsTitle, fieldOffsetX - 5, subTitleOffsetY + fieldOffsetY)
+
+    local mechanicDisplayModeModeDropdown = CreateOptionDropdown(
+        optionsContainer,
+        displayAbilitiesMechanicCheckbox,
+        5,
+        subTitleOffsetY,
+        optionsTranslations["displayAbilitiesMechanicDisplayModeLabel"],
+        optionsTranslations["abilityFieldsDisplayModes"]["title"],
+        "AVAILABLE_ABILITY_FIELD_DISPLAY_MODES",
+        "SELECTED_ABILITY_MECHANIC_DISPLAY_MODE",
+        "abilityFieldsDisplayModes"
+    )
+
+    -- Ability fields options: Range
+    local displayAbilitiesRangeCheckbox = CreateCheckBox(optionsContainer, optionsTranslations["displayAbilitiesRangeLabel"], "DISPLAY_ABILITY_RANGE", function(self)
+        local checked = self:GetChecked()
+        NpcAbilitiesOptions["DISPLAY_ABILITY_RANGE"] = checked
+    end)
+    displayAbilitiesRangeCheckbox:SetPoint("TOPLEFT", mechanicDisplayModeModeDropdown, fieldOffsetX - 10, subTitleOffsetY + fieldOffsetY)
+
+    local rangeDisplayModeModeDropdown = CreateOptionDropdown(
+        optionsContainer,
+        displayAbilitiesRangeCheckbox,
+        5,
+        subTitleOffsetY,
+        optionsTranslations["displayAbilitiesRangeDisplayModeLabel"],
+        optionsTranslations["abilityFieldsDisplayModes"]["title"],
+        "AVAILABLE_ABILITY_FIELD_DISPLAY_MODES",
+        "SELECTED_ABILITY_RANGE_DISPLAY_MODE",
+        "abilityFieldsDisplayModes"
+    )
+
+    -- Ability fields options: Cast Time
+    local displayAbilitiesCastTimeCheckbox = CreateCheckBox(optionsContainer, optionsTranslations["displayAbilitiesCastTimeLabel"], "DISPLAY_ABILITY_CAST_TIME", function(self)
+        local checked = self:GetChecked()
+        NpcAbilitiesOptions["DISPLAY_ABILITY_CAST_TIME"] = checked
+    end)
+    displayAbilitiesCastTimeCheckbox:SetPoint("TOPLEFT", rangeDisplayModeModeDropdown, fieldOffsetX - 10, subTitleOffsetY + fieldOffsetY)
+
+    local castTimeDisplayModeModeDropdown = CreateOptionDropdown(
+        optionsContainer,
+        displayAbilitiesCastTimeCheckbox,
+        5,
+        subTitleOffsetY,
+        optionsTranslations["displayAbilitiesCastTimeDisplayModeLabel"],
+        optionsTranslations["abilityFieldsDisplayModes"]["title"],
+        "AVAILABLE_ABILITY_FIELD_DISPLAY_MODES",
+        "SELECTED_ABILITY_CAST_TIME_DISPLAY_MODE",
+        "abilityFieldsDisplayModes"
+    )
+
+    -- Ability fields options: Dispel Type
+    local displayAbilitiesDispelTypeCheckbox = CreateCheckBox(optionsContainer, optionsTranslations["displayAbilitiesDispelTypeLabel"], "DISPLAY_ABILITY_DISPEL_TYPE", function(self)
+        local checked = self:GetChecked()
+        NpcAbilitiesOptions["DISPLAY_ABILITY_DISPEL_TYPE"] = checked
+    end)
+    displayAbilitiesDispelTypeCheckbox:SetPoint("TOPLEFT", castTimeDisplayModeModeDropdown, fieldOffsetX - 10, subTitleOffsetY + fieldOffsetY)
+
+    local dispelTypeDisplayModeModeDropdown = CreateOptionDropdown(
+        optionsContainer,
+        displayAbilitiesDispelTypeCheckbox,
+        5,
+        subTitleOffsetY,
+        optionsTranslations["displayAbilitiesDispelTypeDisplayModeLabel"],
+        optionsTranslations["abilityFieldsDisplayModes"]["title"],
+        "AVAILABLE_ABILITY_FIELD_DISPLAY_MODES",
+        "SELECTED_ABILITY_DISPEL_TYPE_DISPLAY_MODE",
+        "abilityFieldsDisplayModes"
+    )
+
     -- Hide options
     local hideOptionsTitle = optionsContainer:CreateFontString("ARTWORK", nil, "GameFontHighlightLarge")
-    hideOptionsTitle:SetPoint("TOPLEFT", registerHotkeyButton, "TOPLEFt", -fieldOffsetX + 5, -registerHotkeyButton:GetHeight() + titleOffsetY)
+    hideOptionsTitle:SetPoint("TOPLEFT", dispelTypeDisplayModeModeDropdown, "TOPLEFt", -5, subTitleOffsetY + fieldOffsetY)
     hideOptionsTitle:SetText(optionsTranslations["hideOptionsTitle"])
     hideOptionsTitle:SetTextColor(1, 1, 1)
 
     -- Hide options: Hotkey
-    local hideAbilitiesHotkeyDescription, registerHideAbilitiesHotkeyButton = CreateHotkeyButton(optionsPanel, optionsTranslations["hideOptionsHotkeyModeLabel"], "HIDE_ABILITIES_SELECTED_HOTKEY")
+    local hideAbilitiesHotkeyDescription, registerHideAbilitiesHotkeyButton = CreateHotkeyButton(optionsContainer, optionsTranslations["hideOptionsHotkeyModeLabel"], "HIDE_ABILITIES_SELECTED_HOTKEY")
     hideAbilitiesHotkeyDescription:SetPoint("TOPLEFT", hideOptionsTitle, "BOTTOMLEFT", fieldOffsetX - 5, fieldOffsetY)
     registerHideAbilitiesHotkeyButton:SetPoint("TOPLEFT", hideAbilitiesHotkeyDescription, "TOPLEFT", 0, -12)
 
