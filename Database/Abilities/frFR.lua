@@ -3768,7 +3768,7 @@ _G['NpcAbilitiesAbilityData']['fr'] = {
 [1233883] = {name = "Venin enivrant", description = "Cette toxine gluante se durcit et devient aussi épaisse que du limon lorsqu’elle est cumulée 5 fois.\nLes déplacements empêchent la toxine de complètement se coaguler.", mechanic = nil, range = "100 mètres ", cast_time = "Instantanée", dispel_type = nil},
 [1233901] = {name = "Poison nauséabond", description = "Poison nauséabond Poison\n555 to 645 points de dégâts de nature toutes les 1 s.\nLaisse une flaque de poison nocif lorsque l’effet est retiré.", mechanic = nil, range = "100 mètres ", cast_time = "Instantanée", dispel_type = "Poison"},
 [1234347] = {name = "Enflammer la chair", description = "Inflige 536 to 564 points de dégâts toutes les 2 s.", mechanic = nil, range = "0 mètres ", cast_time = "1 seconde", dispel_type = nil},
-[1234540] = {name = "Enflammer", description = "Inflige 487 to 513 points de dégâts à un ennemi toutes les 1 s pendant 15 sec.", mechanic = nil, range = "5 mètres ", cast_time = "Instantanée", dispel_type = nil},
+[1234540] = {name = "Enflammer", description = "Inflige 390 to 410 points de dégâts à un ennemi toutes les 1 s pendant 15 sec.", mechanic = nil, range = "5 mètres ", cast_time = "Instantanée", dispel_type = nil},
 [1234595] = {name = "Disparition", description = nil, mechanic = nil, range = "0 mètres ", cast_time = "Instantanée", dispel_type = nil},
 [1234675] = {name = "Faisceau de bulles", description = nil, mechanic = nil, range = "200 mètres ", cast_time = "Canalisée", dispel_type = nil},
 [1234862] = {name = "Rougeoiement", description = "Augmente de 16 l’Esprit des membres du groupe à proximité.", mechanic = nil, range = "0 mètres ", cast_time = "Instantanée", dispel_type = nil},

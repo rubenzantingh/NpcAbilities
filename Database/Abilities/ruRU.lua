@@ -3768,7 +3768,7 @@ _G['NpcAbilitiesAbilityData']['ru'] = {
 [1233883] = {name = "Тягучий токсин", description = "Липкий токсин постепенно затвердевает, и после накопления 5 эффектов удерживает жертву в вязкой слизи.\nДвижение не позволяет токсину полностью затвердеть.", mechanic = nil, range = "100 метров ", cast_time = nil, dispel_type = nil},
 [1233901] = {name = "Пагубный яд", description = "555 to 645 ед. урона от сил природы раз в 1 сек.\nПри рассеивании образует лужу пагубного яда.", mechanic = nil, range = "100 метров ", cast_time = nil, dispel_type = "Яд"},
 [1234347] = {name = "Сожжение плоти", description = "536 to 564 ед. урона раз в 2 сек.", mechanic = nil, range = "0 метров ", cast_time = nil, dispel_type = nil},
-[1234540] = {name = "Воспламенение", description = "Наносит противнику 487 to 513 ед. урона от огня каждые 1 сек. в течение 15 сек.", mechanic = nil, range = "5 метров ", cast_time = nil, dispel_type = nil},
+[1234540] = {name = "Воспламенение", description = "Наносит противнику 390 to 410 ед. урона от огня каждые 1 сек. в течение 15 сек.", mechanic = nil, range = "5 метров ", cast_time = nil, dispel_type = nil},
 [1234595] = {name = "Исчезновение", description = nil, mechanic = nil, range = "0 метров ", cast_time = nil, dispel_type = nil},
 [1234675] = {name = "Поток пузырей", description = nil, mechanic = nil, range = "200 метров ", cast_time = nil, dispel_type = nil},
 [1234862] = {name = "Огненный свет", description = "Повышает дух ближайших участников группы на 16 ед.", mechanic = nil, range = "0 метров ", cast_time = nil, dispel_type = nil},

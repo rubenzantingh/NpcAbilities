@@ -3768,7 +3768,7 @@ _G['NpcAbilitiesAbilityData']['en'] = {
 [1233883] = {name = "Intoxicating Venom", description = "This sticky toxin is hardening, and will become thick as ooze at 5 stacks.\nMovement will render the toxin unable to fully coagulate.", mechanic = nil, range = "100 yards ", cast_time = "Instant", dispel_type = nil},
 [1233901] = {name = "Noxious Poison", description = "Deals 555 to 645 nature damage every 1 sec.\nLeaves behind a pool of noxious poison when removed.", mechanic = nil, range = "100 yards ", cast_time = "Instant", dispel_type = "Poison"},
 [1234347] = {name = "Ignite Flesh", description = "Deals 536 to 564 damage every 2 sec.", mechanic = nil, range = "0 yards ", cast_time = "1 second", dispel_type = nil},
-[1234540] = {name = "Ignite", description = "Inflicts 487 to 513 Fire damage to an enemy every 1 sec. for 15 sec.", mechanic = nil, range = "5 yards ", cast_time = "Instant", dispel_type = nil},
+[1234540] = {name = "Ignite", description = "Inflicts 390 to 410 Fire damage to an enemy every 1 sec. for 15 sec.", mechanic = nil, range = "5 yards ", cast_time = "Instant", dispel_type = nil},
 [1234595] = {name = "Vanish", description = nil, mechanic = nil, range = "0 yards ", cast_time = "Instant", dispel_type = nil},
 [1234675] = {name = "Bubble Beam", description = nil, mechanic = nil, range = "200 yards ", cast_time = "Channeled", dispel_type = nil},
 [1234862] = {name = "Fire's Glow", description = "Increase the Spirit of nearby party members by 16.", mechanic = nil, range = "0 yards ", cast_time = "Instant", dispel_type = nil},

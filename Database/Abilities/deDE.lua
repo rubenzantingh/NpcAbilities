@@ -3768,7 +3768,7 @@ _G['NpcAbilitiesAbilityData']['de'] = {
 [1233883] = {name = "Berauschendes Gift", description = "Dieses klebrige Toxin härtet aus und wird nach 5 Stapeln so zäh wie Kleister.\nBewegung verhindert die vollständige Aushärtung.", mechanic = nil, range = "100 Meter ", cast_time = "Sofort", dispel_type = nil},
 [1233901] = {name = "Tödliches Gift", description = "Tödliches Gift Gift\nAlle 1 Sek. 555 to 645 Naturschaden.\nHinterlässt beim Entfernen eine Giftlache.", mechanic = nil, range = "100 Meter ", cast_time = "Sofort", dispel_type = "Gift"},
 [1234347] = {name = "Fleisch entzünden", description = "Fleisch entzünden\nVerursacht alle 2 Sek. 536 to 564 Schaden.", mechanic = nil, range = "0 Meter ", cast_time = "1 sekunde", dispel_type = nil},
-[1234540] = {name = "Entzünden", description = "Fügt 15 Sek. lang einem Feind alle 1 Sek. 487 to 513 $|Punkt:Punkte; Feuerschaden zu.", mechanic = nil, range = "5 Meter ", cast_time = "Sofort", dispel_type = nil},
+[1234540] = {name = "Entzünden", description = "Fügt 15 Sek. lang einem Feind alle 1 Sek. 390 to 410 $|Punkt:Punkte; Feuerschaden zu.", mechanic = nil, range = "5 Meter ", cast_time = "Sofort", dispel_type = nil},
 [1234595] = {name = "Verschwinden", description = nil, mechanic = nil, range = "0 Meter ", cast_time = "Sofort", dispel_type = nil},
 [1234675] = {name = "Blasenstrahl", description = nil, mechanic = nil, range = "200 Meter ", cast_time = "Kanalisiert", dispel_type = nil},
 [1234862] = {name = "Feuerleuchten", description = "Erhöht die Willenskraft der in der Nähe befindlichen Gruppenmitglieder um 16.", mechanic = nil, range = "0 Meter ", cast_time = "Sofort", dispel_type = nil},

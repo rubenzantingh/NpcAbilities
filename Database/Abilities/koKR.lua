@@ -3772,7 +3772,7 @@ _G['NpcAbilitiesAbilityData']['ko'] = {
 [1233883] = {name = "열광의 맹독", description = "끈적이는 독이 굳어져 5번 중첩 시 수액처럼 끈적해짐\n독이 완전히 응고하지 않게 하려면 이동해야 함", mechanic = "100 야드 ", range = nil, cast_time = nil, dispel_type = nil},
 [1233901] = {name = "맹독", description = "1초마다 555 to 645의 자연 피해", mechanic = "100 야드 ", range = nil, cast_time = nil, dispel_type = "독"},
 [1234347] = {name = "살점 태우기", description = "매 2초마다 536 to 564의 피해", mechanic = "0 야드 ", range = nil, cast_time = nil, dispel_type = nil},
-[1234540] = {name = "작열", description = "적에게 15초에 걸쳐 매 1초마다 487 to 513의 화염 피해를 입힙니다.", mechanic = "5 야드 ", range = nil, cast_time = nil, dispel_type = nil},
+[1234540] = {name = "작열", description = "적에게 15초에 걸쳐 매 1초마다 390 to 410의 화염 피해를 입힙니다.", mechanic = "5 야드 ", range = nil, cast_time = nil, dispel_type = nil},
 [1234595] = {name = "소멸", description = nil, mechanic = "0 야드 ", range = nil, cast_time = nil, dispel_type = nil},
 [1234675] = {name = "거품광선", description = nil, mechanic = "200 야드 ", range = nil, cast_time = nil, dispel_type = nil},
 [1234862] = {name = "불꽃의 흐름", description = "주위 파티원의 정신력을 16만큼 증가시킵니다.", mechanic = "0 야드 ", range = nil, cast_time = nil, dispel_type = nil},

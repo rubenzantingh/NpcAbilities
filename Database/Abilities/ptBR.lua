@@ -3767,7 +3767,7 @@ _G['NpcAbilitiesAbilityData']['pt'] = {
 [1233883] = {name = "Peçonha Intoxicante", description = "Peçonha Intoxicante\nEssa toxina grudenta está endurecendo e ficará densa como gosma ao acumular 5 vezes.\nMovimento impedirá a toxina de coagular totalmente.", mechanic = nil, range = "100 metros ", cast_time = "Instantâneo", dispel_type = nil},
 [1233901] = {name = "Veneno Nóxio", description = "Veneno Nóxio Veneno\nCausa 555 to 645 de dano de Natureza a cada 1 s.\nDeixa uma poça de veneno nóxio quando é removido.", mechanic = nil, range = "100 metros ", cast_time = "Instantâneo", dispel_type = "Veneno"},
 [1234347] = {name = "Incendiar Carne", description = "Causa 536 to 564 de dano a cada 2 s.", mechanic = nil, range = "0 metros ", cast_time = "1 segundo", dispel_type = nil},
-[1234540] = {name = "Incendiar", description = "Causa 487 to 513 de dano de Fogo a um inimigo a cada 1 s por 15 s.", mechanic = nil, range = "5 metros ", cast_time = "Instantâneo", dispel_type = nil},
+[1234540] = {name = "Incendiar", description = "Causa 390 to 410 de dano de Fogo a um inimigo a cada 1 s por 15 s.", mechanic = nil, range = "5 metros ", cast_time = "Instantâneo", dispel_type = nil},
 [1234595] = {name = "Sumir", description = nil, mechanic = nil, range = "0 metros ", cast_time = "Instantâneo", dispel_type = nil},
 [1234675] = {name = "Feixe de Bolhas", description = nil, mechanic = nil, range = "200 metros ", cast_time = "Canalizado", dispel_type = nil},
 [1234862] = {name = "Brilho Ígneo", description = "Aumenta em 16 o Espírito dos integrantes do grupo próximos.", mechanic = nil, range = "0 metros ", cast_time = "Instantâneo", dispel_type = nil},

@@ -3768,7 +3768,7 @@ _G['NpcAbilitiesAbilityData']['cn'] = {
 [1233883] = {name = "兴奋毒剂", description = "兴奋毒剂\n黏糊糊的毒药逐渐硬化，叠加至5层时变得像软泥一样厚实。\n移动会使毒药无法完全凝结。", mechanic = nil, range = "100码 ", cast_time = "瞬发", dispel_type = nil},
 [1233901] = {name = "致命剧毒", description = "致命剧毒 中毒\n每1秒造成555 to 645点自然伤害。\n被移除时留下一滩致命的剧毒。", mechanic = nil, range = "100码 ", cast_time = "瞬发", dispel_type = "毒药"},
 [1234347] = {name = "点燃躯体", description = "点燃躯体\n每2秒造成536 to 564点伤害。", mechanic = nil, range = "0码 ", cast_time = "1​秒", dispel_type = nil},
-[1234540] = {name = "点燃", description = "每1秒造成487 to 513点火焰伤害，持续15秒。", mechanic = nil, range = "5码 ", cast_time = "瞬发", dispel_type = nil},
+[1234540] = {name = "点燃", description = "每1秒造成390 to 410点火焰伤害，持续15秒。", mechanic = nil, range = "5码 ", cast_time = "瞬发", dispel_type = nil},
 [1234595] = {name = "消失", description = nil, mechanic = nil, range = "0码 ", cast_time = "瞬发", dispel_type = nil},
 [1234675] = {name = "气泡光束", description = nil, mechanic = nil, range = "200码 ", cast_time = "瞄准", dispel_type = nil},
 [1234862] = {name = "火光", description = "使附近小队成员的精神提高16点。", mechanic = nil, range = "0码 ", cast_time = "瞬发", dispel_type = nil},

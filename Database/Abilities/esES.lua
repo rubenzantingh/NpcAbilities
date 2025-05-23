@@ -3768,7 +3768,7 @@ _G['NpcAbilitiesAbilityData']['es'] = {
 [1233883] = {name = "Veneno intoxicante", description = "Esta toxina pegajosa se está endureciendo y se volverá espesa como el moco a las 5 acumulaciones.\nEl movimiento evitará que la toxina pueda coagular del todo.", mechanic = nil, range = "100 metros ", cast_time = "Instante", dispel_type = nil},
 [1233901] = {name = "Veneno nocivo", description = "Inflige 555 to 645 p. de daño de Naturaleza cada 1 s.\nDeja tras de sí un charco de veneno nocivo al eliminarse.", mechanic = nil, range = "100 metros ", cast_time = "Instante", dispel_type = "Veneno"},
 [1234347] = {name = "Ignición de la carne", description = "Ignición de la carne\nInflige 536 to 564 p. de daño cada 2 s.", mechanic = nil, range = "0 metros ", cast_time = "1 segundo", dispel_type = nil},
-[1234540] = {name = "Ignición", description = "Inflige 487 to 513 p. de daño de Fuego a un enemigo cada 1 s. durante 15 s.", mechanic = nil, range = "5 metros ", cast_time = "Instante", dispel_type = nil},
+[1234540] = {name = "Ignición", description = "Inflige 390 to 410 p. de daño de Fuego a un enemigo cada 1 s. durante 15 s.", mechanic = nil, range = "5 metros ", cast_time = "Instante", dispel_type = nil},
 [1234595] = {name = "Esfumarse", description = nil, mechanic = nil, range = "0 metros ", cast_time = "Instante", dispel_type = nil},
 [1234675] = {name = "Rayo de burbujas", description = nil, mechanic = nil, range = "200 metros ", cast_time = "Canalizado", dispel_type = nil},
 [1234862] = {name = "Brillo del Fuego", description = "Aumenta 16 p. el espíritu de los miembros del grupo cercanos.", mechanic = nil, range = "0 metros ", cast_time = "Instante", dispel_type = nil},
