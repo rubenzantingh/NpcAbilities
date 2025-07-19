@@ -145,6 +145,8 @@ local function getDefaultOptions(optionsTranslations)
         SELECTED_ABILITY_RANGE_DISPLAY_MODE = 'title',
         DISPLAY_ABILITY_CAST_TIME = false,
         SELECTED_ABILITY_CAST_TIME_DISPLAY_MODE = 'title',
+        DISPLAY_ABILITY_COOLDOWN = false,
+        SELECTED_ABILITY_COOLDOWN_DISPLAY_MODE = 'title',
         DISPLAY_ABILITY_DISPEL_TYPE = false,
         SELECTED_ABILITY_DISPEL_TYPE_DISPLAY_MODE = 'title',
         HIDE_ABILITIES_SELECTED_HOTKEY = nil,
@@ -294,12 +296,31 @@ local function InitializeOptions()
         "abilityFieldsDisplayModes"
     )
 
+    -- Ability fields options: Cooldown
+    local displayAbilitiesCooldownCheckbox = CreateCheckBox(optionsContainer, optionsTranslations["displayAbilitiesCooldownLabel"], "DISPLAY_ABILITY_COOLDOWN", function(self)
+        local checked = self:GetChecked()
+        NpcAbilitiesOptions["DISPLAY_ABILITY_COOLDOWN"] = checked
+    end)
+    displayAbilitiesCooldownCheckbox:SetPoint("TOPLEFT", castTimeDisplayModeModeDropdown, fieldOffsetX - 10, subTitleOffsetY + fieldOffsetY)
+
+    local cooldownDisplayModeModeDropdown = CreateOptionDropdown(
+        optionsContainer,
+        displayAbilitiesCooldownCheckbox,
+        5,
+        subTitleOffsetY,
+        optionsTranslations["displayAbilitiesCooldownDisplayModeLabel"],
+        optionsTranslations["abilityFieldsDisplayModes"]["title"],
+        "AVAILABLE_ABILITY_FIELD_DISPLAY_MODES",
+        "SELECTED_ABILITY_COOLDOWN_DISPLAY_MODE",
+        "abilityFieldsDisplayModes"
+    )
+
     -- Ability fields options: Dispel Type
     local displayAbilitiesDispelTypeCheckbox = CreateCheckBox(optionsContainer, optionsTranslations["displayAbilitiesDispelTypeLabel"], "DISPLAY_ABILITY_DISPEL_TYPE", function(self)
         local checked = self:GetChecked()
         NpcAbilitiesOptions["DISPLAY_ABILITY_DISPEL_TYPE"] = checked
     end)
-    displayAbilitiesDispelTypeCheckbox:SetPoint("TOPLEFT", castTimeDisplayModeModeDropdown, fieldOffsetX - 10, subTitleOffsetY + fieldOffsetY)
+    displayAbilitiesDispelTypeCheckbox:SetPoint("TOPLEFT", cooldownDisplayModeModeDropdown, fieldOffsetX - 10, subTitleOffsetY + fieldOffsetY)
 
     local dispelTypeDisplayModeModeDropdown = CreateOptionDropdown(
         optionsContainer,

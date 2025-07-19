@@ -38,6 +38,8 @@ local function addonLoaded(self, event, addonLoadedName)
                 displayAbilitiesRangeDisplayModeLabel = "Where to display the ability range",
                 displayAbilitiesCastTimeLabel = "Display ability cast time",
                 displayAbilitiesCastTimeDisplayModeLabel = "Where to display the ability cast time",
+                displayAbilitiesCooldownLabel = "Display ability cooldown",
+                displayAbilitiesCooldownDisplayModeLabel = "Where to display the ability cooldown",
                 displayAbilitiesDispelTypeLabel = "Display ability dispel type",
                 displayAbilitiesDispelTypeDisplayModeLabel = "Where to display the ability dispel type",
                 hideOptionsTitle = "Hide abilities",
@@ -51,6 +53,7 @@ local function addonLoaded(self, event, addonLoadedName)
                  mechanicText = "Mechanic",
                  rangeText = "Range",
                  castTimeText = "Cast time",
+                 cooldownText = "Cooldown",
                  dispelTypeText = "Dispel type"
              }
         }
@@ -89,6 +92,8 @@ local function addonLoaded(self, event, addonLoadedName)
                 displayAbilitiesRangeDisplayModeLabel = "Dónde mostrar el rango de la habilidad",
                 displayAbilitiesCastTimeLabel = "Mostrar tiempo de lanzamiento de la habilidad",
                 displayAbilitiesCastTimeDisplayModeLabel = "Dónde mostrar el tiempo de lanzamiento de la habilidad",
+                displayAbilitiesCooldownLabel = "Mostrar enfriamiento de habilidad",
+                displayAbilitiesCooldownDisplayModeLabel = "Dónde mostrar el enfriamiento de la habilidad",
                 displayAbilitiesDispelTypeLabel = "Mostrar tipo de disipación de la habilidad",
                 displayAbilitiesDispelTypeDisplayModeLabel = "Dónde mostrar el tipo de disipación de la habilidad",
                 hideOptionsTitle = "Ocultar habilidades",
@@ -102,6 +107,7 @@ local function addonLoaded(self, event, addonLoadedName)
                 mechanicText = "Mecánica",
                 rangeText = "Alcance",
                 castTimeText = "Tiempo de lanzamiento",
+                cooldownText = "Enfriamiento",
                 dispelTypeText = "Tipo de disipación",
             }
         }
@@ -140,6 +146,8 @@ local function addonLoaded(self, event, addonLoadedName)
                 displayAbilitiesRangeDisplayModeLabel = "Position der Anzeige der Fähigkeitsreichweite",
                 displayAbilitiesCastTimeLabel = "Zauberzeit der Fähigkeit anzeigen",
                 displayAbilitiesCastTimeDisplayModeLabel = "Position der Anzeige der Zauberzeit",
+                displayAbilitiesCooldownLabel = "Fähigkeitsabklingzeit anzeigen",
+                displayAbilitiesCooldownDisplayModeLabel = "Wo die Abklingzeit der Fähigkeit angezeigt wird",
                 displayAbilitiesDispelTypeLabel = "Art der Bannung anzeigen",
                 displayAbilitiesDispelTypeDisplayModeLabel = "Position der Anzeige der Bannungsart",
                 hideOptionsTitle = "Fähigkeiten ausblenden",
@@ -153,6 +161,7 @@ local function addonLoaded(self, event, addonLoadedName)
                 mechanicText = "Mechanik",
                 rangeText = "Reichweite",
                 castTimeText = "Zauberzeit",
+                cooldownText = "Abklingzeit",
                 dispelTypeText = "Bannart",
             }
         }
@@ -191,6 +200,8 @@ local function addonLoaded(self, event, addonLoadedName)
                 displayAbilitiesRangeDisplayModeLabel = "Où afficher la portée de la compétence",
                 displayAbilitiesCastTimeLabel = "Afficher le temps d'incantation de la compétence",
                 displayAbilitiesCastTimeDisplayModeLabel = "Où afficher le temps d'incantation",
+                displayAbilitiesCooldownLabel = "Afficher le temps de recharge des compétences",
+                displayAbilitiesCooldownDisplayModeLabel = "Où afficher le temps de recharge des compétences",
                 displayAbilitiesDispelTypeLabel = "Afficher le type de dissipation de la compétence",
                 displayAbilitiesDispelTypeDisplayModeLabel = "Où afficher le type de dissipation",
                 hideOptionsTitle = "Masquer les capacités",
@@ -204,6 +215,7 @@ local function addonLoaded(self, event, addonLoadedName)
                 mechanicText = "Mécanique",
                 rangeText = "Portée",
                 castTimeText = "Temps d'incantation",
+                cooldownText = "Temps de recharge",
                 dispelTypeText = "Type de dissipation",
             }
         }
@@ -242,6 +254,8 @@ local function addonLoaded(self, event, addonLoadedName)
                 displayAbilitiesRangeDisplayModeLabel = "Onde exibir o alcance da habilidade",
                 displayAbilitiesCastTimeLabel = "Exibir tempo de conjuração da habilidade",
                 displayAbilitiesCastTimeDisplayModeLabel = "Onde exibir o tempo de conjuração",
+                displayAbilitiesCooldownLabel = "Exibir recarga da habilidade",
+                displayAbilitiesCooldownDisplayModeLabel = "Onde exibir a recarga da habilidade",
                 displayAbilitiesDispelTypeLabel = "Exibir tipo de dissipação da habilidade",
                 displayAbilitiesDispelTypeDisplayModeLabel = "Onde exibir o tipo de dissipação",
                 hideOptionsTitle = "Ocultar habilidades",
@@ -255,6 +269,7 @@ local function addonLoaded(self, event, addonLoadedName)
                 mechanicText = "Mecânica",
                 rangeText = "Alcance",
                 castTimeText = "Tempo de lançamento",
+                cooldownText = "Recarga",
                 dispelTypeText = "Tipo de dissipação",
             }
         }
@@ -293,6 +308,8 @@ local function addonLoaded(self, event, addonLoadedName)
                 displayAbilitiesRangeDisplayModeLabel = "Где отображать радиус действия умения",
                 displayAbilitiesCastTimeLabel = "Показать время применения умения",
                 displayAbilitiesCastTimeDisplayModeLabel = "Где отображать время применения",
+                displayAbilitiesCooldownLabel = "Показывать время восстановления способности",
+                displayAbilitiesCooldownDisplayModeLabel = "Где отображать время восстановления способности",
                 displayAbilitiesDispelTypeLabel = "Показать тип рассеивания умения",
                 displayAbilitiesDispelTypeDisplayModeLabel = "Где отображать тип рассеивания",
                 hideOptionsTitle = "Скрытие способностей",
@@ -306,6 +323,7 @@ local function addonLoaded(self, event, addonLoadedName)
                 mechanicText = "Механика",
                 rangeText = "Дальность",
                 castTimeText = "Время произнесения",
+                cooldownText = "Восстановление",
                 dispelTypeText = "Тип рассеивания",
             }
         }
@@ -344,6 +362,8 @@ local function addonLoaded(self, event, addonLoadedName)
                 displayAbilitiesRangeDisplayModeLabel = "능력 범위 표시 위치",
                 displayAbilitiesCastTimeLabel = "능력 시전 시간 표시",
                 displayAbilitiesCastTimeDisplayModeLabel = "능력 시전 시간 표시 위치",
+                displayAbilitiesCooldownLabel = "스킬 쿨타임 표시",
+                displayAbilitiesCooldownDisplayModeLabel = "스킬 쿨타임을 표시할 위치",
                 displayAbilitiesDispelTypeLabel = "능력 해제 타입 표시",
                 displayAbilitiesDispelTypeDisplayModeLabel = "능력 해제 타입 표시 위치",
                 hideOptionsTitle = "능력 숨기기",
@@ -357,6 +377,7 @@ local function addonLoaded(self, event, addonLoadedName)
                 mechanicText = "메커니즘",
                 rangeText = "범위",
                 castTimeText = "시전 시간",
+                cooldownText = "쿨타임",
                 dispelTypeText = "해제 유형",
             }
         }
@@ -395,6 +416,8 @@ local function addonLoaded(self, event, addonLoadedName)
                 displayAbilitiesRangeDisplayModeLabel = "技能范围显示位置",
                 displayAbilitiesCastTimeLabel = "显示技能施法时间",
                 displayAbilitiesCastTimeDisplayModeLabel = "技能施法时间显示位置",
+                displayAbilitiesCooldownLabel = "显示技能冷却时间",
+                displayAbilitiesCooldownDisplayModeLabel = "显示技能冷却时间的位置",
                 displayAbilitiesDispelTypeLabel = "显示技能驱散类型",
                 displayAbilitiesDispelTypeDisplayModeLabel = "技能驱散类型显示位置",
                 hideOptionsTitle = "隐藏技能",
@@ -408,6 +431,7 @@ local function addonLoaded(self, event, addonLoadedName)
                 mechanicText = "机制",
                 rangeText = "范围",
                 castTimeText = "施法时间",
+                cooldownText = "冷却时间",
                 dispelTypeText = "驱散类型",
             }
         }

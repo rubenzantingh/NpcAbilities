@@ -23,7 +23,7 @@ local function GetDataByID(dataType, dataId)
     return nil
 end
 
-local function AddAbilityLinesToGameTooltip(id, name, description, mechanic, range, castTime, dispelType, addedAbilityLine)
+local function AddAbilityLinesToGameTooltip(id, name, description, mechanic, range, castTime, cooldown, dispelType, addedAbilityLine)
     if not addedAbilityLine then
         GameTooltip:AddLine(" ")
     end
@@ -48,6 +48,7 @@ local function AddAbilityLinesToGameTooltip(id, name, description, mechanic, ran
     appendTitleInfo("DISPLAY_ABILITY_MECHANIC", mechanic, "SELECTED_ABILITY_MECHANIC_DISPLAY_MODE", "mechanicText")
     appendTitleInfo("DISPLAY_ABILITY_RANGE", range, "SELECTED_ABILITY_RANGE_DISPLAY_MODE", "rangeText")
     appendTitleInfo("DISPLAY_ABILITY_CAST_TIME", castTime, "SELECTED_ABILITY_CAST_TIME_DISPLAY_MODE", "castTimeText")
+    appendTitleInfo("DISPLAY_ABILITY_COOLDOWN", cooldown, "SELECTED_ABILITY_COOLDOWN_DISPLAY_MODE", "cooldownText")
     appendTitleInfo("DISPLAY_ABILITY_DISPEL_TYPE", dispelType, "SELECTED_ABILITY_DISPEL_TYPE_DISPLAY_MODE", "dispelTypeText")
 
     GameTooltip:AddLine(abilityNameText)
@@ -62,6 +63,7 @@ local function AddAbilityLinesToGameTooltip(id, name, description, mechanic, ran
         addSeparateLine("DISPLAY_ABILITY_MECHANIC", mechanic, "SELECTED_ABILITY_MECHANIC_DISPLAY_MODE", "mechanicText")
         addSeparateLine("DISPLAY_ABILITY_RANGE", range, "SELECTED_ABILITY_RANGE_DISPLAY_MODE", "rangeText")
         addSeparateLine("DISPLAY_ABILITY_CAST_TIME", castTime, "SELECTED_ABILITY_CAST_TIME_DISPLAY_MODE", "castTimeText")
+        addSeparateLine("DISPLAY_ABILITY_COOLDOWN", cooldown, "SELECTED_ABILITY_COOLDOWN_DISPLAY_MODE", "cooldownText")
         addSeparateLine("DISPLAY_ABILITY_DISPEL_TYPE", dispelType, "SELECTED_ABILITY_DISPEL_TYPE_DISPLAY_MODE", "dispelTypeText")
 
         GameTooltip:AddLine(description, 1, 1, 1, true)
@@ -114,10 +116,11 @@ local function SetNpcAbilityData()
                 local sodAbilityMechanic = sodAbilitiesData.mechanic or ""
                 local sodAbilityRange = sodAbilitiesData.range or ""
                 local sodAbilityCastTime = sodAbilitiesData.cast_time or ""
+                local sodAbilityCooldown = sodAbilitiesData.cooldown or ""
                 local sodAbilityDispelType = sodAbilitiesData.dispel_type or ""
                 addedAbilityNames[sodAbilityName] = sodAbilityName
     
-                AddAbilityLinesToGameTooltip(sodAbilityId, sodAbilityName, sodAbilityDescription, sodAbilityMechanic, sodAbilityRange, sodAbilityCastTime, sodAbilityDispelType, addedAbilityLine)
+                AddAbilityLinesToGameTooltip(sodAbilityId, sodAbilityName, sodAbilityDescription, sodAbilityMechanic, sodAbilityRange, sodAbilityCastTime, sodAbilityCooldown, sodAbilityDispelType, addedAbilityLine)
                 addedAbilityLine = true
 
                 if sodAbilityDescription ~= '' then
@@ -137,10 +140,11 @@ local function SetNpcAbilityData()
                 local classicAbilityDescription = classicAbilitiesData.description or ""
                 local classicAbilityMechanic = classicAbilitiesData.mechanic or ""
                 local classicAbilityRange = classicAbilitiesData.range or ""
-                local classicAbilityCastTime = classicAbilitiesData.cast_tome or ""
+                local classicAbilityCastTime = classicAbilitiesData.cast_time or ""
+                local classicAbilityCooldown = classicAbilitiesData.cooldown or ""
                 local classicAbilityDispelType = classicAbilitiesData.dispel_type or ""
 
-                AddAbilityLinesToGameTooltip(classicAbilityId, classicAbilityName, classicAbilityDescription, classicAbilityMechanic, classicAbilityRange, classicAbilityCastTime, classicAbilityDispelType, addedAbilityLine)
+                AddAbilityLinesToGameTooltip(classicAbilityId, classicAbilityName, classicAbilityDescription, classicAbilityMechanic, classicAbilityRange, classicAbilityCastTime, classicAbilityCooldown, classicAbilityDispelType, addedAbilityLine)
                 addedAbilityLine = true
 
                 if classicAbilityDescription ~= '' then
