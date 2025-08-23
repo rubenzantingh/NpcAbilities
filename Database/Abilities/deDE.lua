@@ -1335,6 +1335,7 @@ _G['NpcAbilitiesAbilityData']['de'] = {
 [15572] = {name = "Rüstung zerreißen", description = "Hackt nach der Rüstung des Feindes und verringert sie um 0 Punkt(e) pro Einsatz von 'Rüstung zerreißen'. Kann bis zu 5-mal angewendet werden. Hält 30 Sek. lang an.", mechanic = nil, range = "5 Meter ", cast_time = "Sofort", cooldown = nil, dispel_type = nil},
 [15575] = {name = "Flammenkanone", description = "Verursacht bei einem Feind Feuerschaden.", mechanic = nil, range = "40 Meter ", cast_time = "1.5 sekunden", cooldown = nil, dispel_type = nil},
 [15577] = {name = "Wirbelwind", description = nil, mechanic = nil, range = "0 Meter ", cast_time = "Sofort", cooldown = nil, dispel_type = nil},
+[15578] = {name = "Wirbelwind", description = nil, mechanic = nil, range = "0 Meter ", cast_time = "Sofort", cooldown = nil, dispel_type = nil},
 [15579] = {name = "Spalten", description = "Fügt einem Feind und seinem nächsten Verbündeten normalen Schaden plus 40 zu, wirkt auf bis zu 3 Ziele.", mechanic = nil, range = "5 Meter ", cast_time = "Sofort", cooldown = nil, dispel_type = nil},
 [15580] = {name = "Schlag", description = "Schlägt einen Feind und fügt erhöhten Nahkampfschaden zu.", mechanic = nil, range = "5 Meter ", cast_time = "Sofort", cooldown = nil, dispel_type = nil},
 [15581] = {name = "Finsterer Stoß", description = "Verursacht normalen Schaden plus 3 bei einem Feind.", mechanic = nil, range = "5 Meter ", cast_time = "Sofort", cooldown = nil, dispel_type = nil},
