@@ -2907,7 +2907,7 @@ _G['NpcAbilitiesNpcData'][134307] = {spell_ids = {256077, 270340}}
 _G['NpcAbilitiesNpcData'][134309] = {spell_ids = {270439}}
 _G['NpcAbilitiesNpcData'][134310] = {spell_ids = {256865, 256874}}
 _G['NpcAbilitiesNpcData'][134316] = {spell_ids = {115385}}
-_G['NpcAbilitiesNpcData'][134317] = {spell_ids = {257225, 257226, 276880}}
+_G['NpcAbilitiesNpcData'][134317] = {spell_ids = {257226}}
 _G['NpcAbilitiesNpcData'][134320] = {spell_ids = {255741, 258945}}
 _G['NpcAbilitiesNpcData'][134321] = {spell_ids = {255741, 258945}}
 _G['NpcAbilitiesNpcData'][134328] = {spell_ids = {224729, 271842, 271880}}
