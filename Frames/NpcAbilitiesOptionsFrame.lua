@@ -150,7 +150,13 @@ local function getDefaultOptions(optionsTranslations)
         DISPLAY_ABILITY_DISPEL_TYPE = false,
         SELECTED_ABILITY_DISPEL_TYPE_DISPLAY_MODE = 'title',
         HIDE_ABILITIES_SELECTED_HOTKEY = nil,
-        HIDE_ABILITIES_IN_INSTANCE = false
+        HIDE_ABILITIES_IN_INSTANCE = false,
+        ABILITY_DISPLAY_LOCATION = "tooltip",
+        AVAILABLE_DISPLAY_LOCATIONS = {
+            {value = "tooltip", text = optionsTranslations["displayLocations"]["tooltip"]},
+            {value = "target_frame", text = optionsTranslations["displayLocations"]["target_frame"]},
+            {value = "both", text = optionsTranslations["displayLocations"]["both"]}
+        }
     }
 
     return defaultOptions
@@ -233,9 +239,22 @@ local function InitializeOptions()
     hotkeyDescription:SetPoint("TOPLEFT", hotkeyModeDropdown, "BOTTOMLEFT", fieldOffsetX - 10, fieldOffsetY)
     registerHotkeyButton:SetPoint("TOPLEFT", hotkeyDescription, "TOPLEFT", 0, -12)
 
+    -- General options: Display Location
+    local displayLocationDropdown = CreateOptionDropdown(
+        optionsContainer,
+        registerHotkeyButton,
+        5,
+        subTitleOffsetY,
+        optionsTranslations["displayLocationLabel"] or "Where to display abilities:",
+        optionsTranslations["displayLocations"]["both"] or "Both",
+        "AVAILABLE_DISPLAY_LOCATIONS",
+        "ABILITY_DISPLAY_LOCATION",
+        "displayLocations"
+    )
+
     -- Ability fields options
     local abilityFieldsOptionsTitle = optionsContainer:CreateFontString("ARTWORK", nil, "GameFontHighlightLarge")
-    abilityFieldsOptionsTitle:SetPoint("TOPLEFT", registerHotkeyButton, "TOPLEFT", -fieldOffsetX + 5, -registerHotkeyButton:GetHeight() + titleOffsetY)
+    abilityFieldsOptionsTitle:SetPoint("TOPLEFT", displayLocationDropdown, "TOPLEFT", -fieldOffsetX + 10, subTitleOffsetY + fieldOffsetY)
     abilityFieldsOptionsTitle:SetText(optionsTranslations["abilityFieldsOptionsTitle"])
     abilityFieldsOptionsTitle:SetTextColor(1, 1, 1)
 

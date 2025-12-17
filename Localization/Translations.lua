@@ -45,6 +45,13 @@ local function addonLoaded(self, event, addonLoadedName)
                 hideOptionsTitle = "Hide abilities",
                 hideOptionsHotkeyModeLabel = "Register hide abilities hotkey (Right-click to unbind)",
                 hideAbilitiesInInstanceLabel = "Hide abilities in instances (PVP and PVE)",
+                displayLocationTitle = "Display Location",
+                displayLocationLabel = "Where to display abilities:",
+                displayLocations = {
+                    tooltip = "Tooltip only",
+                    target_frame = "Target frame only",
+                    both = "Both"
+                },
             },
              game = {
                  hotkeyExplanatoryTextOne = "Press",
@@ -98,7 +105,14 @@ local function addonLoaded(self, event, addonLoadedName)
                 displayAbilitiesDispelTypeDisplayModeLabel = "Dónde mostrar el tipo de disipación de la habilidad",
                 hideOptionsTitle = "Ocultar habilidades",
                 hideOptionsHotkeyModeLabel = "Registrar tecla rápida para ocultar habilidades (Clic derecho para desvincular)",
-                hideAbilitiesInInstanceLabel = "Ocultar habilidades en instancias (PVP y PVE)"
+                hideAbilitiesInInstanceLabel = "Ocultar habilidades en instancias (PVP y PVE)",
+                displayLocationTitle = "Ubicación de visualización",
+                displayLocationLabel = "Dónde mostrar habilidades:",
+                displayLocations = {
+                    tooltip = "Solo tooltip",
+                    target_frame = "Solo marco de objetivo",
+                    both = "Ambos"
+                },
             },
             game = {
                 hotkeyExplanatoryTextOne = "Presione",
@@ -153,6 +167,13 @@ local function addonLoaded(self, event, addonLoadedName)
                 hideOptionsTitle = "Fähigkeiten ausblenden",
                 hideOptionsHotkeyModeLabel = "Hotkey zum Ausblenden von Fähigkeiten registrieren (Rechtsklick zum Aufheben der Bindung)",
                 hideAbilitiesInInstanceLabel = "Fähigkeiten in Instanzen ausblenden (PVP und PVE)",
+                displayLocationTitle = "Anzeigeort",
+                displayLocationLabel = "Wo Fähigkeiten anzeigen:",
+                displayLocations = {
+                    tooltip = "Nur Tooltip",
+                    target_frame = "Nur Zielrahmen",
+                    both = "Beides"
+                },
             },
             game = {
                 hotkeyExplanatoryTextOne = "Drücken Sie",
@@ -206,7 +227,14 @@ local function addonLoaded(self, event, addonLoadedName)
                 displayAbilitiesDispelTypeDisplayModeLabel = "Où afficher le type de dissipation",
                 hideOptionsTitle = "Masquer les capacités",
                 hideOptionsHotkeyModeLabel = "Enregistrer le raccourci pour masquer les capacités (clic droit pour dissocier)",
-                hideAbilitiesInInstanceLabel = "Masquer les capacités en instance (PVP et PVE)"
+                hideAbilitiesInInstanceLabel = "Masquer les capacités en instance (PVP et PVE)",
+                displayLocationTitle = "Emplacement d'affichage",
+                displayLocationLabel = "Où afficher les capacités:",
+                displayLocations = {
+                    tooltip = "Infobulle uniquement",
+                    target_frame = "Cadre de cible uniquement",
+                    both = "Les deux"
+                },
             },
             game = {
                 hotkeyExplanatoryTextOne = "Appuyez sur",
@@ -260,7 +288,14 @@ local function addonLoaded(self, event, addonLoadedName)
                 displayAbilitiesDispelTypeDisplayModeLabel = "Onde exibir o tipo de dissipação",
                 hideOptionsTitle = "Ocultar habilidades",
                 hideOptionsHotkeyModeLabel = "Registrar atalho para ocultar habilidades (Clique com o botão direito para desvincular)",
-                hideAbilitiesInInstanceLabel = "Ocultar habilidades em instâncias (PVP e PVE)"
+                hideAbilitiesInInstanceLabel = "Ocultar habilidades em instâncias (PVP e PVE)",
+                displayLocationTitle = "Local de exibição",
+                displayLocationLabel = "Onde exibir habilidades:",
+                displayLocations = {
+                    tooltip = "Apenas tooltip",
+                    target_frame = "Apenas quadro de alvo",
+                    both = "Ambos"
+                },
             },
             game = {
                 hotkeyExplanatoryTextOne = "Prima",
@@ -314,7 +349,14 @@ local function addonLoaded(self, event, addonLoadedName)
                 displayAbilitiesDispelTypeDisplayModeLabel = "Где отображать тип рассеивания",
                 hideOptionsTitle = "Скрытие способностей",
                 hideOptionsHotkeyModeLabel = "Назначить горячую клавишу для скрытия способностей (Правый клик для сброса)",
-                hideAbilitiesInInstanceLabel = "Скрывать способности в подземельях (PVP и PVE)"
+                hideAbilitiesInInstanceLabel = "Скрывать способности в подземельях (PVP и PVE)",
+                displayLocationTitle = "Место отображения",
+                displayLocationLabel = "Где отображать способности:",
+                displayLocations = {
+                    tooltip = "Только подсказка",
+                    target_frame = "Только рамка цели",
+                    both = "Оба"
+                },
             },
             game = {
                 hotkeyExplanatoryTextOne = "Нажмите",
@@ -368,7 +410,14 @@ local function addonLoaded(self, event, addonLoadedName)
                 displayAbilitiesDispelTypeDisplayModeLabel = "능력 해제 타입 표시 위치",
                 hideOptionsTitle = "능력 숨기기",
                 hideOptionsHotkeyModeLabel = "능력 숨기기 단축키 등록 (우클릭으로 해제)",
-                hideAbilitiesInInstanceLabel = "인스턴스( PVP 및 PVE)에서 능력 숨기기"
+                hideAbilitiesInInstanceLabel = "인스턴스( PVP 및 PVE)에서 능력 숨기기",
+                displayLocationTitle = "표시 위치",
+                displayLocationLabel = "능력을 표시할 위치:",
+                displayLocations = {
+                    tooltip = "툴팁만",
+                    target_frame = "대상 프레임만",
+                    both = "둘 다"
+                },
             },
             game = {
                 hotkeyExplanatoryTextOne = "자세한 내용을 보려면",
@@ -422,7 +471,14 @@ local function addonLoaded(self, event, addonLoadedName)
                 displayAbilitiesDispelTypeDisplayModeLabel = "技能驱散类型显示位置",
                 hideOptionsTitle = "隐藏技能",
                 hideOptionsHotkeyModeLabel = "注册隐藏技能快捷键（右键单击解绑）",
-                hideAbilitiesInInstanceLabel = "在副本（PVP 和 PVE）中隐藏技能"
+                hideAbilitiesInInstanceLabel = "在副本（PVP 和 PVE）中隐藏技能",
+                displayLocationTitle = "显示位置",
+                displayLocationLabel = "在哪里显示技能:",
+                displayLocations = {
+                    tooltip = "仅提示框",
+                    target_frame = "仅目标框架",
+                    both = "两者都"
+                },
             },
             game = {
                 hotkeyExplanatoryTextOne = "按",
