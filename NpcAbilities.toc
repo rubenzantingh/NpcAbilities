@@ -1,8 +1,8 @@
-## Interface: 11508
+## Interface: 20505
 ## Title: NpcAbilities
 ## Notes: Add abilities to the NPC GameTooltip
 ## Author: Ruben Zantingh
-## Version: 1.2.0
+## Version: 1.0.0
 ## SavedVariables: NpcAbilitiesOptions
 ## OptionalDeps: LibStub, LibUIDropDownMenu
 

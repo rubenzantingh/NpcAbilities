@@ -5,7 +5,7 @@ local seasonId = C_Seasons.GetActiveSeason()
 local checkForHotkeyReleased = false
 
 local targetAbilitiesFrame = CreateFrame("Frame", "NpcAbilitiesTargetFrame", UIParent, "BackdropTemplate")
-targetAbilitiesFrame:SetPoint("TOPLEFT", TargetFrame, "BOTTOMLEFT", 2.5, 5)
+targetAbilitiesFrame:SetPoint("TOPLEFT", TargetFrame, "BOTTOMLEFT", 20, 5)
 targetAbilitiesFrame:SetSize(200, 50)
 targetAbilitiesFrame:SetBackdrop({
     bgFile = "Interface\\Tooltips\\UI-Tooltip-Background",
@@ -134,17 +134,17 @@ local function UpdateTargetFrameAbilities()
     local abilities = {}
     local addedAbilityNames = {}
 
-    for _, classicAbilityId in pairs(npcData.classic_spell_ids) do
-        local classicAbilitiesData = GetDataByID('NpcAbilitiesAbilityData', classicAbilityId)
+    for _, abilityId in pairs(npcData.spell_ids) do
+        local abilitiesData = GetDataByID('NpcAbilitiesAbilityData', abilityId)
 
-        if classicAbilitiesData ~= nil then
-            local name = classicAbilitiesData.name
+        if abilitiesData ~= nil then
+            local name = abilitiesData.name
 
             if not addedAbilityNames[name] then
                 table.insert(abilities, {
-                    id = classicAbilityId,
+                    id = abilityId,
                     name = name,
-                    description = classicAbilitiesData.description or ""
+                    description = abilitiesData.description or ""
                 })
             end
         end
@@ -276,24 +276,24 @@ local function SetNpcAbilityData()
         end
     end
 
-    for _, classicAbilityId in pairs(npcData.classic_spell_ids) do
-        local classicAbilitiesData = GetDataByID('NpcAbilitiesAbilityData', classicAbilityId)
+    for _, abilityId in pairs(npcData.spell_ids) do
+        local abilitiesData = GetDataByID('NpcAbilitiesAbilityData', abilityId)
 
-        if classicAbilitiesData ~= nil then
-            local classicAbilityName = classicAbilitiesData.name
+        if abilitiesData ~= nil then
+            local abilityName = abilitiesData.name
     
-            if addedAbilityNames[classicAbilityName] == nil then
-                local classicAbilityDescription = classicAbilitiesData.description or ""
-                local classicAbilityMechanic = classicAbilitiesData.mechanic or ""
-                local classicAbilityRange = classicAbilitiesData.range or ""
-                local classicAbilityCastTime = classicAbilitiesData.cast_time or ""
-                local classicAbilityCooldown = classicAbilitiesData.cooldown or ""
-                local classicAbilityDispelType = classicAbilitiesData.dispel_type or ""
+            if addedAbilityNames[abilityName] == nil then
+                local abilityDescription = abilitiesData.description or ""
+                local abilityMechanic = abilitiesData.mechanic or ""
+                local abilityRange = abilitiesData.range or ""
+                local abilityCastTime = abilitiesData.cast_time or ""
+                local abilityCooldown = abilitiesData.cooldown or ""
+                local abilityDispelType = abilitiesData.dispel_type or ""
 
-                AddAbilityLinesToGameTooltip(classicAbilityId, classicAbilityName, classicAbilityDescription, classicAbilityMechanic, classicAbilityRange, classicAbilityCastTime, classicAbilityCooldown, classicAbilityDispelType, addedAbilityLine)
+                AddAbilityLinesToGameTooltip(abilityId, abilityName, abilityDescription, abilityMechanic, abilityRange, abilityCastTime, abilityCooldown, abilityDispelType, addedAbilityLine)
                 addedAbilityLine = true
 
-                if classicAbilityDescription ~= '' then
+                if abilityDescription ~= '' then
                     addedAbilityLineWithDescription = true
                 end
             end
