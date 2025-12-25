@@ -156,7 +156,8 @@ local function getDefaultOptions(optionsTranslations)
             {value = "tooltip", text = optionsTranslations["displayLocations"]["tooltip"]},
             {value = "target_frame", text = optionsTranslations["displayLocations"]["target_frame"]},
             {value = "both", text = optionsTranslations["displayLocations"]["both"]}
-        }
+        },
+        DISPLAY_PRIORITY_INDICATORS = false
     }
 
     return defaultOptions
@@ -252,9 +253,16 @@ local function InitializeOptions()
         "displayLocations"
     )
 
+    -- General options: Priority Indicators
+    local displayPriorityIndicatorsCheckbox = CreateCheckBox(optionsContainer, optionsTranslations["displayPriorityIndicatorsLabel"], "DISPLAY_PRIORITY_INDICATORS", function(self)
+        local checked = self:GetChecked()
+        NpcAbilitiesOptions["DISPLAY_PRIORITY_INDICATORS"] = checked
+    end)
+    displayPriorityIndicatorsCheckbox:SetPoint("TOPLEFT", displayLocationDropdown, "BOTTOMLEFT", fieldOffsetX - 10, fieldOffsetY)
+
     -- Ability fields options
     local abilityFieldsOptionsTitle = optionsContainer:CreateFontString("ARTWORK", nil, "GameFontHighlightLarge")
-    abilityFieldsOptionsTitle:SetPoint("TOPLEFT", displayLocationDropdown, "TOPLEFT", -fieldOffsetX + 10, subTitleOffsetY + fieldOffsetY)
+    abilityFieldsOptionsTitle:SetPoint("TOPLEFT", displayPriorityIndicatorsCheckbox, "TOPLEFT", -fieldOffsetX + 5, subTitleOffsetY + fieldOffsetY)
     abilityFieldsOptionsTitle:SetText(optionsTranslations["abilityFieldsOptionsTitle"])
     abilityFieldsOptionsTitle:SetTextColor(1, 1, 1)
 
