@@ -176,7 +176,6 @@ _G['NpcAbilitiesAbilityData']['ko'] = {
 [3358] = {name = "착취의 독", description = "40초에 걸쳐 적으로부터 매 5초마다 15의 생명력을 흡수하여 시전자에게로 이전합니다.", mechanic = "5 야드 ", range = nil, cast_time = nil, cooldown = nil, dispel_type = "독"},
 [3359] = {name = "물약 마시기", description = "신성한 비약을 마셔 102 에서 118의 생명력을 회복합니다.", mechanic = "0 야드 ", range = nil, cast_time = nil, cooldown = nil, dispel_type = nil},
 [3360] = {name = "눈의 저주", description = "적에게 팔레스의 눈의 저주를 걸어 물리 공격력을 8만큼 감소시키고 주문 시전 속도를 20%만큼 지연시킵니다. 2분 동안 지속됩니다.", mechanic = "5 야드 ", range = nil, cast_time = nil, cooldown = nil, dispel_type = "저주"},
-[3361] = {name = "허수아비 주문", description = nil, mechanic = "0 야드 ", range = nil, cast_time = nil, cooldown = nil, dispel_type = nil},
 [3368] = {name = "최하급 물약 마시기", description = "신성한 비약을 마셔 61 에서 68의 생명력을 회복합니다.", mechanic = "0 야드 ", range = nil, cast_time = nil, cooldown = nil, dispel_type = nil},
 [3369] = {name = "힘의 물약", description = "2분 동안 시전자의 힘이 5만큼 증가합니다.", mechanic = "0 야드 ", range = nil, cast_time = nil, cooldown = nil, dispel_type = "마법"},
 [3385] = {name = "멧돼지 돌진", description = "4초 동안 공격력이 149만큼, 이동 속도가 60%만큼 증가합니다.", mechanic = "0 야드 ", range = nil, cast_time = nil, cooldown = "10 초", dispel_type = nil},

@@ -176,7 +176,6 @@ _G['NpcAbilitiesAbilityData']['cn'] = {
 [3358] = {name = "吸血毒药", description = "每5秒从一个敌人身上吸取15点生命值，持续40秒。所有被吸取的生命值都会被转移给施法者。", mechanic = nil, range = "5码 ", cast_time = "瞬发", cooldown = nil, dispel_type = "毒药"},
 [3359] = {name = "喝药水", description = "为自己恢复102至118点生命值。", mechanic = nil, range = "0码 ", cast_time = "3​秒", cooldown = nil, dispel_type = nil},
 [3360] = {name = "眼之诅咒", description = "以帕雷斯之眼诅咒敌人，使其物理伤害能力降低8点，施法速度降低20%，持续2分钟。", mechanic = nil, range = "5码 ", cast_time = "瞬发", cooldown = nil, dispel_type = "诅咒"},
-[3361] = {name = "Dummy NPC Summon", description = nil, mechanic = nil, range = "0码 ", cast_time = "20​秒", cooldown = nil, dispel_type = nil},
 [3368] = {name = "喝下初级药水", description = "为自己恢复 61至 68点生命值。", mechanic = nil, range = "0码 ", cast_time = "3​秒", cooldown = nil, dispel_type = nil},
 [3369] = {name = "药水力量 II", description = "使施法者的力量提高5点，持续2分钟。", mechanic = nil, range = "0码 ", cast_time = "瞬发", cooldown = nil, dispel_type = "魔法"},
 [3385] = {name = "野猪冲撞", description = "使施法者对敌人造成的物理伤害提高 149点，移动速度提高60%，持续4秒。", mechanic = nil, range = "0码 ", cast_time = "瞬发", cooldown = "10​秒", dispel_type = nil},

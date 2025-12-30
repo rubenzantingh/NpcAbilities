@@ -85,7 +85,7 @@ _G['NpcAbilitiesNpcData']= {
 [471] = {sod_spell_ids = {}, classic_spell_ids = {11918, 12023}},
 [472] = {sod_spell_ids = {}, classic_spell_ids = {3238, 16244}},
 [473] = {sod_spell_ids = {}, classic_spell_ids = {7159, 1776}},
-[474] = {sod_spell_ids = {}, classic_spell_ids = {3361, 13322, 12544}},
+[474] = {sod_spell_ids = {}, classic_spell_ids = {13322, 12544}},
 [476] = {sod_spell_ids = {}, classic_spell_ids = {20793, 12544}},
 [478] = {sod_spell_ids = {}, classic_spell_ids = {3391}},
 [480] = {sod_spell_ids = {}, classic_spell_ids = {8014}},
