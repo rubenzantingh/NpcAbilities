@@ -53,6 +53,7 @@ local function addonLoaded(self, event, addonLoadedName)
                     both = "Both"
                 },
                 displayPriorityIndicatorsLabel = "Show danger indicators (color-coded abilities)",
+                delayedTooltipLoadingLabel = "Attempt to load ability data last in the tooltip (requires reload)",
             },
              game = {
                  hotkeyExplanatoryTextOne = "Press",
@@ -115,6 +116,7 @@ local function addonLoaded(self, event, addonLoadedName)
                     both = "Ambos"
                 },
                 displayPriorityIndicatorsLabel = "Mostrar indicadores de peligro (habilidades con colores)",
+                delayedTooltipLoadingLabel = "Intentar cargar datos de habilidades al final del tooltip (requiere recarga)",
             },
             game = {
                 hotkeyExplanatoryTextOne = "Presione",
@@ -177,6 +179,7 @@ local function addonLoaded(self, event, addonLoadedName)
                     both = "Beides"
                 },
                 displayPriorityIndicatorsLabel = "Gefahrenindikatoren anzeigen (farbcodierte Fähigkeiten)",
+                delayedTooltipLoadingLabel = "Versuchen, Fähigkeitsdaten zuletzt im Tooltip zu laden (erfordert Neuladen)",
             },
             game = {
                 hotkeyExplanatoryTextOne = "Drücken Sie",
@@ -239,6 +242,7 @@ local function addonLoaded(self, event, addonLoadedName)
                     both = "Les deux"
                 },
                 displayPriorityIndicatorsLabel = "Afficher les indicateurs de danger (capacités colorées)",
+                delayedTooltipLoadingLabel = "Tenter de charger les données des capacités en dernier dans l'infobulle (nécessite un rechargement)",
             },
             game = {
                 hotkeyExplanatoryTextOne = "Appuyez sur",
@@ -301,6 +305,7 @@ local function addonLoaded(self, event, addonLoadedName)
                     both = "Ambos"
                 },
                 displayPriorityIndicatorsLabel = "Mostrar indicadores de perigo (habilidades com cores)",
+                delayedTooltipLoadingLabel = "Tentar carregar dados de habilidades por último no tooltip (requer recarregamento)",
             },
             game = {
                 hotkeyExplanatoryTextOne = "Prima",
@@ -363,6 +368,7 @@ local function addonLoaded(self, event, addonLoadedName)
                     both = "Оба"
                 },
                 displayPriorityIndicatorsLabel = "Показать индикаторы опасности (цветные способности)",
+                delayedTooltipLoadingLabel = "Попытаться загрузить данные о способностях последними в подсказке (требует перезагрузки)",
             },
             game = {
                 hotkeyExplanatoryTextOne = "Нажмите",
@@ -425,6 +431,7 @@ local function addonLoaded(self, event, addonLoadedName)
                     both = "둘 다"
                 },
                 displayPriorityIndicatorsLabel = "위험 지표 표시 (색상으로 구분된 능력)",
+                delayedTooltipLoadingLabel = "툴팁에서 능력 데이터를 마지막으로 로드 시도 (다시 로드 필요)",
             },
             game = {
                 hotkeyExplanatoryTextOne = "자세한 내용을 보려면",
@@ -487,6 +494,7 @@ local function addonLoaded(self, event, addonLoadedName)
                     both = "两者都"
                 },
                 displayPriorityIndicatorsLabel = "显示危险指示器（彩色技能）",
+                delayedTooltipLoadingLabel = "尝试在工具提示中最后加载技能数据（需要重新加载）",
             },
             game = {
                 hotkeyExplanatoryTextOne = "按",

@@ -157,7 +157,8 @@ local function getDefaultOptions(optionsTranslations)
             {value = "target_frame", text = optionsTranslations["displayLocations"]["target_frame"]},
             {value = "both", text = optionsTranslations["displayLocations"]["both"]}
         },
-        DISPLAY_PRIORITY_INDICATORS = false
+        DISPLAY_PRIORITY_INDICATORS = false,
+        DELAYED_TOOLTIP_LOADING = false
     }
 
     return defaultOptions
@@ -266,12 +267,19 @@ local function InitializeOptions()
     abilityFieldsOptionsTitle:SetText(optionsTranslations["abilityFieldsOptionsTitle"])
     abilityFieldsOptionsTitle:SetTextColor(1, 1, 1)
 
+    -- Ability fields options: Delayed Tooltip Loading
+    local delayedTooltipLoadingCheckbox = CreateCheckBox(optionsContainer, optionsTranslations["delayedTooltipLoadingLabel"], "DELAYED_TOOLTIP_LOADING", function(self)
+        local checked = self:GetChecked()
+        NpcAbilitiesOptions["DELAYED_TOOLTIP_LOADING"] = checked
+    end)
+    delayedTooltipLoadingCheckbox:SetPoint("TOPLEFT", abilityFieldsOptionsTitle, "BOTTOMLEFT", fieldOffsetX - 5, fieldOffsetY)
+
     -- Ability fields options: Mechanic
     local displayAbilitiesMechanicCheckbox = CreateCheckBox(optionsContainer, optionsTranslations["displayAbilitiesMechanicLabel"], "DISPLAY_ABILITY_MECHANIC", function(self)
         local checked = self:GetChecked()
         NpcAbilitiesOptions["DISPLAY_ABILITY_MECHANIC"] = checked
     end)
-    displayAbilitiesMechanicCheckbox:SetPoint("TOPLEFT", abilityFieldsOptionsTitle, fieldOffsetX - 5, subTitleOffsetY + fieldOffsetY)
+    displayAbilitiesMechanicCheckbox:SetPoint("TOPLEFT", delayedTooltipLoadingCheckbox, "BOTTOMLEFT", 0, fieldOffsetY)
 
     local mechanicDisplayModeModeDropdown = CreateOptionDropdown(
         optionsContainer,
@@ -363,7 +371,7 @@ local function InitializeOptions()
 
     -- Hide options
     local hideOptionsTitle = optionsContainer:CreateFontString("ARTWORK", nil, "GameFontHighlightLarge")
-    hideOptionsTitle:SetPoint("TOPLEFT", dispelTypeDisplayModeModeDropdown, "TOPLEFt", -5, subTitleOffsetY + fieldOffsetY)
+    hideOptionsTitle:SetPoint("TOPLEFT", dispelTypeDisplayModeModeDropdown, "TOPLEFT", -5, subTitleOffsetY + fieldOffsetY)
     hideOptionsTitle:SetText(optionsTranslations["hideOptionsTitle"])
     hideOptionsTitle:SetTextColor(1, 1, 1)
 

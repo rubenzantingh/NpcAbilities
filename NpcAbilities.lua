@@ -238,21 +238,41 @@ local function UpdateTargetFrameAbilities()
     targetAbilitiesFrame:Show()
 end
 
+local tooltipHookRegistered = false
+local SetNpcAbilityData
+
 local targetEventFrame = CreateFrame("Frame")
 targetEventFrame:RegisterEvent("PLAYER_TARGET_CHANGED")
 targetEventFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
+targetEventFrame:RegisterEvent("PLAYER_LOGIN")
 targetEventFrame:RegisterEvent("ADDON_LOADED")
 targetEventFrame:SetScript("OnEvent", function(self, event, arg1)
     if event == "ADDON_LOADED" and arg1 == "NpcAbilities" then
         if NpcAbilitiesOptions["ABILITY_DISPLAY_LOCATION"] == nil then
             NpcAbilitiesOptions["ABILITY_DISPLAY_LOCATION"] = "both"
         end
-    elseif event == "PLAYER_TARGET_CHANGED" or event == "PLAYER_ENTERING_WORLD" then
+
+        if not NpcAbilitiesOptions["DELAYED_TOOLTIP_LOADING"] and not tooltipHookRegistered then
+            GameTooltip:HookScript("OnTooltipSetUnit", SetNpcAbilityData)
+            tooltipHookRegistered = true
+        end
+    elseif event == "PLAYER_LOGIN" then
+        if NpcAbilitiesOptions["DELAYED_TOOLTIP_LOADING"] then
+            C_Timer.After(5, function()
+                if not tooltipHookRegistered then
+                    GameTooltip:HookScript("OnTooltipSetUnit", SetNpcAbilityData)
+                    tooltipHookRegistered = true
+                end
+            end)
+        end
+    elseif event == "PLAYER_ENTERING_WORLD" then
+        UpdateTargetFrameAbilities()
+    elseif event == "PLAYER_TARGET_CHANGED" then
         UpdateTargetFrameAbilities()
     end
 end)
 
-local function SetNpcAbilityData()
+SetNpcAbilityData = function()
     local displayLocation = NpcAbilitiesOptions["ABILITY_DISPLAY_LOCATION"] or "both"
     if displayLocation == "target_frame" then
         return
@@ -424,5 +444,3 @@ end
 npcAbilitiesFrame:SetScript("OnKeyDown", function(self, key) SetHotkeyButtonPressed(self, key, "OnKeyDown") end)
 npcAbilitiesFrame:SetPropagateKeyboardInput(true)
 npcAbilitiesFrame:RegisterEvent("MODIFIER_STATE_CHANGED")
-
-GameTooltip:HookScript("OnTooltipSetUnit", SetNpcAbilityData)
