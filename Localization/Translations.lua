@@ -52,6 +52,7 @@ local function addonLoaded(self, event, addonLoadedName)
                     target_frame = "Target frame only",
                     both = "Both"
                 },
+                displayPriorityIndicatorsLabel = "Show danger indicators (color-coded abilities)",
             },
              game = {
                  hotkeyExplanatoryTextOne = "Press",
@@ -113,6 +114,7 @@ local function addonLoaded(self, event, addonLoadedName)
                     target_frame = "Solo marco de objetivo",
                     both = "Ambos"
                 },
+                displayPriorityIndicatorsLabel = "Mostrar indicadores de peligro (habilidades con colores)",
             },
             game = {
                 hotkeyExplanatoryTextOne = "Presione",
@@ -174,6 +176,7 @@ local function addonLoaded(self, event, addonLoadedName)
                     target_frame = "Nur Zielrahmen",
                     both = "Beides"
                 },
+                displayPriorityIndicatorsLabel = "Gefahrenindikatoren anzeigen (farbcodierte Fähigkeiten)",
             },
             game = {
                 hotkeyExplanatoryTextOne = "Drücken Sie",
@@ -235,6 +238,7 @@ local function addonLoaded(self, event, addonLoadedName)
                     target_frame = "Cadre de cible uniquement",
                     both = "Les deux"
                 },
+                displayPriorityIndicatorsLabel = "Afficher les indicateurs de danger (capacités colorées)",
             },
             game = {
                 hotkeyExplanatoryTextOne = "Appuyez sur",
@@ -296,6 +300,7 @@ local function addonLoaded(self, event, addonLoadedName)
                     target_frame = "Apenas quadro de alvo",
                     both = "Ambos"
                 },
+                displayPriorityIndicatorsLabel = "Mostrar indicadores de perigo (habilidades com cores)",
             },
             game = {
                 hotkeyExplanatoryTextOne = "Prima",
@@ -357,6 +362,7 @@ local function addonLoaded(self, event, addonLoadedName)
                     target_frame = "Только рамка цели",
                     both = "Оба"
                 },
+                displayPriorityIndicatorsLabel = "Показать индикаторы опасности (цветные способности)",
             },
             game = {
                 hotkeyExplanatoryTextOne = "Нажмите",
@@ -418,6 +424,7 @@ local function addonLoaded(self, event, addonLoadedName)
                     target_frame = "대상 프레임만",
                     both = "둘 다"
                 },
+                displayPriorityIndicatorsLabel = "위험 지표 표시 (색상으로 구분된 능력)",
             },
             game = {
                 hotkeyExplanatoryTextOne = "자세한 내용을 보려면",
@@ -479,6 +486,7 @@ local function addonLoaded(self, event, addonLoadedName)
                     target_frame = "仅目标框架",
                     both = "两者都"
                 },
+                displayPriorityIndicatorsLabel = "显示危险指示器（彩色技能）",
             },
             game = {
                 hotkeyExplanatoryTextOne = "按",

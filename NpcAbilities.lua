@@ -1,8 +1,14 @@
 local npcAbilitiesFrame = CreateFrame("Frame")
 local hotkeyButtonPressed = false
 local hideAbilitiesHotkeyButtonPressed = false
-local seasonId = C_Seasons.GetActiveSeason()
 local checkForHotkeyReleased = false
+
+local priorityColors = {
+    [1] = {hex = "ff0000", r = 1, g = 0, b = 0},
+    [2] = {hex = "ff9900", r = 1, g = 0.6, b = 0},
+    [3] = {hex = "ffcc00", r = 1, g = 0.8, b = 0},
+    [4] = {hex = "00ff00", r = 0, g = 1, b = 0}
+}
 
 local targetAbilitiesFrame = CreateFrame("Frame", "NpcAbilitiesTargetFrame", UIParent, "BackdropTemplate")
 targetAbilitiesFrame:SetPoint("TOPLEFT", TargetFrame, "BOTTOMLEFT", 20, 5)
@@ -28,7 +34,7 @@ targetAbilitiesContent:SetWordWrap(true)
 targetAbilitiesContent:SetNonSpaceWrap(true)
 
 local function GetDataByID(dataType, dataId)
-    data = _G[dataType]
+    local data = _G[dataType]
     if not data then return nil end
 
     local convertedId = tonumber(dataId)
@@ -44,6 +50,22 @@ local function GetDataByID(dataType, dataId)
     end
 
     return nil
+end
+
+local function GetAbilityPriority(spellId)
+    local priorityData = _G['NpcAbilitiesPriorityData']
+    if priorityData then
+        return priorityData[spellId]
+    end
+    return nil
+end
+
+local function SortAbilitiesByPriority(abilities)
+    table.sort(abilities, function(a, b)
+        local priorityA = GetAbilityPriority(a.id) or 4
+        local priorityB = GetAbilityPriority(b.id) or 4
+        return priorityA < priorityB
+    end)
 end
 
 local function AddAbilityLinesToGameTooltip(id, name, description, mechanic, range, castTime, cooldown, dispelType, addedAbilityLine)
@@ -74,7 +96,13 @@ local function AddAbilityLinesToGameTooltip(id, name, description, mechanic, ran
     appendTitleInfo("DISPLAY_ABILITY_COOLDOWN", cooldown, "SELECTED_ABILITY_COOLDOWN_DISPLAY_MODE", "cooldownText")
     appendTitleInfo("DISPLAY_ABILITY_DISPEL_TYPE", dispelType, "SELECTED_ABILITY_DISPEL_TYPE_DISPLAY_MODE", "dispelTypeText")
 
-    GameTooltip:AddLine(abilityNameText)
+    if options["DISPLAY_PRIORITY_INDICATORS"] then
+        local priority = GetAbilityPriority(id) or 4
+        local colors = priorityColors[priority]
+        GameTooltip:AddLine(abilityNameText, colors.r, colors.g, colors.b)
+    else
+        GameTooltip:AddLine(abilityNameText)
+    end
 
     if hotkeyButtonPressed then
         local function addSeparateLine(display, value, mode, labelKey)
@@ -141,6 +169,7 @@ local function UpdateTargetFrameAbilities()
             local name = abilitiesData.name
 
             if not addedAbilityNames[name] then
+                addedAbilityNames[name] = true
                 table.insert(abilities, {
                     id = abilityId,
                     name = name,
@@ -155,6 +184,10 @@ local function UpdateTargetFrameAbilities()
         return
     end
 
+    if options["DISPLAY_PRIORITY_INDICATORS"] then
+        SortAbilitiesByPriority(abilities)
+    end
+
     local lines = {}
     local hasDescriptions = false
     local translations = _G["NpcAbilitiesTranslations"][selectedLanguage]["game"]
@@ -163,6 +196,12 @@ local function UpdateTargetFrameAbilities()
         local texture = GetSpellTexture(ability.id)
         local icon = texture and ("|T" .. texture .. ":14:14:0:0:64:64:4:60:4:60|t") or ""
         local line = icon .. " " .. ability.name
+
+        if options["DISPLAY_PRIORITY_INDICATORS"] then
+            local priority = GetAbilityPriority(ability.id) or 4
+            local colors = priorityColors[priority]
+            line = "|cff" .. colors.hex .. icon .. " " .. ability.name .. "|r"
+        end
 
         table.insert(lines, line)
 
@@ -218,7 +257,7 @@ local function SetNpcAbilityData()
         return
     end
 
-    inInstance, _ = IsInInstance()
+    local inInstance, _ = IsInInstance()
 
     if hideAbilitiesHotkeyButtonPressed or (inInstance and NpcAbilitiesOptions["HIDE_ABILITIES_IN_INSTANCE"]) then
         return
@@ -248,55 +287,48 @@ local function SetNpcAbilityData()
        return
     end
 
-    local addedAbilityLine = false
-    local addedAbilityLineWithDescription = false
+    local abilities = {}
     local addedAbilityNames = {}
-
-    if seasonId == 2 then
-        for _, sodAbilityId in pairs(npcData.sod_spell_ids) do
-            local sodAbilitiesData = GetDataByID('NpcAbilitiesAbilityData', sodAbilityId)
-
-            if sodAbilitiesData ~= nil then
-                local sodAbilityName = sodAbilitiesData.name
-                local sodAbilityDescription = sodAbilitiesData.description or ""
-                local sodAbilityMechanic = sodAbilitiesData.mechanic or ""
-                local sodAbilityRange = sodAbilitiesData.range or ""
-                local sodAbilityCastTime = sodAbilitiesData.cast_time or ""
-                local sodAbilityCooldown = sodAbilitiesData.cooldown or ""
-                local sodAbilityDispelType = sodAbilitiesData.dispel_type or ""
-                addedAbilityNames[sodAbilityName] = sodAbilityName
-    
-                AddAbilityLinesToGameTooltip(sodAbilityId, sodAbilityName, sodAbilityDescription, sodAbilityMechanic, sodAbilityRange, sodAbilityCastTime, sodAbilityCooldown, sodAbilityDispelType, addedAbilityLine)
-                addedAbilityLine = true
-
-                if sodAbilityDescription ~= '' then
-                    addedAbilityLineWithDescription = true
-                end
-            end
-        end
-    end
 
     for _, abilityId in pairs(npcData.spell_ids) do
         local abilitiesData = GetDataByID('NpcAbilitiesAbilityData', abilityId)
 
         if abilitiesData ~= nil then
             local abilityName = abilitiesData.name
-    
-            if addedAbilityNames[abilityName] == nil then
-                local abilityDescription = abilitiesData.description or ""
-                local abilityMechanic = abilitiesData.mechanic or ""
-                local abilityRange = abilitiesData.range or ""
-                local abilityCastTime = abilitiesData.cast_time or ""
-                local abilityCooldown = abilitiesData.cooldown or ""
-                local abilityDispelType = abilitiesData.dispel_type or ""
-
-                AddAbilityLinesToGameTooltip(abilityId, abilityName, abilityDescription, abilityMechanic, abilityRange, abilityCastTime, abilityCooldown, abilityDispelType, addedAbilityLine)
-                addedAbilityLine = true
-
-                if abilityDescription ~= '' then
-                    addedAbilityLineWithDescription = true
-                end
+            
+            if not addedAbilityNames[abilityName] then
+                addedAbilityNames[abilityName] = true
+                table.insert(abilities, {
+                    id = abilityId,
+                    name = abilityName,
+                    description = abilitiesData.description or "",
+                    mechanic = abilitiesData.mechanic or "",
+                    range = abilitiesData.range or "",
+                    cast_time = abilitiesData.cast_time or "",
+                    cooldown = abilitiesData.cooldown or "",
+                    dispel_type = abilitiesData.dispel_type or ""
+                })
             end
+        end
+    end
+
+    if #abilities == 0 then
+        return
+    end
+
+    if NpcAbilitiesOptions["DISPLAY_PRIORITY_INDICATORS"] then
+        SortAbilitiesByPriority(abilities)
+    end
+
+    local addedAbilityLine = false
+    local addedAbilityLineWithDescription = false
+
+    for _, ability in ipairs(abilities) do
+        AddAbilityLinesToGameTooltip(ability.id, ability.name, ability.description, ability.mechanic, ability.range, ability.cast_time, ability.cooldown, ability.dispel_type, addedAbilityLine)
+        addedAbilityLine = true
+
+        if ability.description ~= '' then
+            addedAbilityLineWithDescription = true
         end
     end
 

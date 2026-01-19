@@ -1,11 +1,11 @@
 # NpcAbilities
 
 ## Description/features
-For each ability an NPC has, this addon adds a line to the game's NPC tooltip by default. An option is present to change this to show the abilities under the NPC frame instead, or on both locations. Additionally, it is possible to press a hotkey (configurable) to display more information about the ability. 
-This includes optional lines for the ability mechanic, range, cast time and dispel type.
+For each ability an NPC has, this addon adds a line to the game's NPC tooltip by default. An option is present to change this to show the abilities under the NPC frame instead, or on both locations. Additionally, it is possible to press a hotkey (configurable) to display more information about the ability.
+This includes optional lines for the ability mechanic, range, cast time and dispel type. Ability names can be displayed either all in one color or based on the ability's priority.
 Furthermore, you can choose the language in which this information is displayed. Currently, all languages that Blizzard offers are also supported by the addon.
-Information in the addon will be updated at least biweekly to ensure that the data is as accurate as possible. 
-However, as this addon depends on information provided by a third party, there is a possibility of data inaccuracies. 
+Information in the addon will be updated at least biweekly to ensure that the data is as accurate as possible.
+However, as this addon depends on information provided by a third party, there is a possibility of data inaccuracies.
 
 ## Download
 The [Curseforge Client](https://curseforge.overwolf.com/) can be used to find and download this addon once it has been listed. It can also be found on its [Curseforge page](https://www.curseforge.com/wow/addons/npcabilities).
