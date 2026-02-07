@@ -134,6 +134,7 @@ local function getDefaultOptions(optionsTranslations)
         AVAILABLE_HOTKEY_MODES = {
             {value = 'toggle', text = optionsTranslations["hotkeyModes"]["toggle"]},
             {value = 'hold', text = optionsTranslations["hotkeyModes"]["hold"]},
+            {value = 'toggle_and_hide', text = optionsTranslations["hotkeyModes"]["toggle_and_hide"]},
         },
         AVAILABLE_ABILITY_FIELD_DISPLAY_MODES = {
             {value = 'title', text = optionsTranslations["abilityFieldsDisplayModes"]["title"]},
@@ -407,6 +408,8 @@ local function addonLoaded(self, event, addonLoadedName)
                 NpcAbilitiesOptions[key] = value
             end
         end
+
+        NpcAbilitiesOptions["AVAILABLE_HOTKEY_MODES"] = defaultOptions["AVAILABLE_HOTKEY_MODES"]
 
         InitializeOptions()
     end

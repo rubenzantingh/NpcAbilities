@@ -22,7 +22,8 @@ local function addonLoaded(self, event, addonLoadedName)
                 hotkeyModeLabel = "Select hotkey mode (on hold, some keys may not work as expected):",
                 hotkeyModes = {
                     toggle = "Toggle",
-                    hold = "Hold"
+                    hold = "Hold",
+                    toggle_and_hide = "Toggle and Hide"
                 },
                 hotkeyButtonLabel = "Register toggle abilities description hotkey (Right-click to unbind)",
                 hotkeyButtonInstructionText = "Press button..",
@@ -85,7 +86,8 @@ local function addonLoaded(self, event, addonLoadedName)
                 hotkeyModeLabel = "Seleccionar modo de tecla rápida (al mantener, algunas teclas pueden no funcionar como se espera):",
                 hotkeyModes = {
                     toggle = "Alternar",
-                    hold = "Mantener"
+                    hold = "Mantener",
+                    toggle_and_hide = "Alternar y ocultar"
                 },
                 hotkeyButtonLabel = "Registrar tecla rápida para la descripción de habilidades de alternancia (Clic derecho para desvincular)",
                 hotkeyButtonInstructionText = "Pulsa el botón..",
@@ -148,7 +150,8 @@ local function addonLoaded(self, event, addonLoadedName)
                 hotkeyModeLabel = "Hotkey-Modus auswählen (bei Halten funktionieren einige Tasten möglicherweise nicht wie erwartet):",
                 hotkeyModes = {
                     toggle = "Umschalten",
-                    hold = "Halten"
+                    hold = "Halten",
+                    toggle_and_hide = "Umschalten und ausblenden"
                 },
                 hotkeyButtonLabel = "Hotkey für Umschaltfähigkeitenbeschreibung registrieren (Rechtsklick zum Aufheben der Bindung)",
                 hotkeyButtonInstructionText = "Taste drücken..",
@@ -211,7 +214,8 @@ local function addonLoaded(self, event, addonLoadedName)
                 hotkeyModeLabel = "Sélectionner le mode de raccourci (en maintenant, certaines touches peuvent ne pas fonctionner comme prévu) :",
                 hotkeyModes = {
                     toggle = "Basculer",
-                    hold = "Maintenir"
+                    hold = "Maintenir",
+                    toggle_and_hide = "Basculer et masquer"
                 },
                 hotkeyButtonLabel = "Enregistrer le raccourci pour la description des capacités à bascule (clic droit pour dissocier)",
                 hotkeyButtonInstructionText = "Appuyez sur le bouton..",
@@ -274,7 +278,8 @@ local function addonLoaded(self, event, addonLoadedName)
                 hotkeyModeLabel = "Selecionar modo de atalho (ao segurar, algumas teclas podem não funcionar como esperado):",
                 hotkeyModes = {
                     toggle = "Alternar",
-                    hold = "Segurar"
+                    hold = "Segurar",
+                    toggle_and_hide = "Alternar e ocultar"
                 },
                 hotkeyButtonLabel = "Registrar atalho para descrição das habilidades de alternância (Clique com o botão direito para desvincular)",
                 hotkeyButtonInstructionText = "Pressione o botão ..",
@@ -337,7 +342,8 @@ local function addonLoaded(self, event, addonLoadedName)
                 hotkeyModeLabel = "Выберите режим горячих клавиш (при удержании некоторые клавиши могут работать некорректно):",
                 hotkeyModes = {
                     toggle = "Переключение",
-                    hold = "Удерживание"
+                    hold = "Удерживание",
+                    toggle_and_hide = "Переключение и скрытие"
                 },
                 hotkeyButtonLabel = "Назначить горячую клавишу для переключения описания способностей (Правый клик для сброса)",
                 hotkeyButtonInstructionText = "Нажмите кнопку...",
@@ -400,7 +406,8 @@ local function addonLoaded(self, event, addonLoadedName)
                 hotkeyModeLabel = "단축키 모드 선택 (누르고 있을 때 일부 키가 예상대로 작동하지 않을 수 있음):",
                 hotkeyModes = {
                     toggle = "전환",
-                    hold = "누르기"
+                    hold = "누르기",
+                    toggle_and_hide = "전환 및 숨기기"
                 },
                 hotkeyButtonLabel = "전환 능력 설명 단축키 등록 (우클릭으로 해제)",
                 hotkeyButtonInstructionText = "버튼을 누르세요..",
@@ -463,7 +470,8 @@ local function addonLoaded(self, event, addonLoadedName)
                 hotkeyModeLabel = "选择快捷键模式（按住时，某些按键可能无法正常工作）：",
                 hotkeyModes = {
                     toggle = "切换",
-                    hold = "按住"
+                    hold = "按住",
+                    toggle_and_hide = "切换并隐藏"
                 },
                 hotkeyButtonLabel = "注册切换技能描述快捷键（右键单击解绑",
                 hotkeyButtonInstructionText = "按按钮..",
