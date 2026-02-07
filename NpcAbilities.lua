@@ -128,6 +128,11 @@ local function UpdateTargetFrameAbilities()
         return
     end
 
+    if NpcAbilitiesOptions["SELECTED_HOTKEY_MODE"] == "toggle_and_hide" and not hotkeyButtonPressed then
+        targetAbilitiesFrame:Hide()
+        return
+    end
+
     if not UnitExists("target") then
         targetAbilitiesFrame:Hide()
         return
@@ -254,6 +259,10 @@ end)
 local function SetNpcAbilityData()
     local displayLocation = NpcAbilitiesOptions["ABILITY_DISPLAY_LOCATION"] or "both"
     if displayLocation == "target_frame" then
+        return
+    end
+
+    if NpcAbilitiesOptions["SELECTED_HOTKEY_MODE"] == "toggle_and_hide" and not hotkeyButtonPressed then
         return
     end
 
