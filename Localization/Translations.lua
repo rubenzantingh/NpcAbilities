@@ -23,7 +23,8 @@ local function addonLoaded(self, event, addonLoadedName)
                 hotkeyModes = {
                     toggle = "Toggle",
                     hold = "Hold",
-                    toggle_and_hide = "Toggle and Hide"
+                    toggle_and_hide = "Toggle and Hide",
+                    hold_and_hide = "Hold and Hide"
                 },
                 hotkeyButtonLabel = "Register toggle abilities description hotkey (Right-click to unbind)",
                 hotkeyButtonInstructionText = "Press button..",
@@ -86,7 +87,8 @@ local function addonLoaded(self, event, addonLoadedName)
                 hotkeyModes = {
                     toggle = "Alternar",
                     hold = "Mantener",
-                    toggle_and_hide = "Alternar y ocultar"
+                    toggle_and_hide = "Alternar y ocultar",
+                    hold_and_hide = "Mantener y ocultar"
                 },
                 hotkeyButtonLabel = "Registrar tecla rápida para la descripción de habilidades de alternancia (Clic derecho para desvincular)",
                 hotkeyButtonInstructionText = "Pulsa el botón..",
@@ -149,7 +151,8 @@ local function addonLoaded(self, event, addonLoadedName)
                 hotkeyModes = {
                     toggle = "Umschalten",
                     hold = "Halten",
-                    toggle_and_hide = "Umschalten und ausblenden"
+                    toggle_and_hide = "Umschalten und ausblenden",
+                    hold_and_hide = "Halten und ausblenden"
                 },
                 hotkeyButtonLabel = "Hotkey für Umschaltfähigkeitenbeschreibung registrieren (Rechtsklick zum Aufheben der Bindung)",
                 hotkeyButtonInstructionText = "Taste drücken..",
@@ -212,7 +215,8 @@ local function addonLoaded(self, event, addonLoadedName)
                 hotkeyModes = {
                     toggle = "Basculer",
                     hold = "Maintenir",
-                    toggle_and_hide = "Basculer et masquer"
+                    toggle_and_hide = "Basculer et masquer",
+                    hold_and_hide = "Maintenir et masquer"
                 },
                 hotkeyButtonLabel = "Enregistrer le raccourci pour la description des capacités à bascule (clic droit pour dissocier)",
                 hotkeyButtonInstructionText = "Appuyez sur le bouton..",
@@ -275,7 +279,8 @@ local function addonLoaded(self, event, addonLoadedName)
                 hotkeyModes = {
                     toggle = "Alternar",
                     hold = "Segurar",
-                    toggle_and_hide = "Alternar e ocultar"
+                    toggle_and_hide = "Alternar e ocultar",
+                    hold_and_hide = "Segurar e ocultar"
                 },
                 hotkeyButtonLabel = "Registrar atalho para descrição das habilidades de alternância (Clique com o botão direito para desvincular)",
                 hotkeyButtonInstructionText = "Pressione o botão ..",
@@ -338,7 +343,8 @@ local function addonLoaded(self, event, addonLoadedName)
                 hotkeyModes = {
                     toggle = "Переключение",
                     hold = "Удерживание",
-                    toggle_and_hide = "Переключение и скрытие"
+                    toggle_and_hide = "Переключение и скрытие",
+                    hold_and_hide = "Удерживание и скрытие"
                 },
                 hotkeyButtonLabel = "Назначить горячую клавишу для переключения описания способностей (Правый клик для сброса)",
                 hotkeyButtonInstructionText = "Нажмите кнопку...",
@@ -401,7 +407,8 @@ local function addonLoaded(self, event, addonLoadedName)
                 hotkeyModes = {
                     toggle = "전환",
                     hold = "누르기",
-                    toggle_and_hide = "전환 및 숨기기"
+                    toggle_and_hide = "전환 및 숨기기",
+                    hold_and_hide = "누르기 및 숨기기"
                 },
                 hotkeyButtonLabel = "전환 능력 설명 단축키 등록 (우클릭으로 해제)",
                 hotkeyButtonInstructionText = "버튼을 누르세요..",
@@ -464,7 +471,8 @@ local function addonLoaded(self, event, addonLoadedName)
                 hotkeyModes = {
                     toggle = "切换",
                     hold = "按住",
-                    toggle_and_hide = "切换并隐藏"
+                    toggle_and_hide = "切换并隐藏",
+                    hold_and_hide = "按住并隐藏"
                 },
                 hotkeyButtonLabel = "注册切换技能描述快捷键（右键单击解绑",
                 hotkeyButtonInstructionText = "按按钮..",
