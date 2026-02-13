@@ -135,6 +135,7 @@ local function getDefaultOptions(optionsTranslations)
             {value = 'toggle', text = optionsTranslations["hotkeyModes"]["toggle"]},
             {value = 'hold', text = optionsTranslations["hotkeyModes"]["hold"]},
             {value = 'toggle_and_hide', text = optionsTranslations["hotkeyModes"]["toggle_and_hide"]},
+            {value = 'hold_and_hide', text = optionsTranslations["hotkeyModes"]["hold_and_hide"]},
         },
         AVAILABLE_ABILITY_FIELD_DISPLAY_MODES = {
             {value = 'title', text = optionsTranslations["abilityFieldsDisplayModes"]["title"]},

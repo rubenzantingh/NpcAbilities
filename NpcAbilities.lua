@@ -129,7 +129,8 @@ local function UpdateTargetFrameAbilities()
         return
     end
 
-    if NpcAbilitiesOptions["SELECTED_HOTKEY_MODE"] == "toggle_and_hide" and not hotkeyButtonPressed then
+    local hotkeyMode = NpcAbilitiesOptions["SELECTED_HOTKEY_MODE"]
+    if (hotkeyMode == "toggle_and_hide" or hotkeyMode == "hold_and_hide") and not hotkeyButtonPressed then
         targetAbilitiesFrame:Hide()
         return
     end
@@ -283,7 +284,8 @@ SetNpcAbilityData = function()
         return
     end
 
-    if NpcAbilitiesOptions["SELECTED_HOTKEY_MODE"] == "toggle_and_hide" and not hotkeyButtonPressed then
+    local hotkeyMode = NpcAbilitiesOptions["SELECTED_HOTKEY_MODE"]
+    if (hotkeyMode == "toggle_and_hide" or hotkeyMode == "hold_and_hide") and not hotkeyButtonPressed then
         return
     end
 
@@ -421,7 +423,7 @@ end
 local function SetHotkeyButtonPressed(self, key, eventType)
    if NpcAbilitiesOptions["SELECTED_HOTKEY"] then
        if eventType == "OnKeyDown" and key == NpcAbilitiesOptions["SELECTED_HOTKEY"] then
-            if NpcAbilitiesOptions["SELECTED_HOTKEY_MODE"] == "hold" then
+            if NpcAbilitiesOptions["SELECTED_HOTKEY_MODE"] == "hold" or NpcAbilitiesOptions["SELECTED_HOTKEY_MODE"] == "hold_and_hide" then
                 StartCheckingHotkey()
             end
 
