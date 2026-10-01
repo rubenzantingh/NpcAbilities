@@ -84,12 +84,12 @@ function Debug.Refresh(status)
             status.isForever and Debug.Localize("Yes", "Ja") or Debug.Localize("No", "Nein"),
             status.savedVariablesLoaded and Debug.Localize("loaded", "geladen") or Debug.Localize("MISSING", "FEHLEN")),
         string.format(
-            Debug.Localize("Collection: %s | Damage Meter: %s | Reads after combat | Nameplates: %d",
-                "Sammlung: %s | Damage Meter: %s | Auslesen nach dem Kampf | Namensplaketten: %d"),
+            Debug.Localize("Collection: %s | Damage Meter: %s | Reads after combat | Pending sessions: %d",
+                "Sammlung: %s | Damage Meter: %s | Auslesen nach dem Kampf | Ausstehende Sitzungen: %d"),
             status.collectionEnabled and Debug.Localize("ON", "AN") or Debug.Localize("OFF", "AUS"),
             status.damageMeterAvailable and Debug.Localize("AVAILABLE", "VERFUEGBAR")
                 or Debug.Localize("UNAVAILABLE", "NICHT VERFUEGBAR"),
-            status.watchedNameplateCount),
+            status.queuedSessionCount),
         Debug.Localize("Latest results are listed below. /nabdebug toggles this window; /nabdebug clear clears the log.",
             "Letzte Ergebnisse stehen unten. /nabdebug blendet dieses Fenster ein oder aus; /nabdebug clear leert das Protokoll."),
     }

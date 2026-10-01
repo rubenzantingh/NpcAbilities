@@ -6,12 +6,12 @@ RELEASE_NAME="$1"
 RELEASE_MESSAGE="$2"
 FILE_PATH="./NpcAbilitiesForever.zip"
 
-: "${CF_API_TOKEN:?CF_API_TOKEN fehlt}"
-: "${CF_PROJECT_ID:?CF_PROJECT_ID muss auf die eigene CurseForge-Projekt-ID gesetzt sein}"
+: "${CF_API_TOKEN:?CF_API_TOKEN is missing}"
+: "${CF_PROJECT_ID:?CF_PROJECT_ID must be set to your own CurseForge project ID}"
 
 case "$CF_PROJECT_ID" in
   *[!0-9]*|'')
-    echo "CF_PROJECT_ID muss eine numerische CurseForge-Projekt-ID sein" >&2
+    echo "CF_PROJECT_ID must be a numeric CurseForge project ID" >&2
     exit 2
     ;;
 esac

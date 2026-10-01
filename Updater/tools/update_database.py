@@ -66,7 +66,7 @@ def download_wago(request, timeout):
         try:
             with urlopen(request, timeout=min(60, timeout)) as response:
                 if not response.geturl().startswith(WAGO_URL + "/"):
-                    raise UpdateError("Wago hat auf eine andere Seite umgeleitet.")
+                    raise UpdateError("Wago redirected to another site.")
                 chunks = []
                 while True:
                     chunk = response.read1(min(64 * 1024, limit + 1 - state["received"]))
@@ -75,7 +75,7 @@ def download_wago(request, timeout):
                     chunks.append(chunk)
                     state["received"] += len(chunk)
                     if state["received"] > limit:
-                        raise UpdateError("Unerwartet grosser Wago-Export.")
+                        raise UpdateError("Unexpectedly large Wago export.")
                 state["data"] = b"".join(chunks)
         except Exception as error:
             state["error"] = error
@@ -87,15 +87,15 @@ def download_wago(request, timeout):
     while True:
         remaining = timeout - (time.monotonic() - started)
         if remaining <= 0:
-            raise UpdateError(f"Wago antwortet nicht rechtzeitig (Zeitlimit {timeout:g} Sekunden): {request.full_url}. "
-                              "Bitte spaeter erneut starten; vorhandene Addon-Daten bleiben erhalten.")
+            raise UpdateError(f"Wago request timed out (timeout {timeout:g} seconds): {request.full_url}. "
+                              "Please try again later; existing addon data is preserved.")
         if done.wait(min(5, remaining)):
             if "error" in state:
                 raise state["error"]
-            progress(f"  Download fertig: {state['received'] / 1024:.0f} KiB in {time.monotonic() - started:.1f} s")
+            progress(f"  Download complete: {state['received'] / 1024:.0f} KiB in {time.monotonic() - started:.1f} s")
             return state["data"]
-        progress(f"  Warte auf Wago: {time.monotonic() - started:.0f} s; "
-                 f"{state['received'] / 1024:.0f} KiB empfangen (Zeitlimit {timeout:g} s)")
+        progress(f"  Waiting for Wago: {time.monotonic() - started:.0f} s; "
+                 f"{state['received'] / 1024:.0f} KiB received (timeout {timeout:g} s)")
 
 
 def timestamp():
@@ -136,7 +136,7 @@ def update_lock(directory):
                 import fcntl
                 fcntl.flock(file, fcntl.LOCK_EX | fcntl.LOCK_NB)
         except OSError as error:
-            raise UpdateError("Ein Datenbank-Update laeuft bereits.") from error
+            raise UpdateError("A database update is already running.") from error
         try:
             yield
         finally:
@@ -174,7 +174,7 @@ class LiteralReader:
                     size = 4 if char == "u" else 2
                     value = self.text[self.position:self.position + size]
                     if not re.fullmatch(r"[0-9a-fA-F]{%d}" % size, value):
-                        raise UpdateError("Ungueltige Zeichen-Escape-Sequenz in Quelldaten.")
+                        raise UpdateError("Invalid character escape in source data.")
                     result.append(chr(int(value, 16)))
                     self.position += size
                 elif char in "\\/\"'":
@@ -182,17 +182,17 @@ class LiteralReader:
                 elif char in "bfnrt":
                     result.append(dict(b="\b", f="\f", n="\n", r="\r", t="\t")[char])
                 else:
-                    raise UpdateError("Unbekannte Zeichen-Escape-Sequenz in Quelldaten.")
+                    raise UpdateError("Unknown character escape in source data.")
             else:
                 result.append(char)
-        raise UpdateError("Unvollstaendige Zeichenkette in Quelldaten.")
+        raise UpdateError("Incomplete string in source data.")
 
     def value(self, depth=0):
         if depth > 40:
-            raise UpdateError("Quelldaten zu tief verschachtelt.")
+            raise UpdateError("Source data is nested too deeply.")
         self.skip()
         if self.position >= len(self.text):
-            raise UpdateError("Unvollstaendige Quelldaten.")
+            raise UpdateError("Incomplete source data.")
         char = self.text[self.position]
         if char in "\"'":
             return self.string()
@@ -212,15 +212,15 @@ class LiteralReader:
                     else:
                         match = re.match(r"[A-Za-z_$][\w$]*", self.text[self.position:])
                         if not match:
-                            raise UpdateError("Ungueltiger Objektschluessel in Quelldaten.")
+                            raise UpdateError("Invalid object key in source data.")
                         key = match[0]
                         self.position += len(key)
                     self.skip()
                     if self.text[self.position:self.position + 1] != ":":
-                        raise UpdateError("Doppelpunkt in Quelldaten fehlt.")
+                        raise UpdateError("Missing colon in source data.")
                     self.position += 1
                     if key in result:
-                        raise UpdateError("Doppelter Objektschluessel in Quelldaten.")
+                        raise UpdateError("Duplicate object key in source data.")
                     result[key] = self.value(depth + 1)
                 else:
                     result.append(self.value(depth + 1))
@@ -228,12 +228,12 @@ class LiteralReader:
                 if self.text[self.position:self.position + 1] == ",":
                     self.position += 1
                 elif self.text[self.position:self.position + 1] != end:
-                    raise UpdateError("Unerwartete Datenstruktur; Update abgebrochen.")
+                    raise UpdateError("Unexpected data structure; update cancelled.")
         match = re.match(r"-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?|true\b|false\b|null\b", self.text[self.position:])
         if match:
             self.position += len(match[0])
             return json.loads(match[0])
-        raise UpdateError("Ausfuehrbarer JavaScript-Ausdruck statt Daten; Update abgebrochen.")
+        raise UpdateError("Executable JavaScript expression instead of data; update cancelled.")
 
 
 def listview(page, view_id):
@@ -260,24 +260,24 @@ def listview(page, view_id):
 
 def positive_id(value):
     if type(value) is not int or not 0 < value <= 2147483647:
-        raise UpdateError("Ungueltige NPC-/Zauber-ID in Quelldaten.")
+        raise UpdateError("Invalid NPC/spell ID in source data.")
     return value
 
 
 def page_identity(page, kind, entity_id):
     match = re.search(r"\b(?:var\s+)?g_pageInfo\s*=\s*", page)
     if not match:
-        raise UpdateError("Wowhead-Seite ohne Objektkennung (Fehlerseite oder geaendertes Format).")
+        raise UpdateError("Wowhead page has no entity identifier (error page or changed format).")
     info = LiteralReader(page, match.end()).value()
     if info.get("type") != kind or info.get("typeId") != entity_id:
-        raise UpdateError("Wowhead hat ein anderes Objekt als angefordert geliefert.")
+        raise UpdateError("Wowhead returned a different entity than requested.")
     return info
 
 
 def env_status(row):
     change = row.get("envChange", {})
     if not isinstance(change, dict):
-        raise UpdateError("Ungueltige Forever-Aenderungsdaten.")
+        raise UpdateError("Invalid Forever change data.")
     return change.get("status", "unknown")
 
 
@@ -295,7 +295,7 @@ def parse_npc(page, npc_id):
         return dict(result, spell_ids=None)
     rows, truncated = view
     if truncated:
-        raise UpdateError(f"Faehigkeitenliste fuer NPC {npc_id} ist abgeschnitten.")
+        raise UpdateError(f"Ability list for NPC {npc_id} is truncated.")
     ids = set()
     for row in rows:
         spell_id = positive_id(row.get("id"))
@@ -321,26 +321,26 @@ class Wowhead:
                 with urlopen(request, timeout=35) as response:
                     final_url = response.geturl()
                     if not final_url.startswith(BASE_URL + "/"):
-                        raise UpdateError("Wowhead hat auf eine andere Spielversion/Seite umgeleitet.")
+                        raise UpdateError("Wowhead redirected to a different game version/site.")
                     data = response.read(8 * 1024 * 1024 + 1)
                     if len(data) > 8 * 1024 * 1024:
-                        raise UpdateError("Unerwartet grosse Wowhead-Antwort.")
+                        raise UpdateError("Unexpectedly large Wowhead response.")
                     page = data.decode("utf-8")
                     if "g_pageInfo" not in page and "new Listview" not in page:
-                        raise UpdateError("Wowhead liefert keine Daten (evtl. Zugriffspruefung). Keine Daten ersetzt.")
+                        raise UpdateError("Wowhead returned no data (possibly an access check). No data was replaced.")
                     return page
             except HTTPError as error:
                 if error.code == 404:
-                    raise MissingPage(f"Nicht gefunden: {url} (404 ist kein Loeschnachweis).") from error
+                    raise MissingPage(f"Not found: {url} (404 does not prove removal).") from error
                 if error.code in (401, 403, 429):
-                    raise UpdateError(f"Wowhead HTTP {error.code}: Zugriff/Ratenlimit. Bitte spaeter erneut starten; Cache bleibt erhalten.") from error
+                    raise UpdateError(f"Wowhead HTTP {error.code}: Access/rate limit. Please try again later; the cache is preserved.") from error
                 if error.code < 500 or attempt == 2:
                     raise UpdateError(f"Wowhead HTTP {error.code}: {url}") from error
             except (URLError, TimeoutError, OSError, UnicodeError) as error:
                 if attempt == 2:
-                    raise UpdateError(f"Abruf fehlgeschlagen: {url}: {error}") from error
+                    raise UpdateError(f"Download failed: {url}: {error}") from error
             time.sleep(2 ** attempt)
-        raise UpdateError("Abruf fehlgeschlagen.")
+        raise UpdateError("Download failed.")
 
     def cached(self, url, parser):
         key = hashlib.sha256(url.encode()).hexdigest()
@@ -375,12 +375,12 @@ class Wago:
         path = self.directory / (hashlib.sha256(url.encode()).hexdigest() + ".data")
         if not self.refresh and path.exists() and time.time() - path.stat().st_mtime < self.ttl:
             try:
-                progress(f"  Lese Cache: {url}")
+                progress(f"  Reading cache: {url}")
                 result = parser(path.read_bytes())
                 self.cache_hits += 1
                 return result
             except (ValueError, UnicodeError, KeyError, csv.Error, UpdateError):
-                progress("  Cache ungueltig; lade neu.")
+                progress("  Invalid cache; downloading again.")
         time.sleep(max(0, self.delay - (time.monotonic() - self.last_request)))
         self.last_request = time.monotonic()
         self.requests += 1
@@ -389,14 +389,14 @@ class Wago:
         try:
             raw = download_wago(request, self.timeout)
         except HTTPError as error:
-            raise UpdateError(f"Wago HTTP {error.code}; Daten unveraendert. Bei 429 bitte spaeter erneut versuchen.") from error
+            raise UpdateError(f"Wago HTTP {error.code}; Data unchanged. For HTTP 429, please try again later.") from error
         except (URLError, TimeoutError, OSError, HTTPException) as error:
-            raise UpdateError(f"Wago-Abruf fehlgeschlagen: {error}") from error
+            raise UpdateError(f"Wago download failed: {error}") from error
         try:
-            progress("  Pruefe heruntergeladene Daten ...")
+            progress("  Validating downloaded data ...")
             result = parser(raw)
         except (ValueError, UnicodeError, KeyError, csv.Error) as error:
-            raise UpdateError(f"Ungueltige Wago-Daten: {url}: {error}") from error
+            raise UpdateError(f"Invalid Wago data: {url}: {error}") from error
         path.write_bytes(raw)
         return result
 
@@ -405,7 +405,7 @@ class Wago:
         versions = [entry["version"] for entry in data.get("wow_classic_beta", [])
                     if re.fullmatch(r"1\.60\.\d+\.\d+", entry.get("version", ""))]
         if not versions:
-            raise UpdateError("Kein Forever-Build (1.60.x) bei Wago gefunden; kein anderer Client wird verwendet.")
+            raise UpdateError("No Forever build (1.60.x) found on Wago; no other client will be used.")
         return max(versions, key=lambda item: tuple(map(int, item.split("."))))
 
     def table(self, name, build, locale):
@@ -415,19 +415,19 @@ class Wago:
             reader = csv.DictReader(io.StringIO(raw.decode("utf-8-sig")))
             required = {"ID", "Name_lang"} if name == "SpellName" else {"ID", "Description_lang"}
             if not reader.fieldnames or not required.issubset(reader.fieldnames):
-                raise ValueError(f"Spalten fehlen: {name}")
+                raise ValueError(f"Missing columns: {name}")
             rows = {}
             for row in reader:
                 if None in row or any(value is None for value in row.values()):
-                    raise ValueError(f"Beschaedigte CSV-Zeile in {name}")
+                    raise ValueError(f"Malformed CSV row in {name}")
                 if row["ID"] == "0":
                     continue
                 key = str(positive_id(int(row["ID"])))
                 if key in rows:
-                    raise ValueError(f"Doppelte Zauber-ID {key}")
+                    raise ValueError(f"Duplicate spell ID {key}")
                 rows[key] = row
             if len(rows) < 10000:
-                raise ValueError(f"Unvollstaendiger {name}-Export ({len(rows)} Zeilen)")
+                raise ValueError(f"Incomplete {name} export ({len(rows)} rows)")
             return rows
         return self.cached(url, parse)
 
@@ -438,7 +438,7 @@ def baseline_npcs(root):
     for match in re.finditer(r"\[(\d+)\]\s*=\s*\{sod_spell_ids\s*=\s*\{[^}]*\},\s*classic_spell_ids\s*=\s*\{([^}]*)\}\s*\}", source):
         result[match[1]] = sorted(set(int(value) for value in re.findall(r"\d+", match[2])))
     if not result:
-        raise UpdateError("Classic-Basisdaten konnten nicht gelesen werden.")
+        raise UpdateError("Could not read Classic baseline data.")
     return result
 
 
@@ -448,22 +448,22 @@ def empty_snapshot():
 
 def validate_snapshot(snapshot):
     if (snapshot.get("schema_version"), snapshot.get("source")) not in ((1, BASE_URL), (2, WAGO_URL)):
-        raise UpdateError("Unbekanntes Format der lokalen Forever-Daten.")
+        raise UpdateError("Unknown local Forever data format.")
     if not isinstance(snapshot.get("npcs"), dict) or not isinstance(snapshot.get("abilities"), dict):
-        raise UpdateError("Ungueltige Forever-Daten.")
+        raise UpdateError("Invalid Forever data.")
     for language, spells in snapshot["abilities"].items():
         if language not in LOCALES or not isinstance(spells, dict):
-            raise UpdateError("Ungueltige Sprachdaten.")
+            raise UpdateError("Invalid localization data.")
         for key, fields in spells.items():
             positive_id(int(key))
             if not isinstance(fields, dict) or not fields.get("name"):
-                raise UpdateError("Zauber ohne Namen.")
+                raise UpdateError("Spell has no name.")
             if any(value is not None and not isinstance(value, str) for value in fields.values()):
-                raise UpdateError("Ungueltige Zaubertexte.")
+                raise UpdateError("Invalid spell text.")
     for key, npc in snapshot["npcs"].items():
         positive_id(int(key))
         if not isinstance(npc["spell_ids"], list):
-            raise UpdateError("NPC ohne gueltige Faehigkeitenliste.")
+            raise UpdateError("NPC has no valid ability list.")
         for spell_id in npc["spell_ids"]:
             positive_id(spell_id)
             # The shipped Classic spell tables remain available as a fallback.
@@ -486,7 +486,8 @@ def render_lua(snapshot):
              '_G["NpcAbilitiesForeverData"] = {', "    npcs = {"]
     for key in sorted(snapshot["npcs"], key=int):
         ids = ", ".join(map(str, snapshot["npcs"][key]["spell_ids"]))
-        lines.append(f"        [{key}] = {{classic_spell_ids = {{{ids}}}, sod_spell_ids = {{}}}},")
+        authoritative = "false" if snapshot["npcs"][key].get("source") in ("Forever combat log", "Forever-Kampfprotokoll") else "true"
+        lines.append(f"        [{key}] = {{classic_spell_ids = {{{ids}}}, sod_spell_ids = {{}}, authoritative = {authoritative}}},")
     lines += ["    },", "    abilities = {"]
     for language in sorted(snapshot["abilities"]):
         lines.append(f'        ["{language}"] = {{')
@@ -560,18 +561,18 @@ def curated_npcs(root):
         return {}
     data = json.loads(path.read_text(encoding="utf-8-sig"))
     if not isinstance(data, dict) or not isinstance(data.get("npcs"), dict):
-        raise UpdateError("npc_overrides.json muss ein Objekt mit 'npcs' enthalten.")
+        raise UpdateError("npc_overrides.json must contain an object with 'npcs'.")
     result = {}
     for key, value in data["npcs"].items():
         positive_id(int(key))
         if not isinstance(value, dict) or not isinstance(value.get("source"), str) or not value["source"].strip():
-            raise UpdateError(f"NPC {key}: eine Quelle/Beobachtung ist erforderlich.")
+            raise UpdateError(f"NPC {key}: a source/observation is required.")
         if value.get("reset") is True:
             result[str(int(key))] = None
             continue
         ids = value.get("spell_ids")
         if not isinstance(ids, list) or any(not isinstance(item, int) or isinstance(item, bool) for item in ids):
-            raise UpdateError(f"NPC {key}: spell_ids muss eine Liste von IDs sein.")
+            raise UpdateError(f"NPC {key}: spell_ids must be a list of IDs.")
         result[str(int(key))] = {"name": value.get("name") or str(key),
                                   "spell_ids": sorted({positive_id(item) for item in ids}),
                                   "source": value["source"].strip()}
@@ -599,7 +600,7 @@ def combat_log_paths(root, explicit):
         if not isinstance(value, dict) or not isinstance(value.get("combat_logs"), list) or any(
             not isinstance(item, str) or not item.strip() for item in value["combat_logs"]
         ):
-            raise UpdateError("Updater/.data/config.json: 'combat_logs' muss eine Liste von Pfaden sein.")
+            raise UpdateError("Updater/.data/config.json: 'combat_logs' must be a list of paths.")
         paths = [Path(item) for item in value["combat_logs"]]
     if not paths:
         if root.parent.name.lower() == "addons" and root.parent.parent.name.lower() == "interface":
@@ -618,7 +619,7 @@ def combat_log_paths(root, explicit):
     if explicit or config.exists():
         missing = [str(path) for path in unique if not path.is_file()]
         if missing:
-            raise UpdateError("Kampfprotokoll nicht gefunden: " + ", ".join(missing))
+            raise UpdateError("Combat log not found: " + ", ".join(missing))
     return [path for path in unique if path.is_file()]
 
 
@@ -669,8 +670,8 @@ def parse_combat_log(path, known_spells):
 def run(args):
     root = args.root.resolve()
     directory = root / "Updater/.data"
-    progress(f"Updater gestartet. Addon-Ordner: {root}")
-    progress("[1/5] Lese vorhandene Daten ...")
+    progress(f"Updater started. Addon directory: {root}")
+    progress("[1/5] Reading existing data ...")
     with update_lock(directory):
         baseline = baseline_npcs(root)
         path = root / "Database/forever.json"
@@ -679,26 +680,26 @@ def run(args):
         if not path.exists():
             overlay = root / "Database/forever.lua"
             if overlay.exists() and re.search(r"\[\d+\]\s*=", overlay.read_text(encoding="utf-8")):
-                raise UpdateError("Forever-Daten vorhanden, aber Database/forever.json fehlt. Snapshot aus Backup wiederherstellen.")
+                raise UpdateError("Forever data exists, but Database/forever.json is missing. Restore the Snapshot from a backup.")
         after = json.loads(json.dumps(before))
         after.update(schema_version=2, source=WAGO_URL)
         provider = Wago(directory / "cache", args.delay, args.cache_hours, args.refresh)
         provider.timeout = getattr(args, "timeout", 120)
-        progress("[2/5] Ermittle Forever-Build bei Wago ..." if not args.build else "[2/5] Verwende angegebenen Forever-Build ...")
+        progress("[2/5] Looking up the Forever build on Wago ..." if not args.build else "[2/5] Using the specified Forever build ...")
         build = args.build or provider.build()
         if not re.fullmatch(r"1\.60\.\d+\.\d+", build):
-            raise UpdateError("Nur Forever-Builds (1.60.x) duerfen importiert werden.")
+            raise UpdateError("Only Forever builds (1.60.x) may be imported.")
         after["build"] = build
-        print(f"Forever-Build: {build}", flush=True)
+        print(f"Forever build: {build}", flush=True)
         tables = {}
-        progress("[3/5] Lade Zauberkatalog ...")
+        progress("[3/5] Downloading the spell catalog ...")
         for language in args.languages:
-            progress(f"  Sprache: {language}")
+            progress(f"  Language: {language}")
             tables[language] = (provider.table("SpellName", build, language),
                                 provider.table("Spell", build, language))
-            print(f"{language}: {len(tables[language][0])} Zaubernamen geladen", flush=True)
+            print(f"{language}: {len(tables[language][0])} spell names loaded", flush=True)
 
-        progress("[4/5] Verarbeite Zauber und vorhandene NPC-Zuordnungen ...")
+        progress("[4/5] Processing spells and existing NPC associations ...")
         unknown, missing = [], []
         wowhead = None
         selected_npc_spells = set()
@@ -711,7 +712,7 @@ def run(args):
                     missing.append({"id": npc_id, "reason": str(error)})
                     continue
                 if npc["spell_ids"] is None:
-                    unknown.append({"id": npc_id, "name": npc["name"], "reason": "Kein vollstaendiger Faehigkeiten-Reiter"})
+                    unknown.append({"id": npc_id, "name": npc["name"], "reason": "No complete abilities tab"})
                     continue
                 npc["source"] = f"{BASE_URL}/npc={npc_id}"
                 after["npcs"][str(npc_id)] = npc
@@ -720,10 +721,10 @@ def run(args):
         log_reports = []
         observed_npc_ids = set()
         for log_path in combat_log_paths(root, getattr(args, "combat_log", None)):
-            progress(f"  Lese Kampfprotokoll: {log_path}")
+            progress(f"  Reading combat log: {log_path}")
             observations = parse_combat_log(log_path, tables["en"][0])
             if not observations["builds"]:
-                raise UpdateError(f"Kein Forever-Kampfprotokoll (Build 1.60.x): {log_path}")
+                raise UpdateError(f"Not a Forever combat log (Build 1.60.x): {log_path}")
             log_reports.append({"file": str(log_path), "builds": observations["builds"],
                                 "npc_count": len(observations["npcs"]), "cast_events": observations["cast_events"]})
             for key, seen in observations["npcs"].items():
@@ -733,7 +734,7 @@ def run(args):
                 if new_ids == old_ids and (previous or key in baseline):
                     continue
                 after["npcs"][key] = {"name": (previous or seen)["name"],
-                                       "spell_ids": sorted(new_ids), "source": "Forever-Kampfprotokoll"}
+                                       "spell_ids": sorted(new_ids), "source": "Forever combat log"}
                 observed_npc_ids.add(key)
 
         curated = curated_npcs(root)
@@ -750,7 +751,7 @@ def run(args):
         new_npc_spells = selected_npc_spells | {spell for npc in curated.values() if npc for spell in npc["spell_ids"]}
         missing_override_spells = sorted(spell for spell in new_npc_spells if str(spell) not in tables["en"][0])
         if missing_override_spells:
-            raise UpdateError(f"Neue NPC-Zuordnung enthaelt Zauber ohne Wago-Namen: {missing_override_spells[:20]}")
+            raise UpdateError(f"New NPC association contains spells without Wago names: {missing_override_spells[:20]}")
         skipped_templates = {language: 0 for language in args.languages}
         missing_names = {language: [] for language in args.languages}
         for language, (names, spells) in tables.items():
@@ -767,8 +768,10 @@ def run(args):
                 description = usable_description(raw)
                 if description:
                     fields["description"] = description
-                elif raw:
-                    skipped_templates[language] += 1
+                else:
+                    fields.pop("description", None)
+                    if raw:
+                        skipped_templates[language] += 1
         validate_snapshot(after)
         content = render_lua(after)
         scope = {"mode": "selected" if args.npc else "bulk", "npc_count": len(after["npcs"]), "languages": args.languages}
@@ -783,54 +786,54 @@ def run(args):
         report["http_requests"] = provider.requests + (wowhead.requests if wowhead else 0)
         report["cache_hits"] = provider.cache_hits + (wowhead.cache_hits if wowhead else 0)
         report_path = directory / ("preview-report.json" if args.dry_run else "last-report.json")
-        progress("[5/5] Schreibe Vorschau ..." if args.dry_run else "[5/5] Speichere Daten und Backup ...")
+        progress("[5/5] Writing preview ..." if args.dry_run else "[5/5] Saving data and backup ...")
         if args.dry_run:
             atomic_write(directory / "preview-forever.lua", content)
-            print("Vorschau: Addon-Daten unveraendert.")
+            print("Preview: addon data unchanged.")
         else:
             backup = commit_update(root, directory, after, content)
             report["backup"] = str(backup) if backup else None
-            print("Update installiert. In WoW: /reload" if backup else "Daten bereits aktuell.")
+            print("Update installed. In WoW: /reload" if backup else "Data is already up to date.")
         write_json(report_path, report)
-        print(f"NPC-Eintraege: {len(after['npcs'])}; Aenderungen: {len(report['npc_changes'])}; "
-              f"neue Sprach-/Zaubereintraege: {report['new_localized_spell_entries']}; "
-              f"geaenderte Texte: {report['changed_localized_spell_entries']}")
-        print(f"HTTP-Anfragen: {report['http_requests']}; Cache-Treffer: {report['cache_hits']}; "
-              f"unaufgeloeste Beschreibungen: {skipped_templates}")
+        print(f"NPC entries: {len(after['npcs'])}; Changes: {len(report['npc_changes'])}; "
+              f"new localized spell entries: {report['new_localized_spell_entries']}; "
+              f"changed texts: {report['changed_localized_spell_entries']}")
+        print(f"HTTP requests: {report['http_requests']}; Cache hits: {report['cache_hits']}; "
+              f"unresolved descriptions: {skipped_templates}")
         if log_reports:
-            print(f"Kampfprotokolle: {len(log_reports)}; NPC-Zuordnungen aus beobachteten Zaubern ergaenzt: {len(observed_npc_ids)}")
+            print(f"Combat logs: {len(log_reports)}; NPC associations extended from observed spells: {len(observed_npc_ids)}")
         else:
-            print("Keine Logdatei importiert. Neue NPC-Zauber-Zuordnungen lernt das Addon direkt im Spiel.")
-        print(f"Bericht: {report_path}")
+            print("No log file imported. The addon learns new NPC spell associations in-game.")
+        print(f"Report: {report_path}")
         return report
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Forever-Zauber per Wago-CSV aktualisieren (Python 3.10+, keine Zusatzpakete).")
-    parser.add_argument("--root", type=Path, default=ROOT, help="Addon-Verzeichnis")
-    parser.add_argument("--dry-run", action="store_true", help="Vorschau erzeugen, Addon-Daten nicht aendern")
-    parser.add_argument("--npc", nargs="+", type=int, help="Diese NPC-IDs gezielt bei Wowhead pruefen (kein Komplettabruf)")
-    parser.add_argument("--combat-log", nargs="+", type=Path, help="Forever-Spielordner oder WoWCombatLog.txt einlesen und NPC-Zauber zuordnen")
-    parser.add_argument("--build", help="Bestimmten Forever-Build 1.60.x verwenden")
+    parser = argparse.ArgumentParser(description="Update Forever spells from Wago CSVs (Python 3.10+, no extra packages).")
+    parser.add_argument("--root", type=Path, default=ROOT, help="Addon directory")
+    parser.add_argument("--dry-run", action="store_true", help="Generate a preview without changing addon data")
+    parser.add_argument("--npc", nargs="+", type=int, help="Check only these NPC IDs on Wowhead (no full crawl)")
+    parser.add_argument("--combat-log", nargs="+", type=Path, help="Import a Forever game directory or WoWCombatLog.txt to associate NPC spells")
+    parser.add_argument("--build", help="Use a specific Forever build, 1.60.x")
     parser.add_argument("--languages", nargs="+", choices=sorted(LOCALES_WAGO), default=DEFAULT_LOCALES,
-                        help="Wago-Sprachen (Standard: alle vom Addon unterstuetzten Sprachen; Englisch ist immer erforderlich)")
-    parser.add_argument("--refresh", action="store_true", help="Cache ignorieren und alle angeforderten Seiten neu laden")
-    parser.add_argument("--cache-hours", type=float, default=24, help="Gueltigkeit des Abruf-Caches in Stunden")
-    parser.add_argument("--delay", type=float, default=0.75, help="Mindestabstand zwischen HTTP-Anfragen (Sekunden, mindestens 0.5)")
-    parser.add_argument("--timeout", type=int, default=120, help="Gesamtes Zeitlimit pro Wago-Anfrage in Sekunden (Standard: 120)")
+                        help="Wago languages (default: all supported languages; English is always required)")
+    parser.add_argument("--refresh", action="store_true", help="Ignore the cache and download all requested data again")
+    parser.add_argument("--cache-hours", type=float, default=24, help="Cache validity in hours")
+    parser.add_argument("--delay", type=float, default=0.75, help="Minimum delay between HTTP requests (seconds, at least 0.5)")
+    parser.add_argument("--timeout", type=int, default=120, help="Total timeout per Wago request in seconds (default: 120)")
     args = parser.parse_args()
     if args.timeout <= 0:
-        parser.error("Das Zeitlimit muss groesser als null sein.")
+        parser.error("The timeout must be greater than zero.")
     if args.delay < 0.5 or args.cache_hours < 0 or (args.npc and any(value <= 0 or value > 2147483647 for value in args.npc)):
-        parser.error("Ungueltige ID, Cache-Dauer oder Abrufpause (Minimum 0.5 Sekunden).")
+        parser.error("Invalid ID, cache duration or request delay (minimum 0.5 seconds).")
     args.languages = list(dict.fromkeys(["en"] + args.languages))
     try:
         run(args)
     except KeyboardInterrupt:
-        print("\nAbgebrochen. Bereits geladene Seiten bleiben im Cache; erneut starten zum Fortsetzen.", file=sys.stderr)
+        print("\nCancelled. Downloaded data remains cached; run again to resume.", file=sys.stderr)
         return 130
     except (UpdateError, OSError, ValueError, KeyError, TypeError) as error:
-        print(f"\nFEHLER: {error}\nKein vollstaendiges Update installiert. Details und Cache unter Updater/.data.", file=sys.stderr)
+        print(f"\nERROR: {error}\nNo complete update installed. Details and cache are in Updater/.data.", file=sys.stderr)
         return 1
     return 0
 

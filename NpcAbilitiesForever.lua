@@ -10,11 +10,7 @@ local isForever = interfaceVersion >= 16000 and interfaceVersion < 17000
 local learnedData
 local damageMeterListenerRegistered = false
 local liveDataCollectionEnabled = true
-local collectionEventsRegistered = false
-local watchedNameplateCount = 0
-local watchedUnits = {}
-local observedNpcNames = {}
-local damageMeterFirstEventLogged = false
+local queuedSessionCount = 0
 local lastDecoratedTooltipNpcId
 
 local function RefreshDebugWindow()
@@ -26,7 +22,7 @@ local function RefreshDebugWindow()
         savedVariablesLoaded = type(NpcAbilitiesLearnedData) == "table",
         damageMeterAvailable = damageMeterListenerRegistered,
         collectionEnabled = liveDataCollectionEnabled,
-        watchedNameplateCount = watchedNameplateCount,
+        queuedSessionCount = queuedSessionCount,
     })
 end
 
@@ -97,8 +93,11 @@ local function GetDataByID(dataType, dataId)
     if not convertedId then return nil end
 
     if dataType == "NpcAbilitiesNpcData" then
-        local foreverData = isForever and _G["NpcAbilitiesForeverData"]
-        local npc = (foreverData and foreverData.npcs[convertedId]) or data[convertedId]
+        local foreverData = isForever and _G.NpcAbilitiesForeverData
+        local override = foreverData and foreverData.npcs[convertedId]
+        local npc = override or data[convertedId]
+        -- Explicit replacements are authoritative; log imports are additive.
+        if override and override.authoritative ~= false then return override end
         local learned = learnedData and learnedData.npcs[convertedId]
         if learned then
             local result = {classic_spell_ids = {}, sod_spell_ids = npc and npc.sod_spell_ids or {}}
@@ -115,54 +114,35 @@ local function GetDataByID(dataType, dataId)
             return result
         end
         return npc
-    else
-        local languageCode = NpcAbilitiesOptions["SELECTED_LANGUAGE"]
-        local foreverData = isForever and _G["NpcAbilitiesForeverData"]
-        local baseAbility = (data[languageCode] and data[languageCode][convertedId])
-            or (data.en and data.en[convertedId])
-        local learnedAbility
-        if learnedData then
-            -- Use learned metadata to fill gaps in the downloaded spell records.
-            local localized = learnedData.abilities[languageCode]
-            local client = learnedData.abilities[GetAddonLocaleCode()]
-            local english = learnedData.abilities.en
-            learnedAbility = (localized and localized[convertedId])
-                or (client and client[convertedId]) or (english and english[convertedId])
-            if not learnedAbility then
-                for _, language in pairs(learnedData.abilities) do
-                    if language[convertedId] then learnedAbility = language[convertedId]; break end
-                end
-            end
-        end
-        if foreverData then
-            local localized = foreverData.abilities[languageCode]
-            local english = foreverData.abilities.en
-            local ability = (localized and localized[convertedId]) or (english and english[convertedId])
-            if ability or baseAbility or learnedAbility then
-                local result = {}
-                for _, field in ipairs({"name", "description", "mechanic", "range", "cast_time", "cooldown", "dispel_type"}) do
-                    local value = ability and ability[field]
-                    if value == nil or value == "" then value = baseAbility and baseAbility[field] end
-                    if value == nil or value == "" then value = learnedAbility and learnedAbility[field] end
-                    result[field] = value
-                end
-                return result
-            end
-        end
-        if baseAbility then
-            if not learnedAbility then return baseAbility end
-            local result = {}
-            for _, field in ipairs({"name", "description", "mechanic", "range", "cast_time", "cooldown", "dispel_type"}) do
-                local value = baseAbility[field]
-                if value == nil or value == "" then value = learnedAbility[field] end
-                result[field] = value
-            end
-            return result
-        end
-        return learnedAbility
     end
 
-    return nil
+    local foreverData = isForever and _G.NpcAbilitiesForeverData
+    local result, hasData, visited = {}, false, {}
+    local function addLanguage(language)
+        if visited[language] then return end
+        visited[language] = true
+        local overlay = foreverData and foreverData.abilities[language]
+        local learned = learnedData and learnedData.abilities[language]
+        local sources = {overlay or {}, data[language] or {}, learned or {}}
+        for _, source in ipairs(sources) do
+            local record = source[convertedId]
+            if type(record) == "table" then
+                for _, field in ipairs({"name", "description", "mechanic", "range", "cast_time", "cooldown", "dispel_type"}) do
+                    local value = record[field]
+                    if result[field] == nil and type(value) == "string" and value ~= "" then
+                        result[field] = value
+                        hasData = true
+                    end
+                end
+            end
+        end
+    end
+    -- Fill each field in the requested language before trying another language.
+    addLanguage(NpcAbilitiesOptions.SELECTED_LANGUAGE)
+    addLanguage("en")
+    addLanguage(GetAddonLocaleCode())
+    for _, language in ipairs({"de", "es", "fr", "pt", "ru", "ko", "cn"}) do addLanguage(language) end
+    return hasData and type(result.name) == "string" and result or nil
 end
 
 local function GetAbilityNameKey(name, spellId)
@@ -170,6 +150,17 @@ local function GetAbilityNameKey(name, spellId)
     local plainName = name:gsub("|c%x%x%x%x%x%x%x%x", ""):gsub("|r", "")
     plainName = plainName:gsub("%s+", " "):match("^%s*(.-)%s*$")
     return plainName:lower()
+end
+
+local function GetAbilityDisplayKey(record, id)
+    local parts = {}
+    for _, field in ipairs({"name", "description", "mechanic", "range", "cast_time", "cooldown", "dispel_type"}) do
+        local value = record[field] or ""
+        parts[#parts + 1] = #value .. ":" .. value
+    end
+    local priority = NpcAbilitiesOptions.DISPLAY_PRIORITY_INDICATORS and _G.NpcAbilitiesPriorityData[id] or 4
+    parts[#parts + 1] = tostring(priority or 4)
+    return table.concat(parts, ";")
 end
 
 local genericAttackSpellNames = {
@@ -205,7 +196,7 @@ local function IsGenericAttackSpell(spellId, spellName)
         if ok and type(info) == "table" and not (issecretvalue and issecretvalue(info.name)) then clientSpellName = info.name end
     elseif type(GetSpellInfo) == "function" then
         local ok, name = pcall(GetSpellInfo, spellId)
-        if ok then clientSpellName = name end
+        if ok and not (issecretvalue and issecretvalue(name)) then clientSpellName = name end
     end
     if type(clientSpellName) == "string" and genericAttackSpellNames[GetAbilityNameKey(clientSpellName, spellId)] then
         genericAttackSpellCache[spellId] = true
@@ -213,7 +204,7 @@ local function IsGenericAttackSpell(spellId, spellName)
     end
     if C_Spell and type(C_Spell.IsRangedAutoAttackSpell) == "function" then
         local ok, isAutoAttack = pcall(C_Spell.IsRangedAutoAttackSpell, spellId)
-        if ok and isAutoAttack == true then return true end
+        if ok and not (issecretvalue and issecretvalue(isAutoAttack)) and isAutoAttack == true then return true end
     end
     genericAttackSpellCache[spellId] = false
     return false
@@ -329,19 +320,29 @@ local function UpdateTargetFrameAbilities()
     local abilities = {}
     local addedAbilityNames = {}
 
-    for _, classicAbilityId in pairs(npcData.classic_spell_ids) do
+    local targetSpellIds = {}
+    if seasonId == 2 then
+        for _, id in ipairs(npcData.sod_spell_ids) do table.insert(targetSpellIds, id) end
+    end
+    for _, id in ipairs(npcData.classic_spell_ids) do table.insert(targetSpellIds, id) end
+    for _, classicAbilityId in ipairs(targetSpellIds) do
         local classicAbilitiesData = GetDataByID('NpcAbilitiesAbilityData', classicAbilityId)
 
         if classicAbilitiesData ~= nil then
             local name = classicAbilitiesData.name
 
-            local nameKey = GetAbilityNameKey(name, classicAbilityId)
+            local nameKey = GetAbilityDisplayKey(classicAbilitiesData, classicAbilityId)
             if not IsGenericAttackSpell(classicAbilityId, name) and not addedAbilityNames[nameKey] then
                 addedAbilityNames[nameKey] = true
                 table.insert(abilities, {
                     id = classicAbilityId,
                     name = name,
-                    description = classicAbilitiesData.description or ""
+                    description = classicAbilitiesData.description or "",
+                    mechanic = classicAbilitiesData.mechanic or "",
+                    range = classicAbilitiesData.range or "",
+                    cast_time = classicAbilitiesData.cast_time or "",
+                    cooldown = classicAbilitiesData.cooldown or "",
+                    dispel_type = classicAbilitiesData.dispel_type or ""
                 })
             end
         end
@@ -371,7 +372,19 @@ local function UpdateTargetFrameAbilities()
             line = "|cff" .. colors.hex .. icon .. " " .. ability.name .. "|r"
         end
 
+        for _, field in ipairs({{"mechanic", "MECHANIC"}, {"range", "RANGE"}, {"cast_time", "CAST_TIME"}, {"cooldown", "COOLDOWN"}, {"dispel_type", "DISPEL_TYPE"}}) do
+            if options["DISPLAY_ABILITY_" .. field[2]] and options["SELECTED_ABILITY_" .. field[2] .. "_DISPLAY_MODE"] == "title"
+                and ability[field[1]] ~= "" then line = line .. " - " .. ability[field[1]] end
+        end
         table.insert(lines, line)
+        if hotkeyButtonPressed then
+            for _, field in ipairs({{"mechanic", "MECHANIC", "mechanicText"}, {"range", "RANGE", "rangeText"}, {"cast_time", "CAST_TIME", "castTimeText"}, {"cooldown", "COOLDOWN", "cooldownText"}, {"dispel_type", "DISPEL_TYPE", "dispelTypeText"}}) do
+                if options["DISPLAY_ABILITY_" .. field[2]] and options["SELECTED_ABILITY_" .. field[2] .. "_DISPLAY_MODE"] == "separate"
+                    and ability[field[1]] ~= "" then
+                    table.insert(lines, "|cffffffff" .. translations[field[3]] .. ": " .. ability[field[1]] .. "|r")
+                end
+            end
+        end
 
         if hotkeyButtonPressed and ability.description ~= "" then
             table.insert(lines, "|cffffffff" .. ability.description .. "|r")
@@ -489,6 +502,7 @@ end
 
 local function GetObservedSpellMetadata(spellId, spellName)
     local locale = GetLocale()
+    if locale == "esMX" then locale = "esES" end
     local metadata = {name = spellName}
     local info
     if C_Spell and type(C_Spell.GetSpellInfo) == "function" then
@@ -531,7 +545,7 @@ local function GetObservedSpellMetadata(spellId, spellName)
     return metadata
 end
 
-local function StoreObservedSpell(npcId, sourceName, spellId, spellName, event, metadata)
+local function StoreObservedSpell(npcId, sourceName, spellId, spellName, event, metadata, sessionID)
     if type(spellId) ~= "number" or spellId <= 0 or spellId == math.huge or spellId ~= math.floor(spellId) then
         Debug.AddLine(event .. " | NPC " .. tostring(npcId) .. " | "
             .. DebugText("REJECTED: invalid spell ID", "VERWORFEN: keine gueltige Zauber-ID"))
@@ -560,11 +574,9 @@ local function StoreObservedSpell(npcId, sourceName, spellId, spellName, event, 
         learnedAbility = {}
         learnedData.abilities[language][spellId] = learnedAbility
     end
-    local currentAbility = GetDataByID("NpcAbilitiesAbilityData", spellId)
     for _, field in ipairs({"name", "description", "mechanic", "range", "cast_time", "cooldown", "dispel_type"}) do
         local value = metadata[field]
-        if (currentAbility == nil or currentAbility[field] == nil or currentAbility[field] == "")
-            and learnedAbility[field] == nil and type(value) == "string" and value ~= "" then
+        if type(value) == "string" and value ~= "" and learnedAbility[field] ~= value then
             learnedAbility[field] = value
             changed = true
         end
@@ -574,13 +586,19 @@ local function StoreObservedSpell(npcId, sourceName, spellId, spellName, event, 
     for _, knownId in ipairs(npc and npc.classic_spell_ids or {}) do
         if knownId == spellId then known = true; break end
     end
+    local override = _G.NpcAbilitiesForeverData and _G.NpcAbilitiesForeverData.npcs[npcId]
+    if override and override.authoritative ~= false and not known then
+        Debug.AddLine(event .. " | NPC " .. npcId .. " | " .. DebugText("SKIPPED: authoritative NPC correction", "uebersprungen: ausdrueckliche NPC-Korrektur"))
+        return
+    end
     if not associationKnown and not known then
         local learned = learnedData.npcs[npcId]
         if not learned then
             learned = {name = type(sourceName) == "string" and sourceName or nil, spells = {}}
             learnedData.npcs[npcId] = learned
         end
-        learned.spells[spellId] = true
+        learned.spells[spellId] = {source = "damage-meter-session-name", sessionID = sessionID,
+            confidence = "unverified"}
         changed = true
     end
     if changed then
@@ -595,203 +613,70 @@ local function StoreObservedSpell(npcId, sourceName, spellId, spellName, event, 
     end
 end
 
-local function CacheVisibleNpcName(unit)
-    local npcId = GetNpcIdFromGUID(UnitGUID(unit))
-    local npcName = UnitName(unit)
-    local reaction = UnitReaction and UnitReaction("player", unit)
-    if npcId and type(npcName) == "string" and not (issecretvalue and issecretvalue(npcName))
-        and not (issecretvalue and issecretvalue(reaction))
-        and (type(reaction) ~= "number" or (reaction >= 1 and reaction <= 4)) then
-        observedNpcNames[npcName:lower()] = {id = npcId, name = npcName}
-    end
+local function ValidSavedID(value)
+    return type(value) == "number" and value > 0 and value < math.huge and value == math.floor(value)
 end
 
-local function TrackNpcUnit(unit)
-    CacheVisibleNpcName(unit)
-    if watchedUnits[unit] then return end
-    watchedUnits[unit] = true
-    if unit:match("^nameplate") then watchedNameplateCount = watchedNameplateCount + 1 end
-    RefreshDebugWindow()
-end
-
-local function UntrackNpcUnit(unit)
-    if not watchedUnits[unit] then return end
-    watchedUnits[unit] = nil
-    if unit:match("^nameplate") then watchedNameplateCount = math.max(0, watchedNameplateCount - 1) end
-    RefreshDebugWindow()
-end
-
--- WoW Forever hides combat-log payloads from regular addons, but the built-in
--- damage meter (also used by Details) exposes aggregated damage sessions. Read
--- the player's incoming-damage source list after each update and learn spell
--- IDs from NPC sources when the client makes those values inspectable.
-local function LearnDamageMeterSpells()
-    local damageMeter = C_DamageMeter
-    local meterTypes = Enum and Enum.DamageMeterType
-    local sessionTypes = Enum and Enum.DamageMeterSessionType
-    if not damageMeter or type(damageMeter.GetCombatSessionFromType) ~= "function"
-        or type(damageMeter.GetCombatSessionSourceFromType) ~= "function"
-        or not meterTypes or not sessionTypes then
-        return
-    end
-
-    local damageTaken = meterTypes.DamageTaken
-    if type(damageTaken) ~= "number" then return end
-    local sessions = {sessionTypes.Current, sessionTypes.Overall}
-    local found = {}
-    local function readable(value)
-        return not (issecretvalue and issecretvalue(value))
-    end
-
-    -- The DamageTaken rows belong to the victim (usually the player). Details'
-    -- source shows that the caster is recorded per spell in combatSpellDetails.
-    -- Resolve that name back to a currently visible hostile NPC GUID.
-    local npcByName = {}
-    for name, npc in pairs(observedNpcNames) do npcByName[name] = npc end
-    local function addNpcUnit(unit)
-        if not UnitExists(unit) then return end
-        local npcId = GetNpcIdFromGUID(UnitGUID(unit))
-        local unitName = UnitName(unit)
-        if not npcId or not readable(unitName) or type(unitName) ~= "string" then return end
-        local reaction = UnitReaction and UnitReaction("player", unit)
-        if readable(reaction) and type(reaction) == "number" and reaction >= 1 and reaction <= 4 then
-            npcByName[unitName:lower()] = {id = npcId, name = unitName}
+local function NormalizeLearnedData()
+    if type(NpcAbilitiesLearnedData) ~= "table" then NpcAbilitiesLearnedData = {} end
+    learnedData = NpcAbilitiesLearnedData
+    local npcs, abilities = {}, {}
+    for key, record in pairs(type(learnedData.npcs) == "table" and learnedData.npcs or {}) do
+        local id = tonumber(key)
+        if ValidSavedID(id) and type(record) == "table" then
+            local npc = npcs[id] or {spells = {}}
+            if type(record.name) == "string" then npc.name = record.name end
+            for spellKey, observation in pairs(type(record.spells) == "table" and record.spells or {}) do
+                local spellId = tonumber(spellKey)
+                if ValidSavedID(spellId) and (observation == true or type(observation) == "table") then
+                    -- Old observations remain available, but have no verified provenance.
+                    npc.spells[spellId] = {source = type(observation) == "table" and type(observation.source) == "string"
+                        and observation.source or "legacy-name-match", confidence = "unverified",
+                        sessionID = type(observation) == "table" and ValidSavedID(observation.sessionID) and observation.sessionID or nil}
+                end
+            end
+            npcs[id] = npc
         end
     end
-    addNpcUnit("target")
-    addNpcUnit("focus")
-    for unit in pairs(watchedUnits) do addNpcUnit(unit) end
-
-    for _, sessionType in ipairs(sessions) do
-        if type(sessionType) == "number" then
-            local ok, session = pcall(damageMeter.GetCombatSessionFromType, sessionType, damageTaken)
-            if ok and type(session) == "table" and readable(session.combatSources) then
-                local sources = session.combatSources
-                if type(sources) == "table" then
-                    for index = 1, #sources do
-                        local source = sources[index]
-                        if type(source) == "table" then
-                            local spellOk, spellContainer = pcall(
-                                damageMeter.GetCombatSessionSourceFromType,
-                                sessionType, damageTaken, source.sourceGUID, source.sourceCreatureID)
-                            local spells = spellOk and type(spellContainer) == "table"
-                                and spellContainer.combatSpells or nil
-                            if type(spells) == "table" and readable(spells) then
-                                for spellIndex = 1, #spells do
-                                    local spell = spells[spellIndex]
-                                    if type(spell) == "table" and readable(spell.spellID) then
-                                        local spellId = spell.spellID
-                                        local details = readable(spell.combatSpellDetails) and spell.combatSpellDetails or nil
-                                        local casterName = details and readable(details.unitName) and details.unitName or nil
-                                        if type(casterName) == "string" then
-                                            local npc = npcByName[casterName:lower()]
-                                            if npc then
-                                                local spellName = readable(spell.spellName) and spell.spellName or nil
-                                                if type(spellName) ~= "string" or spellName == "" then
-                                                    local spellInfo = C_Spell and C_Spell.GetSpellInfo and C_Spell.GetSpellInfo(spellId)
-                                                    spellName = spellInfo and spellInfo.name
-                                                    if not spellName and GetSpellInfo then spellName = GetSpellInfo(spellId) end
-                                                end
-                                                if not readable(spellName) then spellName = nil end
-                                                local metadata = GetObservedSpellMetadata(spellId, spellName)
-                                                spellName = metadata.name or spellName
-                                                if type(spellId) == "number" and type(spellName) == "string" and spellName ~= "" then
-                                                    local key = npc.id .. ":" .. spellId
-                                                    if not found[key] then
-                                                        found[key] = true
-                                                        StoreObservedSpell(npc.id, npc.name, spellId, spellName, "DAMAGE_METER", metadata)
-                                                    end
-                                                end
-                                            elseif type(spellId) == "number" then
-                                                local missingKey = casterName:lower() .. ":" .. spellId
-                                                if not found[missingKey] then
-                                                    found[missingKey] = true
-                                                    Debug.AddLine("DAMAGE_METER: " .. DebugText(
-                                                        "spell " .. spellId .. " from '" .. casterName .. "' found; NPC ID could not be matched",
-                                                        "Zauber " .. spellId .. " von '" .. casterName .. "' erkannt, NPC-ID nicht zuordenbar"))
-                                                end
-                                            end
-                                        end
-                                    end
-                                end
-                            end
+    for language, records in pairs(type(learnedData.abilities) == "table" and learnedData.abilities or {}) do
+        if type(language) == "string" and type(records) == "table" then
+            language = GetAddonLocaleCode(language)
+            if _G.NpcAbilitiesTranslations[language] then
+                abilities[language] = abilities[language] or {}
+                for key, record in pairs(records) do
+                    local id = tonumber(key)
+                    if ValidSavedID(id) and type(record) == "table" then
+                        local cleaned = abilities[language][id] or {}
+                        for _, field in ipairs({"name", "description", "mechanic", "range", "cast_time", "cooldown", "dispel_type"}) do
+                            if type(record[field]) == "string" and record[field] ~= "" then cleaned[field] = record[field] end
                         end
+                        abilities[language][id] = cleaned
                     end
                 end
             end
         end
     end
+    learnedData.npcs, learnedData.abilities, learnedData.version = npcs, abilities, 2
 end
 
+addon.SetLiveDataCollectionEnabled = function(enabled) addon.Collector.SetEnabled(enabled) end
 local learningFrame = CreateFrame("Frame")
-local collectionEvents = {
-    "NAME_PLATE_UNIT_ADDED",
-    "NAME_PLATE_UNIT_REMOVED",
-    "PLAYER_TARGET_CHANGED",
-    "PLAYER_FOCUS_CHANGED",
-    "DAMAGE_METER_COMBAT_SESSION_UPDATED",
-    "PLAYER_REGEN_ENABLED",
-}
-
-local function SetLiveDataCollectionEnabled(enabled)
-    liveDataCollectionEnabled = enabled ~= false
-    local shouldListen = isForever and liveDataCollectionEnabled and damageMeterListenerRegistered
-    if shouldListen ~= collectionEventsRegistered then
-        collectionEventsRegistered = shouldListen
-        for _, event in ipairs(collectionEvents) do
-            if shouldListen then learningFrame:RegisterEvent(event) else learningFrame:UnregisterEvent(event) end
-        end
-        if shouldListen then
-            TrackNpcUnit("target")
-            TrackNpcUnit("focus")
-            for index = 1, 40 do
-                local unit = "nameplate" .. index
-                if UnitExists(unit) then TrackNpcUnit(unit) end
-            end
-        else
-            watchedUnits = {}
-            observedNpcNames = {}
-            watchedNameplateCount = 0
-        end
-    end
-    RefreshDebugWindow()
-end
-
-if addon then addon.SetLiveDataCollectionEnabled = SetLiveDataCollectionEnabled end
-
 learningFrame:RegisterEvent("ADDON_LOADED")
-learningFrame:SetScript("OnEvent", function(self, event, name)
-    if event == "ADDON_LOADED" and name == addonName then
-        if isForever then
-            if type(NpcAbilitiesLearnedData) ~= "table" then NpcAbilitiesLearnedData = {} end
-            learnedData = NpcAbilitiesLearnedData
-            if type(learnedData.npcs) ~= "table" then learnedData.npcs = {} end
-            if type(learnedData.abilities) ~= "table" then learnedData.abilities = {} end
-            learnedData.version = 1
-            damageMeterListenerRegistered = C_DamageMeter ~= nil
-                and type(C_DamageMeter.GetCombatSessionFromType) == "function"
-                and type(C_DamageMeter.GetCombatSessionSourceFromType) == "function"
-                and Enum ~= nil and Enum.DamageMeterType ~= nil and Enum.DamageMeterSessionType ~= nil
-        end
-        learningFrame:UnregisterEvent("ADDON_LOADED")
-        SetLiveDataCollectionEnabled(NpcAbilitiesOptions.LIVE_DATA_COLLECTION_ENABLED)
-    elseif collectionEventsRegistered and learnedData and event == "NAME_PLATE_UNIT_ADDED" then
-        TrackNpcUnit(name)
-    elseif collectionEventsRegistered and event == "NAME_PLATE_UNIT_REMOVED" then
-        UntrackNpcUnit(name)
-    elseif collectionEventsRegistered and learnedData and (event == "PLAYER_TARGET_CHANGED" or event == "PLAYER_FOCUS_CHANGED") then
-        TrackNpcUnit(event == "PLAYER_TARGET_CHANGED" and "target" or "focus")
-    elseif collectionEventsRegistered and learnedData
-        and (event == "DAMAGE_METER_COMBAT_SESSION_UPDATED" or event == "PLAYER_REGEN_ENABLED") then
-        local inCombat = (UnitAffectingCombat and UnitAffectingCombat("player")) or (InCombatLockdown and InCombatLockdown())
-        if not inCombat then
-            if event == "DAMAGE_METER_COMBAT_SESSION_UPDATED" and not damageMeterFirstEventLogged then
-                damageMeterFirstEventLogged = true
-                Debug.AddLine("DAMAGE_METER: " .. DebugText("session updated after combat", "Sitzung nach dem Kampf aktualisiert"))
-            end
-            LearnDamageMeterSpells()
-        end
-    end
+learningFrame:SetScript("OnEvent", function(self, _, name)
+    if name ~= addonName then return end
+    self:UnregisterEvent("ADDON_LOADED")
+    if isForever then NormalizeLearnedData() end
+    addon.Collector.Initialize(isForever, NpcAbilitiesOptions.LIVE_DATA_COLLECTION_ENABLED,
+        function(npcId, npcName, spellId, spellName, sessionID)
+            local metadata = GetObservedSpellMetadata(spellId, spellName)
+            if type(metadata.name) ~= "string" or metadata.name == "" then return false end
+            StoreObservedSpell(npcId, npcName, spellId, metadata.name, "DAMAGE_METER", metadata, sessionID)
+            return true
+        end,
+        function(enabled, available, pendingCount)
+            liveDataCollectionEnabled, damageMeterListenerRegistered, queuedSessionCount = enabled, available, pendingCount
+            RefreshDebugWindow()
+        end)
 end)
 
 local targetEventFrame = CreateFrame("Frame")
@@ -864,7 +749,7 @@ SetNpcAbilityData = function(tooltip, data)
 
             if sodAbilitiesData ~= nil then
                 local sodAbilityName = sodAbilitiesData.name
-                local nameKey = GetAbilityNameKey(sodAbilityName, sodAbilityId)
+                local nameKey = GetAbilityDisplayKey(sodAbilitiesData, sodAbilityId)
                 if not IsGenericAttackSpell(sodAbilityId, sodAbilityName) and not addedAbilityNames[nameKey] then
                     addedAbilityNames[nameKey] = true
                     table.insert(abilities, {
@@ -888,7 +773,7 @@ SetNpcAbilityData = function(tooltip, data)
         if classicAbilitiesData ~= nil then
             local classicAbilityName = classicAbilitiesData.name
 
-            local nameKey = GetAbilityNameKey(classicAbilityName, classicAbilityId)
+            local nameKey = GetAbilityDisplayKey(classicAbilitiesData, classicAbilityId)
             if not IsGenericAttackSpell(classicAbilityId, classicAbilityName) and not addedAbilityNames[nameKey] then
                 addedAbilityNames[nameKey] = true
                 table.insert(abilities, {
@@ -945,7 +830,7 @@ end
 local function CheckHotkeyState()
     local hotkey = NpcAbilitiesOptions["SELECTED_HOTKEY"]
 
-    if not IsKeyDown(hotkey) then
+    if not hotkey or not IsKeyDown(hotkey) then
         checkForHotkeyReleased = false
         hotkeyButtonPressed = false
         GameTooltip:SetUnit("mouseover");

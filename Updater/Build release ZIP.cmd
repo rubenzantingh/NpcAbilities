@@ -9,6 +9,6 @@ if not errorlevel 1 (
 )
 set "buildResult=%errorlevel%"
 echo.
-if not "%buildResult%"=="0" echo ZIP-Erstellung fehlgeschlagen. Python 3.10+ muss installiert sein.
+if not "%buildResult%"=="0" echo ZIP creation failed. Python 3.10+ must be installed.
 pause
 exit /b %buildResult%

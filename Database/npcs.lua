@@ -1700,7 +1700,7 @@ _G['NpcAbilitiesNpcData']= {
 [5623] = {sod_spell_ids = {}, classic_spell_ids = {7160}},
 [5624] = {sod_spell_ids = {}, classic_spell_ids = {7160, 12187}},
 [5643] = {sod_spell_ids = {}, classic_spell_ids = {9739, 15798}},
-[5645] = {sod_spell_ids = {}, classic_spell_ids = {744, 5645, 7159}},
+[5645] = {sod_spell_ids = {}, classic_spell_ids = {744, 7159}},
 [5646] = {sod_spell_ids = {}, classic_spell_ids = {10277}},
 [5647] = {sod_spell_ids = {}, classic_spell_ids = {14034, 11990, 20832}},
 [5648] = {sod_spell_ids = {}, classic_spell_ids = {12471, 14032, 18396, 20798}},

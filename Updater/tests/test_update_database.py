@@ -99,8 +99,8 @@ class DownloadTests(unittest.TestCase):
                     self.assertEqual(result, {"value": 42})
                 self.assertEqual(request.call_count, 1)
             self.assertIn("Download:", output.getvalue())
-            self.assertIn("Download fertig:", output.getvalue())
-            self.assertIn("Lese Cache:", output.getvalue())
+            self.assertIn("Download complete:", output.getvalue())
+            self.assertIn("Reading cache:", output.getvalue())
 
     def test_total_timeout_preserves_cache_even_if_worker_finishes_later(self):
         release, finished = threading.Event(), threading.Event()
@@ -120,7 +120,7 @@ class DownloadTests(unittest.TestCase):
             started = time.monotonic()
             try:
                 with patch.object(updater, "urlopen", side_effect=stalled):
-                    with self.assertRaisesRegex(updater.UpdateError, "Zeitlimit"):
+                    with self.assertRaisesRegex(updater.UpdateError, "timeout"):
                         provider.cached(url, json.loads)
                     self.assertLess(time.monotonic() - started, 2)
                     self.assertEqual(path.read_bytes(), original)
@@ -137,7 +137,7 @@ class DownloadTests(unittest.TestCase):
                 with self.assertRaisesRegex(updater.UpdateError, "HTTP 403"):
                     provider.cached(url, json.loads)
             with patch.object(updater, "urlopen", return_value=self.Response(b'not JSON')):
-                with self.assertRaisesRegex(updater.UpdateError, "Ungueltige Wago-Daten"):
+                with self.assertRaisesRegex(updater.UpdateError, "Invalid Wago data"):
                     provider.cached(url, json.loads)
             self.assertEqual(list(Path(temp).glob("*.data")), [])
 
@@ -233,7 +233,7 @@ class UpdateTests(unittest.TestCase):
                        '9/29 20:00:01.000 SPELL_CAST_START,Creature-0-1-0-1-30-ABC,"Mob",0x10a28,0x0,Player-1-A,"Held",0x511,0x0,99,"Spell",0x8\n', encoding="utf-8")
         self.args.combat_log = [log]
         original = (self.root / "Database/forever.lua").read_bytes()
-        with self.assertRaisesRegex(updater.UpdateError, "Kein Forever-Kampfprotokoll"):
+        with self.assertRaisesRegex(updater.UpdateError, "Not a Forever combat log"):
             self.run_update()
         self.assertEqual((self.root / "Database/forever.lua").read_bytes(), original)
 
@@ -258,7 +258,34 @@ class UpdateTests(unittest.TestCase):
         self.assertEqual(migrated["schema_version"], 2)
         self.assertEqual(migrated["npcs"], old["npcs"])
         self.assertEqual(migrated["abilities"]["en"]["99"]["description"], "Plain description.")
-        self.assertEqual(migrated["abilities"]["en"]["11918"]["description"], "Resolved poison")
+        self.assertNotIn("description", migrated["abilities"]["en"]["11918"])
+
+    def test_changed_or_empty_description_removes_stale_overlay(self):
+        self.run_update()
+        for description in ("Changed effect: $s1", ""):
+            class ChangedWago(FakeWago):
+                def table(self, name, build, language):
+                    rows = super().table(name, build, language)
+                    if name == "Spell":
+                        rows["99"]["Description_lang"] = description
+                    return rows
+            self.run_update(ChangedWago)
+            snapshot = json.loads((self.root / "Database/forever.json").read_text(encoding="utf-8"))
+            for language in updater.DEFAULT_LOCALES:
+                self.assertNotIn("description", snapshot["abilities"][language]["99"])
+            self.run_update()  # Restore a readable description for the next case.
+
+    def test_render_marks_corrections_authoritative_and_log_imports_additive(self):
+        snapshot = updater.empty_snapshot()
+        snapshot["npcs"] = {
+            "30": {"spell_ids": [], "source": "Manually checked"},
+            "40": {"spell_ids": [11918], "source": "Forever combat log"},
+            "41": {"spell_ids": [11918], "source": "Forever-Kampfprotokoll"},
+        }
+        rendered = updater.render_lua(snapshot)
+        self.assertIn("[30] = {classic_spell_ids = {}, sod_spell_ids = {}, authoritative = true}", rendered)
+        for npc in (40, 41):
+            self.assertIn(f"[{npc}] = {{classic_spell_ids = {{11918}}, sod_spell_ids = {{}}, authoritative = false}}", rendered)
 
     def test_dry_run_only_writes_preview(self):
         original = (self.root / "Database/forever.lua").read_bytes()
@@ -281,7 +308,7 @@ class UpdateTests(unittest.TestCase):
     def test_unknown_curated_spell_preserves_database(self):
         self.overrides({"30": {"spell_ids": [100], "source": "checked"}})
         original = (self.root / "Database/forever.lua").read_bytes()
-        with self.assertRaisesRegex(updater.UpdateError, "ohne Wago-Namen"):
+        with self.assertRaisesRegex(updater.UpdateError, "without Wago names"):
             self.run_update()
         self.assertEqual((self.root / "Database/forever.lua").read_bytes(), original)
 
@@ -341,6 +368,20 @@ class UpdateTests(unittest.TestCase):
             report = self.run_update()
         self.assertEqual(report["scope"]["mode"], "selected")
         self.assertEqual(report["npc_changes"][0]["added_spells"], [99])
+
+
+class ShippedDataTests(unittest.TestCase):
+    def test_snapshot_matches_generated_runtime_data(self):
+        root = MODULE.parents[2]
+        snapshot = json.loads((root / "Database/forever.json").read_text(encoding="utf-8"))
+        self.assertEqual(updater.render_lua(snapshot), (root / "Database/forever.lua").read_text(encoding="utf-8"))
+
+    def test_baseline_tables_have_no_duplicate_numeric_keys(self):
+        import re
+        root = MODULE.parents[2]
+        for path in [root / "Database/npcs.lua", root / "Database/priorities.lua", *sorted((root / "Database/Abilities").glob("*.lua"))]:
+            keys = re.findall(r"^\s*\[(\d+)\]\s*=", path.read_text(encoding="utf-8-sig"), re.M)
+            self.assertEqual(len(keys), len(set(keys)), str(path))
 
 
 if __name__ == "__main__":

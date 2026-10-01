@@ -12,15 +12,15 @@ RUNTIME_EXTENSIONS = {".lua", ".xml", ".toc"}
 
 
 def runtime_files(root, addon_name):
-    required = [root / f"{addon_name}.toc", root / "NpcAbilitiesForever.lua", root / "embeds.xml", root / "LICENSE"]
+    required = [root / f"{addon_name}.toc", root / "NpcAbilitiesForever.lua", root / "NpcAbilitiesForeverCollector.lua", root / "embeds.xml", root / "LICENSE"]
     missing = [str(path) for path in required if not path.is_file()]
     if missing:
-        raise FileNotFoundError("Addon-Dateien fehlen: " + ", ".join(missing))
+        raise FileNotFoundError("Missing addon files: " + ", ".join(missing))
     files = list(required)
     for dirname in RUNTIME_DIRS:
         directory = root / dirname
         if not directory.is_dir():
-            raise FileNotFoundError(f"Addon-Ordner fehlt: {directory}")
+            raise FileNotFoundError(f"Missing addon directory: {directory}")
         files.extend(path for path in directory.rglob("*")
                      if path.is_file() and path.suffix.lower() in RUNTIME_EXTENSIONS
                      and not any(part.lower() in ("test", "tests", "docs", "__pycache__")
@@ -40,13 +40,13 @@ def build_zip(root, output, addon_name="NpcAbilitiesForever"):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Sauberes CurseForge-Addon-ZIP erstellen.")
-    parser.add_argument("--root", type=Path, default=ROOT, help="Addon-Quellordner")
-    parser.add_argument("--output", type=Path, default=ROOT.parent / "NpcAbilitiesForever.zip", help="Ziel-ZIP")
+    parser = argparse.ArgumentParser(description="Build a clean CurseForge addon ZIP.")
+    parser.add_argument("--root", type=Path, default=ROOT, help="Addon source directory")
+    parser.add_argument("--output", type=Path, default=ROOT.parent / "NpcAbilitiesForever.zip", help="Output ZIP")
     parser.add_argument("--addon-name", choices=("NpcAbilitiesForever",), default="NpcAbilitiesForever")
     args = parser.parse_args()
     count = build_zip(args.root, args.output, args.addon_name)
-    print(f"{count} Laufzeitdateien: {args.output.resolve()}")
+    print(f"{count} runtime files: {args.output.resolve()}")
 
 
 if __name__ == "__main__":

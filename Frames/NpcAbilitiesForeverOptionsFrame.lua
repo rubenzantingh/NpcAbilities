@@ -3,6 +3,7 @@ local optionsFrame = CreateFrame("Frame")
 local LibDD = LibStub:GetLibrary("LibUIDropDownMenu-4.0")
 local gameLocale = GetLocale()
 local gameLanguage = gameLocale:sub(1, 2)
+if gameLanguage == "zh" then gameLanguage = "cn" end
 local defaultOptions = nil
 local optionsTranslations = nil
 
@@ -73,7 +74,7 @@ local function CreateCheckBox(parent, text, optionKey, onClick)
 end
 
 local function CreateHotkeyButton(parent, label, optionKey)
-    local description = parent:CreateFontString(nil, "ARTWORK", "GameFontnormalSmall")
+    local description = parent:CreateFontString(nil, "ARTWORK", "GameFontNormalSmall")
     description:SetText(label)
 
     local button = CreateFrame("Button", nil, parent, "UIPanelButtonTemplate")
@@ -212,7 +213,7 @@ local function InitializeOptions()
     optionsContainer:SetHeight(1)
 
     -- General options
-    local generalOptionsTitle = optionsContainer:CreateFontString("ARTWORK", nil, "GameFontHighlightLarge")
+    local generalOptionsTitle = optionsContainer:CreateFontString(nil, "ARTWORK", "GameFontHighlightLarge")
     generalOptionsTitle:SetPoint("TOPLEFT", 8, titleOffsetY)
     generalOptionsTitle:SetText(optionsTranslations["generalOptionsTitle"])
     generalOptionsTitle:SetTextColor(1, 1, 1)
@@ -281,7 +282,7 @@ local function InitializeOptions()
     liveDataCollectionCheckbox:SetPoint("TOPLEFT", displayPriorityIndicatorsCheckbox, "BOTTOMLEFT", 0, fieldOffsetY)
 
     -- Ability fields options
-    local abilityFieldsOptionsTitle = optionsContainer:CreateFontString("ARTWORK", nil, "GameFontHighlightLarge")
+    local abilityFieldsOptionsTitle = optionsContainer:CreateFontString(nil, "ARTWORK", "GameFontHighlightLarge")
     abilityFieldsOptionsTitle:SetPoint("TOPLEFT", liveDataCollectionCheckbox, "TOPLEFT", -fieldOffsetX + 5, subTitleOffsetY + fieldOffsetY)
     abilityFieldsOptionsTitle:SetText(optionsTranslations["abilityFieldsOptionsTitle"])
     abilityFieldsOptionsTitle:SetTextColor(1, 1, 1)
@@ -389,7 +390,7 @@ local function InitializeOptions()
     )
 
     -- Hide options
-    local hideOptionsTitle = optionsContainer:CreateFontString("ARTWORK", nil, "GameFontHighlightLarge")
+    local hideOptionsTitle = optionsContainer:CreateFontString(nil, "ARTWORK", "GameFontHighlightLarge")
     hideOptionsTitle:SetPoint("TOPLEFT", dispelTypeDisplayModeModeDropdown, "TOPLEFT", -5, subTitleOffsetY + fieldOffsetY)
     hideOptionsTitle:SetText(optionsTranslations["hideOptionsTitle"])
     hideOptionsTitle:SetTextColor(1, 1, 1)
@@ -419,15 +420,33 @@ local function addonLoaded(self, event, addonLoadedName)
         optionsTranslations = (_G["NpcAbilitiesTranslations"][gameLanguage] or _G["NpcAbilitiesTranslations"]["en"])["options"]
 
         defaultOptions = getDefaultOptions(optionsTranslations)
-        NpcAbilitiesOptions = NpcAbilitiesOptions or defaultOptions
-
+        if type(NpcAbilitiesOptions) ~= "table" then NpcAbilitiesOptions = {} end
         for key, value in pairs(defaultOptions) do
-            if NpcAbilitiesOptions[key] == nil then
+            if key:match("^AVAILABLE_") then
+                NpcAbilitiesOptions[key] = value
+            elseif type(NpcAbilitiesOptions[key]) ~= type(value) then
                 NpcAbilitiesOptions[key] = value
             end
         end
-
-        NpcAbilitiesOptions["AVAILABLE_HOTKEY_MODES"] = defaultOptions["AVAILABLE_HOTKEY_MODES"]
+        local choices = {
+            SELECTED_LANGUAGE = "AVAILABLE_LANGUAGES", SELECTED_HOTKEY_MODE = "AVAILABLE_HOTKEY_MODES",
+            ABILITY_DISPLAY_LOCATION = "AVAILABLE_DISPLAY_LOCATIONS",
+        }
+        for _, field in ipairs({"MECHANIC", "RANGE", "CAST_TIME", "COOLDOWN", "DISPEL_TYPE"}) do
+            choices["SELECTED_ABILITY_" .. field .. "_DISPLAY_MODE"] = "AVAILABLE_ABILITY_FIELD_DISPLAY_MODES"
+        end
+        for selected, available in pairs(choices) do
+            local valid = false
+            for _, choice in ipairs(defaultOptions[available]) do
+                if NpcAbilitiesOptions[selected] == choice.value then valid = true; break end
+            end
+            if not valid then NpcAbilitiesOptions[selected] = defaultOptions[selected] end
+        end
+        for _, key in ipairs({"SELECTED_HOTKEY", "HIDE_ABILITIES_SELECTED_HOTKEY"}) do
+            if type(NpcAbilitiesOptions[key]) ~= "string" or NpcAbilitiesOptions[key] == "" then
+                NpcAbilitiesOptions[key] = nil
+            end
+        end
 
         InitializeOptions()
     end

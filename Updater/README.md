@@ -1,44 +1,48 @@
-# Forever-Datenbank per Doppelklick aktualisieren
+# Database updater
 
-**Automatisches Lernen im Spiel:** Das Addon ergänzt in Forever neue NPC-Zauber bereits live und zeigt sie sofort an. Dafür sind weder dieser Updater noch `/combatlog` erforderlich. Die Beobachtungen liegen separat in WoWs `NpcAbilitiesLearnedData`-SavedVariables und bleiben bei Datenbank-Updates erhalten. Dieser Updater aktualisiert den ausgelieferten Zauberkatalog und kann zusätzlich vorhandene Logdateien importieren; er liest den Lernspeicher nicht ein. Details: [Addon-README](../README.md#fähigkeiten-direkt-im-spiel-lernen-forever).
+Run **`Update database.cmd`** on Windows, or `python Updater/tools/update_database.py` from the repository root. Python 3.10+ is required; no third-party Python packages are needed. After updating the installed addon, use `/reload`. If working in a source checkout, copy the updated runtime files into the installed addon first.
 
-`Updater/Datenbank aktualisieren.cmd` doppelklicken. Python 3.10 oder neuer ist erforderlich, zusätzliche Pakete nicht. Anschließend im Spiel `/reload` ausführen. Wenn das Projekt nicht im installierten Addon-Ordner liegt, die aktualisierten Addon-Dateien dorthin kopieren.
+The in-game collector works independently of this updater and `/combatlog`. Its observations live in WoW SavedVariables, which this updater neither reads nor modifies. See the [addon description](../README.md#npc-spell-collection-in-wow-forever).
 
-Das Fenster zeigt jeden Arbeitsschritt sowie Cache-Zugriffe und Download-Adressen an. Während einer Wago-Anfrage erscheinen alle fünf Sekunden die bisherige Wartezeit und die empfangene Datenmenge. Jede Anfrage hat ein Gesamtzeitlimit von 120 Sekunden, einschließlich Verbindungsaufbau und Übertragung. Bei einem Timeout bleiben die vorhandenen Addon-Daten erhalten; später erneut starten. Das Zeitlimit lässt sich bei Bedarf mit `--timeout 180` ändern. Ein zunächst unveränderter Zähler von `0 KiB` bedeutet, dass noch auf die Verbindung oder Antwort gewartet wird.
+## Downloads and recovery
 
-Zur Laufzeitdiagnose im Spiel `/nabdebug` eingeben. Das Fenster zeigt empfangene Zaubereinträge und erklärt, warum sie gelernt oder verworfen wurden. Mit `/nabdebug clear` das Protokoll leeren. Details stehen in der [Addon-README](../README.md#fähigkeiten-direkt-im-spiel-lernen-forever).
+The updater selects a Forever 1.60.x build from Wago and downloads the `SpellName` and `Spell` CSV tables for English, German, Spanish, French, Portuguese, Russian, Korean and Chinese. A normal uncached run makes 17 requests: one build lookup and two tables per language. It does not crawl all NPC or spell pages. Downloads are cached for 24 hours.
 
-Der Standardlauf lädt von [Wago Tools](https://wago.tools/) genau den neuesten verfügbaren **Forever-Build 1.60.x** und daraus die Tabellen `SpellName` und `Spell` für alle unterstützten Sprachen: Englisch, Deutsch, Spanisch, Französisch, Portugiesisch, Russisch, Koreanisch und Chinesisch. Das sind normalerweise **17 HTTP-Anfragen** (ein Build-Index und je zwei CSV-Dateien für acht Sprachen), keine Einzelabrufe aller NPCs oder Zauber. Die Tabellen werden 24 Stunden zwischengespeichert. Ein Lauf mit `--refresh` lädt sie erneut. Ein HTTP 403/429 oder ein unvollständiger Export bricht ab, ohne die Addon-Daten zu ersetzen. Wago veröffentlicht für diesen CSV-Export derzeit kein festes Abrufkontingent; Erreichbarkeit und Nutzungsregeln können sich ändern.
+Progress is printed throughout; while a request is pending, a progress message appears every five seconds. Each Wago request has a 120-second total timeout including connection setup and transfer. Use `--timeout 180` to change it. Run again after cancellation or failure to reuse valid downloads. HTTP errors, invalid exports and incomplete updates do not intentionally replace the installed database; write failures are covered by rollback tests.
 
-Der Updater importiert den **vollständigen Zauberkatalog** des Forever-Builds, auch IDs, die noch keinem bekannten NPC zugeordnet sind, und legt Namen und lesbare Beschreibungen für jede unterstützte Sprache im `abilities`-Overlay in `Database/forever.lua` ab. So sind beispielsweise beide Wago-IDs von „Windstachel“ (1248802 und 1301968) nach dem Lauf auch auf Spanisch und in den übrigen Sprachen lokalisiert. Die Dateien unter `Database/Abilities` bleiben die unveränderten Basisdaten des ursprünglichen Addons; neue Forever-Übersetzungen liegen im dafür vorgesehenen Forever-Overlay. Das macht den Zauber noch nicht automatisch im NPC-Tooltip sichtbar: Dafür muss die passende ID dem NPC zugeordnet sein. Wago liefert viele Beschreibungen als Vorlagen mit Platzhaltern wie `$d` und `$t1`. Solche Vorlagen oder beschädigte Texte werden **nicht** angezeigt; die bisherigen Beschreibungen aus der Addon-Datenbank bleiben als Rückfall erhalten. Die Angaben zu Mechanik, Reichweite, Zauberzeit, Abklingzeit und Bannart bleiben ebenfalls erhalten, weil die beiden Wago-Tabellen dafür keine fertig lokalisierten Tooltip-Texte liefern.
+The spell catalog is written to `Database/forever.lua`, with its editable snapshot in `Database/forever.json`. All supported languages are included by default. New Forever text belongs in this overlay; `Database/Abilities` contains the inherited baseline.
 
-## NPCs und entfernte Fähigkeiten
+Descriptions with unresolved tokens such as `$s1` are not imported. A previously downloaded description is removed if the new source becomes empty or unreadable, allowing the runtime's baseline/observation fallback to work. Cast times, ranges, mechanics, cooldowns and dispel types may come from the baseline or client observations; the two CSV tables do not provide all of these as display-ready text.
 
-Client-Tabellen enthalten keine vollständige Liste, welcher NPC welche Fähigkeit benutzt. Deshalb bleiben alle bisherigen NPC-Zuordnungen zunächst bestehen. **Für automatische Ergänzungen** kann der Updater das von Forever geschriebene Kampfprotokoll auswerten: Bei `SPELL_CAST_START` und `SPELL_CAST_SUCCESS` stehen NPC-ID und Zauber-ID zusammen. So können neue NPCs und beobachtete Fähigkeiten beim nächsten Doppelklick erscheinen, ohne Wowhead einzeln abzufragen. Das gilt nur für NPCs und Zauber, die im Protokoll tatsächlich vorkommen. Ein nicht beobachteter Zauber gilt **nicht** als entfernt; für vollständige Korrekturen und entfernte Fähigkeiten dient weiterhin [`Database/npc_overrides.json`](../Database/npc_overrides.json). Beispiel:
+## NPC associations and explicit corrections
+
+Wago spell tables do not establish which NPC casts a spell. Existing baseline associations are retained unless explicitly corrected. Combat-log imports are additive: not observing a spell is not proof that it was removed.
+
+For a documented, complete NPC replacement, edit `Database/npc_overrides.json`:
 
 ```json
 {
   "npcs": {
-    "270589": {
-      "name": "Beispiel-NPC",
-      "spell_ids": [11918, 12345],
-      "source": "Beobachtung im Spiel am 2026-09-29"
-    },
     "30": {
-      "name": "Waldspinne",
+      "name": "Example NPC",
       "spell_ids": [],
-      "source": "Im Spiel überprüft: keine Fähigkeit"
+      "source": "Replace this example with evidence from a real observation"
     }
   }
 }
 ```
 
-Die Liste `spell_ids` ist für den jeweiligen NPC **vollständig**: Nicht aufgeführte alte Fähigkeiten werden entfernt, eine leere Liste blendet alle aus. Eine neu eingetragene Zauber-ID muss im Forever-Build von Wago vorhanden sein. Die Angabe `source` dokumentiert die Prüfung; sie wird nicht im Spiel angezeigt. Zum Zurücksetzen einer bereits übernommenen Forever-Zuordnung dient `{"reset": true, "source": "Grund"}` beim betreffenden NPC. Das Entfernen eines Eintrags aus der JSON-Datei allein löscht eine früher übernommene Zuordnung nicht.
+Do not apply this example as a claim about NPC 30. The `spell_ids` list is authoritative: an empty list suppresses all abilities, including locally learned ones. Nonempty lists similarly exclude unlisted spells. Live observations remain saved but do not override the correction. Newly supplied spell IDs must exist in the selected Wago build. The source field records your evidence; a name match alone is not proof.
 
-### Kampfprotokoll für den Doppelklick einrichten
+Use `{"reset": true, "source": "Reason for reverting the correction"}` to remove an installed override and return to the baseline plus learned data. Simply deleting a JSON entry does not remove a correction already installed in the snapshot.
 
-1. In Forever im Spielchat **`/combatlog`** eingeben und mit dem NPC kämpfen. Das Spiel schreibt `Logs/WoWCombatLog.txt` im Forever-Ordner `_classic_beta_`. Ist dieses Projekt direkt unter `_classic_beta_/Interface/AddOns/` installiert, findet der Updater die Datei beim Doppelklick selbst.
-2. Liegt das Projekt woanders, einmalig `Updater/.data/config.json` anlegen. Pfade in JSON mit **Schrägstrichen** schreiben, zum Beispiel:
+Optional Wowhead lookup: `python Updater/tools/update_database.py --npc 30 270589`. Only those NPC pages are queried. A complete abilities tab replaces that NPC's mapping; a missing tab or HTTP 404 does not prove removal. Curated corrections take precedence. Wowhead data still requires content verification.
+
+## Import a Forever combat log
+
+1. Enable `/combatlog` in Forever and fight the NPC. The importer reads NPC `SPELL_CAST_START` and `SPELL_CAST_SUCCESS` entries with valid creature and spell IDs.
+2. Pass a log file or game directory: `python Updater/tools/update_database.py --combat-log "D:/Games/World of Warcraft/_classic_beta_"`.
+3. For repeat runs, create the ignored local file `Updater/.data/config.json`:
 
 ```json
 {
@@ -46,27 +50,21 @@ Die Liste `spell_ids` ist für den jeweiligen NPC **vollständig**: Nicht aufgef
 }
 ```
 
-Alternativ für einen einzelnen Lauf im Addon-Hauptordner: `py Updater/tools/update_database.py --combat-log "D:/Games/World of Warcraft/_classic_beta_"`. Der Spielordner oder die Logdatei können angegeben werden. Im Abschlussbericht stehen die gefundenen Builds, Kampfereignisse und ergänzten NPC-Zuordnungen. Meldet der Updater „Kein Forever-Kampfprotokoll gefunden“, wurden **keine neuen NPC-Fähigkeiten automatisch zugeordnet**. Ein Log mit anderem Build als 1.60.x wird abgewiesen. Kampfprotokolle zeigen nur tatsächlich gewirkte Zauber; manche NPC-Fähigkeiten sind darum trotz langer Spielzeit noch unbekannt.
+Without an explicit path, the updater checks the installed addon's game directory and standard Windows `_classic_beta_` locations. This directory name reflects the supported development client; use an explicit path if your installation differs. Log headers must identify Forever 1.60.x. Imported associations use an additive overlay and do not prohibit later live observations. The report lists the log paths, builds and accepted casts.
 
-Optional lassen sich einzelne NPCs gezielt gegen den Wowhead-Forever-Reiter „Abilities“ prüfen, etwa `py Updater/tools/update_database.py --npc 30 270589`. **Nur diese angegebenen NPC-Seiten** werden abgerufen; es gibt keinen Vollimport über Wowhead. Ein fehlender Reiter oder 404 gilt nicht als Löschbeleg. Manuell eingetragene Korrekturen haben Vorrang. Wowhead-Zuordnungen können unvollständig oder falsch sein; für verlässliche Korrekturen die IDs im Spiel prüfen und in `npc_overrides.json` festhalten.
-
-## Vorschau, Bericht und Backup
+## Preview and backups
 
 ```powershell
-py Updater/tools/update_database.py --dry-run
-py Updater/tools/update_database.py --build 1.60.1.70058 --dry-run
-py Updater/tools/update_database.py --refresh
-py -m unittest discover -s Updater/tests -p 'test_*.py'
+python Updater/tools/update_database.py --dry-run
+python Updater/tools/update_database.py --build 1.60.1.70124 --dry-run
+python Updater/tools/update_database.py --refresh
+python Updater/run_checks.py
 ```
 
-`--dry-run` lässt die installierte Datenbank unverändert und schreibt `Updater/.data/preview-forever.lua` sowie `Updater/.data/preview-report.json`. Ein regulärer Lauf schreibt `Database/forever.lua` und `Database/forever.json` und legt vor einer Änderung ein Backup beider Dateien unter `Updater/.data/backups/` ab. `Updater/.data/last-report.json` enthält Build, Abrufzahlen, NPC-Änderungen, ausgewertete Kampfprotokolle, fehlende Namen und die Anzahl nicht aufgelöster Beschreibungsvorlagen. „Neue Sprach-/Zaubereinträge“ meint neu **im lokalen Overlay**, nicht zwingend neu im Spiel. Ein erneuter Lauf mit denselben Quelldaten ändert nichts.
+A dry run writes `Updater/.data/preview-forever.lua` and `preview-report.json`, leaving the live database unchanged. Regular runs back up both `forever.*` files under `Updater/.data/backups/` and write `last-report.json`. Reports include source changes, cache hits, missing names and unresolved descriptions. Restore both files from the same backup to undo an update.
 
-Zum Rückgängigmachen beide `forever.*`-Dateien aus demselben Backup nach `Database` kopieren und `/reload` ausführen. Die ursprünglichen Classic-Dateien werden vom Updater nicht verändert. Auf anderen Classic-Versionen bleibt die bisherige Datenbank aktiv.
+## Local archive
 
-## Sauberes CurseForge-ZIP
+Run **`Build release ZIP.cmd`** or `python Updater/build_release.py`. The default output is `NpcAbilitiesForever.zip` in the directory above the checkout. Updater scripts, tests, reference addons, reports, cache and JSON working data are excluded. The updater must be run from the source checkout, not from this runtime-only archive.
 
-`Updater/Curse ZIP erstellen.cmd` doppelklicken. Das erzeugt **`NpcAbilitiesForever.zip` im Ordner über dem Addon-Projekt**, direkt bereit für den manuellen CurseForge-Upload. Im ZIP liegen nur die vom Addon benötigten Lua-, XML- und TOC-Dateien sowie die Lizenz. `Updater/`, Tests, Cache, Berichte, Backups und die JSON-Arbeitsdaten werden nicht mitgepackt. Vor dem Erstellen des ZIPs bei Bedarf `Updater/Datenbank aktualisieren.cmd` ausführen, damit `Database/forever.lua` aktuell ist.
-
-Von der Kommandozeile aus: `py Updater/build_release.py`. Der Builder verwendet den Addon-Namen `NpcAbilitiesForever` für ZIP-Datei und Addon-Ordner im Archiv. Der GitHub-Tag-Workflow verwendet denselben ZIP-Builder.
-
-Beim manuellen Upload auf CurseForge die unterstützten Spielversionen auswählen. Für den automatischen Tag-Upload müssen das CurseForge-API-Token als Secret `CF_API_TOKEN` und die **eigene** CurseForge-Projekt-ID als Repository-Variable `CF_PROJECT_ID` hinterlegt werden. Die bisherige Projekt-ID gehörte zur Originalversion und wird nicht verwendet. Die Versions-IDs können optional kommasepariert als Repository-Variable `CF_GAME_VERSIONS` hinterlegt werden; ohne diese Variable sendet das Skript keine Versions-IDs. Ohne API-Token oder Projekt-ID erstellt der Tag-Workflow weiterhin das GitHub-Release und überspringt den CurseForge-Upload.
+The current contribution workflow is a GitHub branch and pull request, with no release or CurseForge upload. The existing tag workflow is only triggered by pushing a tag; do not push a release tag for this review. Its optional CurseForge step requires `CF_API_TOKEN` and your own `CF_PROJECT_ID`, with optional comma-separated `CF_GAME_VERSIONS`. None of those credentials belong in source files.

@@ -29,6 +29,7 @@ Localization/Translations.lua
 
 Frames/NpcAbilitiesForeverOptionsFrame.lua
 Frames/NpcAbilitiesForeverDebug.lua
+NpcAbilitiesForeverCollector.lua
 
 NpcAbilitiesForever.lua
 
