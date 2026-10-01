@@ -1,4 +1,4 @@
-local addonName = ...
+local addonName, addon = ...
 local optionsFrame = CreateFrame("Frame")
 local LibDD = LibStub:GetLibrary("LibUIDropDownMenu-4.0")
 local gameLocale = GetLocale()
@@ -22,7 +22,10 @@ local function CreateOptionDropdown(parent, relativeFrame, offsetX, offsetY, lab
 
         local function OnDropdownValueChanged(self, arg1, arg2, checked)
             NpcAbilitiesOptions[selectedKey] = arg1
-            UIDropDownMenu_SetText(dropdown, arg2)
+            LibDD:UIDropDownMenu_SetText(dropdown, arg2)
+            if selectedKey == "SELECTED_LANGUAGE" and addon and addon.Debug then
+                addon.Debug.Refresh()
+            end
         end
 
         for index, value in ipairs(NpcAbilitiesOptions[optionKey]) do
@@ -43,8 +46,8 @@ local function CreateOptionDropdown(parent, relativeFrame, offsetX, offsetY, lab
     end)
 
     LibDD:UIDropDownMenu_SetWidth(dropdown, 150)
-    UIDropDownMenu_SetText(dropdown, selectedOptionLabel)
-    UIDropDownMenu_SetAnchor(dropdown, 0, 0, "TOPLEFT", dropdown)
+    LibDD:UIDropDownMenu_SetText(dropdown, selectedOptionLabel)
+    LibDD:UIDropDownMenu_SetAnchor(dropdown, 0, 0, "TOPLEFT", dropdown)
     return dropdown
 end
 
@@ -160,15 +163,16 @@ local function getDefaultOptions(optionsTranslations)
             {value = "both", text = optionsTranslations["displayLocations"]["both"]}
         },
         DISPLAY_PRIORITY_INDICATORS = false,
-        DELAYED_TOOLTIP_LOADING = false
+        DELAYED_TOOLTIP_LOADING = false,
+        LIVE_DATA_COLLECTION_ENABLED = true,
     }
 
     return defaultOptions
 end
 
 local function InitializeOptions()
-    local optionsPanel = CreateFrame("Frame", "NpcAbilitiesOptionsPanel", UIParent)
-    optionsPanel.name = "NpcAbilities"
+    local optionsPanel = CreateFrame("Frame", "NpcAbilitiesForeverOptionsPanel", UIParent)
+    optionsPanel.name = "NpcAbilitiesForever"
 
     -- Vars
     local titleOffsetY = -22
@@ -179,7 +183,7 @@ local function InitializeOptions()
     -- Options panel title
     local panelTitle = optionsPanel:CreateFontString(nil, "ARTWORK", "GameFontHighlightLarge")
     panelTitle:SetPoint("TOPLEFT", optionsPanel, 6, titleOffsetY)
-    panelTitle:SetText("NpcAbilities")
+    panelTitle:SetText("NpcAbilitiesForever")
     panelTitle:SetTextColor(1, 1, 1)
     panelTitle:SetFont("Fonts\\FRIZQT__.TTF", 20)
 
@@ -263,9 +267,22 @@ local function InitializeOptions()
     end)
     displayPriorityIndicatorsCheckbox:SetPoint("TOPLEFT", displayLocationDropdown, "BOTTOMLEFT", fieldOffsetX - 10, fieldOffsetY)
 
+    local liveDataCollectionCheckbox = CreateCheckBox(
+        optionsContainer,
+        optionsTranslations["liveDataCollectionEnabledLabel"],
+        "LIVE_DATA_COLLECTION_ENABLED",
+        function(self)
+            local enabled = self:GetChecked()
+            NpcAbilitiesOptions["LIVE_DATA_COLLECTION_ENABLED"] = enabled
+            if addon and addon.SetLiveDataCollectionEnabled then
+                addon.SetLiveDataCollectionEnabled(enabled)
+            end
+        end)
+    liveDataCollectionCheckbox:SetPoint("TOPLEFT", displayPriorityIndicatorsCheckbox, "BOTTOMLEFT", 0, fieldOffsetY)
+
     -- Ability fields options
     local abilityFieldsOptionsTitle = optionsContainer:CreateFontString("ARTWORK", nil, "GameFontHighlightLarge")
-    abilityFieldsOptionsTitle:SetPoint("TOPLEFT", displayPriorityIndicatorsCheckbox, "TOPLEFT", -fieldOffsetX + 5, subTitleOffsetY + fieldOffsetY)
+    abilityFieldsOptionsTitle:SetPoint("TOPLEFT", liveDataCollectionCheckbox, "TOPLEFT", -fieldOffsetX + 5, subTitleOffsetY + fieldOffsetY)
     abilityFieldsOptionsTitle:SetText(optionsTranslations["abilityFieldsOptionsTitle"])
     abilityFieldsOptionsTitle:SetTextColor(1, 1, 1)
 

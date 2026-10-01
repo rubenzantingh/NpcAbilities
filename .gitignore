@@ -1,2 +1,5 @@
 .idea/
 .DS_Store
+Updater/.data/
+__pycache__/
+reference_addons/

@@ -1,9 +1,12 @@
-name: Create Release on commit with tag
+name: Create Release on tag
 
 on:
   push:
     tags:
       - '*'
+
+permissions:
+  contents: write
 
 jobs:
   release:
@@ -11,54 +14,31 @@ jobs:
 
     env:
       CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+      CF_PROJECT_ID: ${{ vars.CF_PROJECT_ID }}
+      CF_GAME_VERSIONS: ${{ vars.CF_GAME_VERSIONS }}
 
     steps:
-      - name: Checkout the code
+      - name: Check out the code
         uses: actions/checkout@v4
 
-      - name: Get the latest tag
-        id: get_tag
-        run: echo "TAG_NAME=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
-
-      - name: Get commit message
-        id: get_commit_message
+      - name: Prepare release details
+        shell: bash
         run: |
-          COMMIT_MESSAGE=$(git log -1 --pretty=%B)
-          echo "COMMIT_MESSAGE=$COMMIT_MESSAGE" >> $GITHUB_ENV
+          echo "TAG_NAME=${GITHUB_REF#refs/tags/}" >> "$GITHUB_ENV"
+          echo "COMMIT_MESSAGE=$(git log -1 --pretty=%s)" >> "$GITHUB_ENV"
 
-      - name: Create additional ZIP file with new name
-        run: |
-          mkdir -p release/NpcAbilities
-          find . -maxdepth 1 -mindepth 1 ! -name 'release' ! -name '.git' ! -name '.github' -exec cp -r {} release/NpcAbilities \;
-          cd release
-          zip -r ../NpcAbilities.zip NpcAbilities \
-              -x "**/.git/**" \
-              -x "**/.github/**" \
-              -x "**/.gitattributes" \
-              -x "**/.gitignore" \
-              -x "**/cf-upload.sh"
+      - name: Build CurseForge ZIP
+        run: python3 Updater/build_release.py --output NpcAbilitiesForever.zip
 
-      - name: Create a new release
-        id: create_release
-        uses: actions/create-release@v1
+      - name: Publish GitHub release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: '${{ env.TAG_NAME }}'
-          release_name: '${{ env.TAG_NAME }}'
-          draft: false
-          prerelease: false
-          body: "${{ env.COMMIT_MESSAGE }}"
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$TAG_NAME" NpcAbilitiesForever.zip --title "$TAG_NAME" --notes "$COMMIT_MESSAGE"
 
-      - name: Upload additional file to the release
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: NpcAbilities.zip
-          asset_name: NpcAbilities.zip
-          asset_content_type: application/zip
+      - name: Upload to CurseForge
+        if: env.CF_API_TOKEN != '' && env.CF_PROJECT_ID != ''
+        run: sh Updater/cf-upload.sh "$TAG_NAME" "$COMMIT_MESSAGE"
 
-      - name: Upload Curseforge file
-        run: sh cf-upload.sh "${{ env.TAG_NAME }}" "${{ env.COMMIT_MESSAGE }}"
+      - name: Skip CurseForge upload until project settings are configured
+        if: env.CF_API_TOKEN == '' || env.CF_PROJECT_ID == ''
+        run: echo "GitHub release created; configure CF_API_TOKEN and your own CF_PROJECT_ID to enable CurseForge uploads."

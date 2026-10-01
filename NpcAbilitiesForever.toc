@@ -1,9 +1,9 @@
-## Interface: 11509
-## Title: NpcAbilities
+## Interface: 11509, 16001
+## Title: NpcAbilitiesForever
 ## Notes: Add abilities to the NPC GameTooltip
 ## Author: Ruben Zantingh
-## Version: 1.6.3
-## SavedVariables: NpcAbilitiesOptions
+## Version: 1.6.17
+## SavedVariables: NpcAbilitiesOptions, NpcAbilitiesLearnedData
 ## OptionalDeps: LibStub, LibUIDropDownMenu
 
 embeds.xml
@@ -21,12 +21,14 @@ Database/Abilities/ptBR.lua
 Database/Abilities/ruRU.lua
 Database/Abilities/zhCN.lua
 Database/Abilities/koKR.lua
+Database/forever.lua
 
 Database/priorities.lua
 
 Localization/Translations.lua
 
-Frames/NpcAbilitiesOptionsFrame.lua
+Frames/NpcAbilitiesForeverOptionsFrame.lua
+Frames/NpcAbilitiesForeverDebug.lua
 
-NpcAbilities.lua
+NpcAbilitiesForever.lua
 
