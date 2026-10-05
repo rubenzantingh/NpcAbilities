@@ -5,8 +5,20 @@ local hotkeyButtonPressed = false
 local hideAbilitiesHotkeyButtonPressed = false
 local checkForHotkeyReleased = false
 
+local function IsAccessible(value)
+    if canaccessvalue then
+        return canaccessvalue(value)
+    end
+
+    if issecretvalue then
+        return not issecretvalue(value)
+    end
+
+    return true
+end
+
 local function GetDataByID(dataType, dataId)
-    data = _G[dataType]
+    local data = _G[dataType]
     if not data then return nil end
 
     local convertedId = tonumber(dataId)
@@ -34,8 +46,11 @@ local function AddAbilityLinesToGameTooltip(id, name, description, mechanic, ran
     local translations = _G["NpcAbilitiesTranslations"][selectedLanguage]["game"]
 
     local texture = C_Spell.GetSpellTexture(id)
-    local icon = "|T" .. texture .. ":12:12:0:0:64:64:4:60:4:60|t"
-    local abilityNameText = icon .. " " .. name
+    local abilityNameText = name
+
+    if IsAccessible(texture) and texture then
+        abilityNameText = "|T" .. texture .. ":12:12:0:0:64:64:4:60:4:60|t " .. name
+    end
 
     local function appendTitleInfo(display, value, mode, label)
         if value ~= "" and options[display] then
@@ -70,7 +85,7 @@ local function AddAbilityLinesToGameTooltip(id, name, description, mechanic, ran
 end
 
 local function SetNpcAbilityData()
-    inInstance, _ = IsInInstance()
+    local inInstance = IsInInstance()
 
     if hideAbilitiesHotkeyButtonPressed or (inInstance and NpcAbilitiesOptions["HIDE_ABILITIES_IN_INSTANCE"]) then
         return
@@ -78,13 +93,13 @@ local function SetNpcAbilityData()
 
     local _, unitId = GameTooltip:GetUnit()
 
-    if not unitId then
+    if not IsAccessible(unitId) or not unitId then
         return
     end
 
     local unitGUID = UnitGUID(unitId)
 
-    if not unitGUID then
+    if not IsAccessible(unitGUID) or not unitGUID then
         return
     end
 

@@ -1,8 +1,8 @@
-## Interface: 120000
+## Interface: 120100
 ## Title: NpcAbilities
 ## Notes: Add abilities to the NPC GameTooltip
 ## Author: Ruben Zantingh
-## Version: 1.0.12
+## Version: 1.1.0
 ## SavedVariables: NpcAbilitiesOptions
 
 Database/Npcs/npcs.lua
