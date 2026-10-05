@@ -1,9 +1,18 @@
-local addonName, addonTable = ...
-
 local npcAbilitiesFrame = CreateFrame("Frame")
 local hotkeyButtonPressed = false
 local hideAbilitiesHotkeyButtonPressed = false
-local checkForHotkeyReleased = false
+
+local function IsAccessible(value)
+    if canaccessvalue then
+        return canaccessvalue(value)
+    end
+
+    if issecretvalue then
+        return not issecretvalue(value)
+    end
+
+    return true
+end
 
 local function IsAccessible(value)
     if canaccessvalue then
@@ -111,11 +120,14 @@ local function SetNpcAbilityData()
         if npcData then
             local addedAbilityLine = false
             local addedAbilityLineWithDescription = false
+            local addedAbilityNames = {}
 
             for _, abilityId in pairs(npcData.spell_ids) do
                 local abilitiesData = GetDataByID('NpcAbilitiesAbilityData', abilityId)
 
-                if abilitiesData then
+                if abilitiesData and not addedAbilityNames[abilitiesData.name] then
+                    addedAbilityNames[abilitiesData.name] = true
+
                     local abilityName = abilitiesData.name
                     local abilityDescription = abilitiesData.description or ""
                     local abilityMechanic = abilitiesData.mechanic or ""
@@ -151,7 +163,6 @@ local function CheckHotkeyState()
     local hotkey = NpcAbilitiesOptions["SELECTED_HOTKEY"]
 
     if not IsKeyDown(hotkey) then
-        checkForHotkeyReleased = false
         hotkeyButtonPressed = false
         GameTooltip:SetUnit("mouseover");
         npcAbilitiesFrame:SetScript("OnUpdate", nil)
@@ -159,8 +170,6 @@ local function CheckHotkeyState()
 end
 
 local function StartCheckingHotkey()
-    checkForHotkeyReleased = true
-
     npcAbilitiesFrame:SetScript("OnUpdate", function(self, elapsed)
         CheckHotkeyState()
     end)
@@ -198,6 +207,5 @@ end
 
 npcAbilitiesFrame:SetScript("OnKeyDown", function(self, key) SetHotkeyButtonPressed(self, key, "OnKeyDown") end)
 npcAbilitiesFrame:SetPropagateKeyboardInput(true)
-npcAbilitiesFrame:RegisterEvent("MODIFIER_STATE_CHANGED")
 
 TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Unit, SetNpcAbilityData)

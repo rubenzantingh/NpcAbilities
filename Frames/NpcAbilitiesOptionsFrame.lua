@@ -127,8 +127,7 @@ local function getDefaultOptions(optionsTranslations)
             {value = 'de', text = optionsTranslations["languages"]["de"]},
             {value = 'pt', text = optionsTranslations["languages"]["pt"]},
             {value = 'ko', text = optionsTranslations["languages"]["ko"]},
-            {value = 'cn', text = optionsTranslations["languages"]["cn"]},
-            {value = 'it', text = optionsTranslations["languages"]["it"]}
+            {value = 'cn', text = optionsTranslations["languages"]["cn"]}
         },
         SELECTED_HOTKEY = nil,
         SELECTED_HOTKEY_MODE = 'toggle',
@@ -353,6 +352,18 @@ local function addonLoaded(self, event, addonLoadedName)
             elseif type(value) == "table" and key == "AVAILABLE_LANGUAGES" then
                 NpcAbilitiesOptions[key] = value
             end
+        end
+
+        local selectedLanguageAvailable = false
+
+        for _, language in ipairs(NpcAbilitiesOptions["AVAILABLE_LANGUAGES"]) do
+            if language.value == NpcAbilitiesOptions["SELECTED_LANGUAGE"] then
+                selectedLanguageAvailable = true
+            end
+        end
+
+        if not selectedLanguageAvailable then
+            NpcAbilitiesOptions["SELECTED_LANGUAGE"] = defaultOptions["SELECTED_LANGUAGE"]
         end
 
         InitializeOptions()

@@ -17,8 +17,7 @@ local function addonLoaded(self, event, addonLoadedName)
                     pt = "Portuguese",
                     ru = "Russian",
                     ko = "Korean",
-                    cn = "Chinese",
-                    it = "Italian"
+                    cn = "Chinese"
                 },
                 hotkeyModeLabel = "Select hotkey mode (on hold, some keys may not work as expected):",
                 hotkeyModes = {
@@ -68,8 +67,7 @@ local function addonLoaded(self, event, addonLoadedName)
                     pt = "Portugués",
                     ru = "Ruso",
                     ko = "Coreano",
-                    cn = "Chino",
-                    it = "Italiano"
+                    cn = "Chino"
                 },
                 displayAbilitiesMechanicLabel = "Mostrar mecánica de habilidades",
                 hotkeyModeLabel = "Seleccionar modo de tecla rápida (al mantener, algunas teclas pueden no funcionar como se espera):",
@@ -120,8 +118,7 @@ local function addonLoaded(self, event, addonLoadedName)
                     pt = "Portugiesisch",
                     ru = "Russisch",
                     ko = "Koreanisch",
-                    cn = "Chinesisch",
-                    it = "Italienisch"
+                    cn = "Chinesisch"
                 },
                 displayAbilitiesMechanicLabel = "Fähigkeitsmechanik anzeigen",
                 hotkeyModeLabel = "Hotkey-Modus auswählen (bei Halten funktionieren einige Tasten möglicherweise nicht wie erwartet):",
@@ -172,8 +169,7 @@ local function addonLoaded(self, event, addonLoadedName)
                     pt = "Portugais",
                     ru = "Russe",
                     ko = "Coréen",
-                    cn = "Chinois",
-                    it = "Italien"
+                    cn = "Chinois"
                 },
                 displayAbilitiesMechanicLabel = "Afficher la mécanique des capacités",
                 hotkeyModeLabel = "Sélectionner le mode de raccourci (en maintenant, certaines touches peuvent ne pas fonctionner comme prévu) :",
@@ -224,8 +220,7 @@ local function addonLoaded(self, event, addonLoadedName)
                     pt = "Português",
                     ru = "Russo",
                     ko = "Coreano",
-                    cn = "Chinês",
-                    it = "Italiano"
+                    cn = "Chinês"
                 },
                 displayAbilitiesMechanicLabel = "Exibir mecânica das habilidades",
                 hotkeyModeLabel = "Selecionar modo de atalho (ao segurar, algumas teclas podem não funcionar como esperado):",
@@ -276,8 +271,7 @@ local function addonLoaded(self, event, addonLoadedName)
                     pt = "Португальский",
                     ru = "Русский",
                     ko = "Корейский",
-                    cn = "Китайский",
-                    it = "итальянский"
+                    cn = "Китайский"
                 },
                 displayAbilitiesMechanicLabel = "Показывать механику способностей",
                 hotkeyModeLabel = "Выберите режим горячих клавиш (при удержании некоторые клавиши могут работать некорректно):",
@@ -328,8 +322,7 @@ local function addonLoaded(self, event, addonLoadedName)
                     pt = "포르투갈어",
                     ru = "러시아어",
                     ko = "한국어",
-                    cn = "중국어",
-                    it = "이탈리아 사람"
+                    cn = "중국어"
                 },
                 displayAbilitiesMechanicLabel = "능력 메커니즘 표시",
                 hotkeyModeLabel = "단축키 모드 선택 (누르고 있을 때 일부 키가 예상대로 작동하지 않을 수 있음):",
@@ -380,8 +373,7 @@ local function addonLoaded(self, event, addonLoadedName)
                     pt = "葡萄牙语",
                     ru = "俄语",
                     ko = "韩语",
-                    cn = "中文",
-                    it = "意大利语"
+                    cn = "中文"
                 },
                 displayAbilitiesMechanicLabel = "显示技能机制",
                 hotkeyModeLabel = "选择快捷键模式（按住时，某些按键可能无法正常工作）：",
@@ -417,58 +409,6 @@ local function addonLoaded(self, event, addonLoadedName)
                 rangeText = "范围",
                 castTimeText = "施法时间",
                 dispelTypeText = "驱散类型",
-            }
-        }
-
-        _G["NpcAbilitiesTranslations"]["it"] = {
-            options = {
-                generalOptionsTitle = "Opzioni generali",
-                languageDropdownLabel = "Seleziona lingua:",
-                languages = {
-                    en = "Inglese",
-                    es = "Spagnolo",
-                    fr = "Francese",
-                    de = "Tedesco",
-                    pt = "Portoghese",
-                    ru = "Russo",
-                    ko = "Coreano",
-                    cn = "Cinese",
-                    it = "Italiano"
-                },
-                displayAbilitiesMechanicLabel = "Mostra la meccanica delle abilità",
-                hotkeyModeLabel = "Seleziona la modalità tasto rapido (tenere premuto, alcuni tasti potrebbero non funzionare come previsto):",
-                hotkeyModes = {
-                    toggle = "Attiva/Disattiva",
-                    hold = "Tieni premuto"
-                },
-                hotkeyButtonLabel = "Assegna tasto rapido per la descrizione delle abilità (Click destro per rimuovere)",
-                hotkeyButtonInstructionText = "Premi il pulsante...",
-                hotkeyButtonNotBoundText = "Non assegnato",
-                abilityFieldsOptionsTitle = "Visualizzazione dei campi delle abilità e posizione",
-                abilityFieldsDisplayModes = {
-                    title = "Dopo il nome dell'abilità",
-                    separate = "Come riga separata"
-                },
-                displayAbilitiesMechanicLabel = "Mostra la meccanica dell'abilità",
-                displayAbilitiesMechanicDisplayModeLabel = "Dove mostrare la meccanica dell'abilità",
-                displayAbilitiesRangeLabel = "Mostra la portata dell'abilità",
-                displayAbilitiesRangeDisplayModeLabel = "Dove mostrare la portata dell'abilità",
-                displayAbilitiesCastTimeLabel = "Mostra il tempo di lancio dell'abilità",
-                displayAbilitiesCastTimeDisplayModeLabel = "Dove mostrare il tempo di lancio dell'abilità",
-                displayAbilitiesDispelTypeLabel = "Mostra il tipo di dissoluzione dell'abilità",
-                displayAbilitiesDispelTypeDisplayModeLabel = "Dove mostrare il tipo di dissoluzione dell'abilità",
-                hideOptionsTitle = "Nascondi abilità",
-                hideOptionsHotkeyModeLabel = "Assegna tasto rapido per nascondere le abilità (Click destro per rimuovere)",
-                hideAbilitiesInInstanceLabel = "Nascondi abilità nelle istanze (PVP e PVE)",
-            },
-            game = {
-                hotkeyExplanatoryTextOne = "Premi",
-                hotkeyExplanatoryTextTwo = "per dettagli",
-                hotkeyNotBoundText = "Tasto rapido non assegnato",
-                mechanicText = "Meccanica",
-                rangeText = "Portata",
-                castTimeText = "Tempo di lancio",
-                dispelTypeText = "Tipo di dissoluzione"
             }
         }
     end
