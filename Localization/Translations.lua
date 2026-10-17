@@ -17,7 +17,8 @@ local function addonLoaded(self, event, addonLoadedName)
                     pt = "Portuguese",
                     ru = "Russian",
                     ko = "Korean",
-                    cn = "Chinese"
+                    cn = "Chinese",
+                    it = "Italian"
                 },
                 hotkeyModeLabel = "Select hotkey mode (on hold, some keys may not work as expected):",
                 hotkeyModes = {
@@ -43,6 +44,7 @@ local function addonLoaded(self, event, addonLoadedName)
                 hideOptionsTitle = "Hide abilities",
                 hideOptionsHotkeyModeLabel = "Register hide abilities hotkey (Right-click to unbind)",
                 hideAbilitiesInInstanceLabel = "Hide abilities in instances (PVP and PVE)",
+                showMinimapButtonLabel = "Show minimap button",
             },
              game = {
                  hotkeyExplanatoryTextOne = "Press",
@@ -51,7 +53,15 @@ local function addonLoaded(self, event, addonLoadedName)
                  mechanicText = "Mechanic",
                  rangeText = "Range",
                  castTimeText = "Cast time",
-                 dispelTypeText = "Dispel type"
+                 dispelTypeText = "Dispel type",
+                 dungeonDungeonsText = "Dungeons",
+                 dungeonRaidsText = "Raids",
+                 dungeonSearchText = "Search NPCs",
+                 noAbilityDataText = "No ability data available yet",
+                 dungeonToggleText = "Click to toggle the dungeon overview",
+                 npcLevelEliteText = "Elite",
+                 npcLevelRareEliteText = "Rare Elite",
+                 npcLevelBossText = "Boss"
              }
         }
 
@@ -67,7 +77,8 @@ local function addonLoaded(self, event, addonLoadedName)
                     pt = "Portugués",
                     ru = "Ruso",
                     ko = "Coreano",
-                    cn = "Chino"
+                    cn = "Chino",
+                    it = "Italiano"
                 },
                 displayAbilitiesMechanicLabel = "Mostrar mecánica de habilidades",
                 hotkeyModeLabel = "Seleccionar modo de tecla rápida (al mantener, algunas teclas pueden no funcionar como se espera):",
@@ -93,7 +104,8 @@ local function addonLoaded(self, event, addonLoadedName)
                 displayAbilitiesDispelTypeDisplayModeLabel = "Dónde mostrar el tipo de disipación de la habilidad",
                 hideOptionsTitle = "Ocultar habilidades",
                 hideOptionsHotkeyModeLabel = "Registrar tecla rápida para ocultar habilidades (Clic derecho para desvincular)",
-                hideAbilitiesInInstanceLabel = "Ocultar habilidades en instancias (PVP y PVE)"
+                hideAbilitiesInInstanceLabel = "Ocultar habilidades en instancias (PVP y PVE)",
+                showMinimapButtonLabel = "Mostrar botón del minimapa",
             },
             game = {
                 hotkeyExplanatoryTextOne = "Presione",
@@ -103,6 +115,14 @@ local function addonLoaded(self, event, addonLoadedName)
                 rangeText = "Alcance",
                 castTimeText = "Tiempo de lanzamiento",
                 dispelTypeText = "Tipo de disipación",
+                dungeonDungeonsText = "Mazmorras",
+                dungeonRaidsText = "Bandas",
+                dungeonSearchText = "Buscar PNJ",
+                noAbilityDataText = "Aún no hay datos de habilidades",
+                dungeonToggleText = "Haz clic para mostrar u ocultar el resumen de mazmorras",
+                npcLevelEliteText = "Élite",
+                npcLevelRareEliteText = "Élite raro",
+                npcLevelBossText = "Jefe"
             }
         }
 
@@ -118,7 +138,8 @@ local function addonLoaded(self, event, addonLoadedName)
                     pt = "Portugiesisch",
                     ru = "Russisch",
                     ko = "Koreanisch",
-                    cn = "Chinesisch"
+                    cn = "Chinesisch",
+                    it = "Italienisch"
                 },
                 displayAbilitiesMechanicLabel = "Fähigkeitsmechanik anzeigen",
                 hotkeyModeLabel = "Hotkey-Modus auswählen (bei Halten funktionieren einige Tasten möglicherweise nicht wie erwartet):",
@@ -145,6 +166,7 @@ local function addonLoaded(self, event, addonLoadedName)
                 hideOptionsTitle = "Fähigkeiten ausblenden",
                 hideOptionsHotkeyModeLabel = "Hotkey zum Ausblenden von Fähigkeiten registrieren (Rechtsklick zum Aufheben der Bindung)",
                 hideAbilitiesInInstanceLabel = "Fähigkeiten in Instanzen ausblenden (PVP und PVE)",
+                showMinimapButtonLabel = "Minikartenknopf anzeigen",
             },
             game = {
                 hotkeyExplanatoryTextOne = "Drücken Sie",
@@ -154,6 +176,14 @@ local function addonLoaded(self, event, addonLoadedName)
                 rangeText = "Reichweite",
                 castTimeText = "Zauberzeit",
                 dispelTypeText = "Bannart",
+                dungeonDungeonsText = "Dungeons",
+                dungeonRaidsText = "Schlachtzüge",
+                dungeonSearchText = "NSCs suchen",
+                noAbilityDataText = "Noch keine Fähigkeitsdaten verfügbar",
+                dungeonToggleText = "Klicken, um die Dungeonübersicht ein- oder auszublenden",
+                npcLevelEliteText = "Elite",
+                npcLevelRareEliteText = "Seltener Elite",
+                npcLevelBossText = "Boss"
             }
         }
 
@@ -169,7 +199,8 @@ local function addonLoaded(self, event, addonLoadedName)
                     pt = "Portugais",
                     ru = "Russe",
                     ko = "Coréen",
-                    cn = "Chinois"
+                    cn = "Chinois",
+                    it = "Italien"
                 },
                 displayAbilitiesMechanicLabel = "Afficher la mécanique des capacités",
                 hotkeyModeLabel = "Sélectionner le mode de raccourci (en maintenant, certaines touches peuvent ne pas fonctionner comme prévu) :",
@@ -195,7 +226,8 @@ local function addonLoaded(self, event, addonLoadedName)
                 displayAbilitiesDispelTypeDisplayModeLabel = "Où afficher le type de dissipation",
                 hideOptionsTitle = "Masquer les capacités",
                 hideOptionsHotkeyModeLabel = "Enregistrer le raccourci pour masquer les capacités (clic droit pour dissocier)",
-                hideAbilitiesInInstanceLabel = "Masquer les capacités en instance (PVP et PVE)"
+                hideAbilitiesInInstanceLabel = "Masquer les capacités en instance (PVP et PVE)",
+                showMinimapButtonLabel = "Afficher le bouton de la minicarte",
             },
             game = {
                 hotkeyExplanatoryTextOne = "Appuyez sur",
@@ -205,6 +237,14 @@ local function addonLoaded(self, event, addonLoadedName)
                 rangeText = "Portée",
                 castTimeText = "Temps d'incantation",
                 dispelTypeText = "Type de dissipation",
+                dungeonDungeonsText = "Donjons",
+                dungeonRaidsText = "Raids",
+                dungeonSearchText = "Rechercher des PNJ",
+                noAbilityDataText = "Aucune donnée de technique disponible pour l’instant",
+                dungeonToggleText = "Cliquez pour afficher ou masquer l’aperçu des donjons",
+                npcLevelEliteText = "Élite",
+                npcLevelRareEliteText = "Élite rare",
+                npcLevelBossText = "Boss"
             }
         }
 
@@ -220,7 +260,8 @@ local function addonLoaded(self, event, addonLoadedName)
                     pt = "Português",
                     ru = "Russo",
                     ko = "Coreano",
-                    cn = "Chinês"
+                    cn = "Chinês",
+                    it = "Italiano"
                 },
                 displayAbilitiesMechanicLabel = "Exibir mecânica das habilidades",
                 hotkeyModeLabel = "Selecionar modo de atalho (ao segurar, algumas teclas podem não funcionar como esperado):",
@@ -246,7 +287,8 @@ local function addonLoaded(self, event, addonLoadedName)
                 displayAbilitiesDispelTypeDisplayModeLabel = "Onde exibir o tipo de dissipação",
                 hideOptionsTitle = "Ocultar habilidades",
                 hideOptionsHotkeyModeLabel = "Registrar atalho para ocultar habilidades (Clique com o botão direito para desvincular)",
-                hideAbilitiesInInstanceLabel = "Ocultar habilidades em instâncias (PVP e PVE)"
+                hideAbilitiesInInstanceLabel = "Ocultar habilidades em instâncias (PVP e PVE)",
+                showMinimapButtonLabel = "Mostrar botão do minimapa",
             },
             game = {
                 hotkeyExplanatoryTextOne = "Prima",
@@ -256,6 +298,14 @@ local function addonLoaded(self, event, addonLoadedName)
                 rangeText = "Alcance",
                 castTimeText = "Tempo de lançamento",
                 dispelTypeText = "Tipo de dissipação",
+                dungeonDungeonsText = "Masmorras",
+                dungeonRaidsText = "Raides",
+                dungeonSearchText = "Buscar PNJs",
+                noAbilityDataText = "Ainda não há dados de habilidades",
+                dungeonToggleText = "Clique para mostrar ou ocultar a visão geral das masmorras",
+                npcLevelEliteText = "Elite",
+                npcLevelRareEliteText = "Elite Raro",
+                npcLevelBossText = "Chefe"
             }
         }
 
@@ -271,7 +321,8 @@ local function addonLoaded(self, event, addonLoadedName)
                     pt = "Португальский",
                     ru = "Русский",
                     ko = "Корейский",
-                    cn = "Китайский"
+                    cn = "Китайский",
+                    it = "итальянский"
                 },
                 displayAbilitiesMechanicLabel = "Показывать механику способностей",
                 hotkeyModeLabel = "Выберите режим горячих клавиш (при удержании некоторые клавиши могут работать некорректно):",
@@ -297,7 +348,8 @@ local function addonLoaded(self, event, addonLoadedName)
                 displayAbilitiesDispelTypeDisplayModeLabel = "Где отображать тип рассеивания",
                 hideOptionsTitle = "Скрытие способностей",
                 hideOptionsHotkeyModeLabel = "Назначить горячую клавишу для скрытия способностей (Правый клик для сброса)",
-                hideAbilitiesInInstanceLabel = "Скрывать способности в подземельях (PVP и PVE)"
+                hideAbilitiesInInstanceLabel = "Скрывать способности в подземельях (PVP и PVE)",
+                showMinimapButtonLabel = "Показывать кнопку у миникарты",
             },
             game = {
                 hotkeyExplanatoryTextOne = "Нажмите",
@@ -307,6 +359,14 @@ local function addonLoaded(self, event, addonLoadedName)
                 rangeText = "Дальность",
                 castTimeText = "Время произнесения",
                 dispelTypeText = "Тип рассеивания",
+                dungeonDungeonsText = "Подземелья",
+                dungeonRaidsText = "Рейды",
+                dungeonSearchText = "Поиск НИП",
+                noAbilityDataText = "Данные о способностях пока недоступны",
+                dungeonToggleText = "Нажмите, чтобы показать или скрыть обзор подземелий",
+                npcLevelEliteText = "Элитный",
+                npcLevelRareEliteText = "Редкий элитный",
+                npcLevelBossText = "Босс"
             }
         }
 
@@ -322,7 +382,8 @@ local function addonLoaded(self, event, addonLoadedName)
                     pt = "포르투갈어",
                     ru = "러시아어",
                     ko = "한국어",
-                    cn = "중국어"
+                    cn = "중국어",
+                    it = "이탈리아 사람"
                 },
                 displayAbilitiesMechanicLabel = "능력 메커니즘 표시",
                 hotkeyModeLabel = "단축키 모드 선택 (누르고 있을 때 일부 키가 예상대로 작동하지 않을 수 있음):",
@@ -348,7 +409,8 @@ local function addonLoaded(self, event, addonLoadedName)
                 displayAbilitiesDispelTypeDisplayModeLabel = "능력 해제 타입 표시 위치",
                 hideOptionsTitle = "능력 숨기기",
                 hideOptionsHotkeyModeLabel = "능력 숨기기 단축키 등록 (우클릭으로 해제)",
-                hideAbilitiesInInstanceLabel = "인스턴스( PVP 및 PVE)에서 능력 숨기기"
+                hideAbilitiesInInstanceLabel = "인스턴스( PVP 및 PVE)에서 능력 숨기기",
+                showMinimapButtonLabel = "미니맵 버튼 표시",
             },
             game = {
                 hotkeyExplanatoryTextOne = "자세한 내용을 보려면",
@@ -358,6 +420,14 @@ local function addonLoaded(self, event, addonLoadedName)
                 rangeText = "범위",
                 castTimeText = "시전 시간",
                 dispelTypeText = "해제 유형",
+                dungeonDungeonsText = "던전",
+                dungeonRaidsText = "공격대",
+                dungeonSearchText = "NPC 검색",
+                noAbilityDataText = "아직 능력 정보가 없습니다",
+                dungeonToggleText = "클릭하여 던전 개요 표시/숨기기",
+                npcLevelEliteText = "정예",
+                npcLevelRareEliteText = "희귀 정예",
+                npcLevelBossText = "우두머리"
             }
         }
 
@@ -373,7 +443,8 @@ local function addonLoaded(self, event, addonLoadedName)
                     pt = "葡萄牙语",
                     ru = "俄语",
                     ko = "韩语",
-                    cn = "中文"
+                    cn = "中文",
+                    it = "意大利语"
                 },
                 displayAbilitiesMechanicLabel = "显示技能机制",
                 hotkeyModeLabel = "选择快捷键模式（按住时，某些按键可能无法正常工作）：",
@@ -399,7 +470,8 @@ local function addonLoaded(self, event, addonLoadedName)
                 displayAbilitiesDispelTypeDisplayModeLabel = "技能驱散类型显示位置",
                 hideOptionsTitle = "隐藏技能",
                 hideOptionsHotkeyModeLabel = "注册隐藏技能快捷键（右键单击解绑）",
-                hideAbilitiesInInstanceLabel = "在副本（PVP 和 PVE）中隐藏技能"
+                hideAbilitiesInInstanceLabel = "在副本（PVP 和 PVE）中隐藏技能",
+                showMinimapButtonLabel = "显示小地图按钮",
             },
             game = {
                 hotkeyExplanatoryTextOne = "按",
@@ -409,6 +481,75 @@ local function addonLoaded(self, event, addonLoadedName)
                 rangeText = "范围",
                 castTimeText = "施法时间",
                 dispelTypeText = "驱散类型",
+                dungeonDungeonsText = "地下城",
+                dungeonRaidsText = "团队副本",
+                dungeonSearchText = "搜索NPC",
+                noAbilityDataText = "暂无技能数据",
+                dungeonToggleText = "点击显示/隐藏地下城概览",
+                npcLevelEliteText = "精英",
+                npcLevelRareEliteText = "稀有精英",
+                npcLevelBossText = "首领"
+            }
+        }
+
+        _G["NpcAbilitiesTranslations"]["it"] = {
+            options = {
+                generalOptionsTitle = "Opzioni generali",
+                languageDropdownLabel = "Seleziona lingua:",
+                languages = {
+                    en = "Inglese",
+                    es = "Spagnolo",
+                    fr = "Francese",
+                    de = "Tedesco",
+                    pt = "Portoghese",
+                    ru = "Russo",
+                    ko = "Coreano",
+                    cn = "Cinese",
+                    it = "Italiano"
+                },
+                displayAbilitiesMechanicLabel = "Mostra la meccanica delle abilità",
+                hotkeyModeLabel = "Seleziona la modalità tasto rapido (tenere premuto, alcuni tasti potrebbero non funzionare come previsto):",
+                hotkeyModes = {
+                    toggle = "Attiva/Disattiva",
+                    hold = "Tieni premuto"
+                },
+                hotkeyButtonLabel = "Assegna tasto rapido per la descrizione delle abilità (Click destro per rimuovere)",
+                hotkeyButtonInstructionText = "Premi il pulsante...",
+                hotkeyButtonNotBoundText = "Non assegnato",
+                abilityFieldsOptionsTitle = "Visualizzazione dei campi delle abilità e posizione",
+                abilityFieldsDisplayModes = {
+                    title = "Dopo il nome dell'abilità",
+                    separate = "Come riga separata"
+                },
+                displayAbilitiesMechanicLabel = "Mostra la meccanica dell'abilità",
+                displayAbilitiesMechanicDisplayModeLabel = "Dove mostrare la meccanica dell'abilità",
+                displayAbilitiesRangeLabel = "Mostra la portata dell'abilità",
+                displayAbilitiesRangeDisplayModeLabel = "Dove mostrare la portata dell'abilità",
+                displayAbilitiesCastTimeLabel = "Mostra il tempo di lancio dell'abilità",
+                displayAbilitiesCastTimeDisplayModeLabel = "Dove mostrare il tempo di lancio dell'abilità",
+                displayAbilitiesDispelTypeLabel = "Mostra il tipo di dissoluzione dell'abilità",
+                displayAbilitiesDispelTypeDisplayModeLabel = "Dove mostrare il tipo di dissoluzione dell'abilità",
+                hideOptionsTitle = "Nascondi abilità",
+                hideOptionsHotkeyModeLabel = "Assegna tasto rapido per nascondere le abilità (Click destro per rimuovere)",
+                hideAbilitiesInInstanceLabel = "Nascondi abilità nelle istanze (PVP e PVE)",
+                showMinimapButtonLabel = "Mostra il pulsante della minimappa",
+            },
+            game = {
+                hotkeyExplanatoryTextOne = "Premi",
+                hotkeyExplanatoryTextTwo = "per dettagli",
+                hotkeyNotBoundText = "Tasto rapido non assegnato",
+                mechanicText = "Meccanica",
+                rangeText = "Portata",
+                castTimeText = "Tempo di lancio",
+                dispelTypeText = "Tipo di dissoluzione",
+                dungeonDungeonsText = "Spedizioni",
+                dungeonRaidsText = "Incursioni",
+                dungeonSearchText = "Cerca PNG",
+                noAbilityDataText = "Nessun dato sulle abilità disponibile",
+                dungeonToggleText = "Clicca per mostrare o nascondere la panoramica delle spedizioni",
+                npcLevelEliteText = "Élite",
+                npcLevelRareEliteText = "Élite raro",
+                npcLevelBossText = "Boss"
             }
         }
     end

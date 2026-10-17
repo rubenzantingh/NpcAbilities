@@ -1,4 +1,4 @@
-local addonName = ...
+local addonName, addonTable = ...
 local optionsFrame = CreateFrame("Frame")
 local gameLocale = GetLocale()
 local gameLanguage = gameLocale:sub(1, 2)
@@ -116,19 +116,26 @@ local function CreateHotkeyButton(parent, label, optionKey)
     return description, button
 end
 
+-- In dropdown order; only languages with ability data in this game version's database are offered
+local LANGUAGE_CODES = {'en', 'es', 'ru', 'fr', 'de', 'pt', 'ko', 'cn', 'it'}
+
+local function getAvailableLanguages(optionsTranslations)
+    local abilityData = _G["NpcAbilitiesAbilityData"] or {}
+    local availableLanguages = {}
+
+    for _, languageCode in ipairs(LANGUAGE_CODES) do
+        if abilityData[languageCode] then
+            table.insert(availableLanguages, {value = languageCode, text = optionsTranslations["languages"][languageCode]})
+        end
+    end
+
+    return availableLanguages
+end
+
 local function getDefaultOptions(optionsTranslations)
     local defaultOptions = {
         SELECTED_LANGUAGE = 'en',
-        AVAILABLE_LANGUAGES = {
-            {value = 'en', text = optionsTranslations["languages"]["en"]},
-            {value = 'es', text = optionsTranslations["languages"]["es"]},
-            {value = 'ru', text = optionsTranslations["languages"]["ru"]},
-            {value = 'fr', text = optionsTranslations["languages"]["fr"]},
-            {value = 'de', text = optionsTranslations["languages"]["de"]},
-            {value = 'pt', text = optionsTranslations["languages"]["pt"]},
-            {value = 'ko', text = optionsTranslations["languages"]["ko"]},
-            {value = 'cn', text = optionsTranslations["languages"]["cn"]}
-        },
+        AVAILABLE_LANGUAGES = getAvailableLanguages(optionsTranslations),
         SELECTED_HOTKEY = nil,
         SELECTED_HOTKEY_MODE = 'toggle',
         AVAILABLE_HOTKEY_MODES = {
@@ -148,7 +155,9 @@ local function getDefaultOptions(optionsTranslations)
         DISPLAY_ABILITY_DISPEL_TYPE = false,
         SELECTED_ABILITY_DISPEL_TYPE_DISPLAY_MODE = 'title',
         HIDE_ABILITIES_SELECTED_HOTKEY = nil,
-        HIDE_ABILITIES_IN_INSTANCE = false
+        HIDE_ABILITIES_IN_INSTANCE = false,
+        SHOW_MINIMAP_BUTTON = true,
+        MINIMAP_BUTTON = {}
     }
 
     return defaultOptions
@@ -231,9 +240,15 @@ local function InitializeOptions()
     hotkeyDescription:SetPoint("TOPLEFT", hotkeyModeDropdown, "BOTTOMLEFT", fieldOffsetX - 10, fieldOffsetY)
     registerHotkeyButton:SetPoint("TOPLEFT", hotkeyDescription, "TOPLEFT", 0, -12)
 
+    -- General options: Minimap button
+    local showMinimapButtonCheckbox = CreateCheckBox(optionsContainer, optionsTranslations["showMinimapButtonLabel"], "SHOW_MINIMAP_BUTTON", function(self)
+        addonTable.SetMinimapButtonShown(self:GetChecked())
+    end)
+    showMinimapButtonCheckbox:SetPoint("TOPLEFT", registerHotkeyButton, 0, subTitleOffsetY + fieldOffsetY)
+
     -- Ability fields options
     local abilityFieldsOptionsTitle = optionsContainer:CreateFontString("ARTWORK", nil, "GameFontHighlightLarge")
-    abilityFieldsOptionsTitle:SetPoint("TOPLEFT", registerHotkeyButton, "TOPLEFT", -fieldOffsetX + 5, -registerHotkeyButton:GetHeight() + titleOffsetY)
+    abilityFieldsOptionsTitle:SetPoint("TOPLEFT", showMinimapButtonCheckbox, "TOPLEFT", -fieldOffsetX + 5, -showMinimapButtonCheckbox:GetHeight() + titleOffsetY)
     abilityFieldsOptionsTitle:SetText(optionsTranslations["abilityFieldsOptionsTitle"])
     abilityFieldsOptionsTitle:SetTextColor(1, 1, 1)
 
