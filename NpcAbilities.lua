@@ -1,3 +1,5 @@
+local addonName, addonTable = ...
+
 local npcAbilitiesFrame = CreateFrame("Frame")
 local hotkeyButtonPressed = false
 local hideAbilitiesHotkeyButtonPressed = false
@@ -32,6 +34,22 @@ targetAbilitiesContent:SetJustifyH("LEFT")
 targetAbilitiesContent:SetJustifyV("TOP")
 targetAbilitiesContent:SetWordWrap(true)
 targetAbilitiesContent:SetNonSpaceWrap(true)
+
+-- Clients with "secret" API values (Midnight and later) can't use them as table keys or in
+-- comparisons; on clients without them everything is accessible.
+local function IsAccessible(value)
+    if canaccessvalue then
+        return canaccessvalue(value)
+    end
+
+    if issecretvalue then
+        return not issecretvalue(value)
+    end
+
+    return true
+end
+
+addonTable.IsAccessible = IsAccessible
 
 local function GetDataByID(dataType, dataId)
     local data = _G[dataType]
@@ -68,9 +86,9 @@ local function SortAbilitiesByPriority(abilities)
     end)
 end
 
-local function AddAbilityLinesToGameTooltip(id, name, description, mechanic, range, castTime, cooldown, dispelType, addedAbilityLine)
+local function AddAbilityLinesToTooltip(tooltip, id, name, description, mechanic, range, castTime, cooldown, dispelType, addedAbilityLine)
     if not addedAbilityLine then
-        GameTooltip:AddLine(" ")
+        tooltip:AddLine(" ")
     end
 
     local options = NpcAbilitiesOptions
@@ -78,8 +96,11 @@ local function AddAbilityLinesToGameTooltip(id, name, description, mechanic, ran
     local translations = _G["NpcAbilitiesTranslations"][selectedLanguage]["game"]
 
     local texture = GetSpellTexture(id)
-    local icon = "|T" .. texture .. ":12:12:0:0:64:64:4:60:4:60|t"
-    local abilityNameText = icon .. " " .. name
+    local abilityNameText = name
+
+    if texture then
+        abilityNameText = "|T" .. texture .. ":12:12:0:0:64:64:4:60:4:60|t " .. name
+    end
 
     local function appendTitleInfo(display, value, mode, label)
         if value ~= "" and options[display] then
@@ -99,15 +120,15 @@ local function AddAbilityLinesToGameTooltip(id, name, description, mechanic, ran
     if options["DISPLAY_PRIORITY_INDICATORS"] then
         local priority = GetAbilityPriority(id) or 4
         local colors = priorityColors[priority]
-        GameTooltip:AddLine(abilityNameText, colors.r, colors.g, colors.b)
+        tooltip:AddLine(abilityNameText, colors.r, colors.g, colors.b)
     else
-        GameTooltip:AddLine(abilityNameText)
+        tooltip:AddLine(abilityNameText)
     end
 
     if hotkeyButtonPressed then
         local function addSeparateLine(display, value, mode, labelKey)
             if value ~= "" and options[display] and options[mode] == "separate" then
-                GameTooltip:AddLine(translations[labelKey] .. ": " .. value, 1, 1, 1, true)
+                tooltip:AddLine(translations[labelKey] .. ": " .. value, 1, 1, 1, true)
             end
         end
 
@@ -117,7 +138,7 @@ local function AddAbilityLinesToGameTooltip(id, name, description, mechanic, ran
         addSeparateLine("DISPLAY_ABILITY_COOLDOWN", cooldown, "SELECTED_ABILITY_COOLDOWN_DISPLAY_MODE", "cooldownText")
         addSeparateLine("DISPLAY_ABILITY_DISPEL_TYPE", dispelType, "SELECTED_ABILITY_DISPEL_TYPE_DISPLAY_MODE", "dispelTypeText")
 
-        GameTooltip:AddLine(description, 1, 1, 1, true)
+        tooltip:AddLine(description, 1, 1, 1, true)
     end
 end
 
@@ -257,6 +278,87 @@ targetEventFrame:SetScript("OnEvent", function(self, event, arg1)
     end
 end)
 
+local function GetNpcAbilities(npcId)
+    local abilities = {}
+    local npcData = GetDataByID('NpcAbilitiesNpcData', npcId)
+
+    if npcData == nil then
+       return abilities
+    end
+
+    local addedAbilityNames = {}
+
+    for _, abilityId in pairs(npcData.spell_ids) do
+        local abilitiesData = GetDataByID('NpcAbilitiesAbilityData', abilityId)
+
+        if abilitiesData ~= nil then
+            local abilityName = abilitiesData.name
+
+            if not addedAbilityNames[abilityName] then
+                addedAbilityNames[abilityName] = true
+                table.insert(abilities, {
+                    id = abilityId,
+                    name = abilityName,
+                    description = abilitiesData.description or "",
+                    mechanic = abilitiesData.mechanic or "",
+                    range = abilitiesData.range or "",
+                    cast_time = abilitiesData.cast_time or "",
+                    cooldown = abilitiesData.cooldown or "",
+                    dispel_type = abilitiesData.dispel_type or ""
+                })
+            end
+        end
+    end
+
+    if NpcAbilitiesOptions["DISPLAY_PRIORITY_INDICATORS"] then
+        SortAbilitiesByPriority(abilities)
+    end
+
+    return abilities
+end
+
+addonTable.GetNpcAbilities = GetNpcAbilities
+
+-- Adds the ability lines of an NPC to a tooltip. Returns false when there is no ability data for the NPC.
+local function AddNpcAbilitiesToTooltip(tooltip, npcId)
+    local addedAbilityLine = false
+    local addedAbilityLineWithDescription = false
+
+    for _, ability in ipairs(GetNpcAbilities(npcId)) do
+        AddAbilityLinesToTooltip(tooltip, ability.id, ability.name, ability.description, ability.mechanic, ability.range, ability.cast_time, ability.cooldown, ability.dispel_type, addedAbilityLine)
+        addedAbilityLine = true
+
+        if ability.description ~= '' then
+            addedAbilityLineWithDescription = true
+        end
+    end
+
+    local selectedLanguage = NpcAbilitiesOptions["SELECTED_LANGUAGE"]
+
+    if addedAbilityLineWithDescription and not hotkeyButtonPressed and NpcAbilitiesOptions["SELECTED_HOTKEY"] then
+        local hotkey = NpcAbilitiesOptions["SELECTED_HOTKEY"]
+        local hotkeyExplanatoryText = "(" .. _G["NpcAbilitiesTranslations"][selectedLanguage]["game"]["hotkeyExplanatoryTextOne"] .. " " .. hotkey .. " " ..  _G["NpcAbilitiesTranslations"][selectedLanguage]["game"]["hotkeyExplanatoryTextTwo"] .. ")"
+        tooltip:AddLine(hotkeyExplanatoryText, 0.8, 0.8, 0.8)
+    end
+
+    if addedAbilityLineWithDescription and not hotkeyButtonPressed and not NpcAbilitiesOptions["SELECTED_HOTKEY"] then
+        tooltip:AddLine("(" .. _G["NpcAbilitiesTranslations"][selectedLanguage]["game"]["hotkeyNotBoundText"] .. ")", 0.8, 0.8, 0.8)
+    end
+
+    return addedAbilityLine
+end
+
+addonTable.AddNpcAbilitiesToTooltip = AddNpcAbilitiesToTooltip
+
+-- Redraws the tooltip after a hotkey press: the hovered dungeon overview row if there is one, otherwise the mouseover unit.
+local function RefreshTooltip()
+    if addonTable.RefreshDungeonTooltip and addonTable.RefreshDungeonTooltip() then
+        return
+    end
+
+    GameTooltip:SetUnit("mouseover")
+end
+
 local function SetNpcAbilityData()
     local displayLocation = NpcAbilitiesOptions["ABILITY_DISPLAY_LOCATION"] or "both"
     if displayLocation == "target_frame" then
@@ -292,68 +394,7 @@ local function SetNpcAbilityData()
         return
     end
 
-    local npcData = GetDataByID('NpcAbilitiesNpcData', npcId)
-
-    if npcData == nil then
-       return
-    end
-
-    local abilities = {}
-    local addedAbilityNames = {}
-
-    for _, abilityId in pairs(npcData.spell_ids) do
-        local abilitiesData = GetDataByID('NpcAbilitiesAbilityData', abilityId)
-
-        if abilitiesData ~= nil then
-            local abilityName = abilitiesData.name
-            
-            if not addedAbilityNames[abilityName] then
-                addedAbilityNames[abilityName] = true
-                table.insert(abilities, {
-                    id = abilityId,
-                    name = abilityName,
-                    description = abilitiesData.description or "",
-                    mechanic = abilitiesData.mechanic or "",
-                    range = abilitiesData.range or "",
-                    cast_time = abilitiesData.cast_time or "",
-                    cooldown = abilitiesData.cooldown or "",
-                    dispel_type = abilitiesData.dispel_type or ""
-                })
-            end
-        end
-    end
-
-    if #abilities == 0 then
-        return
-    end
-
-    if NpcAbilitiesOptions["DISPLAY_PRIORITY_INDICATORS"] then
-        SortAbilitiesByPriority(abilities)
-    end
-
-    local addedAbilityLine = false
-    local addedAbilityLineWithDescription = false
-
-    for _, ability in ipairs(abilities) do
-        AddAbilityLinesToGameTooltip(ability.id, ability.name, ability.description, ability.mechanic, ability.range, ability.cast_time, ability.cooldown, ability.dispel_type, addedAbilityLine)
-        addedAbilityLine = true
-
-        if ability.description ~= '' then
-            addedAbilityLineWithDescription = true
-        end
-    end
-
-    local selectedLanguage = NpcAbilitiesOptions["SELECTED_LANGUAGE"]
-
-    if addedAbilityLineWithDescription and not hotkeyButtonPressed and NpcAbilitiesOptions["SELECTED_HOTKEY"] then
-        local hotkey = NpcAbilitiesOptions["SELECTED_HOTKEY"]
-        local hotkeyExplanatoryText = "(" .. _G["NpcAbilitiesTranslations"][selectedLanguage]["game"]["hotkeyExplanatoryTextOne"] .. " " .. hotkey .. " " ..  _G["NpcAbilitiesTranslations"][selectedLanguage]["game"]["hotkeyExplanatoryTextTwo"] .. ")"
-        GameTooltip:AddLine(hotkeyExplanatoryText, 0.8, 0.8, 0.8)
-    end
-
-    if addedAbilityLineWithDescription and not hotkeyButtonPressed and not NpcAbilitiesOptions["SELECTED_HOTKEY"] then
-        GameTooltip:AddLine("(" .. _G["NpcAbilitiesTranslations"][selectedLanguage]["game"]["hotkeyNotBoundText"] .. ")", 0.8, 0.8, 0.8)
-    end
+    AddNpcAbilitiesToTooltip(GameTooltip, npcId)
 end
 
 local function CheckHotkeyState()
@@ -362,7 +403,7 @@ local function CheckHotkeyState()
     if not IsKeyDown(hotkey) then
         checkForHotkeyReleased = false
         hotkeyButtonPressed = false
-        GameTooltip:SetUnit("mouseover");
+        RefreshTooltip()
         UpdateTargetFrameAbilities()
         npcAbilitiesFrame:SetScript("OnUpdate", nil)
     end
@@ -389,7 +430,7 @@ local function SetHotkeyButtonPressed(self, key, eventType)
                hotkeyButtonPressed = true
             end
 
-            GameTooltip:SetUnit("mouseover");
+            RefreshTooltip()
             UpdateTargetFrameAbilities()
        end
    end
@@ -402,7 +443,7 @@ local function SetHotkeyButtonPressed(self, key, eventType)
               hideAbilitiesHotkeyButtonPressed = true
            end
 
-           GameTooltip:SetUnit("mouseover");
+           RefreshTooltip()
            UpdateTargetFrameAbilities()
        end
    end
