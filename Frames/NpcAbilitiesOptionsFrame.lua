@@ -1,4 +1,4 @@
-local addonName = ...
+local addonName, addonTable = ...
 local optionsFrame = CreateFrame("Frame")
 local LibDD = LibStub:GetLibrary("LibUIDropDownMenu-4.0")
 local gameLocale = GetLocale()
@@ -160,7 +160,9 @@ local function getDefaultOptions(optionsTranslations)
             {value = "both", text = optionsTranslations["displayLocations"]["both"]}
         },
         DISPLAY_PRIORITY_INDICATORS = false,
-        DELAYED_TOOLTIP_LOADING = false
+        DELAYED_TOOLTIP_LOADING = false,
+        SHOW_MINIMAP_BUTTON = true,
+        MINIMAP_BUTTON = {}
     }
 
     return defaultOptions
@@ -263,9 +265,15 @@ local function InitializeOptions()
     end)
     displayPriorityIndicatorsCheckbox:SetPoint("TOPLEFT", displayLocationDropdown, "BOTTOMLEFT", fieldOffsetX - 10, fieldOffsetY)
 
+    -- General options: Minimap button
+    local showMinimapButtonCheckbox = CreateCheckBox(optionsContainer, optionsTranslations["showMinimapButtonLabel"], "SHOW_MINIMAP_BUTTON", function(self)
+        addonTable.SetMinimapButtonShown(self:GetChecked())
+    end)
+    showMinimapButtonCheckbox:SetPoint("TOPLEFT", displayPriorityIndicatorsCheckbox, "BOTTOMLEFT", 0, fieldOffsetY)
+
     -- Ability fields options
     local abilityFieldsOptionsTitle = optionsContainer:CreateFontString("ARTWORK", nil, "GameFontHighlightLarge")
-    abilityFieldsOptionsTitle:SetPoint("TOPLEFT", displayPriorityIndicatorsCheckbox, "TOPLEFT", -fieldOffsetX + 5, subTitleOffsetY + fieldOffsetY)
+    abilityFieldsOptionsTitle:SetPoint("TOPLEFT", showMinimapButtonCheckbox, "TOPLEFT", -fieldOffsetX + 5, subTitleOffsetY + fieldOffsetY)
     abilityFieldsOptionsTitle:SetText(optionsTranslations["abilityFieldsOptionsTitle"])
     abilityFieldsOptionsTitle:SetTextColor(1, 1, 1)
 

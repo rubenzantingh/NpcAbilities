@@ -2,9 +2,13 @@
 ## Title: NpcAbilities
 ## Notes: Add abilities to the NPC GameTooltip
 ## Author: Ruben Zantingh
-## Version: 1.6.3
+## Version: 1.7.0
 ## SavedVariables: NpcAbilitiesOptions
 ## OptionalDeps: LibStub, LibUIDropDownMenu
+## IconTexture: Interface\Icons\INV_Misc_Book_09
+## AddonCompartmentFunc: NpcAbilities_OnAddonCompartmentClick
+## AddonCompartmentFuncOnEnter: NpcAbilities_OnAddonCompartmentEnter
+## AddonCompartmentFuncOnLeave: NpcAbilities_OnAddonCompartmentLeave
 
 embeds.xml
 
@@ -24,9 +28,15 @@ Database/Abilities/koKR.lua
 
 Database/priorities.lua
 
+Database/Dungeons/dungeons.lua
+Database/Dungeons/enUS.lua
+
 Localization/Translations.lua
 
 Frames/NpcAbilitiesOptionsFrame.lua
 
 NpcAbilities.lua
+
+Frames/NpcAbilitiesDungeonFrame.lua
+Frames/NpcAbilitiesMinimapButton.lua
 

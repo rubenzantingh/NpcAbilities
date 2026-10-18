@@ -47,6 +47,7 @@ local function addonLoaded(self, event, addonLoadedName)
                 hideOptionsTitle = "Hide abilities",
                 hideOptionsHotkeyModeLabel = "Register hide abilities hotkey (Right-click to unbind)",
                 hideAbilitiesInInstanceLabel = "Hide abilities in instances (PVP and PVE)",
+                showMinimapButtonLabel = "Show minimap button",
                 displayLocationTitle = "Display Location",
                 displayLocationLabel = "Where to display abilities:",
                 displayLocations = {
@@ -65,7 +66,15 @@ local function addonLoaded(self, event, addonLoadedName)
                  rangeText = "Range",
                  castTimeText = "Cast time",
                  cooldownText = "Cooldown",
-                 dispelTypeText = "Dispel type"
+                 dispelTypeText = "Dispel type",
+                 dungeonDungeonsText = "Dungeons",
+                 dungeonRaidsText = "Raids",
+                 dungeonSearchText = "Search NPCs",
+                 noAbilityDataText = "No ability data available yet",
+                 dungeonToggleText = "Click to toggle the dungeon overview",
+                 npcLevelEliteText = "Elite",
+                 npcLevelRareEliteText = "Rare Elite",
+                 npcLevelBossText = "Boss"
              }
         }
 
@@ -112,6 +121,7 @@ local function addonLoaded(self, event, addonLoadedName)
                 hideOptionsTitle = "Ocultar habilidades",
                 hideOptionsHotkeyModeLabel = "Registrar tecla rápida para ocultar habilidades (Clic derecho para desvincular)",
                 hideAbilitiesInInstanceLabel = "Ocultar habilidades en instancias (PVP y PVE)",
+                showMinimapButtonLabel = "Mostrar botón del minimapa",
                 displayLocationTitle = "Ubicación de visualización",
                 displayLocationLabel = "Dónde mostrar habilidades:",
                 displayLocations = {
@@ -131,6 +141,14 @@ local function addonLoaded(self, event, addonLoadedName)
                 castTimeText = "Tiempo de lanzamiento",
                 cooldownText = "Enfriamiento",
                 dispelTypeText = "Tipo de disipación",
+                dungeonDungeonsText = "Mazmorras",
+                dungeonRaidsText = "Bandas",
+                dungeonSearchText = "Buscar PNJ",
+                noAbilityDataText = "Aún no hay datos de habilidades",
+                dungeonToggleText = "Haz clic para mostrar u ocultar el resumen de mazmorras",
+                npcLevelEliteText = "Élite",
+                npcLevelRareEliteText = "Élite raro",
+                npcLevelBossText = "Jefe"
             }
         }
 
@@ -177,6 +195,7 @@ local function addonLoaded(self, event, addonLoadedName)
                 hideOptionsTitle = "Fähigkeiten ausblenden",
                 hideOptionsHotkeyModeLabel = "Hotkey zum Ausblenden von Fähigkeiten registrieren (Rechtsklick zum Aufheben der Bindung)",
                 hideAbilitiesInInstanceLabel = "Fähigkeiten in Instanzen ausblenden (PVP und PVE)",
+                showMinimapButtonLabel = "Minikartenknopf anzeigen",
                 displayLocationTitle = "Anzeigeort",
                 displayLocationLabel = "Wo Fähigkeiten anzeigen:",
                 displayLocations = {
@@ -196,6 +215,14 @@ local function addonLoaded(self, event, addonLoadedName)
                 castTimeText = "Zauberzeit",
                 cooldownText = "Abklingzeit",
                 dispelTypeText = "Bannart",
+                dungeonDungeonsText = "Dungeons",
+                dungeonRaidsText = "Schlachtzüge",
+                dungeonSearchText = "NSCs suchen",
+                noAbilityDataText = "Noch keine Fähigkeitsdaten verfügbar",
+                dungeonToggleText = "Klicken, um die Dungeonübersicht ein- oder auszublenden",
+                npcLevelEliteText = "Elite",
+                npcLevelRareEliteText = "Seltener Elite",
+                npcLevelBossText = "Boss"
             }
         }
 
@@ -242,6 +269,7 @@ local function addonLoaded(self, event, addonLoadedName)
                 hideOptionsTitle = "Masquer les capacités",
                 hideOptionsHotkeyModeLabel = "Enregistrer le raccourci pour masquer les capacités (clic droit pour dissocier)",
                 hideAbilitiesInInstanceLabel = "Masquer les capacités en instance (PVP et PVE)",
+                showMinimapButtonLabel = "Afficher le bouton de la minicarte",
                 displayLocationTitle = "Emplacement d'affichage",
                 displayLocationLabel = "Où afficher les capacités:",
                 displayLocations = {
@@ -261,6 +289,14 @@ local function addonLoaded(self, event, addonLoadedName)
                 castTimeText = "Temps d'incantation",
                 cooldownText = "Temps de recharge",
                 dispelTypeText = "Type de dissipation",
+                dungeonDungeonsText = "Donjons",
+                dungeonRaidsText = "Raids",
+                dungeonSearchText = "Rechercher des PNJ",
+                noAbilityDataText = "Aucune donnée de technique disponible pour l’instant",
+                dungeonToggleText = "Cliquez pour afficher ou masquer l’aperçu des donjons",
+                npcLevelEliteText = "Élite",
+                npcLevelRareEliteText = "Élite rare",
+                npcLevelBossText = "Boss"
             }
         }
 
@@ -307,6 +343,7 @@ local function addonLoaded(self, event, addonLoadedName)
                 hideOptionsTitle = "Ocultar habilidades",
                 hideOptionsHotkeyModeLabel = "Registrar atalho para ocultar habilidades (Clique com o botão direito para desvincular)",
                 hideAbilitiesInInstanceLabel = "Ocultar habilidades em instâncias (PVP e PVE)",
+                showMinimapButtonLabel = "Mostrar botão do minimapa",
                 displayLocationTitle = "Local de exibição",
                 displayLocationLabel = "Onde exibir habilidades:",
                 displayLocations = {
@@ -326,6 +363,14 @@ local function addonLoaded(self, event, addonLoadedName)
                 castTimeText = "Tempo de lançamento",
                 cooldownText = "Recarga",
                 dispelTypeText = "Tipo de dissipação",
+                dungeonDungeonsText = "Masmorras",
+                dungeonRaidsText = "Raides",
+                dungeonSearchText = "Buscar PNJs",
+                noAbilityDataText = "Ainda não há dados de habilidades",
+                dungeonToggleText = "Clique para mostrar ou ocultar a visão geral das masmorras",
+                npcLevelEliteText = "Elite",
+                npcLevelRareEliteText = "Elite Raro",
+                npcLevelBossText = "Chefe"
             }
         }
 
@@ -372,6 +417,7 @@ local function addonLoaded(self, event, addonLoadedName)
                 hideOptionsTitle = "Скрытие способностей",
                 hideOptionsHotkeyModeLabel = "Назначить горячую клавишу для скрытия способностей (Правый клик для сброса)",
                 hideAbilitiesInInstanceLabel = "Скрывать способности в подземельях (PVP и PVE)",
+                showMinimapButtonLabel = "Показывать кнопку у миникарты",
                 displayLocationTitle = "Место отображения",
                 displayLocationLabel = "Где отображать способности:",
                 displayLocations = {
@@ -391,6 +437,14 @@ local function addonLoaded(self, event, addonLoadedName)
                 castTimeText = "Время произнесения",
                 cooldownText = "Восстановление",
                 dispelTypeText = "Тип рассеивания",
+                dungeonDungeonsText = "Подземелья",
+                dungeonRaidsText = "Рейды",
+                dungeonSearchText = "Поиск НИП",
+                noAbilityDataText = "Данные о способностях пока недоступны",
+                dungeonToggleText = "Нажмите, чтобы показать или скрыть обзор подземелий",
+                npcLevelEliteText = "Элитный",
+                npcLevelRareEliteText = "Редкий элитный",
+                npcLevelBossText = "Босс"
             }
         }
 
@@ -437,6 +491,7 @@ local function addonLoaded(self, event, addonLoadedName)
                 hideOptionsTitle = "능력 숨기기",
                 hideOptionsHotkeyModeLabel = "능력 숨기기 단축키 등록 (우클릭으로 해제)",
                 hideAbilitiesInInstanceLabel = "인스턴스( PVP 및 PVE)에서 능력 숨기기",
+                showMinimapButtonLabel = "미니맵 버튼 표시",
                 displayLocationTitle = "표시 위치",
                 displayLocationLabel = "능력을 표시할 위치:",
                 displayLocations = {
@@ -456,6 +511,14 @@ local function addonLoaded(self, event, addonLoadedName)
                 castTimeText = "시전 시간",
                 cooldownText = "쿨타임",
                 dispelTypeText = "해제 유형",
+                dungeonDungeonsText = "던전",
+                dungeonRaidsText = "공격대",
+                dungeonSearchText = "NPC 검색",
+                noAbilityDataText = "아직 능력 정보가 없습니다",
+                dungeonToggleText = "클릭하여 던전 개요 표시/숨기기",
+                npcLevelEliteText = "정예",
+                npcLevelRareEliteText = "희귀 정예",
+                npcLevelBossText = "우두머리"
             }
         }
 
@@ -502,6 +565,7 @@ local function addonLoaded(self, event, addonLoadedName)
                 hideOptionsTitle = "隐藏技能",
                 hideOptionsHotkeyModeLabel = "注册隐藏技能快捷键（右键单击解绑）",
                 hideAbilitiesInInstanceLabel = "在副本（PVP 和 PVE）中隐藏技能",
+                showMinimapButtonLabel = "显示小地图按钮",
                 displayLocationTitle = "显示位置",
                 displayLocationLabel = "在哪里显示技能:",
                 displayLocations = {
@@ -521,6 +585,14 @@ local function addonLoaded(self, event, addonLoadedName)
                 castTimeText = "施法时间",
                 cooldownText = "冷却时间",
                 dispelTypeText = "驱散类型",
+                dungeonDungeonsText = "地下城",
+                dungeonRaidsText = "团队副本",
+                dungeonSearchText = "搜索NPC",
+                noAbilityDataText = "暂无技能数据",
+                dungeonToggleText = "点击显示/隐藏地下城概览",
+                npcLevelEliteText = "精英",
+                npcLevelRareEliteText = "稀有精英",
+                npcLevelBossText = "首领"
             }
         }
     end
