@@ -18,9 +18,21 @@ local NPC_LEVELS = {
     [3] = {texture = "Interface\\TargetingFrame\\UI-TargetingFrame-Skull", translationKey = "npcLevelBossText"}
 }
 
+-- One file for every game version: clients missing one of the templates used below get a plainer
+-- fallback instead of an error.
+local function HasTemplate(templateName)
+    return C_XMLUtil ~= nil and C_XMLUtil.GetTemplateInfo ~= nil and C_XMLUtil.GetTemplateInfo(templateName) ~= nil
+end
+
+local function HasAtlas(atlasName)
+    return C_Texture ~= nil and C_Texture.GetAtlasInfo ~= nil and C_Texture.GetAtlasInfo(atlasName) ~= nil
+end
+
+local GetAbilityTexture = (C_Spell and C_Spell.GetSpellTexture) or GetSpellTexture
+
 local dungeonFrame = nil
-local dungeonScrollBox = nil
-local npcScrollBox = nil
+local dungeonList = nil
+local npcList = nil
 local npcListTitle = nil
 local searchBox = nil
 local selectedDungeonId = nil
@@ -297,7 +309,7 @@ local function SetupHeaderRow(row, elementData)
 end
 
 local function UpdateSelectedDungeonRows()
-    dungeonScrollBox:ForEachFrame(function(row)
+    dungeonList:ForEachRow(function(row)
         row.Selected:SetShown(row.dungeonId ~= nil and row.dungeonId == selectedDungeonId)
     end)
 end
@@ -368,7 +380,7 @@ local function InitializeNpcRow(row, elementData)
             break
         end
 
-        local texture = C_Spell.GetSpellTexture(ability.id)
+        local texture = GetAbilityTexture(ability.id)
 
         if IsAccessible(texture) and texture then
             shownIcons = shownIcons + 1
@@ -396,7 +408,10 @@ local function InitializeNpcRow(row, elementData)
     local hasLevelIcon = false
 
     if levelIcon and levelIcon.atlas then
-        hasLevelIcon = row.LevelIcon:SetAtlas(levelIcon.atlas)
+        if HasAtlas(levelIcon.atlas) then
+            row.LevelIcon:SetAtlas(levelIcon.atlas)
+            hasLevelIcon = true
+        end
     elseif levelIcon then
         row.LevelIcon:SetTexture(levelIcon.texture)
         row.LevelIcon:SetTexCoord(0, 1, 0, 1)
@@ -419,8 +434,9 @@ local function InitializeNpcRow(row, elementData)
     end
 end
 
--- Lists
-local function CreateScrollList(parent, initializer)
+-- Lists: a ScrollBox where the client has one, otherwise a scroll frame with a pool of row buttons.
+-- Both expose SetListData(listData), ForEachRow(func) and scrollBarSpace (room to its right).
+local function CreateScrollBoxList(parent, initializer)
     local scrollBox = CreateFrame("Frame", nil, parent, "WowScrollBoxList")
     local scrollBar = CreateFrame("EventFrame", nil, parent, "MinimalScrollBar")
     scrollBar:SetPoint("TOPLEFT", scrollBox, "TOPRIGHT", 4, 0)
@@ -432,7 +448,132 @@ local function CreateScrollList(parent, initializer)
 
     ScrollUtil.InitScrollBoxListWithScrollBar(scrollBox, scrollBar, view)
 
+    scrollBox.scrollBarSpace = 16
+
+    function scrollBox:SetListData(listData)
+        self:SetDataProvider(CreateDataProvider(listData))
+    end
+
+    function scrollBox:ForEachRow(func)
+        self:ForEachFrame(func)
+    end
+
     return scrollBox
+end
+
+local function CreateScrollFrameList(parent, initializer)
+    local list = CreateFrame("ScrollFrame", nil, parent, "UIPanelScrollFrameTemplate")
+    local content = CreateFrame("Frame", nil, list)
+    content:SetSize(1, 1)
+    list:SetScrollChild(content)
+
+    list:HookScript("OnSizeChanged", function(self, width)
+        content:SetWidth(width)
+    end)
+
+    list:EnableMouseWheel(true)
+    list:SetScript("OnMouseWheel", function(self, delta)
+        local newOffset = self:GetVerticalScroll() - (delta * ROW_HEIGHT * 3)
+        newOffset = math.max(0, math.min(newOffset, self:GetVerticalScrollRange()))
+        self:SetVerticalScroll(newOffset)
+    end)
+
+    local rows = {}
+    list.scrollBarSpace = 26
+
+    function list:SetListData(listData)
+        for index, elementData in ipairs(listData) do
+            local row = rows[index]
+
+            if not row then
+                row = CreateFrame("Button", nil, content)
+                row:SetHeight(ROW_HEIGHT)
+                row:SetPoint("TOPLEFT", 0, -(index - 1) * ROW_HEIGHT)
+                row:SetPoint("RIGHT")
+                rows[index] = row
+            end
+
+            initializer(row, elementData)
+            row:Show()
+        end
+
+        for index = #listData + 1, #rows do
+            rows[index]:Hide()
+        end
+
+        content:SetHeight(math.max(1, #listData * ROW_HEIGHT))
+        self:SetVerticalScroll(0)
+    end
+
+    function list:ForEachRow(func)
+        for _, row in ipairs(rows) do
+            if row:IsShown() then
+                func(row)
+            end
+        end
+    end
+
+    return list
+end
+
+local function CreateList(parent, initializer)
+    if CreateScrollBoxListLinearView and HasTemplate("WowScrollBoxList") and HasTemplate("MinimalScrollBar") then
+        return CreateScrollBoxList(parent, initializer)
+    end
+
+    return CreateScrollFrameList(parent, initializer)
+end
+
+-- Search box: SearchBoxTemplate, or an InputBoxTemplate with its own placeholder text
+local function CreateSearchBox(parent, onTextChanged)
+    if HasTemplate("SearchBoxTemplate") then
+        local editBox = CreateFrame("EditBox", nil, parent, "SearchBoxTemplate")
+        editBox:HookScript("OnTextChanged", onTextChanged)
+
+        return editBox
+    end
+
+    local editBox = CreateFrame("EditBox", nil, parent, "InputBoxTemplate")
+    local instructions = editBox:CreateFontString(nil, "ARTWORK", "GameFontDisableSmall")
+    instructions:SetPoint("LEFT", 2, 0)
+    editBox.Instructions = instructions
+
+    local function UpdateInstructions()
+        instructions:SetShown(editBox:GetText() == "" and not editBox:HasFocus())
+    end
+
+    editBox:HookScript("OnTextChanged", function(...)
+        UpdateInstructions()
+        onTextChanged(...)
+    end)
+    editBox:HookScript("OnEditFocusGained", UpdateInstructions)
+    editBox:HookScript("OnEditFocusLost", UpdateInstructions)
+    editBox:SetScript("OnEnterPressed", editBox.ClearFocus)
+    editBox:SetScript("OnEscapePressed", editBox.ClearFocus)
+
+    return editBox
+end
+
+-- Main frame: BasicFrameTemplateWithInset, or a backdrop with its own close button
+local function CreateMainFrame()
+    if HasTemplate("BasicFrameTemplateWithInset") then
+        return CreateFrame("Frame", FRAME_NAME, UIParent, "BasicFrameTemplateWithInset")
+    end
+
+    local frame = CreateFrame("Frame", FRAME_NAME, UIParent, "BackdropTemplate")
+    frame:SetBackdrop({
+        bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background-Dark",
+        edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
+        tile = true,
+        tileSize = 16,
+        edgeSize = 16,
+        insets = { left = 4, right = 4, top = 4, bottom = 4 }
+    })
+
+    local closeButton = CreateFrame("Button", nil, frame, "UIPanelCloseButton")
+    closeButton:SetPoint("TOPRIGHT", 2, 2)
+
+    return frame
 end
 
 local function RefreshNpcList()
@@ -441,7 +582,7 @@ local function RefreshNpcList()
     local dungeon = selectedDungeonId and GetDungeonData()[selectedDungeonId]
     npcListTitle:SetText(dungeon and dungeon.name or "")
 
-    npcScrollBox:SetDataProvider(CreateDataProvider(BuildNpcListData()))
+    npcList:SetListData(BuildNpcListData())
 end
 
 SelectDungeon = function(dungeonId)
@@ -457,7 +598,7 @@ local function RefreshDungeonList(selectCurrentDungeon)
     currentDungeonId = GetCurrentDungeonId()
 
     local listData = BuildDungeonListData()
-    dungeonScrollBox:SetDataProvider(CreateDataProvider(listData))
+    dungeonList:SetListData(listData)
 
     local dungeonIdToSelect = selectedDungeonId or NpcAbilitiesOptions["DUNGEON_FRAME_SELECTED_DUNGEON_ID"]
 
@@ -494,13 +635,18 @@ local function SaveFrameLayout(frame)
 end
 
 local function CreateDungeonFrame()
-    local frame = CreateFrame("Frame", FRAME_NAME, UIParent, "BasicFrameTemplateWithInset")
+    local frame = CreateMainFrame()
     frame:SetFrameStrata("HIGH")
     frame:SetToplevel(true)
     frame:SetClampedToScreen(true)
     frame:SetMovable(true)
     frame:SetResizable(true)
-    frame:SetResizeBounds(MIN_WIDTH, MIN_HEIGHT)
+
+    if frame.SetResizeBounds then
+        frame:SetResizeBounds(MIN_WIDTH, MIN_HEIGHT)
+    else
+        frame:SetMinResize(MIN_WIDTH, MIN_HEIGHT)
+    end
     frame:EnableMouse(true)
     frame:RegisterForDrag("LeftButton")
     frame:SetScript("OnDragStart", frame.StartMoving)
@@ -529,16 +675,16 @@ local function CreateDungeonFrame()
     title:SetText("NpcAbilities")
 
     -- Dungeon list
-    dungeonScrollBox = CreateScrollList(frame, InitializeDungeonRow)
-    dungeonScrollBox:SetPoint("TOPLEFT", 10, -30)
-    dungeonScrollBox:SetPoint("BOTTOMLEFT", 10, 10)
-    dungeonScrollBox:SetWidth(DUNGEON_LIST_WIDTH)
+    dungeonList = CreateList(frame, InitializeDungeonRow)
+    dungeonList:SetPoint("TOPLEFT", 10, -30)
+    dungeonList:SetPoint("BOTTOMLEFT", 10, 10)
+    dungeonList:SetWidth(DUNGEON_LIST_WIDTH)
 
     local divider = frame:CreateTexture(nil, "ARTWORK")
     divider:SetColorTexture(1, 1, 1, 0.15)
     divider:SetWidth(1)
-    divider:SetPoint("TOPLEFT", dungeonScrollBox, "TOPRIGHT", 16, 0)
-    divider:SetPoint("BOTTOMLEFT", dungeonScrollBox, "BOTTOMRIGHT", 16, 0)
+    divider:SetPoint("TOPLEFT", dungeonList, "TOPRIGHT", dungeonList.scrollBarSpace, 0)
+    divider:SetPoint("BOTTOMLEFT", dungeonList, "BOTTOMRIGHT", dungeonList.scrollBarSpace, 0)
 
     -- NPC list
     npcListTitle = frame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
@@ -547,20 +693,19 @@ local function CreateDungeonFrame()
     npcListTitle:SetJustifyH("LEFT")
     npcListTitle:SetWordWrap(false)
 
-    searchBox = CreateFrame("EditBox", nil, frame, "SearchBoxTemplate")
+    searchBox = CreateSearchBox(frame, function()
+        if npcList then
+            RefreshNpcList()
+        end
+    end)
     searchBox:SetHeight(20)
     searchBox:SetAutoFocus(false)
     searchBox:SetPoint("TOPLEFT", npcListTitle, "BOTTOMLEFT", 6, -6)
     searchBox:SetPoint("RIGHT", -14, 0)
-    searchBox:HookScript("OnTextChanged", function()
-        if npcScrollBox then
-            RefreshNpcList()
-        end
-    end)
 
-    npcScrollBox = CreateScrollList(frame, InitializeNpcRow)
-    npcScrollBox:SetPoint("TOPLEFT", searchBox, "BOTTOMLEFT", -6, -6)
-    npcScrollBox:SetPoint("BOTTOMRIGHT", -26, 22)
+    npcList = CreateList(frame, InitializeNpcRow)
+    npcList:SetPoint("TOPLEFT", searchBox, "BOTTOMLEFT", -6, -6)
+    npcList:SetPoint("BOTTOMRIGHT", -10 - npcList.scrollBarSpace, 22)
 
     -- Resize grip
     local resizeButton = CreateFrame("Button", nil, frame)
@@ -616,7 +761,7 @@ SLASH_NPCABILITIES1 = "/npca"
 SLASH_NPCABILITIES2 = "/npcabilities"
 SlashCmdList["NPCABILITIES"] = ToggleDungeonFrame
 
--- Addon compartment (referenced from the .toc)
+-- Addon compartment (referenced from the .toc, ignored by clients without one)
 function NpcAbilities_OnAddonCompartmentClick()
     ToggleDungeonFrame()
 end

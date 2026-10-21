@@ -6,6 +6,19 @@ Furthermore, you can choose the language in which this information is displayed.
 Information in the addon will be updated at least biweekly to ensure that the data is as accurate as possible. 
 However, as this addon depends on information provided by a third party, there is a possibility of data inaccuracies. 
 
+## Dungeon overview
+Besides the tooltips, the addon has a dungeon overview that lists the NPCs of every dungeon and raid together with their abilities, so you can look them up before or during a run.
+
+You can open and close it in three ways:
+- Type `/npca` or `/npcabilities` in chat.
+- Click the NpcAbilities minimap button. It can be hidden with the "Show minimap button" option.
+- Click NpcAbilities in the addon compartment menu, on game versions that have one.
+
+## Limitations on Retail and Forever
+On the Retail and Forever versions of the game, Blizzard hides some information from addons in certain situations, for example inside dungeons and raids. When that happens, the addon cannot tell which NPC you are looking at, so no abilities are added to its tooltip or shown under its frame. This is a restriction of the game itself and cannot be worked around by the addon.
+
+In those situations you can still look up an NPC's abilities in the dungeon overview.
+
 ## Download
 The [Curseforge Client](https://curseforge.overwolf.com/) can be used to find and download this addon once it has been listed. It can also be found on its [Curseforge page](https://www.curseforge.com/wow/addons/npcabilities).
 
