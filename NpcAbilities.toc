@@ -2,13 +2,10 @@
 ## Title: NpcAbilities
 ## Notes: Add abilities to the NPC GameTooltip
 ## Author: Ruben Zantingh
-## Version: 1.7.0
+## Version: 1.7.1
 ## SavedVariables: NpcAbilitiesOptions
 ## OptionalDeps: LibStub, LibUIDropDownMenu
 ## IconTexture: Interface\Icons\INV_Misc_Book_09
-## AddonCompartmentFunc: NpcAbilities_OnAddonCompartmentClick
-## AddonCompartmentFuncOnEnter: NpcAbilities_OnAddonCompartmentEnter
-## AddonCompartmentFuncOnLeave: NpcAbilities_OnAddonCompartmentLeave
 
 embeds.xml
 

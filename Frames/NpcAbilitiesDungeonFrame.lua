@@ -760,19 +760,3 @@ addonTable.ToggleDungeonFrame = ToggleDungeonFrame
 SLASH_NPCABILITIES1 = "/npca"
 SLASH_NPCABILITIES2 = "/npcabilities"
 SlashCmdList["NPCABILITIES"] = ToggleDungeonFrame
-
--- Addon compartment (referenced from the .toc, ignored by clients without one)
-function NpcAbilities_OnAddonCompartmentClick()
-    ToggleDungeonFrame()
-end
-
-function NpcAbilities_OnAddonCompartmentEnter(_, menuButtonFrame)
-    GameTooltip:SetOwner(menuButtonFrame, "ANCHOR_LEFT")
-    GameTooltip:SetText("NpcAbilities")
-    GameTooltip:AddLine(GetTranslation("dungeonToggleText"), 1, 1, 1)
-    GameTooltip:Show()
-end
-
-function NpcAbilities_OnAddonCompartmentLeave()
-    GameTooltip:Hide()
-end

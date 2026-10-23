@@ -13,7 +13,7 @@ Besides the tooltips, the addon has a dungeon overview that lists the NPCs of ev
 You can open and close it in three ways:
 - Type `/npca` or `/npcabilities` in chat.
 - Click the NpcAbilities minimap button. It can be hidden with the "Show minimap button" option.
-- Click NpcAbilities in the addon compartment menu, on game versions that have one.
+- Click NpcAbilities in the addon compartment menu, on game versions that have one. The "Show minimap button" option hides this entry as well.
 
 ## Limitations on Retail and Forever
 On the Retail and Forever versions of the game, Blizzard hides some information from addons in certain situations, for example inside dungeons and raids. When that happens, the addon cannot tell which NPC you are looking at, so no abilities are added to its tooltip or shown under its frame. This is a restriction of the game itself and cannot be worked around by the addon.
