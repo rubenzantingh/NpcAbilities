@@ -10,7 +10,7 @@ local function GetTranslation(key)
     return selectedTranslations["game"][key] or translations["en"]["game"][key]
 end
 
--- Shows or hides the button, called from the options panel
+-- Shows or hides the button and its addon compartment entry, called from the options panel
 addonTable.SetMinimapButtonShown = function(shown)
     local LibDBIcon = LibStub("LibDBIcon-1.0")
 
@@ -19,8 +19,10 @@ addonTable.SetMinimapButtonShown = function(shown)
 
     if shown then
         LibDBIcon:Show(addonName)
+        LibDBIcon:AddButtonToCompartment(addonName)
     else
         LibDBIcon:Hide(addonName)
+        LibDBIcon:RemoveButtonFromCompartment(addonName)
     end
 end
 
@@ -38,8 +40,9 @@ local function CreateMinimapButton()
         end
     })
 
-    -- LibDBIcon stores the button position (minimapPos) and visibility (hide) in this table
+    -- LibDBIcon stores the button position (minimapPos), visibility (hide) and compartment entry (showInCompartment) in this table
     NpcAbilitiesOptions["MINIMAP_BUTTON"].hide = not NpcAbilitiesOptions["SHOW_MINIMAP_BUTTON"]
+    NpcAbilitiesOptions["MINIMAP_BUTTON"].showInCompartment = NpcAbilitiesOptions["SHOW_MINIMAP_BUTTON"] or nil
 
     LibStub("LibDBIcon-1.0"):Register(addonName, dataObject, NpcAbilitiesOptions["MINIMAP_BUTTON"])
 end
