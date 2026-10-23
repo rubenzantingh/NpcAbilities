@@ -116,20 +116,26 @@ local function CreateHotkeyButton(parent, label, optionKey)
     return description, button
 end
 
+-- In dropdown order; only languages with ability data in this game version's database are offered
+local LANGUAGE_CODES = {'en', 'es', 'ru', 'fr', 'de', 'pt', 'ko', 'cn', 'it'}
+
+local function getAvailableLanguages(optionsTranslations)
+    local abilityData = _G["NpcAbilitiesAbilityData"] or {}
+    local availableLanguages = {}
+
+    for _, languageCode in ipairs(LANGUAGE_CODES) do
+        if abilityData[languageCode] then
+            table.insert(availableLanguages, {value = languageCode, text = optionsTranslations["languages"][languageCode]})
+        end
+    end
+
+    return availableLanguages
+end
+
 local function getDefaultOptions(optionsTranslations)
     local defaultOptions = {
         SELECTED_LANGUAGE = 'en',
-        AVAILABLE_LANGUAGES = {
-            {value = 'en', text = optionsTranslations["languages"]["en"]},
-            {value = 'es', text = optionsTranslations["languages"]["es"]},
-            {value = 'ru', text = optionsTranslations["languages"]["ru"]},
-            {value = 'fr', text = optionsTranslations["languages"]["fr"]},
-            {value = 'de', text = optionsTranslations["languages"]["de"]},
-            {value = 'pt', text = optionsTranslations["languages"]["pt"]},
-            {value = 'ko', text = optionsTranslations["languages"]["ko"]},
-            {value = 'cn', text = optionsTranslations["languages"]["cn"]},
-            {value = 'it', text = optionsTranslations["languages"]["it"]}
-        },
+        AVAILABLE_LANGUAGES = getAvailableLanguages(optionsTranslations),
         SELECTED_HOTKEY = nil,
         SELECTED_HOTKEY_MODE = 'toggle',
         AVAILABLE_HOTKEY_MODES = {
@@ -361,6 +367,18 @@ local function addonLoaded(self, event, addonLoadedName)
             elseif type(value) == "table" and key == "AVAILABLE_LANGUAGES" then
                 NpcAbilitiesOptions[key] = value
             end
+        end
+
+        local selectedLanguageAvailable = false
+
+        for _, language in ipairs(NpcAbilitiesOptions["AVAILABLE_LANGUAGES"]) do
+            if language.value == NpcAbilitiesOptions["SELECTED_LANGUAGE"] then
+                selectedLanguageAvailable = true
+            end
+        end
+
+        if not selectedLanguageAvailable then
+            NpcAbilitiesOptions["SELECTED_LANGUAGE"] = defaultOptions["SELECTED_LANGUAGE"]
         end
 
         InitializeOptions()
